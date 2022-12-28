@@ -1,0 +1,282 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+
+\begin{document}
+\section*{練習問題}
+\subsection*{初めに}
+極限、微分、積分...と新しい概念が数多く出てきて戸惑うと思う。それに加えて、愛好会の時間の都合上、あまり演習時間が取れないのも事実だ。
+そこで、今回は練習問題を用意した。簡単なものからちょっと考えないといけないものまで、様々な難易度の問題がある。自分に合った難易度から始めていくとよいだろう。
+これが解けるようになれば、基本的な演算に関してはほぼ完ぺきに等しいといえる。ぜひとも頑張ってほしい。
+
+参考までに、問題の難易度について軽く説明しておこうと思う。
+\begin{itemize}
+    \item ＊　　　　$\cdots$もっとも簡単な難易度。資料を読んだのなら解けて当たり前。
+    \item ＊＊　　　$\cdots$＊に比べては難しいがそれでも簡単な方。これくらいまでは解けてほしいところ。
+    \item ＊＊＊　　$\cdots$中級レベルの難易度。一般的な入試に出そうなものを選んでいる。
+    \item ＊＊＊＊　$\cdots$少しひらめきが必要。初見でできたらすごい。
+    \item ＊＊＊＊＊$\cdots$すごくひらめきが必要な問題。難関大の問題とかで出そう。初見で解けたら変態です。
+\end{itemize}
+とまぁ、大体こんな感じである。一応問題の範囲を書いておこう。
+問題の範囲は、「初等関数・関数の極限・微分法・不定積分・定積分」である。
+
+正直＊＊まで解けていれば、高専ではほとんどやっていけるはずである。無理して＊＊＊＊＊まで解く必要はない。自分のペースで解いていこう。
+\subsection*{公式集}
+以下公式集である。参考にしてほしい。なお公式集に書いてあることは証明せずに使用してもよいとする。
+\begin{align}
+    e&=\lim_{n\to\infty}(1+\frac{1}{n})^n=2.7182...\\
+    \pi&=3.1415...\\
+    \log_{10}x&=0.43429...\log_ex,\log_ex=2.30259...\log_{10}x\\
+    \log_ex&=\log x=\ln x\\
+    a^x\cdot a^y&=a^{x+y}\\
+    \frac{a^x}{a^y}&=a^{x-y}\\
+    (a^x)^y&=a^{xy}\\
+    \log xy&=\log x+\log y\\
+    \log\frac{x}{y}&=\log x - \log y\\
+    \log x^y&=y\log x\\
+    \log e^x &= x\\
+    e^{\log x}&=x\\
+    \sin(\alpha\pm\beta)&=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta\\
+    \cos(\alpha\pm\beta)&=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta\\
+    \tan(\alpha\pm\beta)&=\frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}\\
+    y=\sin \theta&\to\arcsin y=\theta\\
+    y=\cos \theta&\to\arccos y=\theta\\
+    y=\tan \theta&\to\arctan y=\theta\\
+    \lim_{x\to0}\frac{\sin x}{x}&=1\\
+    f'(x)&=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\\
+    y=f(x)&\to(f(x))'=\frac{d}{dx}f(x)=\frac{dy}{dx}\\
+    (a\cdot f(x)\pm b\cdot g(x))'&=a\cdot f'(x)\pm b\cdot g'(x)\\
+    (f(x)g(x))'&=f'(x)g(x)+f(x)g'(x)\\
+    (\frac{f(x)}{g(x)})'&=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}\\
+    (f(g(x)))'&=f'(g(x))g'(x)\\
+    \frac{dx}{dy}&=\frac{1}{\frac{dy}{dx}}\\ 
+    F'(x)=f(x)&\to F(x)=\int f(x)dx\\
+    \int(a\cdot f(x)\pm b\cdot g(x))dx&=a \int f(x)dx\pm b\int g(x)dx\\
+    \int f'(x)g(x)dx &= f(x)g(x)-\int f(x)g'(x)dx\\
+    \int f(x)dx &= \int f(g(t))g'(t)dt\\
+    \int_a^b f(x)dx &=\lim_{n\to\infty}\sum_{k=1}^n f(\zeta_k)(x_k-x_{k-1})
+\end{align}
+\begin{align}
+    \int_a^b f(x)dx &= -\int_b^a f(x) dx\\
+    \int_a^a f(x)dx &= 0\\
+    \frac{d}{dx}\int_a^x f(t)dt &=f(x)\\
+    F'(x)=f(x)&\to\int_a^b f(x)dx = F(b)-F(a)
+\end{align}
+初等関数それぞれの導関数、原始関数は省略した。
+
+また、以下の問題すべてで、逆三角関数は主値を取るとする。すなわち、$0\leq\theta<2\pi$を範囲とする。ただし、$\theta=\arctan y$
+の場合は$0\leq\theta<\pi$とする。
+\newpage
+\subsection*{問題(初等関数)}
+初等関数とはべき関数、指数関数、対数関数、三角関数とそれらを組み合わせた関数のことである。このpdfの問題の計算結果は
+すべて初等関数の範囲に収まるようになっている。
+\subsubsection*{指数・対数関数}
+以下の等式を証明せよ\\
+(*)$\log x+\log y = \log xy$
+\subsubsection*{三角関数}
+以下式の三角比の値を求めよ。\\
+(1*)$\sin\frac{\pi}{6}$
+\hspace{10mm}
+(2*)$\sin\frac{\pi}{3}$
+\hspace{10mm}
+(3*)$\cos \frac{\pi}{4}$
+\hspace{10mm}
+(4*)$\tan \frac{\pi}{2}$
+\hspace{10mm}
+(5*)$\sin \frac{3\pi}{2}$
+\hspace{10mm}
+(6*)$\cos \frac{\pi}{12}$
+\hspace{10mm}
+(7*)$\sin \ang{75}$
+\hspace{10mm}
+(8*)$\cos \ang{210}$
+\\
+以下式の$\theta$の値を求めよ。\\
+(1*)$\frac{1}{2}=\sin \theta$
+\hspace{10mm}
+(2*)$\frac{\sqrt{3}}{2}=\cos \theta$
+\hspace{10mm}
+(3*)$\theta=\arctan 1$
+\hspace{10mm}
+(4*)$\frac{\sqrt{2}}{5}=\sin \theta$
+\hspace{10mm}
+(5*)$\pi=\cos \theta$
+\\
+$t=\tan\frac{\theta}{2}$とするとき、以下の等式を証明せよ。\\
+\begin{align*}
+    \sin \theta &= \frac{2t}{1+t^2}\\
+    \cos \theta &= \frac{1-t^2}{1+t^2}\\
+    \tan \theta &= \frac{2t}{1-t^2}\\
+\end{align*}
+\newpage
+\subsection*{問題(極限)}
+以下極限値を求めよ。\\
+(1*)$\lim_{x\to1}(x^2+6x-4)$
+\hspace{10mm}
+(2**)$\lim_{x\to-1}\frac{3x^2+x-3}{x^2+5x+2}$
+\hspace{10mm}
+(3*)$\lim_{x\to\infty}\frac{1}{x^2}$
+\hspace{10mm}
+(4**)$\lim_{x\to-0}\frac{|x|}{x}$
+\\
+(5*)$\lim_{x\to\infty}\frac{1}{x^2}\sin x$
+\hspace{18mm}
+(6*)$\lim_{x\to2}(3x+2)$
+\hspace{17mm}
+(7*)$\lim_{x\to\infty}\frac{x-2}{x+1}$
+\hspace{9mm}
+(8**)$\lim_{x\to0}\frac{\sqrt{4+x}-2}{x}$
+\\
+\scriptsize(8)のヒント：分子分母に$\sqrt{4+x}+2$をかけてみよう。\\
+\normalsize
+
+以下極限値を求めよ。
+\begin{align*}
+    (1*)&:\lim_{x\to0}\frac{\sin 2x}{x}\\
+    (2*)&:\lim_{x\to0}\frac{1-\cos x}{x}\\
+    (3*)&:\lim_{x\to+0}\frac{\sin x}{\sqrt{x}}\\
+    (4*)&:\lim_{x\to0}\frac{\log(1+x)}{x}\\
+    (5**)&:\lim_{x\to0}\frac{e^x-1}{x}\\
+    (6**)&:\lim_{h\to0}\frac{\log(x+h)-\log(x)}{h}\\
+    (7**)&:\lim_{a\to0}\frac{\sin(x+h)-\sin(x)}{h}\\
+    (8**)&:\lim_{x\to0}\frac{x}{\tan x}\\
+    (9**)&:\frac{2}{1+e^{-\frac{1}{x}}}
+\end{align*}
+\textgt{補足：}
+関数の極限についての厳密な定義について考えてみよう。$x\to a$につれて$f(x)$の値が限りなく$b$に近づくとき、
+\begin{equation*}
+    \lim_{x\to a}f(x)=b
+\end{equation*}
+とかく。この時、私たちは独立変数$x$しか調節することができない。すなわち、関数の極限が存在するためには、
+$f(x)\to b$を$x\to a$で保証できれば良い。よって、関数の極限の定義\\
+\fbox{任意の正の数$\epsilon$に対して、$0<|x-a|<\delta$ならば、$|f(x)-b|<\epsilon$となるような$\delta$が存在する。}\\
+が得られる。　これはいわゆる\textgt{$\epsilon - \delta$法}というものである。
+
+試しに、$\lim_{x\to 2}x^2=4$を証明してみよう。\\
+解：任意の正の数$\epsilon$に対して、$0<|x-2|<\delta$ならば$|x^2-4|<\epsilon$となるような$\delta$を見つけなければならない。
+$0<|x-2|<\delta$ならば
+\begin{equation*}
+    |x^2-4|=|(x+2)(x-2)|=|(x-2)+4|\cdot|x-2|\leq |x-2|^2+4|x-2|<\delta^2+4\delta
+\end{equation*}
+よって、\\
+$\epsilon\geq5$ならば$\delta=1$で$|x^2-4|<\delta^2+4\delta\leq\epsilon$\\
+$\epsilon\leq5$ならば$\delta=\frac{\epsilon}{5}$で$|x^2-4|<\delta^2+4\delta<5\delta=\epsilon$
+よって、$|x^2-4|<\epsilon$となる。したがって、$\lim_{x\to 2}x^2=4$。
+\newpage
+\subsection*{問題(微分)}
+以下導関数を求めよ。\\
+(1*)$2x+3$
+\hspace{10mm}
+(2*)$\frac{1}{x}-\frac{2}{x^2}$
+\hspace{10mm}
+(3*)$(x^2+2x+1)^4$
+\hspace{10mm}
+(4*)$\frac{3}{(a^2-x^3)^2}$
+\hspace{10mm}
+(5*)$x^2\sin ax$
+\hspace{10mm}
+(6**)$3e^{-x^2+2x}$
+\hspace{7mm}
+(7*)$3^{2x}+\frac{3}{\tan x}$
+\hspace{7mm}
+(8**)$\log(x+\sqrt{x^2+1})$
+\hspace{8mm}
+(9*)$\arcsin(2x+3)$
+\hspace{2mm}
+(10***) ${x^{x^x}}$\\
+
+(**)$\log x$の導関数を\textgt{定義式}と\textgt{逆関数の微分法}でそれぞれ求めよ。ただし$e^x$の導関数は$e^x$である。\\
+
+
+(**)積の微分公式$(vu)'=v'u+vu'$を証明せよ。\\
+
+(**)$x^x(x\geq0)$は下に凸のグラフである。このグラフの最小値を求めよ。ただし、$x^x$のグラフで\\
+\hspace{9mm}傾きの正負が変わるのは最小値のみである。\\\\
+(***)関数$f(x)=\frac{1}{3}\log(|x^3+2|)$の$x=1+\sqrt{3}$の微分係数を求めよ。
+\newpage
+\subsection*{問題(積分)}
+\subsubsection*{不定積分}
+以下原始関数を求めよ。
+\begin{align*}
+    (1*)&:\int(x^8+\frac{1}{x^3})dx\\
+    (2*)&:\int\frac{(x+1)^3}{x^3}dx\\
+    (3*)&:\int(x+1)\sqrt{x}dx\\
+    (4**)&:\int x\sqrt{1-2x^2}dx\\
+    (5*)&:\int \sin^2 x\cos x dx\\
+    (6**)&:\int \frac{dx}{x^2+a^2}\\
+    (7*)&:\int e^{2x}\sin 2x dx\\
+    (8**)&:\int \log(x^2+4)dx\\
+    (9*)&:\int\frac{x^3-x+1}{x^2+1}dx\\
+    (10**)&:\int\frac{dx}{\sin^2 x}\\
+    (11***)&:\int\frac{dx}{(x^2+1)^2}\\
+    (12**)&:\int \frac{dx}{\sqrt{1-x^2}}\\
+    (13****)&:\int\frac{\sqrt{x^2+1}}{x}dx\\
+    (14****)&:\int x^3(1-x^2)^8dx\\
+    (15*****)&:\int 5^{\log x}dx\\
+    (16*****)&:\int\frac{dx}{\cos^3x}\\
+    (17**)&:\int\frac{dx}{a+b\cos x}\cdots(a>b>0)\\
+    (18****)&:\int e^{ax}\cos(bx)dx\\
+\end{align*}
+\scriptsize
+ヒント：(11)は部分積分でとく。(13)は分子と分母にxをかけてみよ。(15)は式変形で簡単な形に直せ。(18)は(18)式を$A$、$\int dx e^{ax}b\sin x$を$B$と置いて連立方程式を解け。
+\\
+\normalsize
+難しい問題もあると思う。無理をせずできる範囲だけでもやってみよう。わからないところは人に聞こう。
+\newpage
+\subsubsection*{定積分}
+次の定積分を求めよ。
+\begin{align*}
+    (1*)&:\int_1^3(8x-3x^2)dx\\
+    (2*)&:\int_a^b (x-a)(b-x)dx\\
+    (3**)&:\int_0^1\frac{dx}{[ax+b(1-x)]^2}\\
+    (4*)&:\int_0^1\frac{dx}{1+x^2}\\
+    (5*)&:\int_{-1}^1\frac{dx}{x^2-4}\\
+    (6**)&:\int_0^2x^2e^{-3x}dx\\
+    (7***)&:\int_{-r}^r\sqrt{r^2-x^2}dx\\
+    (8***)&:\int_0^1\sqrt{\frac{1-x}{1+x}}dx\\
+    (9****)&:\int_0^1\log(x^2+1)dx\\
+    (10*****)&:\int_R^bdr\sqrt{\frac{b}{r}-1}
+\end{align*}
+\scriptsize
+ヒント＆補足:(7)はグラフを思い浮かべてみよう(別に計算だけで解くこともできるのだが)。(8)は2つほどやり方がある。おすすめは分子と分母に$\sqrt{1-x}$をかけてみることだ。
+(9)は$\log x$の原始関数をもとめるときの要領でやればよい。(10)は放射性原子核のアルファ崩壊を量子力学的トンネル効果で説明した理論に登場するもの...といってもわからないと思うので
+普通に解けばよい。一つアドバイスをするなら$\alpha\sin \theta$（$\alpha$は定数）では置換しない。(ちなみに置換すると非常に面倒なことになる$\leftarrow$面倒なことになった人)\\
+\\
+
+\normalsize
+$f(x)$が$-a\leq x \leq a$で連続であるとき、以下を証明せよ。\\
+(1***)$f(x)$が偶関数ならば
+\begin{equation*}
+    \int_{-a}^af(x)dx=2\int_0^af(x)dx
+\end{equation*}
+(2***)$f(x)$が奇関数ならば
+\begin{equation*}
+    \int_{-a}^af(x)dx=0
+\end{equation*}
+\footnotesize
+\subsubsection*{コラム的な何か}
+\textgt{パラメータに関する微分積分}\\
+被積分関数が、あるパラメータ$\alpha$を含むとき、積分記号の中で「$\alpha$について微分・積分する」ことによって、既知の定積分公式から新しい
+積分公式を作ることができる。\\
+\begin{equation*}
+    ex) \int_0^{\infty}e^{-\alpha x}dx =\frac{1}{\alpha}\cdots(\alpha>0)
+\end{equation*}
+ここで両辺を$\alpha$で微分すると、
+\begin{equation*}
+    \int_0^{\infty}xe^{-\alpha x}dx =\frac{1}{\alpha^2}
+\end{equation*}
+を得る。ちなみにこれは、$\alpha$微分した関数が$x$積分可能な場合には正当化されることが知られている。\\
+ちなみに(3)の問題は計算すると$\frac{1}{ab}$となるのだが、これを両辺$a$で微分して
+\begin{equation*}
+    \frac{1}{a^2b}=\int_0^1\frac{2x dx}{[ax+b(1-x)]^3}
+\end{equation*}
+などと、一般に$\frac{1}{a^nb^m}$を積分系に表せるのだ。この(3)の公式は物理の世界ではファインマンのパラメータ積分と呼ばれて、摂動論のダイアグラム計算で大活躍する（らしい。残念ながら量子論に詳しくないのであまりわからない。）
+ただ私はファインマンを尊敬しているので、この公式を出させてもらった。
+\normalsize
+\subsection*{終わり}
+これでこの問題集は終わりである。これらをたいてい解けるようになれば、微積分1の微分積分演算と極限計算で点を落とすことはないだろう。とはいえ、油断は禁物である。
+
+これにて一変数の微積分演算は解くことができるようになった。次は多変数の微分積分(俗にいう偏微分、全微分、多重積分といったところ)にはいる。来年の後半からになるだろうが
+今までの内容を忘れないようにしよう。\\\\
+メモ：制作時間（おおよそ5時間）
+\end{document}

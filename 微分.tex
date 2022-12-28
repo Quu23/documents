@@ -1,0 +1,210 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\begin{document}
+    ある関数$y=f(x)$がある区間で連続であるとする。その区間内で$x$が$a$から$a+h$まで変動すると
+    $y$は$f(a)$から$f(a+h)$まで変動する。このxの増分とyの増分の比、すなわち変化率は$\frac{f(a+h)-f(a)}{h}$
+    で表せる。この時極限\\
+    \begin{equation}
+        f'(a)=\lim_{h\rightarrow0}\frac{f(a+h)-f(a)}{h}
+    \end{equation}
+    が存在するならば、$f(x)$は$x=a$で微分可能であるという。そして、この有限確定な極限値
+    $f'(x)$を、$f(x)$の$x=a$における微分係数という。\\\\
+    例題1 $f(x)=x^2$の微分係数$f'(3)$を求めよ。\\\\
+    解：(1)より、\\
+    \begin{equation*}
+        f'(3)=\lim_{h\rightarrow0}\frac{f(3+h)-f(3)}{h}=\lim_{h\rightarrow0}\frac{(3+h)^2-3^2}{h}
+        =\lim_{h\rightarrow0}\frac{h(6+h)}{h}=\lim_{h\rightarrow0}6+h=6
+    \end{equation*} 
+    よって答えは6となる。\\\\
+    (1)式はあくまで$f(x)$上のある一点に対してのものである。では任意の点の$f(x)$の微分係数を表す関数について考えてみよう。\\
+    定義内の任意の点を$x$で表すと、\\
+    \begin{equation}
+        f'(x)=\lim_{h\rightarrow0}\frac{f(x+h)-f(x)}{h}
+    \end{equation}
+    $f'(x)$は$x$の関数であり、$f(x)$の導関数と呼ばれる。
+    微分係数はある特定の値に対してのものであり、導関数は定義内の任意の点の微分係数を表していることに注意したい。なお導関数を求めることを微分するという。\\
+    導関数を表すには様々な記法がある。\\
+    \begin{equation*}
+        \frac{d}{dx}y,\frac{dy}{dx},y',f'(x),\frac{d}{dx}f(x)
+    \end{equation*}
+    などがある。$\frac{dy}{dx}$はライプニッツ、$y',f'(x)$はラグランジュによるものである。\\
+    かの有名なニュートンが導入した$\dot{x}(t)$という記号もあるが、残念ながらライプニッツらの記法のほうがわかりやすいため、
+    今回は使用しない。（物理では用いるかもしれないが）\\\\
+    微分係数の幾何学的な意味についてや、連続と微分可能についての話は今回では触れない。おそらく「微分積分$1$」では学ぶはずである。\\\\
+    さて、ここからは導関数の公式について学んでいこう。\\
+    いちいち(2)の導関数の定義で計算するのは面倒である。時間も有限であるため、ここからは様々な初等関数の導関数について記す。
+    まずは基本の公式である\\
+    \begin{align}
+        \frac{d}{dx}a&=0\\
+        (f(x)+g(x))'&=f'(x)+g'(x)\\
+        (kf(x))'&=kf'(x)\\
+        (f(x)g(x))'&=f'(x)g(x)+f(x)g'(x)\\
+        (\frac{f(x)}{g(x)})'&=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}\\
+        f(g(x))'&=f'(g(x))g'(x)\\
+        y=f(x)&\rightarrow f^{-1}(y)'=\frac{1}{f'(x)}
+    \end{align}
+    (6)を積の微分公式、(7)を商の微分公式、(8)を合成関数の微分公式、(9)を逆関数の微分公式という。\\
+    これらの公式を証明するのは難しくはない。ただ、(6)(7)に関しては少しひらめきが必要である。また、(8)
+    に関しては以下の式を知っておく必要がある。\\
+    \begin{equation}
+        \Delta y=f'(x)\Delta x+\epsilon(x,\Delta x)\Delta x
+    \end{equation}
+    このとき、$\Delta x,\Delta y$はそれぞれx,yの増分である。また、$\epsilon(x,\Delta x)$は$\Delta x\rightarrow0$で
+    $\epsilon\rightarrow0$となる量である。\\
+    (10)式で$\Delta x\rightarrow0$とすると、(2)式を与えることに気づくこと。\\\\
+    とはいえ、(4)(6)(7)の証明は簡単なのでここで済ませよう。
+    \begin{align*}
+        (4):\frac{d}{dx}(f(x)+g(x))&=\lim_{h\rightarrow0}\frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h}\\
+        &=\lim_{h\rightarrow0}\frac{f(x+h)-f(x)+g(x+h)-g(x)}{h}\\
+        &=\lim_{h\rightarrow0}\frac{f(x+h)-f(x)}{h}+\lim_{h\rightarrow0}\frac{g(x+h)-g(x)}{h}\\
+        &=f'(x)+g'(x)
+    \end{align*}\\
+    \begin{align*}
+        (5):\frac{d}{dx}(f(x)g(x))&=\lim_{h\rightarrow0}\frac{(f(x+h)g(x+h))-(f(x)g(x))}{h}\\
+        &=\lim_{h\rightarrow0}\frac{f(x+h)g(x+h)-f(x)g(x)-f(x+h)g(x)+f(x+h)g(x))}{h}\\
+        &=\lim_{h\rightarrow0}\frac{f(x+h)(g(x+h)-g(x))+g(x)(f(x+h)-f(x))}{h}\\
+        &=\lim_{h\rightarrow0}\frac{f(x+h)(g(x+h)-g(x))}{h}+\lim_{h\rightarrow0}\frac{g(x)(f(x+h)-f(x))}{h}\\
+        &=f(x)g'(x)+g(x)f'(x)
+        =f(x)g'(x)+f'(x)g(x)
+    \end{align*}\\
+    \begin{align*}
+        (6):\frac{d}{dx}(\frac{f(x)}{g(x)})&=\lim_{h\rightarrow0}\frac{\frac{f(x+h)}{g(x+h)}-\frac{f(x)}{g(x)}}{h}\\
+        &=\lim_{h\rightarrow0}\frac{g(x)f(x+h)-f(x)g(x+h)}{h\cdot g(x)g(x+h)}\\
+        &=\lim_{h\rightarrow0}\frac{g(x)f(x+h)-f(x)g(x+h)-g(x)f(x)+g(x)f(x)}{h\cdot g(x)g(x+h)}\\
+        &=\lim_{h\rightarrow0}\frac{g(x)(f(x+h)-f(x))-f(x)(g(x+h)-g(x))}{h\cdot g(x)g(x+h)}\\
+        &=\frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}\\
+    \end{align*}\\
+    そこまで理解に苦しむようなこともないと思う。やろうと思えばこれくらいの証明はできるはずだ。\\\\
+    さて、ではここから初等関数の導関数の公式を導こう。ただその前に一つ大事な定数について知っておく必要がある。それは、\\
+    \begin{equation}
+        e=\lim_{h\rightarrow\infty}(1+\frac{1}{h})^h
+    \end{equation}
+    となる数$e$である。$e$はネイピア数や自然対数の底と呼ばれ、おおよその値は$2.7182818...$である。\\
+    この$e$は数学に限らず、いたるところに顔を出す重要な定数である。\\
+    また、$e$を底とした対数を自然対数といい、底を省略して単に$\log x$とかく。$\ln x$と書くこともある。\\
+    \\
+    では、初等関数の導関数を求めていこう。\\
+    まずは、$e^x$から求めていこう。\\
+    \begin{equation*}
+        (e^x)'=\lim_{h\rightarrow0}\frac{e^{x+h}-e^x}{h}=e^x\cdot\lim_{h\rightarrow0}\frac{e^{h}-1}{h}\\
+    \end{equation*}
+    となるため、$\lim_{h\rightarrow0}\frac{e^{h}-1}{h}$を求めればよいことになる。\\
+    ここで、$t=e^h-1$と置いて、\\
+    \begin{equation*}
+        \lim_{h\rightarrow0}\frac{h}{e^h-1}=\lim_{h\rightarrow0}\frac{\log(t+1)}{t}
+        =\lim_{h\rightarrow0}\log(t+1)^{\frac{1}{t}}=\log(e)=1
+    \end{equation*}
+    となることから、$\lim_{h\rightarrow0}\frac{e^{h}-1}{h}=1$となる。
+    \begin{equation}
+        \therefore (e^x)'=e^x
+    \end{equation}
+    実は$e^x$は微分しても$e^x$のままなのだ!\\\\
+    では次に、$\log x$の導関数を求めよう。\\
+    \begin{equation*}
+        (\log x)'=\lim_{h\rightarrow0}\frac{\log(x+h)-\log(x)}{h}=\lim_{h\rightarrow0}\log(1+\frac{h}{x})^{\frac{1}{h}}
+    \end{equation*}
+    ここで、$t=\frac{x}{h}$とおくと\\
+    \begin{equation*}
+        \lim_{h\rightarrow0}\log(1+\frac{h}{x})^{\frac{1}{h}}=\frac{1}{x}\lim_{h\rightarrow0}\log(1+\frac{1}{t})^t=
+        \frac{1}{x}\log(e)=\frac{1}{x}
+    \end{equation*}
+    ちなみに、$e^x$と$\log x$は逆関数なので、(8)の逆関数の公式を用いてもよい。\\
+    \begin{equation}
+        \therefore(\log x)'=\frac{1}{x}
+    \end{equation}
+    \\
+    では(12)と(13)の式が揃ったところで、$x^n$の証明に移ろう。\\
+    二項定理を使っても証明ができるが、それはあくまで$n\in\mathbb{N}$の場合に絞られる。\\
+    \begin{equation*}
+        (x^n)'=(e^{n\log x})'=e^{n\log x}\cdot \frac{n}{x}=x^n\cdot \frac{n}{x}=nx^{n-1}
+    \end{equation*}
+    (8)の合成関数の微分公式を用いた。\\
+    \begin{equation}
+        \therefore(x^n)'=nx^{n-1}
+    \end{equation}
+    では最後に三角関数の導関数を求めていこう。\\
+    まずは$\sin x$から,
+    \begin{align*}
+        (\sin x)'&=\lim_{h\rightarrow0}\frac{\sin(x+h)-\sin(x)}{h}\\
+        &=\lim_{h\rightarrow0}\frac{2\cos(x+\frac{h}{2})\sin(\frac{h}{2})}{h}\\
+        &=\lim_{h\rightarrow0}\cos(x+\frac{h}{2})\cdot\lim_{h\rightarrow0}\frac{\sin(\frac{h}{2})}{\frac{h}{2}}\\
+        &(\because \lim_{h\rightarrow0}\frac{\sin x}{x}=1)\\
+        &=\lim_{h\rightarrow0}\cos(x+\frac{h}{2})\\
+        &=\cos x
+    \end{align*}
+    加法定理と$\lim_{h\rightarrow0}\frac{\sin x}{x}=1$を用いた。これを証明するのはすこし面倒なので省略する。\\
+    \begin{equation}
+        \therefore(\sin x)'=\cos x
+    \end{equation}
+    では$\cos x$も求めていこう。
+    \begin{align*}
+        (\cos x)'&=\lim_{h\rightarrow0}\frac{\cos(x+h)-\cos(x)}{h}\\
+        &=\lim_{h\rightarrow0}\frac{-2\sin(x+\frac{h}{2})\sin(\frac{h}{2})}{h}\\
+        &=\lim_{h\rightarrow0}-\sin(x+\frac{h}{2})\cdot\lim_{h\rightarrow0}\frac{\sin(\frac{h}{2})}{\frac{h}{2}}\\
+        &(\because \lim_{h\rightarrow0}\frac{\sin x}{x}=1)\\
+        &=\lim_{h\rightarrow0}-\sin(x+\frac{h}{2})\\
+        &=-\sin x
+    \end{align*}
+    となり、$\sin x$のように求められる。\\
+    \begin{equation}
+        \therefore(\cos x)'=-\sin x
+    \end{equation}
+    (15)と(16)を見比べてみよう。$\sin x$は4回微分したら元に戻ることに気づくだろうか。$\cos x$についても同様である。
+    この性質は結構重要なので覚えておいて損はない。\\\\
+    例題2\\
+    $\tan x$を微分せよ。\\\\
+    解：(14),(15)と商の微分公式より、
+    \begin{equation*}
+        (\tan x)'=(\frac{\sin x}{\cos x})'=\frac{\cos x\cdot\cos x - \sin x\cdot(-\sin x)}{\cos^2x}=\frac{1}{\cos^2 x}
+    \end{equation*}
+    答えは
+    \begin{equation}
+        \therefore(\tan x)'=\frac{1}{\cos^2x}
+    \end{equation}
+    となる。\\\\
+    さて、これで微分に関しては一通り終わった。\\
+    飛ばした公式などは練習問題で解いてもらうことにしよう。\\
+    このpdfファイルを一通り通せば、powerpointやpdfで送った積分の資料を読む際についていけるようになっているはずである。
+    以下の練習問題や例題を解いて理解を含めておこう。\\\\
+    補足\\
+    微分とはある関数の傾きを求めることである。この傾きを使うことでこの世の法則などについて簡潔に表せることにはただただ驚くしかない。\\
+    試しに空気抵抗がある物体の落下についての以下の"微分方程式"を解いてみよう。\\
+    \begin{equation}
+        m\frac{dv}{dt}=mg-kv
+    \end{equation}\\
+    これを解くには積分に関する知識が必要である。そのため、まだ積分を未履修の場合は意味は理解しなくてよい。\\
+    \begin{align*}
+        m\frac{dv}{dt}&=mg-kv\\
+        \frac{dv}{dt}&=g-\frac{k}{m}v\\
+        \frac{dv}{dt}&=\frac{k}{m}(\frac{mg}{k}-v)\\
+        \int \frac{dv}{\frac{mg}{k}-v}&=\int\frac{k}{m}dt\\
+        -\log|v-\frac{mg}{k}|&=\frac{k}{m}t+C\\
+        v&=\pm e^{-\frac{k}{m}t+C}+\frac{mg}{k}\\
+    \end{align*}
+    ここで、$A=\pm e^C$とおくと
+    \begin{equation}
+        v=Ae^{-\frac{k}{m}t}+\frac{mg}{k}
+    \end{equation}
+    となる。\\
+    (18)式のように世の中の法則のほとんどが微分方程式で表すことできる。この微分方程式を解くことで、
+    (19)式のような式が導けるのだ。ちなみに式の意味については物理について勉強すればいずれわかるだろう。\\\\\\
+    練習問題:以下導関数を求めよ。
+    \begin{align*}
+        (1)&:2x+3\\
+        (2)&:\frac{1}{x}-\frac{2}{x^2}\\
+        (3)&:(x+5)^3\\
+        (4)&:(x^2+1)^{100}\\
+        (5)&:(\sqrt[3]{x-3})\\
+        (6)&:a^x\\
+        (7)&:x^2\sin x\\
+        (8)&:\pi e^{-x^2+3x}\\
+        (9)&:\frac{1}{\sqrt{1-x^2}}\\
+        (10)&:\arctan x\\
+        (11)&:\log(x+\sqrt{x^2+1})\\
+        (12)&:\frac{1}{\tan x}\\
+        (13)&:e^{\sin x^2}\\
+        (14)&:\frac{3x^3+2(x-2)^{\sqrt{e^3x}}}{x^2+4x+\tan x}\\
+        (15)&:x^x\\
+        (16)&:\frac{d}{da}a^x
+    \end{align*}
+\end{document}

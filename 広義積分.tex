@@ -1,0 +1,105 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\begin{document}
+前回は、有限区間において連続な関数の定積分を調べた。しかし、区間内で不連続がある場合や、無限区間での積分も考える必要がある。
+それらの場合への拡張された定積分を広義積分という。これからは次の二種類の広義積分を考えることにする。\\
+(a)被積分関数$f(x)$が区間$a\leq x\leq b$で有限個の不連続点を持つ。\\
+(b)積分の上限、下限の一方または両方が無限大である。\\\\
+(a)不連続な被積分関数\\
+関数$f(x)$が区間$a \leq x \leq b$で連続であるとき、もし極限
+\begin{equation}
+    \lim_{\epsilon\to +0}\int_{a+\epsilon}^b f(x)dx
+\end{equation}
+が存在するならば、$f(x)$は$a\leq x\leq b$で積分可能であるといい、この極限値を
+\begin{equation}
+    \int_{a}^b f(x)dx
+\end{equation}
+で表す。同様に、$f(x)$が$a\leq x<b$でで連続であるとき(すなわち下の式の右辺が存在するならば)
+\begin{equation}
+    \int_{a}^b f(x)dx = \lim_{\epsilon\to +0}\int_a^{b-\epsilon} f(x)dx
+\end{equation}
+と表す。\\
+いま、$f(x)$が$a\leq x\leq b$内の１点$c$を除いて連続であるならば(下式の右辺の二つの極限が存在すると仮定して)
+\begin{equation}
+    \int_a^b f(x)dx = \lim_{\epsilon_1\to+0}\int_a^{c-\epsilon_1}f(x)dx +\lim_{\epsilon_2\to+0}\int_{c+\epsilon_2}^bf(x)dx 
+\end{equation}
+が定義される。ここでは、不連続点はただ一つだけあるとしたが、区間$a\leq x\leq b$内に有限個の不連続点が存在するならば、
+この区間をいくつかの部分区間に分けて、そのいずれにもただ一つの不連続点があるようにできるので、繰り返さない。\\\\
+例題1　以下計算せよ\\
+\begin{align*}
+    (1)&:\int_0^1\frac{dx}{\sqrt{x}}\\
+    (2)&:\int_0^2\frac{dx}{2-x}\\
+    (3)&:\int_0^3\frac{dx}{\sqrt[3]{x-1}}
+\end{align*}
+解\\
+\begin{align*}
+    (1)&:\int_0^1\frac{dx}{\sqrt{x}}=\lim_{\epsilon\to+0}\int_{0+\epsilon}^1\frac{dx}{\sqrt{x}}
+    =\lim_{\epsilon\to+0}[2\sqrt{x}]_{\epsilon}^1=2\\
+    (2)&:\int_0^2\frac{dx}{2-x}=:\lim_{\epsilon\to+0}\int_0^{2+\epsilon}\frac{dx}{2-x}
+    =\lim_{\epsilon\to+0}[-\log(2-x)]_0^{2-\epsilon}=\lim_{\epsilon\to+0}(-\log\epsilon +\log 2)=\infty\\
+    (3)&: \lim_{\epsilon_1\to+0}\int_0^{1-\epsilon_1}\frac{dx}{\sqrt[3]{x-1}}+\lim_{\epsilon_2\to+0}\int_{1+\epsilon_2}^3\frac{dx}{\sqrt[3]{x-1}}
+    =\lim_{\epsilon_1\to+0}[\frac{3}{2}(x-1)^{\frac{2}{3}}]_0^{1-\epsilon_1}+\lim_{\epsilon_2\to+0}[\frac{3}{2}(x-1)^{\frac{2}{3}}]_{1+\epsilon_2}^3 \\
+    &=\lim_{\epsilon_1\to+0}\frac{3}{2}((-\epsilon_1)^{\frac{2}{3}}-1)+\lim_{\epsilon_2\to+0}\frac{3}{2}(\sqrt[3]{4}-\epsilon_2^{\frac{2}{3}})=\frac{3}{2}(\sqrt[3]{4}-1)\\
+    &\therefore \int_0^3\frac{dx}{\sqrt[3]{x-1}} =\frac{3}{2}(\sqrt[3]{4}-1)
+\end{align*}
+(2)は極限が存在しないため、積分は意味を持たない。\\
+(3)は$x=1$で不連続である。\\\\
+広義積分(4)において、右辺の$\epsilon_1,\epsilon_2$はそれぞれ独立に0近づくことに注意しよう。すなわち、右辺の
+それぞれの極限が存在しないと、広義積分は収束していない。しかし、$\epsilon_1=\epsilon_2=\epsilon$として極限を考えることもある。
+\begin{equation}
+    \lim_{\epsilon\to+0}(\int_a^{c-\epsilon}f(x)dx +\int_{c+\epsilon}^bf(x)dx) 
+\end{equation}
+このとき、極限値(5)を$x=c$におけるコーシーの主値積分という。\\\\
+例:$\int_{-1}^1 \frac{dx}{x}$は収束しない。しかし、コーシーの主値積分は存在する。なぜなら、\\
+\begin{equation*}
+    \lim_{\epsilon\to+0}(\int_{-1}^{0-\epsilon}\frac{1}{x}dx +\int_{0+\epsilon}^1\frac{1}{x}dx)
+    =\lim_{\epsilon\to+0}(-(\log1-\log\epsilon)+(\log1-\log\epsilon))=0
+\end{equation*}
+\\
+(b)無限区間\\
+関数$f(x)$が$x\leq a$で連続であって、極限
+\begin{equation}
+    \lim_{b\to\infty}\int_a^bf(x)dx
+\end{equation}
+が存在するならば、この極限値を
+\begin{equation}
+    \int_a^{\infty}f(x)dx
+\end{equation}
+と表す。同様にして、
+\begin{align}
+    \int_{-\infty}^bf(x)dx&=\lim_{a\to-\infty}\int_a^bf(x)dx\\
+    \int_{-\infty}^{\infty}f(x)dx&=\lim_{a\to-\infty}\lim_{b\to\infty}\int_a^bf(x)dx
+\end{align}
+が定義される。\\
+上に述べたような極限が存在する場合、広義積分は収束するという。\\
+例題2　以下計算せよ。\\
+\begin{align*}
+    (1)&:\int_0^{\infty}\frac{dx}{x^2+4}\\
+    (2)&:\int_1^{\infty}\frac{dx}{\sqrt{x}}
+\end{align*}
+解\\
+(1)積分の上限は$+\infty$であるため、次の量を計算すればよい。\\
+\begin{align*}
+    \lim_{b\to+\infty}\int_0^b\frac{dx}{x^2+4}&=\lim_{b\to+\infty}[\frac{1}{2}\arctan\frac{x}{2}]_0^b\\
+    &=\lim_{b\to+\infty}\frac{1}{2}(\arctan\frac{b}{2}-0)=\frac{\pi}{4}
+\end{align*}
+よって、
+\begin{equation*}
+    \therefore \int_0^{\infty}\frac{dx}{x^2+4} =\frac{\pi}{4}
+\end{equation*}
+(2)積分の上限は$+\infty$である。
+\begin{equation*}
+    \lim_{b\to+\infty}\int_1^{b}\frac{dx}{\sqrt{x}}=\lim_{b\to+\infty}[2\sqrt{x}]_1^b=\lim_{b\to+\infty}2(\sqrt{b}-1)
+\end{equation*}
+この極限は発散するため、積分は意味を持たない。\\\\
+今回は不連続な関数と無限区間に対しても定積分が拡張できることを学んだ。極限を用いることで定積分のように計算できるのであった。\\
+次回は、不定積分が求められない場合の定積分の値を近似する方法,数値積分法について学ぶ。\\\\
+以下練習問題とする。各自で解いておくとよい。\\
+\begin{align*}
+    (1)&:\int_0^3\frac{dx}{x^{\frac{1}{4}}}\\
+    (2)&:\int_0^1\log xdx\\
+    (3)&:\int_1^{\infty}\frac{dx}{x^2}\\
+    (4)&:\int_0^{\infty}xe^{-x^2}dx\\
+    (5)&:\int_0^a\frac{x}{\sqrt{ax-x^2}}dx
+\end{align*}
+\end{document}
