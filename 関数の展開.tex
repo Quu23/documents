@@ -1,0 +1,191 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\begin{document}
+\section*{関数の展開とオイラーの公式}
+\subsection{はじめに}
+今回は関数の展開とオイラーの公式について、順を追って学ぶ。とはいえ今回は多くの定理が出てくるので、途中で何をやっているのかを見失ってしまうかもしれない。
+そこで、全体の論理的筋道をまとめておく。\\\\
+\fbox{ロールの定理$\to$平均値の定理$\to$テイラーの定理$\to$テイラー展開$\to$オイラーの公式}\\\\
+若干大まかすぎるかもしれないが、大体の目安くらいに思ってくれたらいい。
+\subsection{ロールの定理}
+関数$f(x)$が$a\leq x\leq b$で連続で、$a<x<b$のすべての点で微分可能であり、$f(a)=f(b)$であれば、少なくとも一点$c(a<c<b)$において、
+$f'(c)=0$となる。これを、\textgt{ロールの定理}\footnote{図を書くとわかりやすい}という。
+
+ロールの定理を証明する。連続関数は区間$a\leq x \leq b$で最大値$M$最小値$m$をとる。もし、
+$M=m$ならば、この関数は一定の値$M=m$を取り続けるから、区間内のすべての点で$f'(x)=0$。よって定理は成り立つ。
+以後、$m<M$とする。$f(a)=f(b)$であるから、$m$と$M$の両方が端点での関数値となることはない。点$c(a<c<b)$で最大値$f(c)=M$とする。
+この最大値は$x=c$の近くでは極大値\footnote{ある関数$f(x)$で$f(a)を$点$a$の近くで最大値であるときには、$f(x)$は$f(a)$で極大になるといい、$f(a)$を極大値という。aの近くで最小値の場合も同様に、極小、極小値といい、極大値と極小値を併せて極値という。}であるから、$f'(c)=0$である。$x=c$で$f(c)=m$の場合も同様に証明される。（証明終わり）
+\subsection{平均値の定理}
+ロールの定理の特別な場合を考えてみよう。$f(a)=f(b)=0$のとき、ゼロ点の間には傾きが0となる点が少なくとも一つはある。
+
+関数$f(x)$が$a\leq x\leq b$で連続で、$a<x<b$で微分可能ならば、ある点$c(a<c<b)$が存在して、
+\begin{equation}
+    f'(c)=\frac{f(b)-f(a)}{b-a}\hspace{5mm}(a<c<b)
+\end{equation}
+が成り立つ。これを\textgt{平均値の定理}という。この定理は直線ABと同じ傾きを持つ接線が弧AB上に存在することを示している。
+
+平均値の定理を証明する。いま
+\begin{equation*}
+    g(x)=\frac{f(b)-f(a)}{b-a}(x-a)+f(a)-f(x)
+\end{equation*}
+とおく。この$g(x)$は$a\leq x\leq b$で連続で、$a<x<b$で微分可能である。また明らかに$g(a)=g(b)(=0)$。よって
+ロールの定理を使えば、$g'(c)=0(a<c<b)$,すなわち、
+\begin{equation*}
+    f'(c)=\frac{f(b)-f(a)}{b-a}
+\end{equation*}
+が成り立つ。(証明終わり)
+\newpage
+\subsection{コーシーの平均値の定理}
+コーシーは次のように平均値の定理を一般化した。関数$f(x),g(x)$は$a\leq x\leq b$で連続で、区間内で微分可能とする。
+さらに、この区間内でつねに$g'(x)\neq 0$とする。平均値の定理より、
+\begin{equation*}
+    g(b)-g(a)=(b-a)g'(c_1)\hspace*{5mm}(a<c_1<b)
+\end{equation*}
+仮定により、$g'(c_1)\neq0$であるため、$g(b)-g(a)\neq0$である。そこで、
+\begin{equation*}
+    \lambda = -\frac{f(b)-f(a)}{g(b)-g(a)}
+\end{equation*}
+とおき、関数、
+\begin{equation*}
+    F(x)=f(x)+\lambda g(x)
+\end{equation*}
+をつくる。$F(a)=F(b)$であるため、ロールの定理が適応できる。よって、ある点$x=c$が存在して、
+\begin{equation*}
+    F'(c)=f'(c)+\lambda g'(c)=0\hspace*{5mm}(a<c<b)
+\end{equation*}
+この等式から、
+\begin{equation*}
+    \lambda = -\frac{f'(c)}{g'(c)}
+\end{equation*}
+よって、
+\begin{equation*}
+    \frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(c)}{g'(c)}\hspace*{5mm}(a<c<b)
+\end{equation*}
+これを、\textgt{コーシーの平均値の定理}という\footnote{$g(x)=x$のときが平均値の定理}。
+\subsection{不定形の極限値の計算}
+極限値の計算において、極限が
+\begin{equation*}
+    \frac{0}{0},\frac{\infty}{\infty},\infty-\infty,\infty\cdot 0,0^0
+\end{equation*}
+などになる場合には、何らかの工夫を行う必要がある。ここではコーシーの平均値の定理の応用として、不定形に対する一つの計算方法を紹介する。
+
+$x$が$a$に収束するとき、$\frac{f'(x)}{g'(x)}$が$b$に収束するならば、$\frac{f(x)}{g(x)}$もまた同じ極限値に収束する。
+なぜならば、コーシーの平均値の定理より$f(a)=g(a)=0$とすると、$a$より大きい$x$に対して
+\begin{equation*}
+    \frac{f(x)}{g(x)}=\frac{f(x)-f(a)}{g(x)-g(a)}=\frac{f'(c)}{g'(c)}\hspace{5mm}(a<c<x)
+\end{equation*}
+$x\to a$とすれば$c\to a$である。$a$より小さな$x$についても同様。よって、
+\begin{equation}
+    \lim_{x\to a}\frac{f(x)}{g(x)}=\frac{f'(a)}{g'(a)}
+\end{equation}
+これを、\textgt{ド・ロピタルの法則}\footnote{この法則を用いると、指数関数$e^x$は$x$のどんな正のべきよりも早く増加し、反対に対数関数$\log x$は$x$のどんな正のべきよりもゆっくり増加することがわかる。この二つは覚えておいて一生後悔しない。}という。\\
+\textgt{例}$\lim_{x\to 0}\frac{\sin x}{x}=\lim_{x\to 0}\frac{\cos x}{1}=1$
+\newpage
+\subsection{テイラーの定理}
+平均値の定理$f(b)=f(a)+(b-a)f'(c)\hspace{5mm}(a<c<b)$をさらに一般化することを考えよう。
+
+関数$f(x)$が$a\leq x\leq b$でn解まで連続な導関数を持ち、$a<x<b$でn+1階微分可能ならば、ある点$c(a<c<b)$が存在して、
+\begin{equation}
+    f(b)=f(a)+f'(a)(b-a)+\frac{1}{2!}f^{''}(a)(b-a)^2+\cdots+\frac{1}{n!}f^{(n)}(a)(b-a)^n+\frac{1}{(n+1)!}f^{(n+1)}(c)(b-a)^{n+1}
+\end{equation}
+これを\textgt{テイラーの定理}という。\footnote{n=0で平均値の定理である}
+
+テイラーの定理の証明。いま、$K$をある定数として、関数
+\begin{equation*}
+    g(x)=-f(b)+f(x)+f'(x)(b-x)+\frac{1}{2!}f^{''}(x)(b-x)^2+\cdots+\frac{1}{n!}f^{(n)}(x)(b-x)^n+K(b-x)^{n+1}
+\end{equation*}
+をつくる。ただし、定数$K$は、
+\begin{equation*}
+    K=\frac{1}{(b-a)^{n+1}}[f(b)-\{f(a)+f'(a)(b-a)+\frac{1}{2!}f^{''}(a)(b-a)^2+\cdots+\frac{1}{n!}f^{(n)}(a)(b-a)^n\}]
+\end{equation*}
+この関数$g(x)$は$a\leq x \leq b$で連続で$a<x<b$で微分可能である。そして、明らかに$g(b)=g(a)=0$である。ロールの定理を適応して、
+\begin{equation*}
+    g'(c)=0\hspace*{5mm}(a<c<b)
+\end{equation*}
+が成り立つ。ところが、
+\begin{align*}
+    g'(x)&=f'(x)+\{-f'(x)+f''(x)(b-x)\}+\{-f''(x)(b-x)+\frac{1}{2!}f^{'''}(x)(b-x)^2\}+\cdots\\
+    &+\{-\frac{1}{(n-1)!}f^{(n)}(x)(b-x)^{n-1}+\frac{1}{n!}f^{(n+1)}(x)(b-x)^{n}\}-(n+1)K(b-x)^n\\
+    &=\frac{1}{n!}f^{(n+1)}(x)(b-x)^{n}-(n+1)K(b-x)^n
+\end{align*}
+であるから、$g'(c)=0$によって、定数$K$は
+\begin{equation*}
+    K=\frac{1}{(n+1)!}f^{(n+1)}(c)
+\end{equation*}
+と書ける。この$K$を$g(a)=0$を表す式\footnote{証明中の一番最初の式(このページの上から数えて二番目)で$x=a$とおく}に代入すれば、テイラーの定理が得られる。（証明終わり）
+\newpage
+\subsection{テイラー展開とマクローリン展開}
+テイラーの定理から様々な表式が得られる。(3)式で$c=a+\theta(b-a)(<\theta<1)$と書き、$b=x$と置けば、
+\begin{equation}
+    f(x)=f(a)+f'(a)(x-a)+\frac{1}{2!}f^{''}(a)(x-a)^2+\cdots+\frac{1}{n!}f^{(n)}(a)(x-a)^n+\frac{1}{(n+1)!}f^{(n+1)}(a+\theta(x-a))(x-a)^{n+1}
+\end{equation}
+となる。これを関数$f(x)$の点aにおける\textgt{テイラー展開}という。
+
+テイラー展開の特別な場合として、$a=0$のとき、
+\begin{equation}
+    f(x)=f(0)+f'(0)x+\frac{1}{2!}f^{''}(0)x^2+\cdots+\frac{1}{n!}f^{(n)}(0)x^n+\frac{1}{(n+1)!}f^{(n+1)}(\theta x)x^{n+1}
+\end{equation}
+これを関数$f(x)$の\textgt{マクローリン展開}という。\\\\
+以下よく知られるマクローリン展開である。($0<\theta<1$とする)
+\begin{align}
+    e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+\frac{x^n}{n!}+R_{n+1},& R_{n+1}=e^{\theta x}\frac{x^{n+1}}{(n+1)!}\\
+    \sin x&=x-\frac{x^3}{3!}+\frac{x^5}{5!}+\cdots+\frac{(-1)^{n-1}x^{2n-1}}{(2n-1)!}+R_{2n+1},& R_{2n+1}=(-1)^n\frac{x^{2n-1}}{(2n-1)!}\cos\theta\\
+    \cos x&=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots+\frac{(-1)^{n}x^{2n}}{(2n)!}+R_{2n+2},& R_{2n+2}=(-1)^{n+1}\frac{x^{2n+2}}{(2n+2)!}\cos\theta
+\end{align}
+\subsection{オイラーの公式}
+さていよいよ、今年の愛好会最後の節、オイラーの公式に入る。人類の至宝とも称された公式は実は簡単な式なのである。
+
+まず、先ほどのマクローリン展開した関数を使う。
+
+(6)式に$x=ix$を形式的に代入すると、
+\begin{equation}
+    e^{ix}=1+ix-\frac{x^2}{2!}+\frac{ix^3}{3!}+\cdots+\frac{({ix})^n}{n!}+R_{n+1},R_{n+1}=e^{\theta ix}\frac{({ix})^{n+1}}{(n+1)!}
+\end{equation}
+ここで、$i\times(7)$式$+(8)$式を計算する。
+\begin{equation}
+    \cos x+i\sin x=1+ix-\frac{x^2}{2!}-\frac{ix^3}{3!}+\cdots
+\end{equation}
+よくよく見てみると、(9)式と(10)式の右辺は同じ形\footnote{厳密に証明するのは面倒なのでしない。多分無限級数に関する知識必。}である。
+よって、
+\begin{equation}
+    e^{ix}=\cos x+i\sin x
+\end{equation}
+が成り立つ。これは\textgt{オイラーの公式}と呼ばれ、抜群に役立つ公式なので覚えていて損はない。
+
+この公式を用いると、加法定理$\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta$も楽に証明できる。
+\begin{align*}
+    \cos(\alpha+\beta)+i\sin(\alpha+\beta)&=e^{i(\alpha+\beta)}=e^{i\alpha}\cdot e^{i\beta}\\
+    &=(\cos \alpha+i\sin\alpha)(\cos \beta+i\sin\beta)\\
+    &=\cos\alpha\cos\beta-\sin\alpha\sin\beta+i(\sin\alpha\cos\beta+\cos\alpha\sin\beta)
+\end{align*}
+$\sin(\alpha+\beta)$は虚部を表すので、変形した式の虚部を取ればよい。$\cos(\alpha+\beta)$も同様である。
+\subsubsection*{問題}
+\fbox{ド・モワブルの公式$(\cos x+i\sin x)^n=\cos nx+i\sin nx$を証明せよ}
+\\\\
+\subsubsection*{解答}
+$(\cos x+i\sin x)^n=(e^{ix})^n=e^{i(xn)}=\cos nx+i\sin nx$
+\\
+\subsubsection*{オイラーの等式}
+先ほどのオイラーの公式で$x=\pi$とすると、次の式を得られる。
+\begin{equation}
+    e^{i\pi}+1=0
+\end{equation}
+これは\textgt{オイラーの等式}と呼ばれ、世界で最も美しい等式と言われている。\footnote{これをタトゥーにして入れてる人もいるくらいらしい}
+\newpage
+\subsection{終わりに}
+以上で1年生の愛好会の内容は終わりである。二年生になったら「代数学」を学ぶ(予定)である。代数学はまったくわからないので次の担当に丸投げである。
+まぁ困ったら式を積分してしまおう。すこしはすっきりするかもしれない。
+
+冗談はさておき、次に微積分を学ぶときは\textgt{偏微分}というものから入る。すこしネタバレしてしまうと、二変数以上の関数に対して、片方の変数を固定させるなどして導関数を求めたりする。\footnote{偏導関数という}
+正直そこまで難しくない(はず)。偏微分が出来れば、定積分も簡単になるかも(!?)\\
+
+何がともあれ、こうして無事に活動が終えられたことに感謝したい。\\\\\\
+
+うおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおお
+\centering
+\Huge{おつかれさま！}
+\normalsize
+\\
+終わり\footnote{メモ：制作時間(3h35m),つかれた。正月なのに...。}
+\end{document}
