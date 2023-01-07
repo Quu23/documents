@@ -6,7 +6,7 @@ public class integral {
      * @param fx    :被積分関数
      * @param begin :積分下限
      * @param end   :積分上限
-     * @param n :帯の数　多ければ多いほどよい近似値が得られる。
+     * @param n :帯の数　多ければ多いほどよい近似値が得られる
      * @return 台形公式による定積分の近似値
      */
     public static double trapezoidal_rule(Function fx,double begin,double end,int n){
@@ -24,6 +24,14 @@ public class integral {
         return sum;
     }
 
+    /**
+    * 
+    * @param fx    :被積分関数
+    * @param begin :積分下限
+    * @param end   :積分上限
+    * @param n :帯の数　多ければ多いほどよい近似値が得られる
+    * @return シンプソンの公式による定積分の近似値
+    */
     public static double simpson_rule(Function fx,double begin,double end,int n) {
         if(begin==end)return 0;
         if(fx.isOddFunction()&&begin==-end)return 0;
