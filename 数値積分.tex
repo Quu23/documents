@@ -146,32 +146,32 @@ $\sin x$を展開すると
 }
 
 \begin{lstlisting}[caption=Main.java,]
-    package javas.lab;
+package javas.lab;
 
-    import javas.maths.*;
+import javas.maths.*;
     
-    public class Main {
-        public static void main(String[] args) {
-            System.out.println(integral.simpson_rule(new Function() {
-                @Override
-                public double func(double x) {
-                    return 1/x;
-                }   
-                @Override
-                public boolean isEvenFunction() {
-                    return false;
-                }
-                @Override
-                public boolean isOddFunction() {
-                    return true;
-                }
-            }, 2, 6, 4));
-        }
-    
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(integral.simpson_rule(new Function() {
+            @Override
+            public double func(double x) {
+                return 1/x;
+            }   
+            @Override
+            public boolean isEvenFunction() {
+                return false;
+            }
+            @Override
+            public boolean isOddFunction() {
+                return true;
+            }
+        }, 2, 6, 4));
     }
+    
+}
 \end{lstlisting}
 \begin{lstlisting}[caption=Function.java]
-    package javas.maths;
+package javas.maths;
 
 public interface Function {
     public double func(double x);
@@ -183,17 +183,17 @@ public interface Function {
 \end{lstlisting}
 \newpage
 \begin{lstlisting}[caption=integral.java]
-    package javas.maths;
+package javas.maths;
 
 public class integral {
     /**
-     * 
-     * @param fx    :被積分関数
-     * @param begin :積分下限
-     * @param end   :積分上限
-     * @param n :帯の数　多ければ多いほどよい近似値が得られる
-     * @return 台形公式による定積分の近似値
-     */
+    * 
+    * @param fx    :被積分関数
+    * @param begin :積分下限
+    * @param end   :積分上限
+    * @param n :帯の数　多ければ多いほどよい近似値が得られる
+    * @return 台形公式による定積分の近似値
+    */
     public static double trapezoidal_rule(Function fx,
                                             double begin,double end,int n){
         if(begin==end)return 0;
@@ -210,13 +210,13 @@ public class integral {
         return sum;
     }
     /**
-     * 
-     * @param fx    :被積分関数
-     * @param begin :積分下限
-     * @param end   :積分上限
-     * @param n :帯の数　多ければ多いほどよい近似値が得られる
-     * @return シンプソンの公式による定積分の近似値
-     */
+    * 
+    * @param fx    :被積分関数
+    * @param begin :積分下限
+    * @param end   :積分上限
+    * @param n :帯の数　多ければ多いほどよい近似値が得られる
+    * @return シンプソンの公式による定積分の近似値
+    */
     public static double simpson_rule(Function fx,
                                         double begin,double end,int n) {
         if(begin==end)return 0;
@@ -237,7 +237,9 @@ public class integral {
 }
 \end{lstlisting}
 
-シンプソンの公式を使っているが、台形公式でも計算できる。その場合は12行目の「trapezoidal」を「simpson」に変えるだけだ。
+シンプソンの公式を使っているが、台形公式でも計算できる。その場合は12行目の「simpson」を「trapezoidal」に変えるだけだ。
+
+今回はあえてコードの中身について触れるようなことはしない。興味があったら聞くか、調べてみてほしい。そこまで難しいことはしていないのでそんな必要はないかもしれないが。
 \newpage
 
 Mainクラスのmainメゾット内にある匿名クラス宣言しているコードを書き換えれば、別の関数でも計算することができる。
@@ -266,8 +268,10 @@ Mainクラスのmainメゾット内にある匿名クラス宣言しているコ
 \end{lstlisting}
 とすればよい。このときisEvenFunction()とisOddFunction()を書き換えることを忘れないようにしよう。
 
+また、積分範囲や分割する数も変えることができる。その場合はjavadocコメントにあるように、メゾットの引数(上のコードの16行目)を変える\footnote{$\int_a^b f(x)dx$を$n=c$で求めたい場合は、引数を$(...,2,6,4)$から$(...,a,b,c)$にする。}だけだ。
+
 正直に言って、Javaは数値計算するための言語ではないが、残念なことに私はJava以外の言語はあまり触れたことがないのだ。\footnote{Pythonを使えば簡単にできるだろうが、PythonのほうがJavaより動作が遅い！}
 
-このソースコードは自由に改変してもらって構わない。もしコードに間違いがあったら指摘してほしい。\footnote{コードが汚いとしても黙っていてほしい（笑）}
+このソースコードは自由に改変してもらって構わない。もしコードに間違いがあったら指摘してほしい。\footnote{コードが汚いときは黙っていてほしい（笑）}
 ソースコードはsrcフォルダにおいておく。
 \end{document}
