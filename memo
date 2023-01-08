@@ -1,0 +1,6 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\begin{document}
+
+\end{document}
