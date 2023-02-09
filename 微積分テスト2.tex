@@ -1,0 +1,147 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+
+\begin{document}
+    \section*{愛好会テスト　微積分2}
+    \begin{itembox}[c]{テストを始める前に}
+        テスト時間は30分であり、テスト開始の合図があるまで取り組まないこと。\\
+
+        テストの点数は60点満点であり、赤点は6割、すなわち36点未満とする。(高専仕様)\\
+
+        テスト範囲は、「不定積分」「定積分」「広義積分」「数値積分」「関数の展開」「オイラーの等式」である。一部の公式をこの枠の下に書いておく。自由に参考にせよ。\\
+
+        問題は大問1から大問6まで存在する。大問1は1問2点(5.だけ3点)、大問6は一問4点である。残りはすべて1問3点である。\\
+
+        持ち物は、鉛筆またはシャーペン、消しゴム、定規、答えを書く用の紙、計算用紙のみとする。
+    \end{itembox}
+    \subsubsection*{公式集}
+    \begin{alignat*}{3}
+        & \int f(x)dx=\int f(g(t))g'(t)dt  &/& \int f'(x)g(x)dx = f(x)g(x)-\int f(x)g'(x)dx\\
+        & f(x)=\frac{d}{dx}\int_a^x f(t)dt &/& \int_a^b f(x)=F(b)-F(a)\\
+        & \int_a^b f(x)dx=\int_{g(a)}^{g(b)} f(g(t))g'(t)dt &/& \int_a^b f'(x)g(x)dx = [f(x)g(x)]_a^b-\int f(x)g'(x)dx\\
+        & \int_{-\infty}^{\infty} f(x)dx=\lim_{a\to -\infty}\lim_{b\to\infty}\int_a^b f(x)dx &/& \int_a^b f(x)dx=\lim_{\epsilon_1\to +0}\int_a^{c-\epsilon_1}f(x)dx+\lim_{\epsilon_2\to+0}\int_{c+\epsilon_2}^bf(x)dx\\
+        & \int_a^b f(x)dx\fallingdotseq\frac{h}{2}\{f(a)+2f(a+h)+2f(a+2h)&+\cdots&+2f(a+(n-1)h)+f(b)\}\\
+        & \int_a^b f(x)dx\fallingdotseq\frac{h}{3}\{f(a)+4f(a+h)+2f(a+2h)&+4f(&a+3h)+\cdots+2f(a+(2m-2)h)+4f(a+(2m-1)h+f(b))\}\\
+        &f'(c)=\frac{f(b)-f(a)}{b-a}\quad(a<c<b)&/&\lim_{x\to a}\frac{f(x)}{g(x)}=\frac{f'(a)}{g'(a)}\\
+    \end{alignat*}
+    マクローリン展開
+    \begin{equation*}
+        f(x)=f(0)+f'(0)x+\frac{1}{2!}f^{''}(0)x^2+\cdots+\frac{1}{n!}f^{(n)}(0)x^n+\frac{1}{(n+1)!}f^{(n+1)}(\theta x)x^{n+1}\quad(0<\theta<1)
+    \end{equation*}
+    オイラーの公式$\quad e^{i\theta}=\cos \theta+i\sin\theta$\\\\
+    次のページから問題です。
+    \newpage
+    \subsubsection*{大問1}
+    以下の不定積分、定積分を求めよ。ただし、$a,b$は定数とする。
+    \begin{align*}
+        &(1)\quad\int \frac{dx}{\sin\theta\cos\theta}&&(2) \int_{-1}^{1}\frac{dx}{x^2-4}&&(3) \int_1^{\infty}\frac{dx}{x^2}\\
+        &(4)\int_{-\infty}^{\infty}\frac{dx}{e^x+e^{-x}}&&(5) \int_a^b \frac{dx}{\sqrt{(x-a)(b-x)}}
+    \end{align*}
+    \subsubsection*{大問2}
+    以下の関数をマクローリン展開せよ。
+    \begin{align*}
+        &\quad (1)e^x\\
+        &\quad (2)(1+x)^{\alpha}
+    \end{align*}
+    \subsubsection*{大問3}
+    以下を証明せよ。\\
+    
+    (1)　xと$\sqrt{ax^2+bx+c}\quad(a>0)$の有理関数$f(x,\sqrt{ax^2+bx+c})$がある。変数変換して、$t=\sqrt{ax^2+bx+c}+\sqrt{a}x$と置くことで、
+    \begin{equation*}
+        \int f(x,\sqrt{ax^2+bx+c})dx
+    \end{equation*}
+    は有理関数の不定積分に帰着され、必ず積分できることを示せ。
+
+    (2)　楕円$\displaystyle \frac{x^2}{a^x}+\frac{y^2}{b^2}=1\quad(a>0,b>0)$の面積を$S$とすると、
+    \begin{equation*}
+        S=ab\pi
+    \end{equation*}
+    となることを示せ。
+
+    (3)　$e^x$はどんな正のべき関数$x^n(n>0)$よりも増加がはやい。このことを示せ。
+    \subsubsection*{大問4}
+    定積分$\displaystyle \int_2^6\frac{dx}{x}dx$について、以下の問いに答えよ。
+
+    (1)　定積分の値をこたえよ。
+
+    (2)　$n=4$の台形公式を使い、定積分の値をこたえよ。
+
+    (3)　$n=4$のシンプソンの公式を使い、定積分の値をこたえよ。
+
+    (4)　台形公式とシンプソンの公式のどちらが近似値として有効かこたえよ。
+    \subsubsection*{}
+    (まだ続きます。)
+    \newpage
+    \subsubsection*{大問5}
+    次の文章はのびたくんとドラえもンの会話である。これを読んで後の問に答えよ。
+    \begin{itembox}[c]{のびたくんとドラえもンの会話1}
+        のびた　　：どらえも～ん、助けてよ～！\\
+        ドラえもン：どうしたんだい、のびたくん？\\
+        のびた　　：実はね、昨日ジャいアンたちと遊んでいたら、ジャいアンを怒らせちゃって...。\\
+        ドラえもン：それは大変だね...。でも明日になったら機嫌はもとに戻るんじゃない？\\
+        のびた　　：それがね、明日までにこの問題を解けって言われちゃったんだよ～。解けなきゃぶっ飛ばすっていってるんだよ～！\\
+        ドラえもン：それはまずいね。そいで、どんな問題なんだい？\\
+        のびた　　：えっとね...。定積分の問題なんだけど、$a>0$だとして、
+        \begin{equation*}
+            \int_0^a\frac{x}{\sqrt{ax-x^2}}dx
+        \end{equation*}
+        　　　　　　っていうのなんだけど...。\\
+        ドラえもン：なるほどね、こういう時は...!（ポケットをまさぐる音）\\\\
+        \centerline{\underbar{（効果音）$x=a\sin^2t$と置いて置換する～!(某青だぬき風に)}}\\
+
+        のびた　　：おお！さすがぁ、ドラえもン！こんどどらやき買って帰るよ！
+        （つづく）
+    \end{itembox}
+    (1)　下線部のドラえもンのヒントをもとに
+    \begin{equation*}
+        \int_0^a\frac{x}{\sqrt{ax-x^2}}dx
+    \end{equation*}
+    を求めよ。
+
+    \begin{itembox}[c]{のびたくんとドラえもんの会話2}
+        のびた　　：どらえも～ん！今度はもっとむずかしいもんだいがだされたよぉ～。\\
+        ドラえもン：...今度はなんだい？\\
+        のびた　　：今度はね、$\sqrt[5]{33}$の近似値を求めろっていうんだよ！\\
+        ドラえもン：そんなの電卓つかえばいいじゃないか。\\
+        のびた　　：それがねドラえもン、電卓とかは一切使うなっていうんだよ。きちんと説明できなきゃって.\\
+        ドラえもン：う～む、たまにはジャいアンもまともなこというじゃないか。\\
+        のびた　　：感心してる場合じゃないよ！明日までこれを解かなきゃ僕の黒歴史をばらすって!\\
+        ドラえもン：君は存在自体が黒歴史みたいなもんだろ...(ぼそっ)\\
+        のびた　　：え、なんか言った？\\
+        ドラえもン：いや、何も言ってないよ。それより、はやく解こうよ。\\
+        のびた　　：なんかあやしいなぁ～。でもまぁいいや。それよりどうすればいいの？\\
+        ドラえもン：\underbar{平均値の定理でも使うんじゃないかな}\\
+        のびた　　：あ、確かに。ごめんもういいかも。
+    \end{itembox}
+    (2)　下線部のドラえもンのヒントをもとに$\sqrt[5]{33}$の近似値を求めよ。
+    \subsubsection*{大問6}
+    以下の不定積分
+    \begin{equation*}
+        I=\int e^{ax}\cos(bx)dx
+    \end{equation*}
+    を次の``手順"で解いた。($\alpha$)～($\delta$)に当てはまる数式や数字をかけ。ただし、すべて$\int$記号は入らない。
+    \begin{itembox}{手順}
+        複素数を使う。$e^{ibx}=$\fbox{$(\alpha)$}であるから、$Re$を実数部分(real part)を取ることを表すとすると、
+        \begin{align*}
+            I&=Re(\int e^{ax+ibx}dx)\\
+             &=Re(\fbox{($\beta$)})
+        \end{align*}
+        となる。ここで、
+        \begin{equation*}
+            \frac{1}{a+ib}=\fbox{$(\gamma)$}
+        \end{equation*}
+        であるため、
+        \begin{align*}
+            I&=\frac{e^{ax}}{a^2+b^2}\cdot Re((a-ib)e^{ibx})\\
+             &=\frac{e^{ax}}{a^2+b^2}(a\cos(bx)+b\sin(bx))
+        \end{align*}
+        よって、
+        \begin{equation*}
+            \int e^{ax}\cos(bx)dx=\fbox{$\delta$}
+        \end{equation*}
+    \end{itembox}
+    \rightline{問題はこれで終わりです。見直しをしておきましょう。}\\
+    \rightline{点数$\quad \quad /60$}
+\end{document}
