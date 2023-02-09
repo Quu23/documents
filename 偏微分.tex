@@ -1,0 +1,54 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+
+\renewcommand{\thesubsection}{\roman{subsection}}
+
+\begin{document}
+\section*{偏微分}
+\subsection{二変数の関数}
+いままでは、一つの変数$x$の関数$f(x)$を考えてきた。しかし、一つの変数では記述できない現象も多くある。例えば、理想気体の状態方程式を考えてみる。
+\begin{equation*}
+    pV=RT\quad(R:\text{気体定数})
+\end{equation*}
+この式中の$p$(圧力)がどのような値を取るのかは、$T$(温度)と$V$(体積)の両方を指定しないと決まらない。
+
+一般に、二つの変数$x$と$y$があり、$x$と$y$の各々の値の組に対して$z$の値が決まるとき、$z$を$x$と$y$の関数といい、
+\begin{equation*}
+    z=f(x,y)
+\end{equation*}
+と表す。このとき、$x$と$y$を\textbf{独立変数}、$z$を\textbf{従属変数}という。
+\subsubsection*{例題1}
+$f(x,y)=x^2+2xy+y^2$であるとき、$x=1,y=-1$のときの$f(x,y)$を求めよ。
+
+\subsubsection*{解答}
+$f(x,y)=(x+y)^2=(1-1)^2=0$
+\\\\
+二変数の関数における極限について考えてみよう。点$P(x,y)$が点$A(a,b)$と一致することなく点Ａに近づくとする。この時、その近づき方によらず、関数$f(x,y)$の値が同じ一つの値$c$
+に近づくならば、$f(x,y)$には\textbf{極限}が存在して、その\textbf{極限値}は$c$であるといい、
+\begin{equation*}
+    f(x,y)\to c\quad(x\to a,y\to b)\qquad\lim_{x\to a,y\to b}f(x,y)=c\qquad\lim_{(x,y)\to(a,b)}f(x,y)=c
+\end{equation*}
+などと表す。関数$f(x,y)$が$c$に\textbf{収束する}ともいう。
+
+この時、二つほど注意することがある。
+
+(1)極限の定義において、点Pと点Aが一致することは除外している。一般に、点Aが関数$f(x,y)$の定義域に含まれているとは限らない。
+
+(2)点Pが点Aに近づく仕方によって、$f(x,y)$が近づく値が異なるときには、極限は存在しない。
+
+
+試しに以下の例題を解きながら考えてみよう。
+\subsubsection*{例題2}
+関数$\displaystyle f(x,y)=\frac{x^2}{x^2+y^2}$において、$x\to 0,y\to 0$の極限を調べ、極限値が存在するかどうか答えよ。
+
+
+\subsubsection*{解答}
+この関数の定義域は、全平面から原点Oを除外して得られる領域である。次の二つの路で、点$P(x,y)$が原点Oに近づくとしよう。
+
+(a)点Pがx軸に沿って近づく場合。
+(b)点Pがy軸に沿って近づく場合。\\
+(a)の場合は$f(x,0)=1$より、$\displaystyle \lim_{x\to 0}f(x,0)=1$\\
+(b)の場合は$f(0,y)=0$より、$\displaystyle \lim_{y\to 0}f(0,y)=0$\\
+したがって、この関数は原点への近づき方によって異なる値を取り、極限値$\displaystyle\lim_{x\to 0,y\to 0}f(x,y)$は存在しない。
+\end{document}
