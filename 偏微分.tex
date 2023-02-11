@@ -51,4 +51,93 @@ $f(x,y)=(x+y)^2=(1-1)^2=0$
 (a)の場合は$f(x,0)=1$より、$\displaystyle \lim_{x\to 0}f(x,0)=1$\\
 (b)の場合は$f(0,y)=0$より、$\displaystyle \lim_{y\to 0}f(0,y)=0$\\
 したがって、この関数は原点への近づき方によって異なる値を取り、極限値$\displaystyle\lim_{x\to 0,y\to 0}f(x,y)$は存在しない。
+
+
+つづいて、関数の連続について考えてみよう。点$A(a,b)$の近くで定義されている関数$z=f(x,y)$について、次の三つの条件が成り立つ場合、$z=f(x,y)$は点$A(a,b)$において\textbf{連続}であるという。
+\begin{enumerate}
+    \item $f(a,b)$が定義されている。
+    \item $\displaystyle\lim_{(x,y)\to(a,b)}f(x,y)$が存在する。
+    \item $\displaystyle\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b)$
+\end{enumerate}
+例題を解きながら考えてみよう。
+\subsubsection*{例題3}
+次の関数の原点での連続性についてしらべよ。
+\begin{align*}
+    &(1)f(x,y)= \left \{
+        \begin{array}{l}
+        \displaystyle\frac{x^3+y^3}{x^2+y^2} \quad((x,y)\neq(0,0))\\
+        0 \qquad\qquad((x,y)=(0,0))
+        \end{array}
+        \right.\\
+    &(2)f(x,y)= \left \{
+        \begin{array}{l}
+        \displaystyle\frac{xy}{x^2+y^2} \quad((x,y)\neq(0,0))\\
+        0 \qquad\qquad((x,y)=(0,0))
+        \end{array}
+        \right.\\
+    &(3)f(x,y)= \left \{
+        \begin{array}{l}
+        xy \hspace{2mm}\quad\qquad((x,y)\neq(0,0))\\
+        2  \hspace{2mm}\quad\qquad\hspace{2mm}((x,y)=(0,0))
+        \end{array}
+        \right.
+\end{align*}
+
+\subsubsection*{解答}
+(1)は、$f(0,0)$が存在し、
+\begin{equation*}
+    \lim_{(x,y)\to(0,0)}f(x)=\lim_{(x,y)\to(0,0)}\frac{x^3+y^3}{x^2+y^2}=0=f(0,0)
+\end{equation*}
+であるため、この関数は原点で連続である。
+
+(2)$f(0,0)$は定義されている。ここで、原点$y=mx(m\neq 0)$に沿って原点に近づけると、
+\begin{equation*}
+    \lim_{x\to 0}f(x,mx)=\lim_{x\to 0}\frac{x\cdot mx}{x^2+(mx)^2}=
+    \lim_{x\to 0}\frac{mx^2}{(m^2+1)x^2}=\lim_{x\to 0}\frac{m}{m^2+1}\neq f(0,0)
+\end{equation*}
+であるため、この関数は原点で連続ではない。別解として、直交座標表示から極座標表示に変換して求める方法もある。この場合だと原点に近づけるために必要なパラメータが$r$、つまり
+原点からの距離だけとなるのでわかりやすいかもしれない。
+
+(3)$\displaystyle\lim_{(x,y)\to(0,0)}f(x,y)=0\neq f(0,0)$であるため、この間数は連続ではない。もし、$f(0,0)=0$と定義しなおせば、この新しい関数は原点で連続になる。このように、
+不連続点で関数を定義しなおすことによって。連続にできるとき、その不連続点は除きうる不連続であるという。
+\subsection{偏微分}
+関数$z=f(x,y)$において、独立変数$x,y$は、おのおの独立な変数である。どちらかを一定にして、もう片方の変数の値を変えることができる。もちろんどちらも同時に変えることができる。
+
+では、$y$を一定にして$x$を変動させることを考えてみる。この時$f(x,y)$は$x$の関数だから、この$x$の関数の導関数
+\begin{equation}
+    \frac{\partial f(x,y) }{\partial x}=\lim_{\Delta x\to 0}\frac{f(x+\Delta x,y)-f(x,y)}{\Delta x}
+\end{equation}
+が存在すれば、\textbf{偏微分可能}であるという。また、$\displaystyle\frac{\partial f}{\partial x}$を$f(x,y)$の$x$に関する\textbf{偏導関数}という。同様に、$x$を一定として$y$を一定として変えたときの導関数を$f(x,y)$の$y$に関する偏導関数という。
+一つの変数を定数とみなし、他方の変数で微分するのが、``偏"の意味であり、決して``変"な微分ではない。
+
+偏導関数を表す記法はいろいろある。
+\begin{equation*}
+    \frac{\partial f(x,y)}{\partial x},f_x,f_x(x,y),\frac{\partial z}{\partial x},\left. \frac{\partial f(x,y)}{\partial x}\right|_y
+\end{equation*}
+上記の導関数はすべて$x$の偏導関数である。また、最後の記法はどの変数が一定かを強調している記法で、熱力学で多用されるらしい。
+なお、$f(x,y)$の偏導関数を求めることを\textbf{偏微分する}という。
+\subsubsection*{例題4}
+次の関数を偏微分せよ。
+\begin{equation*}
+    (1)f(x,y)2x^3+5xy+2y^2\quad(2)p(T,V)=\frac{RT}{V}\quad(R:\text{定数})
+\end{equation*}
+\subsubsection*{解答}
+(1)$y$を一定にして$x$で微分すると、$f_x=6x^2+5y$。反対に$x$を一定にして$y$で微分すると、
+$f_y=5x+4y$。
+
+(2)\begin{align*}
+    &\frac{\partial p}{\partial T}=\frac{R}{V}\\
+    &\frac{\partial p}{\partial V}=-\frac{RT}{V^2}
+\end{align*}
+
+多くの変数$x,y,z,\cdots ,t$の関数$u=f(x,y,x,\cdots,t)$を\textbf{多変数関数}という。これらも二変数関数と同様に偏導関数を求めることができる。
+
+例えば、$\displaystyle r(x,y,z)=\sqrt{x^2+y^2+z^2}$の偏導関数を求めるとすると。
+\begin{equation*}
+    r_x=\frac{\partial}{\partial x}\sqrt{x^2+y^2+z^2}=\frac{1}{2}\cdot 2x(x^2+y^2+z^2)^{-\frac{1}{2}}=\frac{x}{r}
+\end{equation*}
+同様にして、
+\begin{equation*}
+    r_y=\frac{y}{r}\quad r_z=\frac{z}{r}
+\end{equation*}
 \end{document}
