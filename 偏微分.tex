@@ -150,4 +150,64 @@ $f_y=5x+4y$。
 \end{equation}
 が成り立つ。すなわち、偏微分の順序を好感しても偏導関数は変わらない。(2)式の拡張として、公開偏導関数においても、それらが連続であれば偏微分の順序を好感しても公開導関数は変わらない。例えば、三階偏導関数がすべて連続ならば、
 $f_{xxy}=f_{xyx}=f_{yxx},f_{yyx}=f_{yxy}=f_{xyy}$が成り立つ。
+\newpage
+\subsection{全微分}
+つぎに、関数$f(x,y)$が$x,y$でともに変化するときのことを考えよう。一変数の場合には、$\Delta x$を$x$の増分、$\Delta y$を$y$の増分としたときに、
+$\Delta x$が十分小さければ、
+\begin{equation}
+    \Delta y=f'(x)\Delta x+\epsilon \Delta x
+\end{equation}
+の関係があったのであった。一方、$y=f(x)$の微分は
+\begin{equation}
+    dx=\Delta x\quad dy=f'(x)dx
+\end{equation}
+である。
+
+さて、関数$z=f(x,y)$において、$x$の増分$\Delta x$と$y$の増分$\Delta y$に対する全増分を$\Delta z$とする。すなわち、
+\begin{equation}
+    \Delta z=f(x+\Delta x,y+\Delta y)-f(x,y)
+\end{equation}
+右辺から、同じものを引き、足して
+\begin{equation}
+    \Delta z=\{f(x+\Delta x,y+\Delta y)-f(x,y+\Delta y)\}+\{f(x,y+\Delta y-f(x,y)\}
+\end{equation}
+と書き直す。第一項では$x$のみが変化し、第二項では$y$だけが変化している。どちらも独立変数の一方だけが変化しているのだから、すでに登場した平均値の定理を用いて、
+\begin{equation}
+    \Delta z=f_x(x+\theta_1\Delta x,y+\Delta y)\Delta x+f_y(x,y+\theta_2\Delta y)\Delta y\quad(0<\theta_1<1,0<\theta_2<1)
+\end{equation}
+と書ける。偏導関数$f_x,f_y$が連続であれば、
+\begin{align}
+    &f_x(x+\theta_1\Delta x,y+\Delta y)=f_x(x,y)+\epsilon_1\\
+    &f_y(x,y+\theta_2\Delta y)=f_y(x,y)+\epsilon_2
+\end{align}
+において、$\Delta x,\Delta y$が0に収束するとき、$\epsilon_1.\epsilon_2$はともに0に収束する。したがって、$\Delta x,\Delta y$が十分に小さければ、(7)~(9)の式より
+\begin{equation}
+    \Delta x=f_x(x,y)\Delta x+f_y(x,y)\Delta y+(\epsilon_1\Delta x+\epsilon_2\Delta y)
+\end{equation}
+を得る。この式は一変数関数に対する式(3)を二変数に拡張したものである。
+
+$z=f(x,y)$の二変数関数において微分を定義する。独立変数$x,y$の微分、$dx,dy$は任意の増分$\Delta x,\Delta y$とする。
+\begin{equation}
+    dx=\Delta x\quad dy=\Delta y
+\end{equation}
+そして、関数$z=f(x,y)$の\textbf{全微分}(または単に\textbf{微分})を
+\begin{equation}
+    dz=f_x(x,y)dx+f_y(x,y)dy
+\end{equation}
+と定義する。(10)式と比べると、$\Delta x,\Delta y$が小さいならば、全微分$dz$は関数の全増分$\Delta z$のよい近似値を与えることがわかる。
+\subsubsection*{例題5}
+$z=xy$とするとき、$\Delta z$と$dz$はどのくらい異なるか答えよ。
+\subsubsection*{解答}
+$z_x=y,z_y=x$であるため、$dz=ydx+xdy$である。一方で、$x,y$の増分が$\Delta x=dx,\Delta y=dy$であるとき、全増分$\Delta x$は
+$\Delta z=(x+\Delta x)(y+\Delta y)-xy=ydx+xdy+dxdy$である。よって$dz$と$\Delta z$は$\Delta x\Delta y=dxdy$だけ異なる。
+
+変数が多くあるとき、$u=f(x,y,x,\cdots,t)$の全微分$du$は
+\begin{equation}
+    du=u_xdx+u_udy+u_zdz+\cdots+u_tdt
+\end{equation}
+で定義される。二変数のときと同様に$\Delta x=dx,\Delta y=dy,\Delta z=dz,\cdots,\Delta t=dt$が十分小さいとき、全微分$du$は全増分$\Delta u$のよい近似値になる。言葉で
+説明するなら、「いくつもの小さな変化がもたらす変動全体は、各々の変化による変動を足し合わせ得たものとみなせる」ということを意味している。
+\subsection{合成関数の微分}
+
+
 \end{document}
