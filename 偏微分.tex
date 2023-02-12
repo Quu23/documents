@@ -208,6 +208,39 @@ $\Delta z=(x+\Delta x)(y+\Delta y)-xy=ydx+xdy+dxdy$である。よって$dz$と$
 で定義される。二変数のときと同様に$\Delta x=dx,\Delta y=dy,\Delta z=dz,\cdots,\Delta t=dt$が十分小さいとき、全微分$du$は全増分$\Delta u$のよい近似値になる。言葉で
 説明するなら、「いくつもの小さな変化がもたらす変動全体は、各々の変化による変動を足し合わせ得たものとみなせる」ということを意味している。
 \subsection{合成関数の微分}
+関数$z=f(x,y)$において、$x,y$が変数$t$に依存している、すなわち、$x=x(t),y=y(t)$の場合の微分法を考えよう。増分と極限を用いて証明することもできるが、せっかくなのでここでは微分を用いて話をすす
+めることにする。$z=f(x,y)\quad x=x(t),y=y(t)$より、
+\begin{equation}
+    dz=\frac{\partial f}{\partial x}dx+\frac{\partial f}{\partial y}dy\quad dx=\frac{dx}{dt}dt\quad dy=\frac{dy}{dt}dt
+\end{equation}
+後の二つの式を最初の式に代入して、
+\begin{equation}
+    dz=\frac{\partial f}{\partial x}\frac{dx}{dt}dt+\frac{\partial f}{\partial y}\frac{dy}{dt}dt
+    =\left(\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}\right)dt
+\end{equation}
+一方で、$z$が$t$の関数とみなせるから。
+\begin{equation}
+    dz=\frac{dz}{dt}dt
+\end{equation}
+(15)式と(16)式を比べて、二変数関数における合成関数の微分法則
+\begin{equation}
+    dz=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}
+    =\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y}\frac{dy}{dt}
+\end{equation}
+を得る。これは$z$が多変数関数の場合にも応用できる。
+
+次に関数$z=f(x,y)$において、$x,y$は、変数$u,v$に依存して、
+\begin{equation}
+    x=g(u,v)\quad y=h(u,v)
+\end{equation}
+で与えられるとしよう。$z=f(x,y)\quad x=g(u,v)\quad y=h(u,v)$より、
+\begin{equation}
+    dz=\frac{\partial z}{\partial x}dx+\frac{\partial z}{\partial y}dy\quad dx=\frac{\partial x}{\partial u}du+\frac{\partial x}{\partial v}dv\quad dy=\frac{\partial y}{\partial u}du+\frac{\partial y}{\partial v}dv
+\end{equation}
+あとの二つの式を最初の式に代入して、
+\begin{equation}
+    dz=\left(\frac{\partial z}{\partial x}\frac{\partial x}{\partial u}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial u}\right)du+\left(\frac{\partial x}{\partial v}+\frac{\partial y}{\partial v}\right)dv
+\end{equation}
 
 
 \end{document}
