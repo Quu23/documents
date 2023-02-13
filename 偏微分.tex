@@ -1,11 +1,12 @@
 \documentclass[a4j,dvipdfmx]{jsarticle}
 \usepackage{amsmath,amssymb}
 \usepackage{siunitx}
+\usepackage{ascmac}
 
 \renewcommand{\thesubsection}{\roman{subsection}}
 
 \begin{document}
-\section*{偏微分}
+\section*{$\int$偏微分$\int$}
 \subsection{二変数の関数}
 いままでは、一つの変数$x$の関数$f(x)$を考えてきた。しかし、一つの変数では記述できない現象も多くある。例えば、理想気体の状態方程式を考えてみる。
 \begin{equation*}
@@ -224,7 +225,7 @@ $\Delta z=(x+\Delta x)(y+\Delta y)-xy=ydx+xdy+dxdy$である。よって$dz$と$
 \end{equation}
 (15)式と(16)式を比べて、二変数関数における合成関数の微分法則
 \begin{equation}
-    dz=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}
+    \frac{dz}{dt}=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}
     =\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y}\frac{dy}{dt}
 \end{equation}
 を得る。これは$z$が多変数関数の場合にも応用できる。
@@ -239,8 +240,201 @@ $\Delta z=(x+\Delta x)(y+\Delta y)-xy=ydx+xdy+dxdy$である。よって$dz$と$
 \end{equation}
 あとの二つの式を最初の式に代入して、
 \begin{equation}
-    dz=\left(\frac{\partial z}{\partial x}\frac{\partial x}{\partial u}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial u}\right)du+\left(\frac{\partial x}{\partial v}+\frac{\partial y}{\partial v}\right)dv
+    dz=\left(\frac{\partial z}{\partial x}\frac{\partial x}{\partial u}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial u}\right)du+\left(\frac{\partial z}{\partial x}\frac{\partial x}{\partial v}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial v}\right)dv
+\end{equation}
+一方、$z$は$u,v$の関数とみなせるため、
+\begin{equation}
+    dz=\frac{\partial z}{\partial u}du+\frac{\partial z}{\partial v}dv
+\end{equation}
+(20)式と(21)式を見比べて、$du,dv$の係数をそれぞれ等しいと置き、
+\begin{align}
+    \frac{\partial z}{\partial u}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial u}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial u}\notag\\
+    \frac{\partial z}{\partial v}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial v}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial v}
+\end{align}
+これは多変数関数にも応用できる。
+\subsubsection*{例題6}
+\begin{align*}
+    u=f(x,y),\quad x=\rho\cos \phi,\quad y=\rho\sin \phi\quad\text{のとき}\\
+    \left(\frac{\partial u}{\partial x}\right)^2+\left(\frac{\partial u}{\partial y}\right)^2=\left(\frac{\partial u}{\partial \rho}\right)^2+\frac{1}{\rho^2}\left(\frac{\partial u}{\partial \phi}\right)^2
+\end{align*}
+を示せ。
+
+\subsubsection*{解答}
+(22)式より、
+\begin{align*}
+    \frac{\partial u}{\partial \rho}&=\frac{\partial u}{\partial x}\cos\phi+\frac{\partial u}{\partial y}\sin \phi\\
+    \frac{\partial u}{\partial \phi}&=\frac{\partial u}{\partial x}(-\rho\sin\phi)+\frac{\partial u}{\partial y}(\rho\cos\phi)
+\end{align*}
+よって、
+\begin{equation*}
+    \left(\frac{\partial u}{\partial \rho}\right)^2+\frac{1}{\rho^2}\left(\frac{\partial u}{\partial \phi}\right)^2=\left(\frac{\partial u}{\partial x}\cos\phi+\frac{\partial u}{\partial y}\sin \phi\right)^2+\left(\frac{\partial u}{\partial x}(-\sin\phi)+\frac{\partial u}{\partial y}(\cos\phi)\right)^2
+    =\left(\frac{\partial u}{\partial x}\right)^2+\left(\frac{\partial u}{\partial y}\right)^2
+\end{equation*}
+
+\subsection{平均値の定理}
+平均値の定理は、微分額の理論上きわめて重量な定理であるらしい。らしいというのは、私があまり微分学に精通していないからあくまで参考にしている本の受け売りとして書いたものである。それはさておき、一変数
+の場合は前回に学んだ。この結果を用いて、二変数の関数$f(x,y)$に対して、平均値の定理を導く。
+
+まず、$a,b,h,k$を定数として,関数
+\begin{equation}
+    F(t)=f(a+ht,b+kt)
+\end{equation}
+を定義する。一変数の場合の平均値の定理によって、
+\begin{equation}
+    F(1)=F(0)+F'(\theta)\quad(0<\theta<1)
+\end{equation}
+上の式の第二項$F'(\theta)$を、$f$の偏導関数で表す。$x=a+ht,y=b+kt$と置くと、合成関数の微分法則(17)式によって、
+\begin{equation}
+    \frac{dF(t)}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}=hf_x(a+ht,b+kt)+kf_y(a+ht,b+kt)
+\end{equation}
+よって、
+\begin{equation}
+    F'(\theta)=hf_x(a+h\theta,b+k\theta)+kf_y(a+h\theta,b+k\theta)
+\end{equation}
+この式と(23)式を(24)式に代入する。こうして、関数$f(x,y)$が偏微分可能ならば、
+\begin{equation}
+    f(a+h,b+k)=f(a,b)+hf_x(a+h\theta,b+k\theta)+kf_y(a+h\theta,b+k\theta)\quad(0<\theta<1)
+\end{equation}
+を得る。これを、\textbf{二変数関数の平均値の定理}という。
+
+\subsection{偏導関数の応用}
+偏微分法についての基本的な話は以上である。ここからは、知っていると便利な応用を述べることにする。
+\subsubsection{陰関数の微分法}
+$y=f(x)$のように、$x$の値に$y$の値を対応させる具体的な表式が示されているとき、$y$は$x$の\textbf{陽関数}であるという。
+一方、
+\begin{equation}
+    F(x,y)=0
+\end{equation}
+のように、関係式として定められているだけであるときには、$y$は$x$の\textbf{陰関数}であるという。同様に$F(x,y,z)=0$のように多変数に対しても陰関数が定義できる。
+余談だが、陰関数はもともと陰伏函数と呼ばれていたらしい。これはimplicit function(陰関数)のモジりである。なかなかに面白い。
+
+さて、では陰関数に関する微分法をまとめていこう。
+\paragraph{1}
+$F(x,y)=0$のとき、$F_y\neq 0$ならば、
+\begin{equation}
+    \frac{dy}{dx}=-\frac{F_x(x,y)}{F_y(x,y)}
+\end{equation}
+\paragraph{2}
+$F(x,y,z)=0$のとき、$F_z\neq 0$ならば、
+\begin{equation}
+    \frac{\partial z}{\partial x}=-\frac{F_x(x,y,z)}{F_z(x,y,z)},\quad\frac{\partial z}{\partial y}=-\frac{F_y(x,y,z)}{F_z(x,y,z)}
 \end{equation}
 
+\subsubsection*{例題7}
+$x^2+3xy-2yz+xz+z^2=15$のとき、偏導関数$\displaystyle\frac{\partial z}{\partial x},\frac{\partial z}{\partial y}$を求めよ。
 
+\subsubsection*{解答}
+(30)式より
+\begin{align*}
+    \frac{\partial z}{\partial x}=-\frac{F_x(x,y,z)}{F_z(x,y,z)}=-\frac{2x+3y+z}{-2y+x+2z}\\
+    \frac{\partial z}{\partial y}=-\frac{F_y(x,y,z)}{F_z(x,y,z)}=-\frac{3x-2z}{-2y+x+2z}
+\end{align*}
+
+\subsubsection{積分記号下での微分}
+パラメータ$y(\alpha\leq y\leq\beta)$を含む定積分
+\begin{equation}
+    I(y)=\int_a^b f(x,y)dx
+\end{equation}
+を考えてみよう。積分上限、下限はともに$y$に依存しないとしよう。函数$f(x,y)$とその偏導関数$f_y(x,y)$が、
+閉領域$a\leq x\leq b,\alpha\leq y\leq \beta$で連続ならば、平均値の定理(27)式より、
+\begin{equation}
+    f(x,y+\Delta y)-f(x,y)=\Delta y\frac{\partial f(x,y+\theta\Delta y)}{\partial y}\quad(0<\theta<1)
+\end{equation}
+が成り立つ。そして、関数$I(y)$の増分$\Delta I$は
+\begin{equation}
+    \Delta I=I(y*\Delta y)-I(y)=\int_a^b[f(x,y*\Delta y)-f(x,y)]dx=\Delta y\int_a^b\frac{\partial f(x,y+\theta\Delta y)}{\partial y}dx
+\end{equation}
+となる。上の式で極限$\Delta y\to 0$を取ると、$f_y(x,y)$は連続であるから
+\begin{equation}
+    \frac{dI}{dy}=\lim_{\Delta y\to 0}\frac{\Delta I}{\Delta y}=\int_a^b\frac{\partial f(x,y)}{\partial y}dx
+\end{equation}
+すなわち、定積分$I(y)$をパラメータ$y$で微分することは、積分記号下で$y$について、偏微分したものを積分することと同じになる!
+この性質をうまく用いると、一見難しい定積分が簡単に求められることがある。
+\subsubsection*{例題8}
+(1)次の定積分を求めよ。
+\begin{equation*}
+    \int_0^\pi\frac{dx}{\alpha-\cos x}\quad(\alpha>1)
+\end{equation*}
+
+(2)次の定積分を求めよ。(ヒント：(1)の結果を用いよ。)
+\begin{equation*}
+    \int_0^\pi\frac{dx}{(3-\cos x)^2}dx
+\end{equation*}
+
+\subsubsection*{解答}
+(1)普通に定積分の値を計算すればよい。
+\begin{align*}
+    \int_0^\pi\frac{dx}{\alpha-\cos x}&=2\int_0^\infty\frac{dt}{(\alpha-\frac{1-t^2}{1+t^2})\cdot(1+t^2)}=2\int_0^\infty\frac{dt}{(\alpha+1)t^2+(\alpha-1)}\\
+    &=2\int_0^\infty\frac{dt}{(\alpha+1)t^2+(\alpha-1)}=\frac{2}{\alpha+1}\int_0^\infty\frac{dt}{t^2+\frac{\alpha-1}{\alpha+1}}=\frac{2}{\alpha+1}\left[\frac{1}{\sqrt{\frac{\alpha-1}{\alpha+1}}}\arctan \frac{t}{\sqrt{\frac{\alpha-1}{\alpha+1}}}\right]_0^\infty\\
+    &=\frac{\pi}{(\alpha+1)\cdot\sqrt{\frac{\alpha-1}{\alpha+1}}}=\frac{\pi}{\sqrt{\alpha^2-1}}
+\end{align*}
+ここまでは去年習った内容なので、できる人も多いだろう。
+(2)　(1)の結果を用いる。
+\begin{equation*}
+    I(\alpha)=\int_0^\pi\frac{dx}{\alpha-\cos x}=\frac{\pi}{\sqrt{\alpha^2-1}}
+\end{equation*}
+と置く。(34)式より、
+\begin{equation*}
+    \frac{dI(\alpha)}{d\alpha}=\int_0^\pi\frac{\partial}{\partial \alpha}\left(\frac{1}{\alpha-\cos x}\right)dx=-\int_0^\pi\frac{dx}{(\alpha-\cos x)^2}
+\end{equation*}
+また、
+\begin{equation*}
+    \frac{d}{d\alpha}\left(\frac{\pi}{\sqrt{\alpha^2-1}}\right)=-\frac{\pi\alpha}{(\alpha^2-1)^{\frac{3}{2}}}
+\end{equation*}
+よって、
+\begin{equation*}
+    \int_0^\pi\frac{dx}{(\alpha-\cos x)^2}=\frac{\pi\alpha}{(\alpha^2-1)^{\frac{3}{2}}}
+\end{equation*}
+ここで、$\alpha=3$と置くと、
+\begin{equation*}
+    \int_0^\pi\frac{dx}{(3-\cos x)^2}dx=\frac{3\pi}{16\sqrt{2}}
+\end{equation*}
+なんと、定積分を微分だけで解いてしまったのだ。実際は(1)のように微分する前の関数の定積分の値を知っている必要があるが、それでもこの偏微分の有用性が伝わったと思う。
+
+\subsection{終わりに}
+今回は、偏微分について学んだ。二変数以上の関数でも微分することができるようになったことでまた一つできることの幅が広がったと思う。
+次回は多重積分について学ぶ。その名の通り、多変数の定積分のことだ。これは理工学の幅広い分野で用いられ、むしろ常識となるらしい。確かに、
+難しい本にはたいてい$\iiint$みたいな記号ばっかりな気がする。様々な積分が出てくると、頭が混乱してしまうかもしれない。そのため、あらかじめ
+定積分を復習しておくとよいかもしれない。大切なのは、「定積分は積和の極限」であることだ。
+
+以下に練習問題をのせておく。各自で参考にしてほしい。
+
+\subsection{練習問題}
+(1)関数$f(x,y)=x^3-2x^2y+3y^3$において,$f(0,1),f(1,1),f(2,0),f(1,-1)$の値を求めよ。
+
+(2)次の関数の原点(0,0)での連続性を調べよ。
+\begin{equation*}
+    1.f(x,y)=x^2+y\qquad 
+    2.f(x,y)=\left \{
+        \begin{array}{l}
+        \displaystyle\frac{\sin(x+y)}{x+y} \hspace{2mm}\quad((x,y)\neq(0,0))\\
+        1   \qquad\qquad\quad\hspace{2mm}((x,y)=(0,0))
+        \end{array}
+        \right.
+\end{equation*}
+
+(3)次の関数の全微分を求めよ
+\begin{equation*}
+    1.z=x^4y+x^2y^2+xy^4\quad 2.\theta=\arctan(\frac{y}{x})
+\end{equation*}
+
+(4)導関数$\displaystyle\frac{du}{dt}$を求めよ。
+\begin{align*}
+    1.&u=x^3y^2,\quad x=t^2,\quad y=t^4\\
+    2.&u=x\cos y-y\cos x,\quad x=\cos 2t,\quad y=\sin2t
+\end{align*}
+
+(5)与えられる陰関数の導関数$\displaystyle\frac{dy}{dx}$を求めよ。
+\begin{equation*}
+    1.x+y=e^{xy}\quad 2.x^2+y^2=1
+\end{equation*}
+(6)以下の定積分を解け。
+\begin{equation*}
+    \int_{-\infty}^{\infty}\frac{dx}{(4+x^2)^2}
+\end{equation*}
+ただし、
+\begin{equation*}
+    \int_{-\infty}^{\infty}\frac{dx}{\alpha+x^2}=\frac{\pi}{\sqrt{\alpha}}\quad(\alpha>0)
+\end{equation*}
+であるとする。
 \end{document}
