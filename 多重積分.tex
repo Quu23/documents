@@ -1,0 +1,63 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\roman{subsection}}
+\begin{document}
+\part*{多重積分}
+\section{多重積分}
+\subsection{二重積分}
+一変数の関数$y=f(x)$の定積分$\displaystyle \int_a^b f(x)dx$は去年学んだ。
+少しだけ復習すると、積和の極限、すなわち$\displaystyle \lim_{n\to\infty}\sum_{k=1}^{n}f(\zeta_k)\Delta x_k$が定積分であった。これから、定積分を二変数の場合に拡張する。いままでは、積分領域は線分であったが、
+今度は積分領域が面になる。
+
+$xy$平面の領域$R$で定義された連続な関数を$f(x,y)$とする。領域$R$を、各々の面積が$\Delta A_1,\Delta A_2,\cdots,\Delta A_n$の
+$n$個の章領域$R_1,R_2,\cdots,R_n$に分割する。小領域$R_1$内に点$P_1(\zeta_1,\eta_1)$、小領域$R_2$内に
+$P_2(\zeta_2,\eta_2),\cdots,R_n$内に点$P_n(\zeta_n,\eta_n)$を選び、積和の極限
+\begin{equation}
+    \sum_{k=1}^{n}f(P_k)\Delta A_k=\sum_{k=1}^{n}f(\zeta_k,\eta_k)\Delta A_k\label{6.2}
+\end{equation}
+を作る。各小領域の直径(領域内のに転換の距離の最大値)が0に近づくように分割を細かくしていく。この時の極限値を
+\begin{equation}
+    \iint_R f(x,y)dA=\lim_{n\to\infty}\sum_{k=1}^{n}f(\zeta_k.\eta_k)\Delta A_k\label{6.3}
+\end{equation}
+とかき、関数$f(x,y)$の領域$R$における\textbf{二重積分}という。積分記号が二つあるのは、二変数関数の定積分であることを
+示し、積分記号の添え字$R$は$x,y$の値の領域を表している。
+
+特に、$f(x,y)=1$と置けば、その二重積分は領域$R$の面積$A$を与える。すなわち、
+\begin{equation}
+    A=\iint_RdA\label{6.4}
+\end{equation}
+\subsection{二重積分と体積}
+定積分が面積と関係していたように、二重積分\eqref{6.3}式は体積と関係している。関数$z=f(x,y)$は領域
+$R$で正とする。積和\eqref{6.2}の各項$f(\zeta_k,\eta_k)\Delta A_k$は、高さが$z_k=f(\zeta_k,\eta_k)$で、上下の平行面の面積が$\Delta A_k$の
+垂直な``柱"の体積を与える。これは、底面積が$\Delta A_k$で、上面が曲線$z=f(x,y)$で与えられる垂直な柱の体積
+を近似したものである。すなわち、\eqref{6.2}の積和は、局面下の体積を近似している。こうして、この極限値である二重積分\eqref{6.3}は、
+局面$z=f(x,y)$、底面$R$、$R$の周上に建てた垂直面、がつくる領域の体積に等しいことがわかる。
+\subsection{三重積分}
+二重積分を導入したのと同じようにして、三重積分が定義される。三次元の領域$R$で連続な関数$f(x,y,z)$を考える。
+領域$R$を、各体積が$\Delta V_1,\Delta V_2,\cdots,\Delta V_n$である$n$個の小区間$R_1,R_2,\cdots,R_n$に分割する。
+小領域$R_k$内に点$P_k(\zeta_k,\eta_k,\xi_k)$をとり、積和
+\begin{equation}
+    \sum_{k=1}^{n}f(P_k)\Delta V_k=\sum_{k=1}^{n}f(\zeta_k,\eta_k,\xi_k)\Delta V_k\label{6.5}
+\end{equation}
+を作る。各小領域$R_k$の直径を0にするように、分割の数$n$を大きくする。その極限値を
+\begin{equation}
+    \iiint_R f(x,y,z)dV=\lim_{n\to\infty}\sum_{k=1}^{n}f(\zeta_k,\eta_k,\xi_k)\Delta V_k\label{6.6}
+\end{equation}
+と書き、領域$R$での関数$f(x,y,z)$の\textbf{三重積分}という。特に$f(x,y,z)=1$ならば、
+三重積分は領域$R$の体積$V$を与える。すなわち、
+\begin{equation}
+    V=\iiint_R dV\label{6.7}
+\end{equation}
+
+同様にして、$n$次元での領域$R$で連続な関数$f(x_1,x_2,\cdots,x_n)$に対して、$n$重積分が定義される。
+
+二重積分や三重積分を、\eqref{6.3}や\eqref{6.6}式のように積和の極限として計算するのはすごく面倒だ。
+そこで実際には定積分と同様に、もっと楽に計算をする。そのための方法を次節で紹介する。
+
+\section{二重積分は積分を2度行う}
+
+\end{document}
