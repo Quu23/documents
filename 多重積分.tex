@@ -2,6 +2,8 @@
 \usepackage{amsmath,amssymb}
 \usepackage{siunitx}
 \usepackage{ascmac}
+\usepackage[dvips]{graphicx}
+\usepackage{listings}
 
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\roman{subsection}}
@@ -59,5 +61,105 @@ $R$で正とする。積和\eqref{6.2}の各項$f(\zeta_k,\eta_k)\Delta A_k$は�
 そこで実際には定積分と同様に、もっと楽に計算をする。そのための方法を次節で紹介する。
 
 \section{二重積分は積分を2度行う}
+\subsection{累次積分}
+まず二重積分について考える。積分領域$R$の境界は、$x$軸または$y$軸に平行な線と３回以上交わらないとしよう。（下図参照）
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm,scale=5]{img/累次積分.png}
+    \caption{累次積分}
+\end{figure}
 
+より複雑な形の領域は、このような領域に分けられる。曲線ACBを$y=g(x)$,曲線BDAを$y=h(x)$
+で表す。
+
+区間$a\leq x\leq b$を、長さが$\Delta x_1,\Delta x_2,\cdots,\Delta x_m$の$m$個の小区間
+$h_1,h_2.\cdots,h_m$に分割する。また、区間$c\leq y\leq d$を、長さが$\Delta y_1,\Delta y_2,\cdots,\Delta y_n$の$n$個の小区間
+$k_1,k_2,\cdots,k_n$に分割する。そして、直線$x=x_1,x=x_2,\cdots,x=x_{m+1},y=y_1,y=y_2,\cdots,y=y_{n+1}$を引くと、領域$R$は
+各面積が$\Delta x_i\Delta y_j$の長方形の領域$R_{ij}$に分割される。境界の近くでは長方形にはならないが、$m,n$が大きい限り、それらの寄与は無視できる。
+領域$R_{ij}(i=1,2,\cdots,m,j=1,2,\cdots,n)$は全部で$mn$個ある。領域$R_{ij}$内に点$(\xi_i,\eta_j)$を選び、積和
+\begin{equation}
+    \sum_{i=1}^{m}\sum_{j=1}^{n}f(\xi_i,\eta_j)\Delta x_i\Delta y_j\label{6.8}
+\end{equation}
+を作る。
+
+これは、\eqref{6.2}式の特別な場合であることに注意しよう。各区間の長さが0になるように、$m,n$を大きくすれば、
+二重積分\eqref{6.3}式に等しい。
+
+いま、最初に区間$h_i$を固定し、その上に並んだ長方形をおいて、積和
+\begin{equation}
+    \left\{\sum_{j=1}^{n}f(\xi_i,\eta_j)\Delta y_j\right\}\Delta x_i\quad(i\text{は固定})\label{6.9}
+\end{equation}
+を考える。そして、$y$軸方向の区間$k_j$の長さが0になるように$n\to\infty$の極限を取ると、
+\begin{equation}
+    \lim_{n\to\infty} \left\{\sum_{j=1}^{n}f(\xi_i,\eta_j)\Delta y_j\right\}\Delta x_i=\left\{\int_{g(\xi_i)}^{h(\xi_i)}f(\xi_i,\eta_j)dy\right\}\Delta x_i\label{6.10}
+\end{equation}
+を得る。次に、x軸方向の区間に対して和を取り、$m\to\infty$の極限を取ると
+\begin{equation}
+    \lim_{m\to\infty}\sum_{i=1}^{m}\left\{\int_{g(\xi_i)}^{h(\xi_i)}f(\xi_i,\eta_j)dy\right\}\Delta x_i=\int_a^b\left[\int_{g(\xi_i)}^{h(\xi_i)}f(\xi_i,\eta_j)dy\right]dx\label{6.11}
+\end{equation}
+が得られる。こうして、二重積分は、$f(x,y)$の$y$についての積分を行い、次に$x$についての積分を行うことで計算できることがわかる。
+また、これは$x$積分と$y$積分の順序を入れ替えても同じである。
+
+積分\eqref{6.11}式を\textbf{累次積分}という。
+
+以上まとめるなら、$f(x,y)$が領域$R$で連続ならば、
+\begin{align}
+    \iint_R f(x,y)dxdy&=\int_a^b\int_{g(x)}^{h(x)}f(x,y)dydx\notag\\
+    &=\int_c^d\int_{k(y)}^{l(y)}f(x,y)dxdy\label{6.13}
+\end{align}
+
+\subsubsection*{例題}
+次の積分を求めよ。
+\begin{equation*}
+    (1)\int_0^q\int_0^xdydx\qquad(2)\int_0^1\int_1^2(x+y)dxdy
+\end{equation*}
+
+\subsubsection*{解答}
+\begin{align*}
+    &(1)\int_0^1\int_0^xdydx=\int_0^1[y]_0^xdx=\int_0^1xdx=\frac{1}{2}\\
+    &(2)\int_0^1\int_1^2(x+y)dxdy=\int_0^1\left[\frac{x^2}{2}+xy\right]_1^2dy=
+    \int_0^1(\frac{3}{2}+y)dy=\frac{3}{2}+\frac{1}{2}=2
+\end{align*}
+
+\subsubsection*{例題}
+直線$y=x,x=1,y=0$で囲まれた領域を$R$とするとき、次の二重積分を求めよ。
+\begin{equation*}
+    I=\iint_R(x^2+y^2)dxdy
+\end{equation*}
+
+\subsubsection*{解答}
+最初に、$y$積分、$x$積分の順に計算する。
+\begin{equation*}
+    I=\int_0^1\left\{\int_0^x (x^2+y^2)dy\right\}dx=\frac{1}{3}
+\end{equation*}
+次に、$x$積分、$y$積分の順に計算する。
+\begin{equation*}
+    I=\int_0^1\left\{\int_y^1(x^2+y^2)dx\right\}dy=\frac{1}{3}
+\end{equation*}
+
+
+三重積分の場合にも、同様に累次積分が定義される。
+\begin{equation}
+    \iiint_R f(x,y,z)dxdydz=\int_a^b\left[\int_{y_1(x)}^{y_2(x)}\left\{\int_{z_1(x,y)}^{z_2(x,y)}f(x,y,z)dz\right\}dy\right]dx\label{6.14}
+\end{equation}
+上の式では、積分はかっこの内側から順に行う。すなわち$x,y$を固定して、$z$積分を行い、次に$x$を固定して
+$y$積分を行い、最後に$x$積分を行う。二重積分と同様に、$f(x,y,z)$が連続ならば、個の積分は存在して、積分の
+順序を変えることができる。
+
+\subsubsection*{例題}
+\begin{equation*}
+    I=\int_0^1\int_0^{1-x}\int_0^{2-y}xyzdzdydx
+\end{equation*}
+を求めよ。
+
+\subsubsection*{解答}
+\begin{align*}
+    I&=\int_0^1\int_0^{1-x}\int_0^{2-y}xyzdzdydx\\
+     &=\int_0^1\int_0^{1-x}\frac{xy}{2}(2-y)^2dydx\\
+     &=\int_0^1\frac{1}{2}x\left\{\frac{1}{4}(1-x)^4-\frac{4}{3}(1-x)^3+2(1-x)^2\right\}dx\\
+     &=\int_0^1\frac{1}{2}\left(\frac{1}{4}x^5+\frac{1}{3}x^4-\frac{1}{2}x^3-x^2+\frac{11}{12}x\right)dx=\frac{13}{240}
+\end{align*}
+
+\section{積分変数の変換}
+\subsection{座標系}
 \end{document}
