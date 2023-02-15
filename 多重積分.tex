@@ -162,4 +162,71 @@ $y$積分を行い、最後に$x$積分を行う。二重積分と同様に、$f
 
 \section{積分変数の変換}
 \subsection{座標系}
+まず始めに、直交座標での多重積分をまとめる。
+
+二重積分は、直交座標$(x,y)$において、
+\begin{equation}
+    \iint_R f(x,y)dxdy\label{6.15}
+\end{equation}
+で与えられる。$dA=dxdy$を直交座標での\textbf{面積要素}という。
+
+また、三重積分は、直交座標$(x,y,z)$において、
+\begin{equation}
+    \iiint_R f(x,y,z)dxdydz\label{6.16}
+\end{equation}
+で与えられる。$dV=dxdydz$を直交座標での\textbf{体積要素}という。
+
+これらの多重積分を実行する際は、積分領域の形によっては、直交座標系よりはほかの座標系を用いたほうが簡単になること
+がある。また、応用上では、問題設定の初めからほかの座標系を使って議論することも多い。
+よく用いられる座標系に対して、多重積分がどのように定義されるかを調べてみよう。
+\subsection{２次元極座標}
+２次元極座標$(\rho ,\phi)$は、直交座標$(x,y)$を用いて
+\begin{align}
+    x=\rho\cos\phi,\quad y=\rho\sin\phi\label{6.17}\\
+    (0\leq\rho\leq\infty,0\leq\phi\leq2\pi)\notag
+\end{align}
+または、
+\begin{equation}
+    \rho=\sqrt{x^2+y^2},\quad\phi=\arctan\frac{y}{x}\label{6.18}
+\end{equation}
+で定義される。\eqref{6.17}式と\eqref{6.18}式は同じことを意味していることに気づけるだろうか。
+$\rho=$一定の曲線は原点を中心とする円であり、$\phi=$一定は原点を通る半直線である。
+半径が$\rho,\rho+\Delta\rho$の２つの同心円と、角$\phi,\phi+\Delta\phi$の２つの半直線とで
+囲まれる領域を考える。この領域は、$\Delta \rho$と$\Delta\phi$が十分小さいならば、辺の長さが
+$\Delta\rho,\rho\Delta\phi$の長方形とみなすことができるので、その面積$\Delta A$は、
+\begin{equation}
+    \Delta A=\rho\Delta\phi\cdot\Delta\rho=\rho\Delta\rho\Delta\phi\label{6.19}
+\end{equation}
+で与えられる。したがって、２次元座標系での二重積分は、
+\begin{equation}
+    \lim_{n\to\infty}\sum_{k=1}^{n}f(P_k)\Delta A_k=\iint_Df(\rho\cos\phi,\rho\sin\phi)\rho d\rho d\phi\label{6.20}
+\end{equation}
+となる。領域$D$は直交座標での領域を２次元極座標で表したものである。
+
+\subsubsection*{例題}
+次の積分を求めよ。
+\begin{equation*}
+    I=\iint_R e^{-(x^2+y^2)}dxdy\quad(R:0\leq x^2+y^2\leq a^2)
+\end{equation*}
+
+\subsubsection*{解答}
+$x=\rho\cos\phi,y=\rho\sin\phi$遠く。領域$R$は、$0\leq\rho\leq a,0\leq\phi\leq 2\pi$
+に変換される。また、$x^2+y^2=\rho^2$である。よって、\eqref{6.20}式より、
+\begin{equation*}
+    I=\int_0^{2\pi}\int_0^ae^{-\rho^2}\rho d\rho d\phi=2\pi\int_0^a e^{-\rho^2}\rho d\rho
+    =\pi(1-e^{-a^2})
+\end{equation*}
+
+さて、この時、$a\to\infty$としてみると、$x,y$の積分領域は、各々独立に$-\infty$から$+\infty$になるから、
+\begin{equation*}
+    I=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} e^{-(x^2+y^2)}dxdy=\left\{\int_{-\infty}^{\infty}e^{-x^2}dx\right\}^2
+    =\lim_{a\to\infty}\pi(1-e^{-a^2})=\pi
+\end{equation*}
+よって、
+\begin{equation}
+    \int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\pi}\label{6.21}
+\end{equation}
+を得る。これは有名な\textbf{ガウス積分}であり、確率論や統計力学で非常によく用いられる。
+
+\subsection{円柱座標}
 \end{document}
