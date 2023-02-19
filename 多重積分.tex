@@ -136,8 +136,7 @@ $k_1,k_2,\cdots,k_n$に分割する。そして、直線$x=x_1,x=x_2,\cdots,x=x_
 \begin{equation*}
     I=\int_0^1\left\{\int_y^1(x^2+y^2)dx\right\}dy=\frac{1}{3}
 \end{equation*}
-
-
+\subsubsection*{}
 三重積分の場合にも、同様に累次積分が定義される。
 \begin{equation}
     \iiint_R f(x,y,z)dxdydz=\int_a^b\left[\int_{y_1(x)}^{y_2(x)}\left\{\int_{z_1(x,y)}^{z_2(x,y)}f(x,y,z)dz\right\}dy\right]dx\label{6.14}
@@ -228,5 +227,276 @@ $x=\rho\cos\phi,y=\rho\sin\phi$遠く。領域$R$は、$0\leq\rho\leq a,0\leq\ph
 \end{equation}
 を得る。これは有名な\textbf{ガウス積分}であり、確率論や統計力学で非常によく用いられる。
 
-\subsection{円柱座標}
+\subsection{極座標}
+極座標$(r,\theta,\phi)$は、直交座標$(x,y,z)$を用いて、次のように表せる。
+\begin{align}
+    x=r\sin\theta\cos\phi,\quad y=r\sin\theta\sin\phi,\quad z=r\cos\theta\notag\\
+    (0\leq r\leq\infty,\quad 0\leq\theta\leq\pi,\quad 0\leq\phi\leq 2\pi)\label{6.25}
+\end{align}
+で定義される。任意の点を$P$とするとき、線分OPの長さが$r$、$z$軸と線分OPのなす角は$\theta$、
+軸O$z$と点Pを通る半平面が平面$xOz$となす角は$\phi$である。当然のことながら、$\displaystyle\theta=\frac{\pi}{2}$
+と置けば、二次元極座標と同じである。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm,scale=5]{img/calculus4c.png}
+    \caption{極座標(引用：https://eman-physics.net/math/calculus04.html )}
+\end{figure}
+
+$r=$一定は原点Oを中心とする球面を表す。$\theta =$一定は$z$軸を回転軸とする円錐面を与える。
+また,$\phi =$一定は、$z$軸を通る半平面平面を表す。いま、半径が、$r,r+\Delta r$の二つの
+同心球、頂角が$\theta ,\theta+\Delta \theta$の二つの円錐面、$\phi,\phi+\Delta\phi$の二つの半平面、で
+囲まれる領域を考える。
+この領域は、$\Delta r,\Delta \phi,\Delta\theta$が十分小さいならば、辺の長さ$\Delta r,r\Delta\theta,r\sin\theta\Delta \phi$
+の直方体とみなすことができるので、その体積は$\Delta V$は、
+\begin{equation}
+    \Delta V=\Delta r\cdot r\Delta\theta\cdot r\sin\theta\Delta\phi=r^2\sin\theta\Delta r\Delta\theta\Delta\phi\label{6.26}
+\end{equation}
+で与えられる。したがって、極座標系での三重積分は、
+\begin{equation}
+    \lim_{n\to\infty}\sum_{k=1}^{n}f(P_k)\Delta V_k=\iiint_D f(r\sin\theta\cos\phi,r\sin\theta\sin\phi,r\cos\theta)r^2\theta drd\theta d\phi\label{6.27}
+\end{equation}
+となる。領域Ｄは、直角座標$(x,y,z)$での領域を極座標で表したものであり、また、$r^2\sin\theta drd\theta d\phi$は極座標での体積要素である。
+\subsubsection*{例題}
+次の三重積分を求めよ。
+\begin{equation*}
+    I=\iiint_R(x^2+y^2+z^2)dxdydz\quad(R:0\leq x^2+y^2+z^2\leq a^2,a>0)
+\end{equation*}
+極座標変換すると、簡単に求まる。$x^2+y^2+z^2=r^2$に注意して、
+\begin{equation*}
+    I=\int_0^{2\pi}d\phi\int_0^\pi d\theta\int_0^a r^2\cdot r^2\sin\theta dr
+    =2\pi\cdot\frac{1}{5}a^5\cdot 2=\frac{4\pi}{5}a^5
+\end{equation*}
+となる。
+\subsubsection*{}
+\subsection{曲線座標}
+もっと一般に、
+\begin{equation*}
+    x=g(u,v),\quad y=h(u,v)
+\end{equation*}
+で与えられる曲線座標系$(u,v)$では、二重積分はどう表せるのか考えてみよう。
+結論だけ与えると、二重積分は
+\begin{align}
+    \iint_R f(x,y)dxdy=\iint_D f(g(u,v),h(u,v))|J|du dv\notag\\
+    J=\frac{\partial(x,y)}{\partial(u,v)}=
+    \begin{vmatrix}
+        \displaystyle\frac{\partial x}{\partial u} & \displaystyle\frac{\partial x}{\partial v}\\
+        &\\
+        \displaystyle\frac{\partial y}{\partial u} & \displaystyle\frac{\partial y}{\partial v}
+    \end{vmatrix}
+    =\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}-\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}\label{6.33}
+\end{align}
+となる。ここで、$J$は$u,v$に関する$x,y$の\textbf{ヤコビ行列式}または、\textbf{ヤコビアン}という。
+$|J|$は、その絶対値である。
+
+\subsubsection*{例題}
+二次元極座標$(\rho,\phi)$に対して、
+\begin{equation*}
+    \iint_R f(x,y)dxdy=\iint_Df(\rho\cos\phi,\rho\sin\phi)\rho d\rho d\phi
+\end{equation*}
+を示せ。
+
+\subsubsection*{解答}
+公式\eqref{6.33}式より、
+\begin{equation*}
+    J=\begin{vmatrix}
+        \displaystyle\frac{\partial x}{\partial u} & \displaystyle\frac{\partial x}{\partial v}\\
+        &\\
+        \displaystyle\frac{\partial y}{\partial u} & \displaystyle\frac{\partial y}{\partial v}
+    \end{vmatrix}
+    =\begin{vmatrix}
+        \cos\phi & -\rho\sin\phi\\
+        &\\
+        \sin\phi & \rho\cos\phi
+    \end{vmatrix}
+    =\cos\phi\cdot\rho\cos\phi - (-\rho\sin\phi)\sin\phi=\rho(\sin^2\phi+\cos^2\phi)=\rho
+\end{equation*}
+よって、$xy$座標系での領域$R$を$uv$座標系で表した領域を$D$として、
+\begin{equation*}
+    \iint_R f(x,y)dxdy=\iint_Df(\rho\cos\phi,\rho\sin\phi)\rho d\rho d\phi
+\end{equation*}
+を得る。
+
+\section{線積分}
+\subsection{線積分}
+この章の最後の課題として、線積分について述べる。理工学でよく用いられる概念らしい。
+
+ひとまず定義から述べる。三次元空間内に、方向を持った曲線$C$を考える。その$C$上のすべての点において連続な関数
+$P(x,y,z),Q(x,y,z),R(x,y,z)$があるとする。
+
+いま、曲線$C$上に$n-1$個の点$(x_1,y_1,z_1),(x_2,y_2,z_2),\cdots,(x_{n-1},y_{n-1},z_{n-1})$をとり、
+$n$個の小区間に分ける。始点$A$を$(a_1,a_2,a_3)\equiv(x_0,y_0,z_0)$、終点$B$を$(b_1,b_2,b_3)\equiv(x_n,y_n,z_n)$
+と書き、$\Delta x_k=x_k-x_{k-1},\Delta y_k=y_k-y_{k-1},\Delta z_k=z_k-x_{k-1}(k=1,2,\cdots,n)$と置く。
+点$(x_{k-1},y_{k-1},z_{k-1})$と$(x_k,y_k,z_k)$の間の$C$上の点を$(\xi_k,\eta_k,\zeta_k)$として、積和
+\begin{equation}
+    \sum_{k=1}^{n}\{P(\xi_k,\eta_k,\zeta_k)\Delta x_k+Q(\xi_k,\eta_k,\zeta_k)\Delta y_k+R(\xi_k,\eta_k,\zeta_k)\Delta z_k\}\label{6.49}
+\end{equation}
+をつくる。すべての$\Delta x_k,\Delta y_k,\Delta z_k$が$0$に近づくように分割の数$n$を大きくする。
+この時の極限値を
+\begin{equation}
+    \int_C[P(x,y,z)dx+Q(x,y,z)dy+R(x,y,z)dz]\label{6.50}
+\end{equation}
+で表し、\textbf{線積分}という。線積分は、一般に始点Aと終点Bをつなぐ曲線(\textbf{積分路})の選び方に依存する。
+そのため、選んだ経路は$\int_C$のように選んだ積分路を積分記号の横に書く。
+
+曲線Cが$xy$平面上の曲線である場合は、線積分は
+\begin{equation*}
+    \int_C[P(x,y)dx+Q(x,y)dy]
+\end{equation*}
+となる。
+
+線積分の性質をまとめる。
+\begin{itemize}
+    \item $\displaystyle\int_C[Pdx+Qdy+Rdz]=\int_CPdx+\int_CQdy+\int_CRdz$
+    \item 曲線$C$の逆向きの曲線を$\overline{C}$とする。\\
+    \begin{equation*}
+        \int_{\overline{C}}[Pdx+Qdy+Rdz]=-\int_C[Pdx+Qdy+Rdz]
+    \end{equation*}
+    \item 曲線$C_1,C_2$をつなぎ合わせた曲線を$C$とする。\\
+    \begin{equation*}
+        \int_C[Pdx+Qdy+Rdz]=\int_{C_1}[Pdx+Qdy+Rdz]+\int_{C_2}[Pdx+Qdy+Rdz]
+    \end{equation*}
+\end{itemize}
+
+\subsubsection*{例題}
+線積分
+\begin{equation*}
+    \int_C[(x-y)dx+ydy]
+\end{equation*}
+を次の二つの積分路で求めよ。\\
+(1)$C_1:$x軸上を始点$(1,0)$から$(2,0)$。次にy軸に平行に$(2,0)$から終点$(2,1)$。\\
+(2)$C_2:$始点$(1,0)$と終点$(2,1)$を結ぶ直線。
+
+\subsubsection*{解答}
+(1)求める線積分は
+\begin{equation*}
+    \int_1^2 xdx+\int_0^1 ydy=\frac{3}{2}+\frac{1}{2}=2
+\end{equation*}
+左辺第一項はx軸の線、第二項はy軸平行の直線を表す。
+
+(2)始点と終点を結ぶ直線$C_2$は$y=x-1(1\leq x\leq 2)$であるため、$C_2$上では$dy=dx$となる。
+よって、
+\begin{equation*}
+    \int_{C_2}[(x-y)dx+ydy]=\int_1^2[(x-(x-1))dx+(x-1)dx]=\int_1^2 xdx=\frac{3}{2}
+\end{equation*}
+この答えから、始点終点が共通でも、積分路が異なると、線積分の値が異なることに注意しよう。
+
+\subsection{仕事}
+線積分は、力学の仕事をイメージすると理解しやすいかもしれない。位置に依存して働く力の$x,y,z$成分をそれぞれ$P,Q,R$とすれば、
+$Pdx,Qdy,Rdz$は微小区間におけるそれぞれの方向の仕事($=\text{力}\times\text{変位}$)になることがわかるだろうか。
+線積分はそれらの総和であるわけだから、全体の仕事となるわけである。
+\subsection{重力による位置エネルギー}
+物理の授業では、重力による位置エネルギー(ポテンシャルエネルギー)は$U=mgh$で与えられることを学んだ。
+この式から、重力による位置エネルギーは途中の経路によらず、物体の位置によって決まるということがわかる。
+この理由を、線積分をつかって考えてみよう。
+
+まず、選んだ経路を$C$とすると、重力による位置エネルギー$U$は次のように表せる。
+\begin{equation*}
+    U=\int_C Fdy
+\end{equation*}
+この時の$F$は物体に及ぼす重力である。重力は鉛直方向にしか力を及ぼさないので、$x,z$成分の力は考える必要はない。
+よって、
+\begin{equation*}
+    U=\int_C mg dy=mg\int_C dy
+\end{equation*}
+ここで、$\displaystyle\int_c dy$は、始点と終点との高さの変位を表すため、これを$h$と置くと、
+\begin{equation*}
+    U=mgh
+\end{equation*}
+となる。
+\newpage
+\subsection{積分路によらない条件}
+先ほど、重力による位置エネルギーが積分路によらないことを学んだ。これをもっと一般化してみて考えてみよう。
+これはすなわち、
+\begin{equation*}
+    \int_C[P(x,y)dx+Q(x,y)dy]
+\end{equation*}
+が途中の経路$C$によらず、始点$A$と終点$B$だけによって決まるときの場合を考えればよい。
+始点$A(a,b)$と終点$B(x,y)$で、点$A$を固定し、$B$を動かすとき、線積分は$x,y$の関数となる。
+\begin{equation*}
+    U(x,y)=\int_{(a,b)}^{(x,y)}[Pdx+Qdy]
+\end{equation*}
+まず、$x$のみ増分$\Delta x$を与えたとする。この時の点を$B'$とすると、この線積分は
+\begin{equation*}
+    U(x+\Delta x,y)=\int_{(a,b)}^{(x+\Delta x,y)}[Pdx+Qdy]
+\end{equation*}
+となる。いま、線積分は途中の経路によらないとしているから、上記の積分路は、$AB$の曲線に$BB'$
+の線分を付け加えたものと考えてよい。すなわち、
+\begin{equation*}
+    U(x+\Delta x,y)=\int_{(a,b)}^{(x,y)}[Pdx+Qdy]+\int_{(x,y)}^{(x+\Delta x,y)}[Pdx+Qdy]=U(x,y)+\int_{(x,y)}^{(x+\Delta x,y)}Pdx
+\end{equation*}
+右辺の積分に平均値の定理を用いると、
+\begin{equation*}
+    \frac{U(x+\Delta x,y)-U(x,y)}{\Delta x}=\frac{1}{\Delta x}\int_x^{x+\Delta x}P(x,y)dx=P(x+\theta\Delta x,y)\quad(0<\theta<1)
+\end{equation*}
+ここで、$\Delta x\to 0$とすると、
+\begin{equation*}
+    P(x,y)=\frac{\partial U(x,y)}{\partial x}
+\end{equation*}
+を得る。同様にして、
+\begin{equation*}
+    Q(x,y)=\frac{\partial U(x,y)}{\partial y}
+\end{equation*}
+この二つの式を用いて、
+\begin{align*}
+    \frac{\partial P}{\partial y}&=\frac{\partial^2 U}{\partial x\partial y}=\frac{\partial Q}{\partial x}\\
+    dU&=\frac{\partial U}{\partial x}dx+\frac{\partial U}{\partial y}dy=Pdx+Qdy
+\end{align*}
+が成り立つことがわかる。つまり、線積分が途中の経路によらないための条件は
+\begin{equation}
+    \frac{\partial P}{\partial y}=\frac{\partial Q}{\partial x}\label{6.63}
+\end{equation}
+であり、その時、\textbf{ポテンシャル関数}$U(x,y)$が存在する。
+
+同様に、線積分$\displaystyle\int_C Pdx+Qdy+Rdz$が途中の路によらないための条件は、
+\begin{equation}
+    \frac{\partial P}{\partial y}=\frac{\partial Q}{\partial x},\quad\frac{\partial Q}{\partial z}=\frac{\partial R}{\partial y},\quad \frac{\partial R}{\partial x}=\frac{\partial P}{\partial z}\label{6.64}
+\end{equation}
+であることがわかる。条件\eqref{6.63}\eqref{6.64}は、線積分が途中の経路によらないための必要条件であるが、
+十分条件でもある。
+\newpage
+では、いま学んだことを用いて、重力による位置エネルギーが経路によらないかどうかを考えてみよう。
+条件\eqref{6.63}を用いて、
+\begin{equation*}
+    \frac{\partial F_y}{\partial x}=0=\frac{\partial F_x}{\partial y}
+\end{equation*}
+であるため、重力による位置エネルギーは途中の経路によらないことがわかる。
+
+このようにすれば、ほかの保存力による位置エネルギーも途中の経路によらないことが証明できる。
+\section{まとめ}
+今回はいろいろな積分が登場した。これらをすぐに理解するのは、とても難しいだろう。多くの人は不可能と思われる。
+このとき、幾何学的な理解で乗り切ろうとしたら、かえって頭が混乱するかもしれない。そのときは一度基本に戻って、
+定積分が積和の極限であることを思い出そう。ゆっくり一つずつ紐解いていけばわかるはずだ。
+
+以下練習問題を少しだけおいておく。適宜取り組むといいと思う。
+
+\section{練習問題}
+次の二重積分を求めよ。
+\begin{equation*}
+    \int_0^1\int_1^2dxdy\qquad\int_1^2\int_0^4(x+y)dxdy\qquad\int_0^1\int_{x^3}^xdydx\qquad\int_0^a\int_0^{\sqrt{a^2-x^2}}xydydx
+\end{equation*}
+\begin{equation*}
+    \iint_R xdxdy\qquad(\text{Rは$y=x^2$と$y=x^3$に囲まれた領域})
+\end{equation*}
+
+次の三重積分を求めよ。
+\begin{equation*}
+    \int_0^1\int_1^2\int_2^3dzdydx\qquad\int_0^1\int_{x^2}^x\int_0^{xy}dzdydx
+\end{equation*}
+
+球の半径を$r$とするとき、球の体積を求めよ。(球の体積が$\frac{4\pi r^3}{3}$であることは周知の事実である。この公式を使って求めることもできるが、それでは面白くない。積分を使って求めてみよう。)\\
+
+次の三重積分を求めよ。
+\begin{equation*}
+    \iint_R\sqrt{x^2+y^2}dxdy\quad(R:4\leq x^2+y^2\leq 16)\quad\iiint_R\frac{dxdydz}{(x^2+y^2+z^2)^{3/2}}\quad(a^2\leq x^2+y^2+z^2\leq b^2)
+\end{equation*}
+\\
+
+線積分
+\begin{equation*}
+    I=\int_C[x^2ydx+(x-1)dy]
+\end{equation*}
+を次の二つの積分路で求めよ。\\
+(1)$C_1:$始点A$(0,0)$と終点B$(1,1)$を直線でつなぐ。\\
+(2)$C_2:$始点Aと終点Bを曲線$y=x^2$でつなぐ。\\
+以上
 \end{document}
