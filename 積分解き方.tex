@@ -1,0 +1,137 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\roman{subsection}}
+% \renewcommand{\thesubsubsection}{\roman{subsubsection}}
+
+\title{積分　解き方集}
+\author{$\sum$理学愛好会}
+\date{}
+
+\begin{document}
+\maketitle
+\section{はじめに}
+積分の計算は、難しい。微分は式変形をしなくても、公式を適応するだけで解くことができるが、積分はそうはいかない。
+自分の計算しやすいように変形する必要があるのだ。うまく公式で扱える範囲に変形するにはある程度知識が必要だ。
+だが、それ以上に経験がものをいう。そこで、今回は積分の計算力をつけるため、様々なパターンの積分を解いてもらう。
+ある程度進めていくと、どういう式のときにどういう変形をすればいいかが見えてくるようになる。ぜひその``コツ''を
+つかんでほしい。
+
+この資料の構成としては、まず始めに積分の感覚をつかむための``基礎の基礎''の問題を載せている。とりあえずそこから取り組んで
+いったん体をならすことをお勧めする。つぎに``基礎''の問題として、有理関数の積分や置換積分・部分積分の簡単な計算問題を載せている。
+そのあとは、応用問題として少し難しい積分を載せている。積分問題をパターンで分類して、それぞれの解き方も解説していく。
+
+また今回は、実際にこれまでの資料で扱わなかった特殊な積分を併せて紹介していく。それらも同時に覚えていくことで
+自分の道具が増えていくことを実感してほしい。
+
+
+\newpage
+\tableofcontents
+\clearpage
+
+\section{不定積分の基礎の基礎}
+ここでは、置換積分や部分積分を用いないで、単純な変形だけで解ける問題を扱う。基本がわかっていないひとはここから読むべきである。
+\subsection{多項式の積分}
+ここでは多項式の積分について扱う。先に言葉の復習から行う。多項式とは、
+\begin{equation*}
+    P(x)=a_0 x^n +a_1 x^{n-1} +\cdots+a_{n-1}x+a_n\quad(\text{$a_0,\cdots,a_n$は定数　$n>1$})
+\end{equation*}
+となるような$P(x)$のことである。また$P(x)$を$x$についての多項式ともいう。
+
+さて、多項式の積分であるが、これらは$x$のべき乗の和であるため個別に積分できて、
+\begin{equation*}
+    \int P(x)dx=\int a_0x^ndx +\int a_1 x^{n-1}dx+\cdots+\int a_{n-1}xdx+\int a_ndx
+\end{equation*}
+となる。それぞれの項の積分は簡単に求められる。
+\subsubsection{例題}
+\begin{equation*}
+    \int (4x^3+3x^2+2x)dx
+\end{equation*}
+を求めよ。
+\subsubsection*{解答}
+個別に積分すると、
+\begin{equation*}
+    \int (4x^3+3x^2+2x)dx=\int 4x^3dx+\int 3x^2dx+\int 2xdx=x^4+x^3+x^2+C
+\end{equation*}
+となる。最後の積分定数を忘れないように。
+
+\subsubsection{例題}
+\begin{equation*}
+    \int (x^2+1)^2dx
+\end{equation*}
+を求めよ。
+\subsubsection*{解答}
+展開すれば、個別に積分できるので、
+\begin{equation*}
+    \int (x^2+1)^2dx=\int (x^4+2x^2+1)dx=\int x^4dx+\int 2x^2dx+\int dx=\frac{x^5}{5}+\frac{2}{3}x^3+x+C
+\end{equation*}
+このように、積の形であっても\underbar{展開して和に直すことで}、個別に積分できる。個別に撃破すれば恐れることはない。
+\newpage
+\subsection{三角関数の積分}
+次はみんな大好き三角関数の積分である。符号にさえ注意すればそこまで恐れることはない。ただ、
+三角関数の公式を把握していないと、$\sin x,\cos x$はできるかもしれないが、これが$\sin^2 x,\cos^2 x$となった
+ときに計算できなくなってしまう。曖昧な公式があれば復習をするとよい。
+\subsubsection{例題}
+次の積分を求めよ。
+\begin{equation*}
+    \int (\sin x+\cos x) dx
+\end{equation*}
+\subsubsection*{解答}
+個別に積分してしまえば一発である。
+\begin{equation*}
+    \int(\sin x+\cos x)dx=\int \sin xdx+\int \cos xdx=-\cos x+\sin x+C
+\end{equation*}
+\subsubsection{例題}
+次の積分を求めよ。
+\begin{equation*}
+    (1)\int \sin^2 \frac{x}{2}dx\quad (2)\cos^2 \frac{x}{2}dx 
+\end{equation*}
+\subsubsection*{解答}
+これまでのようにすでに和の形になっていないので最初は戸惑いやすい。半角の公式を使ってしまえば和の形に変形できる。
+\begin{align*}
+    &(1)\int \sin^2 \frac{x}{2}dx=\int\frac{1-\cos x}{2}dx=\frac{1}{2}(\int dx-\int \cos xdx)=\frac{1}{2}(x-\sin x)+C\\
+    &(2)\int \cos^2 \frac{x}{2}dx=\int\frac{1+\cos x}{2}dx=\frac{1}{2}(\int dx+\int \cos xdx)=\frac{1}{2}(x+\sin x)+C 
+\end{align*}
+この変形は実は結構よく使う。絶対に覚えておくべき変形である。
+\newpage
+\subsection{指数関数の積分}
+ここでは指数関数を扱う。微分しても積分しても形が変わらない$e^x$という特殊な関数をメインで扱う。
+\subsubsection{例題}
+次の積分を求めよ。
+\begin{equation*}
+    (1)\int 2^x dx\quad(2)\int e^{x+1}dx
+\end{equation*}
+\subsubsection*{解答}
+(1)公式をそのまま適応して、
+\begin{equation*}
+    \int 2^x dx=\frac{2^x}{\log 2}+C
+\end{equation*}
+
+(2)指数法則$a^b\cdot a^c=a^{b+c}$をもちいて、
+\begin{equation*}
+    \int e^{x+1}dx=e\int e^xdx=e^{x+1}+C
+\end{equation*}
+(2)の問題は普通は置換積分を使うが、指数法則を用いても解くことができるということを知ってほしい。\\
+\hrulefill
+\subsection{演習問題}
+以下の積分を求めよ。\\
+(1)$\displaystyle\int \sqrt{x}(x^2+1)dx$
+\hspace*{20mm}
+(2)$\displaystyle\int\sin(x-\frac{\pi}{2})dx$
+\hspace*{20mm}
+(3)$\displaystyle\int 2\cos xdx$
+\\\\
+(4)$\displaystyle \int (\cos^2\frac{x}{2}+\sin^2\frac{x}{2})dx$
+\hspace*{12mm}
+(5)$\displaystyle\int2^{\log x}dx$
+
+\newpage
+
+\section{不定積分の基礎}
+ここでは、置換積分・部分積分、有理関数の積分を主に扱う。置換積分、部分積分をなくしては
+積分の問題は解くことができない(たまに微分から逆算することもできるが)。有理関数も有理関数の不定積分
+が必ず求められることから非常に重要になってくる。この重要性については応用問題の際に語るとして、とりあえず
+簡単な問題から取り組んでいこう。
+\end{document}
