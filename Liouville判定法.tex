@@ -1,0 +1,90 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+
+\begin{document}
+\section*{$\frac{1}{\log x}$の原始関数が初等関数で表せないことの証明}
+\subsection{Liouville判定法}
+不定積分が初等関数で表せるかどうかを判定するために、Liouville判定法を用いる。
+\begin{itembox}[c]{Liouville判定法}
+    有理関数$f(x),g(x)$に対して、$\displaystyle f(x)e^{g(x)}$の不定積分が初等関数でかけるためには、
+    ある有理関数$h(x)$が存在して、
+    \begin{equation*}
+        f(x)=h'(x)+h(x)g'(x)
+    \end{equation*}
+    と書けることが必要かつ十分である。
+\end{itembox}
+このことを利用して、$\frac{1}{\log x}$の不定積分が初等関数で表せないことを証明する。
+\subsection{式の変形}
+$\displaystyle \int \frac{dx}{\log x}$そのままの形ではLiouville判定法を使うことができないので変形する。$t=\log x$とすると、
+$x=e^t$であるため、$\displaystyle dx=e^tdt$より、
+\begin{equation*}
+    \int \frac{dx}{\log x}=\int \frac{e^t}{t}dt
+\end{equation*}
+となる。よって、右辺の積分が初等関数で表せないことを示せばいい。\footnote{
+    $\int f(x)dx$の$x=\phi(t)$における置換積分、$\int f(\phi(t))\phi'(t)dt$
+    が存在しなければ、仮に$F'(x)=f(x)$とした場合に、$x=\phi(t)$とすると$(F(\phi(t)))'=F'(\phi(t))\phi'(t)$
+    となり、両辺を$t$で積分したときに、$\int F(\phi(t))\phi'(t)dt=F(\phi(t))+C$となってしうので仮定に矛盾してしまう。
+    よって、置換積分した不定積分が存在しなければ、置換する前の不定積分は存在しないことになる。
+}
+\subsection{証明}
+$f(t)=\frac{1}{t},g(t)=t$とする。
+
+$\displaystyle\frac{e^t}{t}$の不定積分が初等関数で書けるためには、
+\begin{equation*}
+    f(t)=h'(t)+h(t)g'(t)
+\end{equation*}
+となるような、有理関数$h(t)$が存在しなければならない。\\
+ここで、$h(t)$が存在すると仮定すると、互いに素である二つの多項式、$p(t),q(t)$で
+\begin{equation*}
+    h(t)=\frac{p(t)}{q(t)}
+\end{equation*}
+と書ける。
+判定法を満たす式より、
+\begin{equation*}
+    \frac{1}{t}=h'(t)+h(t)\to 1=h'(t)t+h(t)t
+\end{equation*}
+となる。これを計算すると、
+\begin{align*}
+    1&=\frac{p'(t)q(t)-p(t)q'(t)}{q^2(t)}\cdot t +\frac{p(t)}{q(t)}\cdot t\\
+    q^2(t)&=(p'(t)q(t)-p(t)q'(t))t+p(t)q(t)t\\
+    q^2(t)&=p'(t)q(t)t-p(t)q'(t)t+p(t)q(t)t\\
+    p(t)q'(t)t&=q(t)(p'(t)t-q(t)+p(t)t)\tag{*}
+\end{align*}
+$p(t)$と$q(t)$は互いに素であるため、$q'(t)$もしくは$q'(t)t$が$q(t)$で割り切れることがわかる。
+
+前者の場合は、$q(t)$が定数であることを意味し、$h(t)$が多項式となるため、判定式に矛盾が生じる。
+
+後者の場合は、$q'(t)t$と$q(t)$が同じ次数であり、$q(t)$に定数項がないことを意味する。また、$q(t)$は単項式であることを意味する。なぜならば、
+仮に$q(t)$が単項式ではないとすると、$a_n,a_{n-1},\cdots,a_1$を定数として、
+\begin{equation*}
+    q(t)=a_n t^n+a_{n-1}t^{n-1}+\cdots+a_1 t
+\end{equation*}
+と表せる。よって、$q'(t)t$は次のように表せる。
+\begin{equation*}
+    q'(t)t=a_n n t^n+a_{n-1}(n-1)t^{n-1}+\cdots+a_1 t
+\end{equation*}
+$q'(t)t$を$q(t)$で割ると、商は$n$、余りは
+\begin{equation*}
+    -a_{n-1}t^{n-1}-2a_{n-2}t^{n-2}-\cdots -(n-1)a_1t
+\end{equation*}
+となる。$q'(t)t$は$q(t)$で割り切れなければならないので、余りは$0$となる必要がある。よって$a_{n-1},\cdots,a_1$が
+0になれば、余りが0となる。その場合、$q(t)$は次のように表せる。
+\begin{equation*}
+    q(t)=a_n t^n+0\cdot t^{n-1}+\cdots+0\cdot t=a_n t^n
+\end{equation*}
+よって仮定と矛盾するため、$q(t)$は単項式である。
+
+ここで、(*)式に着目すると、、$a,n$を定数として、
+\begin{equation*}
+    p(t)\cdot ant^n=at^n(p'(t)t-at^n+p(t)t)
+\end{equation*}
+となっている。式を簡単にすると、
+\begin{equation*}
+    n\cdot p(t)=p'(t)t-at^n+p(t)t=t(p'(t)-at^{n-1}+p(t))
+\end{equation*}
+となり、$p(t)$は$t$で割り切れる。しかし、$p(t)$と$q(t)$が互いに素であることに矛盾である。
+
+よって、判定式を満たす$h(t)$は存在しないので、$\displaystyle \int \frac{dx}{\log x}$は初等関数で表すことができない。
+\end{document}
