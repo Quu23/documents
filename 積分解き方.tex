@@ -134,4 +134,42 @@
 積分の問題は解くことができない(たまに微分から逆算することもできるが)。有理関数も有理関数の不定積分
 が必ず求められることから非常に重要になってくる。この重要性については応用問題の際に語るとして、とりあえず
 簡単な問題から取り組んでいこう。
+\subsection{置換積分の基礎}
+始めに置換積分について扱う。もっとも汎用性が高い変形方法ではないだろうか。一応、置換積分の公式を書いておく。
+\begin{equation*}
+    \int f(x)dx = \int f(\phi(t))\phi'(t)dt
+\end{equation*}
+\subsubsection{例題}
+次の不定積分を求めよ。
+\begin{equation*}
+    (1)\int (2x+1)^3 dx \quad (2)\int\tan x dx \quad (3)\int\cos^2 xdx
+\end{equation*}
+\subsubsection*{解答}
+(1)展開して各項ごとに積分することもできるが、置換積分を使ったほうが圧倒的に早い。
+$t=2x+1$と置くと、$dt=2dx$より、
+\begin{equation*}
+    \int \frac{1}{2}t^3dt=\frac{1}{8}t^4+C =\frac{1}{8}(2x+1)^4+C
+\end{equation*}
+最後に$x$の式に戻すことを忘れないように。
+
+(2)$\tan x=\sin x/\cos x$の公式と$(\cos x)'=-\sin x$を利用し、$t=\cos x$と置くと、
+\begin{equation*}
+    -\int \frac{(\cos x)'}{\cos x}dx=-\int \frac{1}{t}dt=-\log |t|+C=-\log|\cos x|+C
+\end{equation*}
+
+(3)半角の公式を使い、$t=2x$と置くことで、
+\begin{equation*}
+    \int \frac{1+\cos 2x}{2}dx=\frac{1}{2}(x+2\int \cos tdt)=\frac{1}{2}(x+2\sin 2x)+C
+\end{equation*}
+慣れてくると、(1)や(2)の問題程度ならわざわざ置換しなくても解くことができるようになる。
+
+置換積分のポイントは、$t=f(x)$と置いたときに発生する$f'(x)$をどう処理するかである。例えば例題(2)では、
+$t=\cos x$と置いているが、これは$dt=-\sin x dx$の$\sin x$がちょうど分子にあるからできることなのだ。
+よって、うまく微分したらうまく重なるところを探す必要がある。
+\subsubsection{例題}
+$\displaystyle \int x\sin(x^2)dx$を求めよ。
+\subsubsection*{解答}
+$t=x^2$と置くと、$\frac{1}{2}dt=xdx$となり、式が簡単になる。
+$\displaystyle \frac{1}{2}\int \sin tdt=-\frac{1}{2}\cos t+C=-\frac{1}{2}\cos (x^2)+C$
+\newpage
 \end{document}
