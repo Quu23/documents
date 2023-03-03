@@ -1,5 +1,7 @@
 \documentclass[a4j,dvipdfmx]{jsarticle}
 \usepackage{amsmath,amssymb}
+% \usepackage{fancybx}
+\usepackage{ascmac}
 \usepackage{siunitx}
 
 \renewcommand{\thesection}{\Roman{section}}
@@ -172,4 +174,200 @@ $\displaystyle \int x\sin(x^2)dx$を求めよ。
 $t=x^2$と置くと、$\frac{1}{2}dt=xdx$となり、式が簡単になる。
 $\displaystyle \frac{1}{2}\int \sin tdt=-\frac{1}{2}\cos t+C=-\frac{1}{2}\cos (x^2)+C$
 \newpage
+\subsection{部分積分の基礎}
+次は部分積分である。置換積分に比べたら使う機会は少ないかもしれないが、使えないと確実に困る。
+例えば、今年の京大数学の第一問は部分積分で解く。まず置換積分同様、公式を載せる。
+\begin{equation*}
+    \int f(x)g'(x)dx=f(x)g(x)-\int f'(x)g(x)dx
+\end{equation*}
+式だけでは感覚はつかみにくいだろうから、試しに例題を解いてみよう。
+\subsubsection{例題}
+次の不定積分を求めよ。
+\begin{equation*}
+    (1)\int x\sin xdx\quad (2)\int xe^x dx \quad (3)\int x\log x dx
+\end{equation*}
+\subsubsection*{解答}
+(1)$f(x)=x,g'(x)=\sin x$と置くと、
+\begin{equation*}
+    \int x\sin x dx=-x\cos x+\int \cos xdx=-x\cos x+\sin x+C 
+\end{equation*}
+
+(2)前問と同様に$f(x)=x,g'(x)=e^x$と置くと、
+\begin{equation*}
+    \int xe^x dx=xe^x-\int e^xdx=xe^x-e^x+C=(x-1)e^x +C
+\end{equation*}
+
+(3)今度は$f(x)=\log x,g'(x)=x$と置くと、
+\begin{equation*}
+    \int x\log xdx=\frac{1}{2}x^2\log x-\int \frac{1}{2}xdx=\frac{1}{2}x^2\log x-\frac{1}{4}x^2+C
+\end{equation*}
+
+例題を見ればわかるように、$xf'(x)$の積分は、$x$を微分することで$f(x)$の積分に変形できる。ただ、
+$f(x)$の積分が余りにも複雑な場合には、この変形は使わないほうが良いかもしれない。(3)は、$(\log x)'=\frac{1}{x}$
+に気づけば、$x$の積分に変形できる。このような積分は後ほど詳しく学ぶ。
+\subsubsection{例題}
+次の不定積分を求めよ。
+\begin{equation*}
+    \int e^x \cos xdx
+\end{equation*}
+\subsubsection*{解答}
+
+とりあえず、この不定積分を$I$と置いて計算する。二回部分積分を行うと、
+\begin{equation*}
+    I=\int e^x \cos xdx=e^x\cos x + \int e^x \sin xdx=e^x\cos x+e^x \sin x-I 
+\end{equation*}
+よって、
+\begin{equation*}
+    I=\frac{e^x}{2}(\cos x+\sin x)+C
+\end{equation*}
+このように部分積分を行うことで、右辺に求めたい積分をつくることで、積分を計算することもできる。
+\newpage
+\subsection{有理関数の積分の基礎}
+最後に有理関数の積分についてである。先に有理関数の定義を述べておく。$f(x),g(x)$をそれぞれ多項式とすると、
+有理関数$F(x)$は次にようになる。
+\begin{equation*}
+    F(x)=\frac{f(x)}{g(x)}
+\end{equation*}
+一般に、\underbar{有理関数の積分は常に求められる}。下線部の性質はとても重要で、これを用いれば、被積分関数を$x$に関する
+有理関数に帰着することが出来れば、その積分は必ず求められることになる。
+そのため、有理関数の積分を求める練習はしておいたほうが良いだろう。
+\subsubsection{例題}
+次の不定積分を求めよ。
+\begin{equation*}
+    (1)\int \frac{x+5}{x-2}dx\quad(2)\int \frac{x}{(x^2+1)^2}dx\quad(3)\int \frac{dx}{x^2-9}
+\end{equation*}
+\subsubsection*{解答}
+(1)$\displaystyle \frac{x+5}{x-2}=1+\frac{7}{x-2}$という風に変形を施せば、
+\begin{equation*}
+    \int 1+\frac{7}{x-2}dx=x+7\int \frac{dx}{x-2}=x+7\log|x-2|+C
+\end{equation*}
+(2)有理関数の積分というよりは、置換積分の練習になってしまうが、
+\begin{equation*}
+    \int \frac{x}{x^2+1}dx=\frac{1}{2}\int \frac{dt}{t}=\frac{1}{2}\log|t|+C=\frac{1}{2}\log(x^2+1)+C
+\end{equation*}
+(3)そのままでは積分できないので、もちろん変形しなければならない。
+\begin{equation*}
+    \int \frac{dx}{x^2-9}=\int\frac{dx}{(x-3)(x+3)}=\frac{1}{6}\left(\int \frac{dx}{x-3}-\int\frac{dx}{x+3}\right)
+    =\frac{1}{6}\left(\log |x-3|-\log|x+3|\right)+C=\frac{1}{6}\log \left|\frac{x-3}{x+3}\right|+C
+\end{equation*}
+このように部分分数分解を行うことで計算できる。
+\subsubsection{例題}
+次の不定積分を求めよ。
+\begin{equation*}
+    \int \frac{2}{x^2-2x-3}dx
+\end{equation*}
+\subsubsection*{解答}
+部分分数分解によって、$\displaystyle\frac{2}{x^2-2x-3}=\frac{2}{(x-3)(x+1)}=\frac{1}{2}\left(\frac{1}{x-3}-\frac{1}{x+1}\right)$
+と変形できるので、
+\begin{equation*}
+    \int\frac{2}{x^2-2x-3}dx=\int \frac{1}{2}\left(\frac{1}{x-3}-\frac{1}{x+1}\right)dx=\frac{1}{2}\log\left|\frac{x-3}{x+1}\right|+C
+\end{equation*}
+\newpage
+\subsection{演習問題}
+次の不定積分を求めよ。
+
+$(1)\displaystyle\int (x+2)^{100}dx$
+\hspace{20mm}
+$(2)\displaystyle\int \sin^3 x\cos xdx$
+\hspace{20mm}
+$(3)\displaystyle\int x\cos xdx$\\
+
+$(4)\displaystyle\int \log xdx$
+\hspace{27mm}
+$(5)\displaystyle\int x\sin(x^2)dx$
+\hspace{24mm}
+$(6)\displaystyle\int \sqrt{x}\log(x^2)dx$\\
+
+※(6)の問題は、今年の京大数学の問題を一部変えて修正している。\\
+\hrulefill
+\subsection{Coffee Break： $\log |x|$ の絶対値記号}
+\begin{screen}
+    $\displaystyle\frac{1}{x+a}$の積分が何かと聞かれたら、もちろん$\log|x+a|$と答えるだろう。
+    では、$\displaystyle\frac{2x}{x^2+1}$の場合ならどうか？$t=x^2+1$と置換すれば求まるがその答えを
+    $\log|x^2+1|$と書いてしまっていないだろうか？$x^2+1$は最小値が$1$の関数である。すなわち、
+    常に正なわけである。つまり、$|x^2+1|$は$(x^2+1)$と書くべきなのだ。そもそも、絶対値記号がつくのは、
+    真数条件を満たすようにするためである。常に満たしている$x^2+1$に絶対値をつけるのは、おかしいのである。
+
+    ちなみに、複素数まで数を拡張すれば、真数に負の値が入っても問題ない。（例：$\log(-1)=\pi i$）
+\end{screen}
+\newpage
+\section{置換積分}
+ここでは置換積分を中心に扱っていく。様々な置換の方法、テクニックを紹介する。
+\subsection{$\sqrt{ax^2+bx+c}$の積分}
+ひとまず、無理関数の積分から解いてみよう。無理関数の積分といっても様々な形があるが、今回は$\sqrt{ax^2+bx+c}$
+に絞って扱っていく。
+\subsubsection{$\sqrt{a^2-x^2}$の積分}
+まず、$\sqrt{a^2-x^2}$の積分から解く。こういうタイプの積分は、まず根号を外すことを考える。
+ここで三角関数の公式$\cos^2 x=1-\sin^2 x$を思い出してみよう。右辺がなんとなく$a^2-x^2$に似ている。
+頑張って、$1-\sin^2 x$の形に持ってくれば、$\sqrt{\cos^2 x}=\cos x$となり根号が外れて計算しやすくなる。
+
+よって、$x=a\sin \theta$の置換を行えばよいことがわかる。$dx=a\cos \theta d\theta$であるため、
+\begin{equation*}
+    \int \sqrt{a^2-x^2}dx=\int \sqrt{a^2-a^2\sin^2\theta}\cdot a\cos\theta d\theta
+    =a^2\int \cos^2\theta d\theta=\frac{1}{2}(\theta+\frac{1}{2}\sin(2\theta))+C
+\end{equation*}
+ここで、$\theta =\arcsin(\frac{x}{a})$より、
+\begin{equation*}
+    \frac{1}{2}(\theta+\frac{1}{2}\sin(2\theta))+C=\frac{1}{2}(\arcsin(\frac{x}{a})+\frac{x}{a^2}\sqrt{a^2-x^2})+C
+\end{equation*}
+最後の式変形は$\sin(2\theta)=2\sin\theta\cos\theta$を用いた。
+
+\subsubsection{$\sqrt{x^2+a^2}$の積分}
+お次は、$\sqrt{x^2+a^2}$の積分である。これには複数のやり方がある。まず最初に思いつくのが$x=a\tan \theta$の置換だろう。
+先ほどの$\sqrt{a^2-x^2}$の積分と同様に、三角関数を用いて根号を外せばいい。ただ、この方法は計算量がほかの方法に比べて多くなってしまう。\\
+
+そこで、$x=a\sinh \theta$と置換することで、計算量を抑えることができる。$\sinh x$を知らない人がいるかもしれないので説明しておくと、
+これは双曲線関数と呼ばれ、$\displaystyle \sinh x=\frac{e^x-e^{-x}}{2}$である。読み方は、「ハイパボリックサイン」である。$sin x$と
+似た形をしているのは、$\sin x$にとても性質が似通っているからである。もちろん$\cosh x$もある。こちらは$\displaystyle \cosh x=\frac{e^x+e^{-x}}{2}$
+となる。ちょっと考えればわかるように$\cosh^2 x=1+\sinh^2 x$である。この性質を利用して、
+\begin{equation*}
+    \sqrt{1+\sinh^2 x}=\cosh x
+\end{equation*}
+となれば、根号を外すことができるのだ！\\
+
+とりあえず、今言った三つの方法でそれぞれ積分してみる。
+\newpage
+まず、$x=a\tan\theta$と置換してみる。
+\begin{align*}
+    I&=\int \sqrt{x^2+a^2}dx=a^2\int \frac{1}{\cos \theta}\cdot\frac{d\theta}{\cos^2 \theta}
+    =a^2\int\frac{d\theta}{\cos^3\theta}=\frac{a^2}{4}\left(\log\left(\frac{1+\sin\theta}{1-\sin\theta}\right)
+    +\frac{2\sin \theta}{\cos^2 \theta}\right)+C\\
+    &=\frac{a^2}{4}\left(\log\left(\frac{1+\sin(\arctan(\frac{x}{a}))}{1-\sin(\arctan(\frac{x}{a}))}\right)
+    +\frac{2\sin(\arctan(\frac{x}{a}))}{\cos^2(\arctan(\frac{x}{a}))}\right)+C\\
+    &=\frac{a^2}{4}\left(\log\left(\frac{1+\frac{\frac{x}{a}}{\sqrt{1+\frac{x^2}{a^2}}}}{1-\frac{\frac{x}{a}}{\sqrt{1+\frac{x^2}{a^2}}}}\right)
+    +\frac{2\frac{x}{a}(\frac{x^2}{a^2}+1)}{\sqrt{1+\frac{x^2}{a^2}}}\right)+C
+\end{align*}
+恐ろしい化け物ができているが、整理してあげるときれいな形に収まる。
+\begin{align*}
+    I&=\frac{a^2}{4}\left(\log\left(\frac{a^2+2x^2+2x\sqrt{x^2+a^2}}{a^2}\right)
+    +\frac{2x}{a}\sqrt{1+\frac{x^2}{a^2}}\right)+C\\
+    &=\frac{a^2}{4}\left(\log\left(\frac{(x+\sqrt{a^2+x^2})^2}{a^2}\right)
+    +\frac{2x}{a^2}\sqrt{a^2+x^2}\right)+C\\
+    &=\frac{a^2}{4}\left(2\log\left(\frac{(x+\sqrt{a^2+x^2})}{a}\right)
+    +\frac{2x}{a^2}\sqrt{a^2+x^2}\right)+C\\
+    &=\frac{1}{2}\left(a^2\log\left(\frac{(x+\sqrt{a^2+x^2})}{a}\right)
+    +x\sqrt{a^2+x^2}\right)+C\\
+\end{align*}
+となる。途中に出てきた$\int dx/\cos^3x$は後ほど解説する。とても計算が大変になるのがわかる(ついでに言うなら計算する
+こちらも大変だった)。
+
+次に、$x=a\sinh \theta$と置換する。$dx=a\cosh\theta d\theta$であるため、
+\begin{align*}
+    \int\sqrt{x^2+a^2}dx&=a^2\int\sqrt{\sinh^2\theta+1}\cosh\theta d\theta\\
+    &=a^2\int \cosh^2 \theta d\theta=a^2\int\frac{1+\cosh(2\theta)}{2}d\theta
+\end{align*}
+$2\theta=z$と置くと、$dz=2d\theta$となるため、
+\begin{equation*}
+    =\frac{a^2}{2}(\theta+\frac{1}{2}\int \cosh zdz)=\frac{a^2}{2}(\theta+\frac{1}{2}\sinh(2\theta))+C
+\end{equation*}
+となる。$\theta=\sinh^{-1}\frac{x}{a}$であるため、
+\begin{equation*}
+    =\frac{a^2}{2}(\sinh^{-1}\frac{x}{a}+\frac{1}{2}\sinh(2\sinh^{-1}\frac{x}{a}))+C
+    =\frac{a^2}{2}(\sinh^{-1}\frac{x}{a}+\frac{x}{a}\sqrt{1+\frac{x^2}{a^2}})+C
+\end{equation*}
+ここで、$\sinh^{-1}x=\log(x+\sqrt{1+x^2})$であるため(自分で確かめよ)、これを代入して、
+\begin{equation*}
+    =\frac{a^2}{2}\left(\log\left(\frac{x}{a}+\sqrt{1+\frac{x^2}{a^2}}\right)+\frac{x}{a}\sqrt{1+\frac{x^2}{a^2}}\right)+C=\frac{1}{2}\left(a^2\log\left(\frac{x+\sqrt{a^2+x^2}}{a}\right)+x\sqrt{a^2+x^2}\right)+C
+\end{equation*}
+となり、$a\tan\theta$で置換した時と同じ結果になっている。$\sinh^{-1}x$を求めるのが少し面倒ではあるが、それでも$\tan \theta$のときよりは明らかに簡単であると思う。
 \end{document}
