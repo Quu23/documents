@@ -280,7 +280,7 @@ $(6)\displaystyle\int \sqrt{x}\log(x^2)dx$\\
 
 ※(6)の問題は、今年の京大数学の問題を一部変えて修正している。\\
 \hrulefill
-\subsection{Coffee Break： $\log |x|$ の絶対値記号}
+\subsection{$\blacksquare$Coffee Break： $\log |x|$ の絶対値記号}
 \begin{screen}
     $\displaystyle\frac{1}{x+a}$の積分が何かと聞かれたら、もちろん$\log|x+a|$と答えるだろう。
     では、$\displaystyle\frac{2x}{x^2+1}$の場合ならどうか？$t=x^2+1$と置換すれば求まるがその答えを
@@ -325,7 +325,7 @@ $(6)\displaystyle\int \sqrt{x}\log(x^2)dx$\\
 \end{equation*}
 となれば、根号を外すことができるのだ！\\
 
-とりあえず、今言った三つの方法でそれぞれ積分してみる。
+とりあえず、今言った２つの方法でそれぞれ積分してみる。
 \newpage
 まず、$x=a\tan\theta$と置換してみる。
 \begin{align*}
@@ -349,7 +349,7 @@ $(6)\displaystyle\int \sqrt{x}\log(x^2)dx$\\
     +x\sqrt{a^2+x^2}\right)+C\\
 \end{align*}
 となる。途中に出てきた$\int dx/\cos^3x$は後ほど解説する。とても計算が大変になるのがわかる(ついでに言うなら計算する
-こちらも大変だった)。
+私のほうも大変だった)。
 
 次に、$x=a\sinh \theta$と置換する。$dx=a\cosh\theta d\theta$であるため、
 \begin{align*}
@@ -370,4 +370,55 @@ $2\theta=z$と置くと、$dz=2d\theta$となるため、
     =\frac{a^2}{2}\left(\log\left(\frac{x}{a}+\sqrt{1+\frac{x^2}{a^2}}\right)+\frac{x}{a}\sqrt{1+\frac{x^2}{a^2}}\right)+C=\frac{1}{2}\left(a^2\log\left(\frac{x+\sqrt{a^2+x^2}}{a}\right)+x\sqrt{a^2+x^2}\right)+C
 \end{equation*}
 となり、$a\tan\theta$で置換した時と同じ結果になっている。$\sinh^{-1}x$を求めるのが少し面倒ではあるが、それでも$\tan \theta$のときよりは明らかに簡単であると思う。
+\newpage
+\subsubsection{有理関数に帰着させて解く}
+基本的に、紹介した二つの場合の積分が解ければ大丈夫なのだが、一応$\sqrt{ax^2+bx+c}$の積分の解き方ものべる。
+このタイプの積分は、$\sqrt{a}x+\sqrt{ax^2+bx+c}=t$と置換することで、$t$に関する有理関数に帰着することができるので、
+必ず積分できる。その理由を今から説明する。
+
+$\sqrt{ax^2+bx+c}$の有理関数を$f(x,\sqrt{ax^2+bx+c})$と表すことにすると、求める積分は次のようになる。
+\begin{equation*}
+    \int f(x,\sqrt{ax^2+bx+c})dx
+\end{equation*}
+ここで、$t=\sqrt{ax^2+bx+c}+\sqrt{a}x$と置換すると、
+\begin{equation*}
+    x=\frac{t^2-c}{2\sqrt{a}t+b},\quad\sqrt{ax^2+bx+c}=\frac{\sqrt{a}t^2+ct+\sqrt{a}c}{2\sqrt{a}t+c},\quad dx=\frac{2\sqrt{a}t^2+2bt+2\sqrt{a}c}{(2\sqrt{a}t+b)^2}dt
+\end{equation*}
+であることが容易に分かる。これを代入して、
+\begin{equation*}
+    \int f(x,\sqrt{ax^2+bx+c})dx=\int f(\frac{t^2-c}{2\sqrt{a}t+b},\frac{\sqrt{a}t^2+ct+\sqrt{a}c}{2\sqrt{a}t+c})\frac{2\sqrt{a}t^2+2bt+2\sqrt{a}c}{(2\sqrt{a}t+b)^2}dt
+\end{equation*}
+よって、$t$の有理関数に帰着できたため、必ず積分できる。
+
+とはいえ、これは計算量が明らかに多くなるのでおすすめはしない。どうしてもというときの最終手段ではないだろうか？\\
+\hrulefill
+\subsection{$\blacksquare$CoffeeBreak:双曲線関数}
+\begin{screen}
+    $\sqrt{a^2+x^2}$の解法のときに$\sinh x,\cosh x$という関数が出てきた。すでにいっているようにこれらは双曲線関数と
+    よばれ、三角関数と似通った性質をもっている。例えば、$\cosh^2 x-\sinh^2 x=1$は$\sin^2 x+\cos^2 x=1$と似ている。
+    またこれらの加法定理は
+    \begin{align*}
+        \sinh(x+y)&=\sinh x\cosh y+\cosh x\sinh y\\
+        \sinh(x-y)&=\sinh x\cosh y-\cosh x\sinh y\\
+        \cosh(x+y)&=\cosh x\cosh y+\sinh x\sinh y\\
+        \cosh(x-y)&=\cosh x\cosh y-\sinh x\sinh y
+    \end{align*}
+    である。ほとんど三角関数のときと一緒であることがわかる。また、定義より$\sinh x$は奇関数、$\cosh x$は偶関数である。
+    また、数を複素数まで拡張すると、$\sinh x=\sin ix,\quad \cosh x=\cos ix$であることがわかる。これらは複素関数について
+    考えて初めて意味の分かるものである。
+
+    $\sinh x,\cosh x$は三角関数と同じように倍角、半角の公式等がある。これらを自分で導いてみるのもいいかもしれない。
+    加法定理から導いてもいいし、もちろん定義から導くのもいいと思う。ちなみに、$\tanh x$というものもある。こちらは$\tan x$同様、
+    \begin{equation*}
+        \tanh x=\frac{\sinh x}{\cosh x}=\frac{e^x-e^{-x}}{e^x+e^{-x}}
+    \end{equation*}
+    と$\sinh x,\cosh x$が分子分母にくる。
+\end{screen}
+\newpage
+\subsection{三角関数の積分}
+次は三角関数の積分である。始めに言っておくと、$\tan\frac{x}{2}=t$とおけば、\underbar{三角関数の\textbf{有理関数}はすべて積分できる}。
+とはいえ、式が複雑な状態でその置換を行えば、計算量が多くなってしまい、計算ミスも発生してしまうだろう。そのためここでは、まず簡単な形に変形できないか
+を考え、それが無理そうなら$t=\tan\frac{x}{2}$の置換を行うことにする。もちろん、三角関数の有理関数以外も扱う。例えば、$\sqrt{1-\sin x}$の積分など。
+
+三角関数の積分はよく問題として出やすい。そのため、ここの演算を完璧にしておけば試験などでは6割くらいは取れるのではないだろうか。（だからといって、他をおろそかにしていいわけではないが。）
 \end{document}
