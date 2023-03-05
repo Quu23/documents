@@ -420,5 +420,114 @@ $\sqrt{ax^2+bx+c}$の有理関数を$f(x,\sqrt{ax^2+bx+c})$と表すことにす
 とはいえ、式が複雑な状態でその置換を行えば、計算量が多くなってしまい、計算ミスも発生してしまうだろう。そのためここでは、まず簡単な形に変形できないか
 を考え、それが無理そうなら$t=\tan\frac{x}{2}$の置換を行うことにする。もちろん、三角関数の有理関数以外も扱う。例えば、$\sqrt{1-\sin x}$の積分など。
 
-三角関数の積分はよく問題として出やすい。そのため、ここの演算を完璧にしておけば試験などでは6割くらいは取れるのではないだろうか。（だからといって、他をおろそかにしていいわけではないが。）
+三角関数の積分はよく問題として出やすい。そのため、ここの演算を完璧にしておけば試験などでは6割くらいは取れるのではないだろうか。
+（だからといって、他をおろそかにしていいわけではないが。）
+\subsubsection{三角関数の有理関数の積分}
+ひとまず三角関数の有理関数の積分について色々扱っていく。三角関数の公式を把握しているかがここでの肝となる。忘れている人は教科書でも見直しておこう。
+\subsubsection*{例題}
+次の積分を求めよ。\\
+\begin{equation*}
+    (1)\int \frac{dx}{\sin x}\quad (2)\int \sin x\sin 2x\quad
+    (3)\int \frac{\sin x}{\sin x+\cos x}dx\quad (4)\int\frac{dx}{\tan x}
+\end{equation*}
+\subsubsection*{解答}
+(1)もちろんこのままでは計算しようがないので変形しよう。$\sin^2 x=1-\cos^2 x$を利用して、
+\begin{align*}
+    \int \frac{dx}{\sin x}&=\int \frac{\sin x}{1-\cos^2 x}dx\\
+    &=-\int \frac{dt}{1-t^2}=\int\frac{dt}{(t-1)(t+1)}=\frac{1}{2}(\int \frac{dt}{t-1}-\int\frac{dt}{t+1})\quad(\text{$t=\cos x$の置換})\\
+    &=\frac{1}{2}\log\left|\frac{t-1}{t+1}\right|+C=\log\left|\tan\frac{x}{2}\right|+C
+\end{align*}
+となる。ただ、これだと計算ミスしてしまうかもしれない。そのため、より簡単なのは分子分母に$\frac{1}{\cos^2 \frac{x}{2}}$をかけるやり方である。こちらのやり方は
+これを読んでいる人に任せよう。
+
+(2)倍角の公式を用いて、
+\begin{equation*}
+    \int\sin x\sin 2xdx=2\int\sin^2 x\cos xdx
+\end{equation*}
+$(\sin x)'=\cos x$より、$\sin x=t$と置くと、
+\begin{equation*}
+    =2\int t^2 dt =\frac{2}{3}t^3+C=\frac{2}{3}\sin^3 x+C
+\end{equation*}
+となる。もしくは和積の公式から、
+\begin{equation*}
+    \int \sin x\sin2xdx=-\frac{1}{2}(\int \cos 3xdx-\int \cos xdx)=-\frac{1}{2}(\frac{1}{3}\sin 3x-\sin x)+C
+\end{equation*}
+三倍角の公式$\sin 3x=3\sin x-4\sin^3 x$より
+\begin{equation*}
+    =-\frac{1}{2}(-\frac{4}{3}\sin^3 x)+C=\frac{2}{3}\sin^3 x+C
+\end{equation*}
+と、同じ答えになる。どちらの解き方でもよいが、この場合は圧倒的に前者のほうが早い。
+
+(3)見るからにめんどくさそうな式だが、冷静に解いていこう。もちろんそのままでは解けないので変形してあげる必要がある。
+分子分母に$\cos x-\sin x$をかけてあげると、
+\begin{equation*}
+    \int\frac{\sin x}{\sin x+\cos x}dx=\int \frac{\sin x\cos x-\sin^2 x}{\cos^2 x-\sin^2 x}dx=\frac{1}{2}\left(\int\frac{\sin 2x}{\cos 2x}dx-\int \frac{1-\cos 2x}{\cos 2x}dx\right) 
+\end{equation*}
+となり、解けそうな形に変形できた。$\int \tan x dx=-\log|\cos x|$であることを思い出して、
+\begin{equation*}
+    =\frac{1}{2}\left(-\frac{1}{2}\log|\cos 2x|-(\int \frac{dx}{\cos 2x})+x\right)=\frac{1}{2}\left(-\frac{1}{2}\log|\cos 2x|+x+\frac{1}{4}\log\left|\frac{1-\sin 2x}{1+\sin 2x}\right|\right)+C
+\end{equation*}
+少し複雑な形だが、整理してあげると、
+\begin{align*}
+    &=\frac{1}{2}\left(x+\frac{1}{2}\log\left|\frac{(\cos x-\sin x)}{(\cos x+\sin x)}\cdot\frac{1}{(\cos x-\sin x)(\cos x+\sin x)}\right|\right)+C\\
+    &=\frac{1}{2}\left(x+\frac{1}{2}\log\left|\frac{1}{(\cos x+\sin x)^2}\right|\right)+C=\frac{1}{2}\left(x-\log\left|\cos x+\sin x\right|\right)+C
+\end{align*}
+となる。こちらも計算ミスが多発しそうではあるがいかがだろうか？別解として、分子に$(\sin x+\cos x)-(\cos x-\sin x)$を
+作ってあげると、$(\sin x+\cos x)'=\cos x-\sin x$より簡単に積分できる。こちらのほうを別解にするのは単に思いつきづらいからである。
+あくまで個人の感想であるが。
+
+(4)$\tan x$の積分と同じようにやればよくて、
+\begin{equation*}
+    \int\frac{dx}{\tan x}=\int\frac{(\sin x)'}{\sin x}dx=\log|\sin x|+C
+\end{equation*}
+と簡単に求まる。(1),(2),(3)と少し重めも問題ばかりが来たので、すこし簡単な問題にしてみた。\\
+
+さて、先ほど述べた通り$\tan \frac{x}{2}=t$と置換することで三角関数の有理関数が必ず求まる。
+先にその証明から述べる。三角関数の有理関数を$f(\cos x,\sin x)$と置くと、
+\begin{equation*}
+    x=2\arctan t\Longleftrightarrow dx=\frac{2dt}{1+t^2} 
+\end{equation*}
+また、$\displaystyle\sin x=\frac{2t}{1+t^2},\cos x=\frac{1-t^2}{1+t^2}$であることから
+\begin{equation*}
+    \int f(\cos x,\sin x)dx=\int f(\frac{1-t^2}{1+t^2},\frac{2t}{1+t^2})\cdot\frac{2}{1+t^2}dt
+\end{equation*}
+となり、$t$に関する有理関数に帰着する。有理関数の積分は常に求められるので、$f(\cos x,\sin x)$の積分は必ず求まる。
+
+このことを用いれば、最悪変形方法が思いつかなかった場合に$\tan \frac{x}{2}=t$と置いて積分を求めることができる。ただ、とんでもない
+計算量になる場合もあるので注意が必要だ。
+\subsubsection*{例題}
+$\tan x=t$と置くとき、次のことを証明せよ。
+\begin{equation*}
+    \sin 2x=\frac{2t}{1+t^2}\quad\cos 2x=\frac{1-t^2}{1+t^2}
+\end{equation*}
+\subsubsection*{解答}
+(1)
+\begin{equation*}
+    (\text{左辺})=\sin 2x=2\sin x\cos x=2\sqrt{1-\frac{1}{1+\tan^2 x}}\cdot\sqrt{\frac{1}{1+\tan^2 x}}=2\frac{\tan x}{\sqrt{1+\tan^2 x}}\cdot\frac{1}{\sqrt{1+\tan^2 x}}=\frac{2\tan x}{1+\tan^2 x}
+\end{equation*}
+$t=\tan x$より、
+\begin{equation*}
+    (\text{左辺})=\frac{2t}{1+t^2}=(\text{右辺})
+\end{equation*}
+
+(2)
+\begin{equation*}
+    (\text{左辺})=\cos 2x=\cos^2 x-\sin^2 x=\frac{1}{1+\tan^2 x}-(1-\frac{1}{1+\tan^2 x})=\frac{2}{1+\tan^2 x}-1=\frac{1-\tan^2 x}{1+\tan^2 x}
+\end{equation*}
+$t=\tan x$より
+\begin{equation*}
+    (\text{左辺})=\frac{1-t^2}{1+t^2}=(\text{右辺})
+\end{equation*}
+\subsubsection*{例題}
+次の不定積分を求めよ。
+\begin{equation*}
+    \int \frac{dx}{a+b\cos x}
+\end{equation*}
+\subsubsection*{解答}
+$t=\tan\frac{x}{2}$と置換する。
+\begin{align*}
+    \int \frac{1}{a+b\frac{1-t^2}{1+t^2}}\cdot\frac{2dt}{1+t^2}&=2\int\frac{dt}{(a+b)+(a-b)t^2}=\frac{2}{a-b}\cdot\sqrt{\frac{a-b}{a+b}}\arctan\left(\sqrt{\frac{a-b}{a+b}}\cdot t\right)+C\\
+    &=\frac{2}{\sqrt{a^2-b^2}}\arctan\left(\sqrt{\frac{a-b}{a+b}}\tan\frac{x}{2}\right)+C
+\end{align*}
+と比較的簡単に求まる。
 \end{document}
