@@ -521,7 +521,7 @@ $t=\tan x$より
 \subsubsection*{例題}
 次の不定積分を求めよ。
 \begin{equation*}
-    \int \frac{dx}{a+b\cos x}
+    (1)\int \frac{dx}{a+b\cos x}\quad(2)\int\frac{dx}{a^2\sin^2x+b^2\cos^2 x}
 \end{equation*}
 \subsubsection*{解答}
 $t=\tan\frac{x}{2}$と置換する。
@@ -530,4 +530,18 @@ $t=\tan\frac{x}{2}$と置換する。
     &=\frac{2}{\sqrt{a^2-b^2}}\arctan\left(\sqrt{\frac{a-b}{a+b}}\tan\frac{x}{2}\right)+C
 \end{align*}
 と比較的簡単に求まる。
+
+(2)そのまま$t=\tan\frac{x}{2}$と置換してもよいが、式を簡単にしたほうが得策である。
+\begin{equation*}
+    \int \frac{dx}{a^2\sin^2 x+b^2\cos^2 x}=\int\frac{dx}{a^2\frac{1-\cos 2x}{2}+b^2\frac{1+\cos 2x}{2}}=2\int\frac{dx}{(b^2+a^2)+(b^2-a^2)\cos2x}
+\end{equation*}
+ここで、(1)の結果から、
+\begin{equation*}
+    =\frac{1}{\sqrt{(b^2+a^2-b^2+a^2)(b^2+a^2+b^2-a^2)}}\arctan\left(\sqrt{\frac{b^2+a^2-b^2+a^2}{b^2+a^2+b^2-a^2}}\tan x\right)+C
+\end{equation*}
+もちろん簡単出来て、
+\begin{equation*}
+    ==\frac{1}{2ab}\arctan\left(\frac{a}{b}\tan x\right)+C
+\end{equation*}
+となる。
 \end{document}
