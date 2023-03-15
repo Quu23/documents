@@ -220,7 +220,7 @@ $f(x)$の積分が余りにも複雑な場合には、この変形は使わな�
 \begin{equation*}
     I=\frac{e^x}{2}(\cos x+\sin x)+C
 \end{equation*}
-このように部分積分を行うことで、右辺に求めたい積分をつくることで、積分を計算することもできる。
+このように部分積分を行い、右辺に求めたい積分をつくることで積分を計算することもできる。
 \newpage
 \subsection{有理関数の積分の基礎}
 最後に有理関数の積分についてである。先に有理関数の定義を述べておく。$f(x),g(x)$をそれぞれ多項式とすると、
@@ -605,4 +605,154 @@ $t=\tan\frac{x}{2}$と置換する。
 \end{screen}
 \newpage
 \section{部分積分}
+ここでは部分積分を中心に扱っていく。置換積分ほど難しいテクニックなどはないので気楽に読んでほしい。
+
+本題に入る前に、$n$階微分したら元の関数に戻る性質をもつ関数$h(x)$を定義しておく。
+すなわち、$\displaystyle h^{(n)}(x)=\frac{d^n}{dx^n}h(x)=h(x)$である。これを微分周期関数と
+呼ぶことにする。
+また、関数$h(x)$を$m$回積分したものを$h_m(x)$と表すことにする。
+
+\subsection{$x^m h(x)\quad (m\in\mathbb{N})$の積分}
+まず始めに、$x$の正の整数のべき関数と$h(x)$の積の積分である。$h(x)$は何回積分された状態でも、積分を求めることができるので、
+$x^m$の部分をうまく消すことができればこの積分は求められるのがわかる。
+
+さて、$m$は正の整数であるため、$m$階微分したら$m!$、すなわち定数となる。よって、$x^m$を微分する関数、$h(x)$を積分する
+関数として部分積分を行うと、
+\begin{equation*}
+    \int x^mh(x)dx=x^mh_{1}(x)-\int mx^{m-1}h_1(x)dx =\cdots=x^mh_1(x)-mx^{m-1}h_2(x)-\cdots -m!xh_{m-1}(x)-m!h_m(x)+C
+\end{equation*}
+となり、必ず積分できることがわかる。とはいえ、すこし抽象的でわかりにくいかもしれないので、次の例題で練習してみよう。
+
+\subsubsection*{例題}
+次の不定積分を求めよ。
+\begin{equation*}
+    (1)\int x^3 e^x dx\quad(2)\int x^2\sin xdx
+\end{equation*}
+\subsubsection*{解答}
+(1)$h(x)=e^x$で$n=1$である。$e^x$を積分する関数と選び、部分積分を行うと、
+\begin{equation*}
+    \int x^3e^xdx=x^3e^x-3\int x^2e^xdx=x^3e^x-3x^2e^x-6\int xe^xdx=x^3e^x-3x^2e^x-6xe^x-6e^x+C
+\end{equation*}
+$e^x$でくくると、
+\begin{equation*}
+    \int x^3 e^x dx=e^x(x^3-3x^2-6x-6)+C
+\end{equation*}
+
+(2)$h(x)=\sin x$で$n=4$である。(1)と同様に部分積分を行う。
+\begin{equation*}
+    \int x^2\sin xdx=-x^2\cos x+2\int x\cos xdx=-x^2\cos x+2x\sin x-2\int \sin xdx=-x^2\cos x+2x\sin x+2\cos x+C
+\end{equation*}
+符号の計算ミスに注意したい。
+\newpage
+\subsection{微分周期関数の積の積分}
+次は、微分周期関数の積の積分である。とはいえ、基礎の際に簡単な場合を解いているのでそこまで説明する必要はないだろう。
+
+\subsubsection*{例題}
+次の不定積分を求めよ。
+\begin{equation*}
+    \int e^{ax}\cos bxdx
+\end{equation*}
+\subsubsection*{解答}
+定数が入っている分、基礎のときより複雑だがそこまで心配する必要はない。どちらも微分周期関数であるためどちらを微分しようかで迷うかもしれない。
+こういう時はどちらが\underbar{積分するときラクか}で判断するとよい。今回の問題なら明らかに$e^{ax}$のほうが積分は簡単(すぐに計算しやすい)である。となれば、微分する方は
+おのずと$\cos bx$と決まってくる。
+
+あとは解くだけで、
+\begin{align*}
+    I&=\int e^{ax}\cos bxdx=\frac{e^{ax}}{a}\cos bx+\frac{b}{a}\int e^{ax}\sin bx dx\\
+    &=\frac{e^{ax}}{a}\cos bx+\frac{b}{a^2}e^{ax}\sin bx-\frac{b^2}{a^2}I\\
+    (\frac{a^2+b^2}{a^2})I&=\frac{1}{a^2}(ae^{ax}\cos bx+be^{ax}\sin bx)\\
+    I&=\frac{e^{ax}}{a^2+b^2}(a\cos bx+b\sin bx)+C
+\end{align*}
+この結果は覚えておいて損はない。公式として丸暗記しておくと、問題の処理時間が格段に短くなる。
+
+\subsection{微分周期関数の積と$x$の積の積分}
+上の二つの内容を組み合わせた問題である。もちろん難しくはない。
+\subsubsection*{例題}
+次の積分を求めよ。
+\begin{equation*}
+    \int xe^{ax}\cos bxdx
+\end{equation*}
+\subsubsection*{解答}
+そのまま解けばよくて、
+\begin{align*}
+    I&=\int xe^{ax}\cos bxdx=x\cdot\frac{e^{ax}}{a^2+b^2}(a\cos bx+b\sin bx)-\frac{1}{a^2+b^2}\int e^{ax}(a\cos bx+b\sin bx)dx\\
+    &=\frac{1}{a^2+b^2}(xe^{ax}(a\cos bx+b\sin bx)-\left(\frac{ae^{ax}}{a^2+b^2}(a\cos bx+b\sin bx)+\frac{be^{ax}}{a^2+b^2}(a\sin bx-b\cos bx)\right))+C
+\end{align*}
+これを整理すると、
+\newpage
+\begin{equation*}
+    I=\frac{e^{ax}}{(a^2+b^2)^2}\left((a^2+b^2)(a\cos bx+b\sin bx)x-(a^2-b^2)\cos bx-2ab\sin bx\right)+C
+\end{equation*}
+もう少し簡単にできそうではあるが、面倒なのでこの辺にしておこう。
+
+このように計算すれば、$P(x)$をxの多項式だとして、
+\begin{equation*}
+    \int P(x)e^{ax}\cos bxdx
+\end{equation*}
+も積分できることがわかる。$\sin bx$のときも同様である。
+
+\subsection{対数関数と多項式の合成関数の積分}
+対数関数$\log x$は多項式と相性がいい。なぜなら、$\int \log xdx=\frac{1}{x}+C$であり、積分すると$x$の有理関数
+になるからである。さらにこの性質は部分積分と相性が良い。すなわち、$\log x$が入っている積分は部分積分で解けることが多い。
+その理由を今から説明する。
+
+$P(x)$を$x$に関する多項式とする。この時、合成関数$\log(P(x))$は必ず積分できる。なぜなら、
+\begin{equation*}
+    \int \log(P(x))dx=x\log(P(x))-\int \frac{x\cdot P'(x)}{P(x)}dx
+\end{equation*}
+と変形でき、$P(x)$が多項式だから、$P'(x)$ももちろん多項式となり、$\frac{x}{Q(x)}$も$x$の有理関数となるため、必ず積分できる。
+
+とはいえイメージしづらい場合は、次の例題を解いてみればよい。
+\subsubsection*{例題}
+つぎの不定積分を求めよ。
+\begin{equation*}
+    (1)\int \log\left(x^3\right)dx\qquad(2)\int \log(x^2+1)dx\qquad(3)\int \log\left((x-1)^2\right)dx
+\end{equation*}
+\subsubsection*{解答}
+すべて普通に計算するのみである。
+
+(1)
+\begin{equation*}
+    \int \log\left(x^3\right)dx=x\log\left(x^3\right)-\int 3dx=x\log\left(x^3\right)-3x+C
+\end{equation*}
+
+(2)
+\begin{equation*}
+    \int\log(x^2+1)dx=x\log(x^2+1)-2\int\frac{x^2}{x^2+1}dx=x\log(x^2+1)-2(x-\arctan x)+C=x\log(x^2+1)-2x+2\arctan x+C
+\end{equation*}
+
+(3)
+\begin{equation*}
+    \int \log((x-1)^2)dx=x\log((x-1)^2)-2\int\frac{x}{x-1}dx=x\log((x-1)^2)-2(x-1)+\log|x-1|+C
+\end{equation*}
+\newpage
+\subsection{演習問題}
+\paragraph{計算問題}
+以下の不定積分を求めよ。\\
+
+(1)$\displaystyle \int x^2e^{3x}dx$
+\hspace{20mm}
+(2)$\displaystyle \int x^3\sin 4xdx$
+\hspace{20mm}
+(3)$\displaystyle \int \sin x\cos xdx$\\
+
+(4)$\displaystyle \int e^{ax}\sin bxdx$
+\hspace{15mm}
+(5)$\displaystyle \int x^2\log\left(\frac{x+1}{x^2+x-3}\right)dx$
+\hspace{0.5mm}
+(6)$\displaystyle \int \log(\sqrt{x^2+1})dx$
+\\
+\paragraph{証明問題}
+有理関数を$R(x)$とするとき、$\displaystyle \int \log(R(x))dx$が必ず積分できることを示せ。
+
+\subsection{$\blacksquare$CoffeeBreak:なぜ積分の計算を解くときに$I=$とするのか}
+\begin{screen}
+    積分の問題を解くときにはよく$I=$と始めることが多い。この理由は単純にそのほうが便利だからである。
+    最も身近な例として、部分積分の$\displaystyle\int e^x\cos xdx$がある。この積分は変形によって
+    $I=\text{(式)}-I$と出来たため解くことができた。また、次にとく定積分でもこのテクニック(?)は
+    用いる。とりあえず積分を$I$でおいておくことは、一つの``定石''であるため、従ったほうが無難である。
+\end{screen}
+
+
 \end{document}
