@@ -859,4 +859,260 @@ $P(x)$を$x$に関する多項式とする。この時、合成関数$\log(P(x))
 \section{定積分を解く上での様々なテクニック}
 ここでは、定積分を解く上での様々なテクニックについて扱っていく。これらのテクニックを用いれば、一見解けなさそうな積分が簡単に解ける
 こともある。ぜひマスターしておこう。
+\subsection{偶関数・奇関数の際の変形}
+被積分関数が偶関数もしくは奇関数の場合なら積分を変形することができる。つまりは、次のようなことができる。
+\begin{equation*}
+    \int_{-a}^a f(x)dx= \left \{
+        \begin{array}{l}
+            0\hspace{17mm}\quad(\text{$f(x)$が奇関数のとき})\\
+            \displaystyle 2\int_0^a f(x)dx\quad(\text{$f(x)$が偶関数のとき})
+        \end{array}
+        \right.
+\end{equation*}
+これはグラフで考えてみるとわかる。$f(x)$が奇関数のときは原点で点対象になっているはずである。この場合、明らかに区間内の面積は0になる。
+偶関数の場合は、y軸対象になるはずなので、区間内の面積はy軸できれいに半分になるはずである。
+これでもわかりにくい場合は、$\sin x,\cos x$のグラフで考えてみるとよい。
+
+\subsubsection*{例題}
+次の積分値を求めよ。
+\begin{equation*}
+    (1)\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos xdx\quad (2)\int_{-\frac{5}{3}\pi}^{\frac{5}{3}\pi}\frac{\cos 2x}{x^3+\sin x}dx
+\end{equation*}
+\subsubsection*{解答}
+(1)$\cos x$は偶関数なので、変形ができて
+\begin{equation*}
+    \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos xdx=2\int_{0}^{\frac{\pi}{2}}\cos x=2[\sin x]_0^{\frac{\pi}{2}}=2
+\end{equation*}
+
+(2)難しそうな積分であるが、被積分関数が奇関数であることに気づけば、
+\begin{equation*}
+    \int_{-\frac{5}{3}\pi}^{\frac{5}{3}\pi}\frac{\cos 2x}{x^3+\sin x}dx=0
+\end{equation*}
+と考えることなく求まった。
+\newpage
+\subsection{積分記号下の微分}
+積分変数以外のパラメータに関して、積分記号下で微分することで簡単に定積分の値が求まることがある。
+
+まずはその証明からしておこう。パラメータ$y(\alpha\leq y\leq \beta)$を含む定積分
+\begin{equation*}
+    I(y)=\int_a^b f(x,y)dx
+\end{equation*}
+を考える。このとき、積分上限と下限$a,b$に$y$は依存しないとする。関数$f(x,y)$と偏導関数$\displaystyle\frac{\partial}{\partial y}f(x,y)$が、
+$a\leq x\leq b,\alpha\leq y\leq\beta$で\underbar{連続ならば}、二変数関数の平均値の定理より
+\begin{equation*}
+    f(x,y+\Delta y)=f(x,y)+\Delta yf_y(x,y+\Delta y\theta)\quad(0<\theta<1)
+\end{equation*}
+となる。これを変形して
+\begin{equation*}
+    f(x,y+\Delta y)-f(x,y)=\Delta y\frac{\partial f(x,y+\Delta y)}{\Delta y}
+\end{equation*}
+とする。
+
+さて、ここで$I(y)$の増分$\Delta I$を考えると、
+\begin{equation*}
+    \Delta I=I(y+\Delta y)-I(y)=\int_a^b f(x,y+\Delta y)-f(x,y)dx=\int_a^b \Delta y\frac{\partial f(x,y+\Delta y)}{\Delta y}dx
+\end{equation*}
+よって、
+\begin{equation*}
+    \frac{\Delta I}{\Delta y}=\int_a^b f_y(x,y+\Delta y)dx
+\end{equation*}
+ここで、$\Delta y\to 0$とすると
+\begin{equation*}
+    \frac{dI}{dy}=\int_a^b f_y(x,y)dx
+\end{equation*}
+
+つまり、微分と積分が入れ替えることができる。これは、$f_y(x,y)$が積分区間において\underbar{存在}して\underbar{連続}であれば
+成立することをもう一度強調しておく。
+
+話が長くなってしまったので例題に移ろう。
+\subsubsection*{例題}
+次の積分値を求めよ。
+\begin{equation*}
+    \int_0^{2\pi} \frac{d\phi}{(1+\varepsilon \cos \phi)^2}\quad(|\varepsilon|<1)
+\end{equation*}
+\subsubsection*{解答}
+まず始めに次の積分について考えてみる。
+\begin{equation*}
+    \int_0^{2\pi}\frac{d\phi}{\alpha+\beta\cos\phi}\quad(\alpha>\beta,\alpha-\beta>0)
+\end{equation*}
+この積分を計算すると、
+\begin{equation*}
+    \int_0^{2\pi}\frac{d\phi}{\alpha+\beta\cos\phi}=\frac{2\pi}{\sqrt{\alpha^2-\beta^2}}
+\end{equation*}
+両辺を$\alpha$で微分すると
+\begin{equation*}
+    \int_{0}^{2\pi}\frac{d\phi}{(\alpha+\beta\cos\phi)^2}=\frac{2\pi\alpha}{(\alpha^2-\beta^2)^{\frac{3}{2}}}
+\end{equation*}
+ここで、$\alpha=1,\beta=\varepsilon$を代入すると
+\begin{equation*}
+    \int_0^{2\pi}\frac{d\phi}{(1+\varepsilon\cos\phi)^2}=\frac{2\pi}{(1-\varepsilon^2)^{\frac{3}{2}}}
+\end{equation*}
+
+もともとの積分の区間は$[0,2\pi]$であったため、$\tan\frac{\phi}{2}$の置換のために積分区間を$[-\pi,\pi]$とずらすことが
+必要になってくる。積分区間がちょうど完全周期だった場合には、\underbar{積分区間を平行移動させても問題ない}。
+
+すこし気をつけるところはあるものの、難しい積分を簡単な積分に変形できていることには変わりがない。
+\subsection{三角関数の定積分}
+$\sin x$の有理関数を$f(\sin x)$と表すことにして、次の積分を考える。
+\begin{equation*}
+    \int_0^{\pi} xf(\sin x)dx
+\end{equation*}
+被積分関数の原始関数が簡単に求まることは少ないが、この定積分はある置換によって簡単に求まる。$t=\pi-x$に置換によって
+\begin{equation*}
+    I=\int_0^\pi xf(\sin x)dx=\int_\pi^0 (\pi-t)f(\sin(\pi-t))\cdot -dt=\pi\int_0^\pi f(\sin t)dt-I 
+\end{equation*}
+よって、
+\begin{equation*}
+    I=\frac{\pi}{2}\int_0^\pi f(\sin x)dx
+\end{equation*}
+$\sin x$の有理関数の原始関数は必ず求まるので、この定積分は必ず(かつ比較的簡単に)求められる。\\
+
+次に以下の積分を考えてみよう。
+\begin{equation*}
+    \int_0^\pi f(\sin x)dx
+\end{equation*}
+この積分を変形して、
+\begin{equation*}
+    I=\int_0^\pi  f(\sin x)dx=\int_0^{\frac{\pi}{2}}f(\sin x)dx+\int_{\frac{\pi}{2}}^{\pi}f(\sin x)dx
+\end{equation*}
+ここで、右辺二項目の積分を$t=\pi-x$と置換すると、この積分は
+\begin{equation*}
+    \int_{\frac{\pi}{2}}^{\pi}f(\sin x)dx=\int_{\frac{\pi}{2}}^{0}f(\sin t)\cdot -dt=\int_0^{\frac{\pi}{2}}f(\sin t)dt
+\end{equation*}
+よって、最初の積分は
+\begin{equation*}
+    \int_0^\pi f(\sin x)dx=2\int_{0}^{\frac{\pi}{2}}f(\sin x)dx
+\end{equation*}
+と変形できることがわかる。
+
+\subsubsection*{例題}
+(1)以下を計算せよ。
+\begin{equation*}
+    \int_0^\pi \frac{x\sin x}{1+\cos^2 x}dx
+\end{equation*}\\
+
+(2)つぎの二つの積分を求めよ。
+\begin{equation*}
+    I=\int_0^{\frac{\pi}{2}} \frac{1+2\sin x}{\sin^2 x+\sin x+\frac{1}{4}}\quad J=\int_0^{\frac{\pi}{2}} \frac{1+2\cos x}{\cos^2 x+\cos x+\frac{1}{4}}
+\end{equation*}
+\subsubsection*{解答}
+(1)先ほどの公式により
+\begin{equation*}
+    \frac{\pi}{2}\int_0^\pi \frac{\sin x}{1+\cos^2 x}dx
+\end{equation*}
+と変形できることがわかる。あとは$t=\cos x$と置換すれば
+\begin{equation*}
+    \frac{\pi}{2}\int_{-1}^{1}\frac{dt}{1+t^2}=\frac{\pi}{2}\cdot\frac{\pi}{2}=\frac{\pi^2}{4}
+\end{equation*}
+と簡単に求まる。\\
+
+(2)$t=\frac{\pi}{2}-x$の置換によって、$I=J$が直ちにわかるので、どちらかを計算すればよいことがわかる。
+\begin{equation*}
+    I=J=\int_0^{\frac{\pi}{2}} \frac{1+2\sin x}{\sin^2 x+\sin x+\frac{1}{4}}=\int_0^{\frac{\pi}{2}}\frac{1+2\sin x}{(\sin x+\frac{1}{2})^2}dx=2\int_0^{\frac{\pi}{2}}\frac{dx}{(\sin x+\frac{1}{2})}=\int_0^\pi \frac{dx}{\frac{1}{2}+\sin x}=\frac{2}{\sqrt{3}}\log(7+4\sqrt{3})
+\end{equation*}
+$7+4\sqrt{3}$は$(2+\sqrt{3})^2$と変形できるが、そこまで簡単にする必要もないかもしれない。
+\subsubsection*{}
+一応、(2)の問題の一般化をしておこう。
+\begin{equation*}
+    \int_0^{\frac{\pi}{2}}f(\sin x)dx=\int_0^{\frac{\pi}{2}}f(\cos x)dx
+\end{equation*}
+を示す。$t=\frac{\pi}{2}-x$と置換すれば、左辺の積分は
+\begin{equation*}
+    \int_0^{\frac{\pi}{2}}f(\sin x)dx=\int_0^{\frac{\pi}{2}}f(\sin(\frac{\pi}{2}-t))dt=\int_0^{\frac{\pi}{2}}f(\cos t)dt
+\end{equation*}
+となるため、等式は成り立つ。
+\newpage
+\subsection{Wallis積分(ウォリス積分)}
+最後に、漸化式で求められる積分について紹介しておこう。
+\subsubsection*{例題}
+\begin{equation*}
+    I_m=\int_0^\frac{\pi}{2} \sin^m xdx\quad J_m=\int_0^\frac{\pi}{2}\cos^m xdx
+\end{equation*}
+を求めよ。ただし、$m=1,2,3...(\in\mathbb{N})$であるとする。
+\subsubsection*{解答}
+$I_m=J_m$であることから、どちらか片方を求めればいいことがわかる。今回は$I_m$を求める。
+$m=0,1$のときは簡単に求まって、
+\begin{equation*}
+    I_0=\int_0^\frac{\pi}{2}dx=\frac{\pi}{2}\quad I_1 =\int_0^\frac{\pi}{2}\sin xdx=1
+\end{equation*}
+では、$I_{m}$を求めてみる。
+\begin{equation*}
+    I_{m}=\int_0^\frac{\pi}{2}\sin^{m}xdx=\left[-\cos x\sin^{m} x\right]_0^\frac{\pi}{2}+(m-1)\int_0^\frac{\pi}{2}(\sin^{m-2}x-\sin^m x)dx=(m-1)(I_{m-2}-I_m)
+\end{equation*}
+ここから$I_m$を求められて
+\begin{equation*}
+    I_m=\frac{m-1}{m}I_{m-2}
+\end{equation*}
+よって、$m$が偶数か奇数かによって$I_m$の値が変わることがわかる。$m$が偶数、すなわち$m=2n(n\in\mathbb{N})$であるとき
+\begin{align*}
+    I_{2n}&=\frac{2n-1}{2n}I_{2(n-1)}=\frac{2n-1}{2n}\cdot\frac{2(n-1)-1}{2(n-1)}I_{2(n-2)}=\frac{2n-1}{2n}\cdot\frac{2(n-1)-1}{2(n-1)}\cdot\frac{2(n-2)-1}{2(n-2)}I_{2(n-3)}\cdots\\
+    &=\frac{(2n-1)!!}{(2n)!!}\cdot I_0=\frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2}
+\end{align*}
+二段目の$!!$は一個飛ばしの階乗($n!!=n\cdot(n-2)\cdot(n-4)\cdots$)である。
+
+つづけて、$m$が奇数、すなわち$m=2n+1$の場合は、
+\begin{equation*}
+    I_{2n+1}=\frac{2n}{2n+1}I_{2(n-1)+1}=\frac{2n}{2n+1}\cdot \frac{2(n-1)}{2(n-1)+1}I_{2(n-2)+1}=\cdots=\frac{(2n)!!}{(2n+1)!!}\cdot I_1=\frac{(2n)!!}{(2n+1)!!}
+\end{equation*}
+となる。もちろん、普通の階乗を使って
+\begin{equation*}
+    I_{2n}=\frac{(2n)!}{(2^nn!)^2}\frac{\pi}{2}\qquad I_{2n+1}=\frac{(2^nn!)^2}{(2n+1)!}
+\end{equation*}
+と表記してもよい。
+\newpage
+\subsection{演習問題}
+1.次の定積分を求めよ。\\
+
+(1)$\displaystyle \int_0^\pi \frac{dx}{(\pi-\cos x)^2}$
+\hspace{20mm}
+(2)$\displaystyle \int_0^1 \frac{dx}{[ax+b(1-x)]^2}$
+\hspace{20mm}
+(3)$\displaystyle \int_0^\frac{\pi}{2}\sin^5x dx$
+\hspace{20mm}
+(4)$\displaystyle \int_0^\frac{\pi}{2}\cos^4x dx$\\
+
+(5)$\displaystyle \int_{-2}^{2}(x^3\cos\frac{x}{2}+\frac{1}{2})\sqrt{4-x^2}dx$
+\hspace{-0.5mm}
+(6)$\displaystyle \int_{-\pi}^\pi \sin(mx)\sin(nx)dx$　($m,n$は正整数)\\
+
+2. 1の(2)の結果を用いて、
+\begin{equation*}
+    (1)\frac{1}{a^2b}\quad (2)\frac{1}{a^3b^2}
+\end{equation*}
+をそれぞれ積分系で表せ。\\
+
+3. 次の定積分を漸化式で求めよ。ただし、$n=0,1,2\cdots$とする。
+\begin{equation*}
+    G_n=\int_{-\infty}^{\infty} x^n e^{-x^2}dx
+\end{equation*}
+\\
+
+4.つぎの定積分を導出せよ。
+\begin{equation*}
+    \int_0^\infty \frac{k^2dk}{(k^2+L)^{\frac{5}{2}}}=\frac{1}{3L}\quad(L>0)
+\end{equation*}\\
+
+5.次の二つを証明せよ。ただし、$f(x)$は積分区間で連続であるとする。
+\begin{equation*}
+    \int_{-a}^a f(x)dx= \left \{
+        \begin{array}{l}
+            0\hspace{17mm}\quad(\text{$f(x)$が奇関数のとき})\\
+            \displaystyle 2\int_0^a f(x)dx\quad(\text{$f(x)$が偶関数のとき})
+        \end{array}
+        \right.
+\end{equation*}
+\\
+{\scriptsize ヒント：1.(6)は、$m=n,m\neq n$で場合分け。$x=\pi\times(\text{整数})$の時の$\sin x$について単位円を書いて考えてみるとよい。
+2.実際に積分すると大変な場合は、wolfram alphaなどを用いて確かめるとよい。特に(2)の場合は計算量が多いので、式入力する際は和の形に分けてそれぞれを
+計算して、その結果の足し算を入力してあげるとよい。3.そこまで難しくはない。ivを参照されたし。4.実を言うと、この章の内容にあまり関係のない積分である。
+三角関数で置換してあげると、右辺の形になる。5.積分区間[-a,a]を[-a,0]と[0,a]の積分に分けよ。}\\
+\hrulefill
+\subsection{$\blacksquare$CoffeeBreak:もしも間違いがあったら}
+\begin{screen}
+    表題の意味を勘違いされそうなので先に断っておく。ここでは、``この資料内で''間違いを見つけた場合の話をしている。
+    もしも間違いを見つけた場合は、こっそり教えてほしい。一応間違いがないかを調べてはいるが、基本的に何も見ずに書いているので
+    間違いがあるかもしれない。よろしくお願いします。
+\end{screen}
+\newpage
+\section{定積分の応用}
 \end{document}
