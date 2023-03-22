@@ -538,11 +538,11 @@ $t=\tan\frac{x}{2}$と置換する。
 \end{equation*}
 ここで、(1)の結果から、
 \begin{equation*}
-    =\frac{1}{\sqrt{(b^2+a^2-b^2+a^2)(b^2+a^2+b^2-a^2)}}\arctan\left(\sqrt{\frac{b^2+a^2-b^2+a^2}{b^2+a^2+b^2-a^2}}\tan x\right)+C
+    =\frac{2}{\sqrt{(b^2+a^2-b^2+a^2)(b^2+a^2+b^2-a^2)}}\arctan\left(\sqrt{\frac{b^2+a^2-b^2+a^2}{b^2+a^2+b^2-a^2}}\tan x\right)+C
 \end{equation*}
 もちろん簡単出来て、
 \begin{equation*}
-    =\frac{1}{2ab}\arctan\left(\frac{a}{b}\tan x\right)+C
+    =\frac{1}{ab}\arctan\left(\frac{a}{b}\tan x\right)+C
 \end{equation*}
 となる。
 \newpage
@@ -1247,4 +1247,357 @@ $L$であるためである。
 \end{screen}
 \newpage
 \section{広義積分}
+ここでは広義積分について扱っていく。広義積分は、積分区間に不連続点がある場合、もしくは区間の上限や下限が無限大である場合の積分であった。
+関数$f(x)$でただ一つの不連続点$a\leq c\leq b$となる$c$がある場合、
+\begin{equation*}
+    \int_a^b f(x)dx=\lim_{\epsilon_1\to 0}\int_a^{c-\epsilon_1}f(x)dx+\lim_{\epsilon_2\to 0}\int_{\epsilon_2+c}^b f(x)dx
+\end{equation*}
+の右辺の極限が存在する場合は、広義積分は収束するといい、その極限値が広義積分の値となる。積分区間の上限が無限大の場合は、
+\begin{equation*}
+    \int_a^\infty f(x)dx=\lim_{b\to\infty}\int_a^b f(x)dx
+\end{equation*}
+脳編の極限値として、積分を定義する。もちろん、下限もしくは両方が無限の場合も同様である。
+\subsection{広義積分の基礎}
+始めに、簡単な広義積分の問題を解いてみよう。
+\subsubsection*{例題}
+以下の積分を求めよ。
+\begin{equation*}
+    (1)\int_0^1\frac{dx}{\sqrt{x}}\qquad(2)\int_0^\frac{\pi}{2} \frac{\cos x}{\sqrt{1-\sin x}}dx\qquad (3)\int_{-\infty}^\infty \frac{dx}{e^x+e^{-x}}
+\end{equation*}
+\subsubsection*{解答}
+(1)$x=0$で特異的であるため、広義積分となる。
+\begin{equation*}
+    \int_0^1\frac{dx}{\sqrt{x}}=\lim_{\epsilon\to 0}\int_{\epsilon}^1\frac{dx}{\sqrt{x}}=\lim_{\epsilon\to 0}\left[2\sqrt{x}\right]_\epsilon^1=\lim_{\epsilon\to 0}2(1-\sqrt{\epsilon})=2
+\end{equation*}
+このように毎回極限の操作を表記するのは面倒なので、
+\begin{equation*}
+    \int_0^1\frac{dx}{\sqrt{x}}=\left[2\sqrt{x}\right]=2-0=2
+\end{equation*}
+という風に表記してもよい。\\
+
+(2)$x=\frac{\pi}{2}$で特異的である。
+\begin{equation*}
+    \int_0^\frac{\pi}{2}\frac{\cos x}{\sqrt{1-\sin x}}dx=\int_{-1}^0 \frac{dt}{\sqrt{t+1}}dt=\left[2\sqrt{t+1}\right]_{-1}^0=2
+\end{equation*}
+となる。\\
+
+(3)無限区間の積分である。
+\begin{equation*}
+    \int_{-\infty}^\infty \frac{dx}{e^x+e^{-x}}=\int_{-\infty}^\infty \frac{e^x}{e^{2x}+1}dx=\int_0^\infty \frac{dt}{t^2+1}=\frac{\pi}{2}
+\end{equation*}
+とよく知られた積分に帰着する。
+\newpage
+\subsubsection*{例題}
+次の積分を求めよ。
+\begin{equation*}
+    G=\int_{-\infty}^{\infty}e^{-x^2}dx
+\end{equation*}
+\subsubsection*{解答}
+こちらは有名なガウス積分である。多重積分を用いなくても求めることはできるが、随分と技巧的になってしまうので、今回は
+多重積分を用いて自然に解く。いったん問題の積分を解く前に、次の積分を求める。
+\begin{equation*}
+    I=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-(x^2+y^2)}dy dx
+\end{equation*}
+極座標変換$(x,y)\to(r,\theta)$を行うことで、$x=r\cos\theta,y=r\sin\theta$となり、ヤコビアン$J$は
+\begin{equation*}
+    J=\begin{pmatrix}
+        \displaystyle \frac{\partial x}{\partial r} & \displaystyle \frac{\partial x}{\partial \theta} \\\\
+        \displaystyle \frac{\partial y}{\partial r} & \displaystyle \frac{\partial y}{\partial \theta}
+     \end{pmatrix}
+    =\cos\theta\cdot r\cos\theta + r\sin\theta\cdot\sin\theta =r
+\end{equation*}
+となる。よって、
+\begin{equation*}
+    I=\int_0^\infty dr\int_0^{2\pi}re^{-r^2}d\theta
+\end{equation*}
+と変形できるため、
+\begin{equation*}
+    I=2\pi\int_0^\infty re^{-r^2}dr=\pi 
+\end{equation*}
+と求まる。また、
+\begin{equation*}
+    I=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}e^{-(x^2+y^2)}dy dx=\int_{-\infty}^\infty e^{-x^2}dx\cdot\int_{-\infty}^\infty e^{-y^2}dy=\left(\int_{-\infty}^{\infty}e^{-x^2}dx\right)^2=G^2
+\end{equation*}
+であるため、
+\begin{equation*}
+    G^2=\pi
+\end{equation*}
+よって、$G=\sqrt{\pi}$となる。\\
+
+もしくは次のようにしてもよい。$x\to\sqrt{t}x$の置換を行い、
+\begin{equation*}
+    \int_{-\infty}^{\infty}e^{-tx^2}dx=\frac{G}{\sqrt{t}}
+\end{equation*}
+とできることに注意する。また、
+\begin{equation*}
+    \int_0^{\infty}e^{-ax}dx=\frac{1}{a}
+\end{equation*}
+であることから、
+\begin{equation*}
+    \pi=\int_{-\infty}^{\infty}\frac{dx}{x^2+1}=\int_{-\infty}^{\infty}dx\int_0^{\infty}e^{-(x^2+1)t}dt=
+    \int_{0}^{\infty}e^{-t}dt\int_{-\infty}^{\infty}e^{-x^2}dx=G\int_{0}^\infty\frac{e^{-t}}{\sqrt{t}}dt=G^2
+\end{equation*}
+よって、$G=\sqrt{\pi}$と求まる。こちらのやり方はヤコビアンを用いない分初歩的である。
+\newpage
+\subsection{収束因子}
+広義積分を解くあたって、そのままでは収束しそうにないときに、パラメータ$\varepsilon$を導入して、収束値を求めたあとに
+$\varepsilon\to 0$極限をとって収束値とするやり方がある。これを収束因子という。
+\subsubsection*{例題}
+\begin{equation*}
+    \int_0^\infty \frac{\sin x}{x}dx
+\end{equation*}
+を求めよ。
+\subsubsection*{解答}
+収束因子を用いる。$\varepsilon,a>0$として、
+\begin{equation*}
+    I(\varepsilon)=\int_0^\infty e^{-\varepsilon x}\frac{\sin ax}{x}dx
+\end{equation*}
+を考える。$Im$は虚部を取ることとすると、
+\begin{align*}
+    I'(\varepsilon)&=-Im\left(\int_0^\infty e^{-x(\varepsilon-ai)}dx\right)=-Im\left(\frac{1}{\varepsilon-ai}\right)\\
+    &=-\frac{a}{\varepsilon^2+a^2}
+\end{align*}
+よって、両辺を$\varepsilon$で積分してあげると
+\begin{equation*}
+    I(\varepsilon)=-\arctan(\frac{\varepsilon}{a})+C
+\end{equation*}
+しかし、$I(\infty)=0$であるため、$C=\frac{\pi}{2}$でなければならない。
+よって、
+\begin{equation*}
+    I(\varepsilon)=\frac{\pi}{2}-\arctan(\frac{\varepsilon}{a})
+\end{equation*}
+ここで、$a=1,\varepsilon\to+0$の極限を取ると、$\displaystyle I(0)=\frac{\pi}{2}$となる。
+少し技巧的にはなってしまったが、答えが求められたので良しとしよう。
+\subsubsection*{例題}
+\begin{equation*}
+    I=\int_{-\infty}^\infty \sin(x^2)dx=\int_{-\infty}^\infty \cos(x^2)dx
+\end{equation*}
+を求めよ。
+\subsubsection*{解答}
+そのままだと計算が難しそうなので収束因子を用いる。
+\begin{equation*}
+    J(\varepsilon)=\int_{-\infty}^{\infty}e^{-x^2\varepsilon}\sin(x^2)dx=Im\left(\int_{-\infty}^{\infty}e^{-x^2(\varepsilon-i)}dx\right)
+\end{equation*}
+ここで、$\sqrt{\varepsilon-i}x\to x$の置換を施すと、$Im(\sqrt{\varepsilon-i})>0$であれば、ガウス積分に帰着するので、
+\begin{equation*}
+    =Im\left(\frac{1}{\sqrt{\varepsilon-i}}\int_{-\infty}^{\infty}e^{-x^2}dx\right)=\frac{\sqrt{\pi}}{\varepsilon^2+1}Im\left(\sqrt{\varepsilon-i}\right)
+\end{equation*}
+ここで極限$\varepsilon\to 0$を施すと、$Im(\sqrt{\varepsilon-i})$は、
+\begin{equation*}
+    Im(\sqrt{\varepsilon-i})=Im(i^{\frac{3}{2}})
+\end{equation*}
+さて、$\displaystyle e^{i\frac{\pi}{2}}=i$であるため、$i^{\frac{3}{2}}=e^{i\frac{3\pi}{4}}=-\frac{1}{\sqrt{2}}+\frac{i}{\sqrt{2}}$となる。虚部を取ると、
+$Im(i^{\frac{3}{2}})=\frac{1}{\sqrt{2}}>0$となる。よって、ガウス積分に帰着しても大丈夫であることがわかる。積分の計算に話を戻すと、
+\begin{equation*}
+    J(0)=I=\sqrt{\frac{\pi}{2}}
+\end{equation*}
+となることがわかる。よって答えは、$\displaystyle I=\sqrt{\frac{\pi}{2}}$である。\\
+
+もしくは別解として、置換$x^2=t$を行うと、
+\begin{equation*}
+    \int_{-\infty}^\infty \sin(x^2)dx=\int_{0}^{\infty}\frac{\sin(t)}{\sqrt{t}}dt
+\end{equation*}
+となる。ここで、
+\begin{equation*}
+    \frac{1}{\sqrt{t}}=\frac{1}{\sqrt{\pi}}\int_{-\infty}^{\infty}e^{-tx^2}dx
+\end{equation*}
+であることを思い出すと、
+\begin{equation*}
+    I=\frac{1}{\sqrt{\pi}}\int_{-\infty}^{\infty}dx\int_{0}^{\infty}e^{-tx^2}\sin(t)dt=\frac{1}{\sqrt{\pi}}\int_{-\infty}^{\infty}\frac{dx}{x^4+1}
+\end{equation*}
+最後の積分は演習問題でやることにしてここでは答えだけを書くと、
+\begin{equation*}
+    \int_{-\infty}^{\infty}\frac{dx}{x^4+1}=\frac{\pi}{\sqrt{2}}
+\end{equation*}
+であるため、結局答えは
+\begin{equation*}
+    I=\sqrt{\frac{\pi}{2}}
+\end{equation*}
+となる。この積分は、\textbf{フレネル積分}という。
+\newpage
+\subsection{その他の難しい広義積分}
+最後に少し難しめの積分を解いていく。たくさん練習していこう。
+\subsubsection*{例題}
+\begin{equation*}
+    (1)\int_0^\infty \frac{dx}{x^3+1}\qquad(2)\int_0^1\frac{\log(1+x)}{1+x^2}dx
+\end{equation*}
+\subsubsection*{解答}
+(1)部分分数分解を行うと、
+\begin{equation*}
+    \frac{1}{x^3+1}=\frac{1}{(x+1)(x^2-x+1)}=\frac{1}{3}\left(\frac{1}{x+1}+\frac{-x+2}{x^2-x+1}\right)
+\end{equation*}
+よって積分は、
+\begin{equation*}
+    \frac{1}{3}\left(\int_0^\infty\frac{dx}{x+1}-\int_0^\infty \frac{x}{x^2-x+1}+2\int_0^\infty\frac{dx}{x^2-x+1}\right)
+\end{equation*}
+と変形する。一番左の積分は今のままでは発散してしまうので、真ん中と一番右の積分を計算する。真ん中の積分を$I$、一番右の積分を$J$として
+計算を進める。先に$J$から計算する。
+\begin{equation*}
+    J=2\int_0^\infty \frac{dx}{x^2-x+1}=2\int_0^\infty \frac{dx}{(x-\frac{1}{2})^2+\frac{3}{4}}=\frac{4}{\sqrt{3}}\left[\arctan(\frac{x-\frac{1}{2}}{\sqrt{\frac{3}{4}}})\right]_0^\infty =\frac{8\pi}{3\sqrt{3}}
+\end{equation*}
+と簡単に求まる。次に$I$を計算する。$x-\frac{1}{2}=t$の置換を行うと、積分は  
+\begin{equation*}
+    I=\int_{-\frac{1}{2}}^\infty \frac{t}{t^2+\frac{3}{4}}dt+\frac{1}{2}\int_{-\frac{1}{2}}^\infty \frac{dt}{t^2+\frac{3}{4}} 
+\end{equation*}
+の二つに分けられる。右の積分は、$\displaystyle\frac{2\pi}{3\sqrt{3}}$となるので、左の積分を計算すると
+\begin{equation*}
+    \int_{-\frac{1}{2}}^{\infty}\frac{t}{t^2+\frac{3}{4}}dt=\frac{1}{2}\left[\log(t^2+\frac{3}{4})\right]_{-\frac{1}{2}}^\infty
+\end{equation*}
+となり、発散してしまう。ここでいったん今までの積分をまとめると、
+\begin{equation*}
+    \frac{1}{3}\left(\left[\log(x+1)\right]_0^\infty -\frac{1}{2}\left[\log(t^2+\frac{3}{4})\right]_{-\frac{1}{2}}^\infty+\frac{2\pi}{\sqrt{3}}\right)
+\end{equation*}
+真ん中の項の変数を、$x$に戻してあげると一つ目の項とまとめることができるので
+\begin{equation*}
+    \left[\log(x+1)-\frac{1}{2}\log((x-\frac{1}{2})^2+\frac{3}{4})\right]_0^\infty=\lim_{a\to\infty}\frac{1}{2}\log\left(\frac{(a+1)^2}{(a-\frac{1}{2})^2+\frac{3}{4}}\right)
+\end{equation*}
+となり、ド・ロピタルの定理によって真数は$1$となるため、極限値は$0$となる。よって最終的には
+\begin{equation*}
+    \int_0^\infty\frac{dx}{x^3+1}=\frac{2\pi}{3\sqrt{3}}
+\end{equation*}
+
+ここの計算で特に面倒だったのが$J$以外の計算である。部分分数分解も計算が大変であった。この計算を避ける方法として、
+別解がある。まず、積分を$I$としておき、$x\to\frac{1}{x}$の置換を行う。すると、
+\begin{equation*}
+    I=\int_\infty^0\frac{-\frac{1}{x^2}}{(\frac{1}{x})^3+1}dx=\int_0^\infty \frac{x}{x^3+1}dx
+\end{equation*}
+と変形できるため、最初の積分と足して
+\begin{equation*}
+    I=\frac{1}{2}\int_0^\infty \frac{x+1}{x^3+1}dx=\frac{1}{2}\int_0^\infty \frac{x+1}{(x+1)(x^2-x+1)}dx=\frac{1}{2}\int_0^\infty\frac{dx}{x^2-x+1}=\frac{2\pi}{3\sqrt{3}}
+\end{equation*}
+と、はるかに簡単に求まる。
+
+(2)$x=\tan\theta$で置換する。
+\begin{equation*}
+    I=\int_0^\frac{\pi}{4}\frac{\log(1+\tan\theta)}{\frac{1}{\cos^2\theta}}\frac{1}{\cos\theta}d\theta=\int_0^\frac{\pi}{4}\log(1+\tan\theta)d\theta
+\end{equation*}
+ここで
+\begin{equation*}
+    \log(1+\tan\theta)=\log\left(\frac{1}{\cos\theta}(\cos\theta+\sin\theta)\right)=-\log(\cos\theta)+\log(\sqrt{2}\sin(\theta+\frac{\pi}{4}))=-\log(\cos\theta)+\log(\sin(\theta+\frac{\pi}{4}))+\frac{1}{2}\log(2)
+\end{equation*}
+と変形できるので、
+\begin{equation*}
+    \frac{1}{2}\log 2\int_0^\frac{\pi}{4}d\theta +\int_0^\frac{\pi}{4}\log(\sin(\theta+\frac{\pi}{4}))d\theta-\int_0^\frac{\pi}{4}\log(\cos\theta)d\theta
+\end{equation*}
+さらに、真ん中の積分は$\theta\to\frac{\pi}{4}-\theta$の置換によって、
+\begin{equation*}
+    \int_0^\frac{\pi}{4}\log(\sin(\theta+\frac{\pi}{4}))d\theta=\int_0^\frac{\pi}{4}\log(\sin(\frac{\pi}{2}-\theta))d\theta=\int_0^\frac{\pi}{4}\log(\cos\theta)d\theta
+\end{equation*}
+となり、第三項と打ち消しあうので、
+\begin{equation*}
+    I=\frac{1}{2}\log 2\int_0^\frac{\pi}{4}d\theta=\frac{\pi\log 2}{8}
+\end{equation*}
+となる。
+\subsubsection*{例題}
+次の積分を求めよ。
+\begin{equation*}
+    (1)\int_a^b\frac{dx}{\sqrt{(x-a)(b-x)}}\qquad(2)\int_a^b\frac{dx}{x\sqrt{(x-a)(b-x)}}
+\end{equation*}
+ただし、どちらも$b>a>0$とする。
+\subsubsection*{解答}
+(1)見た目からも$1/\sqrt{1-x^2}$の積分に帰着させることがなんとなくわかるが、一応計算してみよう。
+分母の平方根の中は、
+\begin{equation*}
+    (x-a)(b-x)=-x^2+(a+b)x-ab=-\left(x-\frac{a+b}{2}\right)^2+\frac{a^2+b^2+2ab}{4}-\frac{4ab}{4}
+    =-\left(x-\frac{a+b}{2}\right)^2+\left(\frac{b-a}{2}\right)^2
+\end{equation*}
+と変形できる。よって、$A=\frac{b-a}{2}$、$x-\frac{a+b}{2}=t$と置換すると、
+\begin{equation*}
+    \int_{-A}^{A}\frac{dt}{\sqrt{A^2-t^2}}=\left[\arcsin\left(\frac{t}{A}\right)\right]_{-A}^A=\pi
+\end{equation*}
+となる。
+\newpage
+別解として、置換$x=a\cos^2\theta+b\sin^2\theta$とすると、$dx=2(b-a)\sin\theta\cos\theta d\theta$となるため
+\begin{equation*}
+    2(b-a)\int_{0}^{\frac{\pi}{2}}\frac{\sin\theta\cos\theta}{\sqrt{(b-a)^2\sin^2\theta\cos^2\theta}}d\theta=2\int_0^\frac{\pi}{2}d\theta=\pi
+\end{equation*}
+となる。\\
+
+(2) 1の別解と同じ置換を用いると、
+\begin{equation*}
+    2\int_0^\frac{\pi}{2}\frac{d\theta}{a\cos^2\theta+b\sin^2\theta}
+\end{equation*}
+と変形できるので、これを解くと、
+\begin{equation*}
+    =2\left[\frac{1}{\sqrt{ab}}\arctan\left(\sqrt{\frac{b}{a}}\tan\theta\right)\right]_0^\frac{\pi}{2}=\frac{\pi}{\sqrt{ab}}
+\end{equation*}
+となる。
+\subsubsection*{例題}
+次の積分を求めよ。
+\begin{equation*}
+    (1)\int_0^\frac{\pi}{2}\log(\cos x)dx\qquad(2)\int_0^1 \log\frac{x}{(1-x)^2}dx\qquad(3)\int_{-\infty}^{\infty}\frac{dx}{ax^2+bx+c}\quad(a>0,b^2-4ac<0)
+\end{equation*}
+\subsubsection*{解答}
+これがこの章最後の例題である。
+
+(1)まずは、$x\to\frac{\pi}{2}-x$の置換によって、
+\begin{equation*}
+    I=\int_0^\frac{\pi}{2}\log(\cos x)dx=\int_0^\frac{\pi}{2}\log(\sin x)dx
+\end{equation*}
+であることがわかる。よって、対数の性質$\log x+\log y=\log(xy)$より、
+\begin{equation*}
+    I=\frac{1}{2}\int_0^\frac{\pi}{2}\log(\sin x\cos x)dx=\frac{1}{2}\int_0^\frac{\pi}{2}\log(\frac{1}{2}\sin(2x))dx
+\end{equation*}
+さらに、$2x\to x$より、
+\begin{equation*}
+    I=\frac{1}{4}\int_0^\pi \log(\frac{1}{2}\sin x)dx=-\frac{\pi}{4}\log 2+\frac{1}{2}I
+\end{equation*}
+であるため、移項して
+\begin{equation*}
+    I=-\frac{\pi}{2}\log 2
+\end{equation*}
+となる。\\
+
+(2)式を簡単にして、
+\begin{equation*}
+    I=\int_0^1 \log x -2\log(1-x)dx=\int_0^1 \log x dx -2\int_0^1 \log(1-x)dx=-\int_0^1\log xdx
+    =-\left[x\log x- x\right]_0^1=1
+\end{equation*}
+途中の積分は、$1-x\to x$でまとめることができる。
+\newpage
+(3)条件から、分母の二次式は常に正であることがわかる。問題には正直何の関係もないのだが一応確認のために書いておいた。
+さて、問題の積分だが、いつも通り平方完成してみよう。
+\begin{equation*}
+    I=\int_{-\infty}^{\infty}\frac{dx}{ax^2+bx+c}=\frac{1}{a}\int_{-\infty}^{\infty}\frac{dx}{x^2+\frac{b}{a}x+\frac{c}{a}}=\frac{1}{a}\int_{-\infty}^{\infty}\frac{dx}{(x+\frac{b}{2a})^2+\frac{4ac-b^2}{4a^2}}
+\end{equation*}
+条件より、$\displaystyle\frac{4ac-b^2}{4a^2}>0$であるため、$\displaystyle \int\frac{dx}{1+x^2}$の積分として解ける。よって、
+\begin{equation*}
+    I=\frac{2}{\sqrt{4ac-b^2}}\left[\arctan\left(\frac{x+\frac{b}{2a}}{\sqrt{\frac{4ac-b^2}{4a^2}}}\right)\right]_{-\infty}^\infty=\frac{2\pi}{\sqrt{4ac-b^2}}
+\end{equation*}
+となる。
+\newpage
+\subsection{演習問題}
+次の積分を解け。\\\\
+(1)$\displaystyle \int_0^\infty \frac{x^2}{(1+x^2)^2}dx$
+\hspace{15mm}
+(2)$\displaystyle \int_0^\infty \left(\frac{\sin x}{x}\right)^2 dx$
+\hspace{15mm}
+(3)$\displaystyle \int_0^\infty \frac{dx}{1+x^4}$
+\hspace{15mm}
+(4)$\displaystyle \int_0^\infty \frac{\log x}{1+x^2}dx$
+\\\\
+(5)$\displaystyle \int_0^a \frac{x}{\sqrt{ax-x^2}}dx\quad(a>0)$
+\\
+
+平均$\mu$、分散$\sigma^2$の正規分布の確率密度関数$\displaystyle f(x)=\frac{e^{\frac{-(x-\mu)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}$ は規格化されている(=確率の総和は1)。これを証明せよ。
+なお、これを積分で表すと、
+\begin{equation*}
+    \int_{-\infty}^{\infty}f(x)dx
+\end{equation*}
+となる。\\
+\hrulefill
+\subsection{オイラーの等式を用いて積分を簡単に}
+\begin{screen}
+    すでに何回か登場しているが、オイラーの等式を用いることで積分を簡単に表すことができる場合がある。
+    たとえば、「収束因子」の章の例題などがそれにあたる。三角関数と指数関数$e^x$の積を$e^{x}$の形で表せると、
+    微分積分が簡単になるのはすでに体験しているだろう。これらは本来は複素関数の範囲なのだが、実数の場合同様に
+    微分積分できるためこれが成り立つ。詳しくは複素関数で学べるだろう。話を戻すが、このやり方は別に広義積分以外
+    でも使うことができる。たとえば、
+    \begin{equation*}
+        \int e^{ax} \cos bxdx
+    \end{equation*}
+    をオイラーの等式を用いて計算してみよ。答えが同じになるはずである。
+\end{screen}
+\newpage
+\part{補足}
 \end{document}
