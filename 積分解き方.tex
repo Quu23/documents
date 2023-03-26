@@ -235,16 +235,16 @@ $f(x)$の積分が余りにも複雑な場合には、この変形は使わな�
 \subsubsection{例題}
 次の不定積分を求めよ。
 \begin{equation*}
-    (1)\int \frac{x+5}{x-2}dx\quad(2)\int \frac{x}{(x^2+1)^2}dx\quad(3)\int \frac{dx}{x^2-9}
+    (1)\int \frac{x+5}{x-2}dx\quad(2)\int \frac{x^3+2}{x^2+1}dx\quad(3)\int \frac{dx}{x^2-9}
 \end{equation*}
 \subsubsection*{解答}
 (1)$\displaystyle \frac{x+5}{x-2}=1+\frac{7}{x-2}$という風に変形を施せば、
 \begin{equation*}
     \int 1+\frac{7}{x-2}dx=x+7\int \frac{dx}{x-2}=x+7\log|x-2|+C
 \end{equation*}
-(2)有理関数の積分というよりは、置換積分の練習になってしまうが、
+(2)商とあまりの和の形になおしてあげると、
 \begin{equation*}
-    \int \frac{x}{x^2+1}dx=\frac{1}{2}\int \frac{dt}{t}=\frac{1}{2}\log|t|+C=\frac{1}{2}\log(x^2+1)+C
+    \int \frac{x^3+1}{x^2+1}dx=\int x+\frac{2-x}{x^2+1}dx=\frac{1}{2}x^2+2\arctan x - \log(x^2+1)+C
 \end{equation*}
 (3)そのままでは積分できないので、もちろん変形しなければならない。
 \begin{equation*}
@@ -673,12 +673,12 @@ $e^x$でくくると、
 \subsubsection*{例題}
 次の積分を求めよ。
 \begin{equation*}
-    \int xe^{ax}\cos bxdx
+    \int xe^{ax}\cos bx dx
 \end{equation*}
 \subsubsection*{解答}
 そのまま解けばよくて、
 \begin{align*}
-    I&=\int xe^{ax}\cos bxdx=x\cdot\frac{e^{ax}}{a^2+b^2}(a\cos bx+b\sin bx)-\frac{1}{a^2+b^2}\int e^{ax}(a\cos bx+b\sin bx)dx\\
+    I&=\int xe^{ax}\cos bx dx=x\cdot\frac{e^{ax}}{a^2+b^2}(a\cos bx+b\sin bx)-\frac{1}{a^2+b^2}\int e^{ax}(a\cos bx+b\sin bx)dx\\
     &=\frac{1}{a^2+b^2}(xe^{ax}(a\cos bx+b\sin bx)-\left(\frac{ae^{ax}}{a^2+b^2}(a\cos bx+b\sin bx)+\frac{be^{ax}}{a^2+b^2}(a\sin bx-b\cos bx)\right))+C
 \end{align*}
 これを整理すると、
@@ -703,7 +703,7 @@ $P(x)$を$x$に関する多項式とする。この時、合成関数$\log(P(x))
 \begin{equation*}
     \int \log(P(x))dx=x\log(P(x))-\int \frac{x\cdot P'(x)}{P(x)}dx
 \end{equation*}
-と変形でき、$P(x)$が多項式だから、$P'(x)$ももちろん多項式となり、$\frac{x}{Q(x)}$も$x$の有理関数となるため、必ず積分できる。
+と変形でき、$P(x)$が多項式だから、$P'(x)$ももちろん多項式となり、$\frac{x}{P(x)}$も$x$の有理関数となるため、必ず積分できる。
 
 とはいえイメージしづらい場合は、次の例題を解いてみればよい。
 \subsubsection*{例題}
@@ -1579,14 +1579,14 @@ $Im(i^{\frac{3}{2}})=\frac{1}{\sqrt{2}}>0$となる。よって、ガウス積�
 (5)$\displaystyle \int_0^a \frac{x}{\sqrt{ax-x^2}}dx\quad(a>0)$
 \\
 
-平均$\mu$、分散$\sigma^2$の正規分布の確率密度関数$\displaystyle f(x)=\frac{e^{\frac{-(x-\mu)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}$ は規格化されている(=確率の総和は1)。これを証明せよ。
+平均$\mu$、分散$\sigma^2$の正規分布の確率密度関数$\displaystyle f(x)=\frac{e^{\frac{-(x-\mu)^2}{2\sigma^2}}}{\sqrt{2\pi\sigma^2}}$ は規格化されている(=確率の総和は1)。これを示せ。
 なお、これを積分で表すと、
 \begin{equation*}
     \int_{-\infty}^{\infty}f(x)dx
 \end{equation*}
 となる。\\
 \hrulefill
-\subsection{オイラーの等式を用いて積分を簡単に}
+\subsection{$\blacksquare$CoffeeBreak:オイラーの等式を用いて積分を簡単に}
 \begin{screen}
     すでに何回か登場しているが、オイラーの等式を用いることで積分を簡単に表すことができる場合がある。
     たとえば、「収束因子」の章の例題などがそれにあたる。三角関数と指数関数$e^x$の積を$e^{x}$の形で表せると、
@@ -1594,7 +1594,7 @@ $Im(i^{\frac{3}{2}})=\frac{1}{\sqrt{2}}>0$となる。よって、ガウス積�
     微分積分できるためこれが成り立つ。詳しくは複素関数で学べるだろう。話を戻すが、このやり方は別に広義積分以外
     でも使うことができる。たとえば、
     \begin{equation*}
-        \int e^{ax} \cos bxdx
+        \int e^{ax} \cos bx dx
     \end{equation*}
     をオイラーの等式を用いて計算してみよ。答えが同じになるはずである。
 \end{screen}
@@ -1719,6 +1719,19 @@ $s$が自然数ならば、
     K(0)&=\int_0^\frac{\pi}{2}d\theta=\frac{\pi}{2}\qquad E(0)=\int_0^\frac{\pi}{2}d\theta=\frac{\pi}{2}\\
     E(1)&=\int_0^\frac{\pi}{2}\sqrt{1-\sin^2\theta}d\theta=\int_0^\frac{\pi}{2}\cos\theta d\theta=1
 \end{align*}
+\hrulefill
+\subsection*{$\blacksquare$CoffeeBreak:他分野との関連性}
+\begin{screen}
+    ここまで積分の計算のみに焦点をあてているので、他分野との関連性について軽く述べておく。
+    真っ先に浮かぶのが物理だろう。有名な運動の法則$\displaystyle F=m\frac{d^2}{dt^2}x$で
+    さえ、微分を使って書かれている。もちろんこの\textbf{微分方程式}を解くには、微積分、特に
+    積分の知識が必要である。同じ積分つながりで線積分というものがある。物理の仕事は線積分を
+    用いて計算できる。多重積分を用いれば、場所で異なる密度をもつ物体の質量なども求められる。
+    ただ面積、体積が求められるだけではないのだ。\\
+    物理以外にも、多くの分野で微分積分が使われている。たいていの本も、微分積分をマスターして
+    いることが基準になっている(と思う)。計算ができなくて躓かないようにこの資料に書いてある
+    計算はある程度マスターしておこう。
+\end{screen}
 \newpage
 \part{確認問題}
 最後の確認として解くのがいいと思う。簡単な積分から難しい積分まで集めている。\\
@@ -1743,12 +1756,75 @@ $s$が自然数ならば、
 
 (9)$\displaystyle \int_1^2\log x dx$
 \hspace{22mm}
-(10)$\displaystyle \int\sin(\pi-x)dx$
-\hspace{8mm}
+(10)$\displaystyle \int\frac{\sqrt{x^2+1}}{x}dx$
+\hspace{10mm}
 (11)$\displaystyle \int_a^b(x-a)(b-a)dx$
-% \hspace{5mm}
-% (12)$\displaystyle \int\sin(\pi-x)dx$\\
+\hspace{1mm}
+(12)$\displaystyle \int\frac{dx}{\sinh x}$\\
 
-% (13)$\displaystyle \int_{-\pi}^\pi \cos(mx)\cos(nx)dx$
-%また角
+2.次の積分を求めよ。\\
+
+(1)$\displaystyle \int_0^\infty \frac{e^{-\sqrt{x}}}{\sqrt{x}}dx$
+\hspace{17mm}
+(2)$\displaystyle \int_0^1 \frac{x\log x}{(1+x)^4}dx$
+\hspace{10mm}
+(3)$\displaystyle \int_0^\frac{\pi}{4}\frac{x}{\sin 2x+2\cos^2 x}dx$
+\hspace{10mm}
+(4)$\displaystyle \int_0^\frac{\pi}{2} \left(\frac{\pi}{2}-x\right)\tan xdx$\\
+
+(5)$\displaystyle \int_0^1\frac{\log x}{x^{a}}dx\hspace{1mm}(0<a<1)$
+\hspace{0.5mm}
+(6)$\displaystyle \int_{-1}^1 \frac{dx}{(1-2ax+a^2)\sqrt{1-x^2}}dx$\\
+
+{\scriptsize ヒント：(6)は$x=\cos\theta$と置換せよ。}\\
+
+3.次の積分を示せ。
+\begin{equation*}
+    \int_0^{2\pi}e^{inx}dx=\left \{
+        \begin{array}{l}
+            2\pi\quad(n=0)\\
+            0 \quad\hspace{2mm}(n\neq 0)
+        \end{array}
+    \right.
+\end{equation*}\\
+
+4.次の(1)(2)に答えよ。
+
+(1)次の積分を示せ。(ただし、$n=0,1,2,3...$)
+\begin{equation*}
+    I_n=\int_{n\pi}^{(n+1)\pi}dx e^{-x}\sin x=\frac{(-1)^n}{2}e^{-n\pi}(1+e^{-\pi})
+\end{equation*}
+
+(2)上の結果を用いて、次の積分を導出せよ。
+\begin{equation*}
+    I=\int_0^\infty dx e^{-x}|\sin x|=\frac{1}{2}\cdot \frac{1+e^{-\pi}}{1-e^{-\pi}}
+\end{equation*}\\
+
+5.($n=1,2,3,..$)として、次の積分を求めよ。
+\begin{equation*}
+    I_n=\int_{-\infty}^{\infty}\frac{dx}{(1+x^2)^{n+1}}
+\end{equation*}\\
+
+6.次の$x$軸を回転軸とする回転体の体積を求めよ。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15cm,scale=5]{img/回転体問題.png}
+\end{figure}
+このような図形を\textbf{トーラス体}という。\\
+
+7.$n$を整数とすると、
+\begin{equation*}
+    \int x^{2n+1}\sqrt{x^2+1}dx
+\end{equation*}
+は必ず積分できる。これを示せ。\\
+\hrulefill\\
+引用している問題のほうが多いので、ここまでの知識で解けるはずである。わからない問題はいったん飛ばして
+次の問題に行くほうがいい。次の問題が前の問題のヒントになっているかもしれないからである。
+\newpage
+\part{解答}
+以下解答である。
+\\
+\hrulefill\\
+
+{\huge 随時更新予定}
 \end{document}
