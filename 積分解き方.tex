@@ -558,11 +558,11 @@ $t=\tan\frac{x}{2}$と置換する。
 \subsubsection*{解答}
 (1)半角の公式を用いて、
 \begin{equation*}
-    \sqrt{1+\sin x}=\sqrt{\sin^2\frac{x}{2}+\cos^2\frac{x}{2}+2\sin\frac{x}{2}\cos\frac{x}{2}}=\sin x+\cos x
+    \sqrt{1+\sin x}=\sqrt{\sin^2\frac{x}{2}+\cos^2\frac{x}{2}+2\sin\frac{x}{2}\cos\frac{x}{2}}=\sin \frac{x}{2}+\cos \frac{x}{2}
 \end{equation*}
 と変形できるため、あとは計算するのみである。
 \begin{equation*}
-    \int \sin x+\cos x dx= -\cos x+\sin x+C
+    \int \sin \frac{x}{2}+\cos \frac{x}{2} dx= -\cos \frac{x}{2}+\sin \frac{x}{2}+C
 \end{equation*}
 
 (2)$\sin x\sin 2x=-\frac{1}{2}(\cos 3x -\cos x)$、$\cos 3x\sin 3x=\frac{1}{2}\sin 6x$、$\cos x\sin 3x=\frac{1}{2}(\sin 4x+\sin 2x)$であるため、
@@ -1023,6 +1023,45 @@ $7+4\sqrt{3}$は$(2+\sqrt{3})^2$と変形できるが、そこまで簡単にす
 \end{equation*}
 となるため、等式は成り立つ。
 \newpage
+\subsection{King Property}
+次に対称性を利用して解く方法について紹介する。名前がかっこいいので使いたくなるはずだ。
+\begin{equation*}
+    \int_a^b f(x)dx=\int_a^b f(a+b-x)dx
+\end{equation*}
+とりあえず上の式の証明をしておく。$x\to a+b-x$の置換をすると
+\begin{equation*}
+    \int_a^b f(x)dx=-\int_b^a f(a+b-x)dx=\int_a^b f(a+b-x)dx
+\end{equation*}
+とあっさり求まる。こんな式何の役に立つのかと思われるかもしれないが、意外と難しい積分を解く際に使えることが多い。
+\subsubsection*{例題}
+次の定積分を求めよ。
+\begin{equation*}
+    (1)\int_0^\frac{\pi}{2}\frac{\sin x}{\cos x+\sin x}dx\qquad(2)\int_{-\frac{\pi}{2}}^\frac{\pi}{2}\frac{e^x+e^{-x}}{2^x+1}dx
+\end{equation*}
+\subsubsection*{解答}
+(1)この不定積分はすでに求めているが、ここでは簡単な式変形だけで求めてみよう。
+\begin{equation*}
+    \int_0^\frac{\pi}{2}\frac{\sin x}{\cos x+\sin x}dx=\int_0^\frac{\pi}{2}\frac{\cos x}{\cos x+\sin x}dx
+\end{equation*}
+であるため、二つを足して二で割ると、
+\begin{equation*}
+    \frac{1}{2}\int_0^\frac{\pi}{2}\frac{\sin x+\cos x}{\cos x+\sin x}dx=\frac{\pi}{4}
+\end{equation*}
+と求まる。
+
+(2)同様にking propertyを用いると
+\begin{equation*}
+    \int_{-\frac{\pi}{2}}^\frac{\pi}{2}\frac{e^x+e^{-x}}{2^x+1}dx=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{e^{-x}+e^x}{2^{-x}+1}dx=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}2^x\frac{e^{-x}+e^x}{2^{x}+1}dx
+\end{equation*}
+よって始めの積分と足して二で割ると、
+\begin{equation*}
+    \frac{1}{2}\int_{-\frac{\pi}{2}}^\frac{\pi}{2} \frac{(2^x+1)(e^x+e^{-x})}{2^x+1}dx=
+    \frac{1}{2}\int_{-\frac{\pi}{2}}^\frac{\pi}{2}e^x+e^{-x}dx=\frac{1}{2}(e^{\frac{\pi}{2}}-e^{-\frac{\pi}{2}}-(e^{-\frac{\pi}{2}}-e^{\frac{\pi}{2}}))=e^{\frac{\pi}{2}}-e^{-\frac{\pi}{2}}
+\end{equation*}
+となる。もしくは双曲線関数を用いて$2\sinh\left(\frac{\pi}{2}\right)$と表してもよい。\\
+
+実は、ここで行った計算を一つ上の節の公式の証明時に行っていたことに気づいただろうか。わざわざking propertyと書かずに以下の章でも使っていく。
+\newpage
 \subsection{Wallis積分(ウォリス積分)}
 最後に、漸化式で求められる積分について紹介しておこう。
 \subsubsection*{例題}
@@ -1105,7 +1144,7 @@ $m=0,1$のときは簡単に求まって、
 \\
 {\scriptsize ヒント：1.(6)は、$m=n,m\neq n$で場合分け。$x=\pi\times(\text{整数})$の時の$\sin x$について単位円を書いて考えてみるとよい。
 2.実際に積分すると大変な場合は、wolfram alphaなどを用いて確かめるとよい。特に(2)の場合は計算量が多いので、式入力する際は和の形に分けてそれぞれを
-計算して、その結果の足し算を入力してあげるとよい。3.そこまで難しくはない。ivを参照されたし。4.実を言うと、この章の内容にあまり関係のない積分である。
+計算して、その結果の足し算を入力してあげるとよい。3.そこまで難しくはない。vを参照されたし。4.実を言うと、この章の内容にあまり関係のない積分である。
 三角関数で置換してあげると、右辺の形になる。5.積分区間[-a,a]を[-a,0]と[0,a]の積分に分けよ。}\\
 \hrulefill
 \subsection{$\blacksquare$CoffeeBreak:もしも間違いがあったら}
@@ -1243,7 +1282,13 @@ $L$であるためである。
     \begin{equation*}
         \frac{d}{dr}\int_0^r S(x)dx=4\pi r^2
     \end{equation*}
-    左辺は微積分学の基本定理より$S(r)$となるため、$S(r)=4\pi r^2$となる。
+    左辺は微積分学の基本定理より$S(r)$となるため、$S(r)=4\pi r^2$となる。\\\\
+
+    ちなみに、一般的に回転体の表面積は次のように求まる。
+    \begin{equation*}
+        S=\int_a^b y\sqrt{1+\left(\frac{dy}{dx}\right)^2}dx
+    \end{equation*}
+    この公式に代入してみても、球の表面積は求まる。
 \end{screen}
 \newpage
 \section{広義積分}
@@ -1413,7 +1458,12 @@ $Im(i^{\frac{3}{2}})=\frac{1}{\sqrt{2}}>0$となる。よって、ガウス積�
 \begin{equation*}
     I=\sqrt{\frac{\pi}{2}}
 \end{equation*}
-となる。この積分は、\textbf{フレネル積分}という。
+となる。この積分は、\textbf{フレネル積分}という。\\
+\hrulefill\\
+始めの例題の積分はフーリエ変換で解くのが一般的である。今回の例題の解き方は少々``技巧的すぎる''が、逆に言えば、
+それでも高度な知識を用いずに解くことができるのを知ってほしい。同じような問題で、$\displaystyle \int_0^\infty dx\frac{\cos(ax)}{1+x^2}$
+を少し技巧的に解くこともできる。普通は、フーリエの積分公式をつかってとく。ちなみにこの積分から、最初の積分を
+導くこともできる。
 \newpage
 \subsection{その他の難しい広義積分}
 最後に少し難しめの積分を解いていく。たくさん練習していこう。
@@ -1817,7 +1867,25 @@ $s$が自然数ならば、
     \int x^{2n+1}\sqrt{x^2+1}dx
 \end{equation*}
 は必ず積分できる。これを示せ。\\
-\hrulefill\\
+
+6.定積分
+\begin{equation*}
+    \int_0^\infty\frac{\cos(ax)}{1+x^2}=\frac{\pi}{2}e^{-|a|}
+\end{equation*}
+を次の手順で示せ。
+
+(1)
+\begin{equation*}
+    \int_0^\infty \frac{\sin(ax)}{x}dx=\frac{\pi}{2}\mbox{sign}(a)    
+\end{equation*}
+
+(2)
+\begin{equation*}
+    \int_0^\infty \frac{\cos(ax)\sin(ax)}{x}dx=\frac{\pi}{4}\{\mbox{sign}(a+b)-\mbox{sign}(a-b)\}
+\end{equation*}
+
+(3)\hspace{2mm}(2)の両辺を$\displaystyle \int_0^\infty db\hspace{1mm}e^{-b}$して、求める定積分を導け。\footnote{この操作をラプラス変換という。記号で書くと、$\mathcal{L}[f(x)]$である。詳しくはフーリエ解析で学ぶ。}\\
+\\
 引用している問題のほうが多いので、ここまでの知識で解けるはずである。わからない問題はいったん飛ばして
 次の問題に行くほうがいい。次の問題が前の問題のヒントになっているかもしれないからである。
 \newpage
