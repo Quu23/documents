@@ -1,6 +1,7 @@
 \documentclass[a4j,dvipdfmx]{jsarticle}
 \usepackage{amsmath,amssymb}
 % \usepackage{fancybx}
+\usepackage{fancyhdr}
 \usepackage{ascmac}
 \usepackage{siunitx}
 \usepackage[dvips]{graphicx}
@@ -8,6 +9,8 @@
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\roman{subsection}}
 % \renewcommand{\thesubsubsection}{\roman{subsubsection}}
+
+\pagestyle{fancy}
 
 \title{積分　解き方集}
 \author{$\sum$理学愛好会}
@@ -1397,19 +1400,19 @@ $\varepsilon\to 0$極限をとって収束値とするやり方がある。こ�
 \begin{equation*}
     I(\varepsilon)=\int_0^\infty e^{-\varepsilon x}\frac{\sin ax}{x}dx
 \end{equation*}
-を考える。$Im$は虚部を取ることとすると、
+を考える。$\mbox{Im}$は虚部を取ることとすると、
 \begin{align*}
-    I'(\varepsilon)&=-Im\left(\int_0^\infty e^{-x(\varepsilon-ai)}dx\right)=-Im\left(\frac{1}{\varepsilon-ai}\right)\\
+    I'(\varepsilon)&=-\mbox{Im}\left(\int_0^\infty e^{-x(\varepsilon-ai)}dx\right)=-\mbox{Im}\left(\frac{1}{\varepsilon-ai}\right)\\
     &=-\frac{a}{\varepsilon^2+a^2}
 \end{align*}
 よって、両辺を$\varepsilon$で積分してあげると
 \begin{equation*}
-    I(\varepsilon)=-\arctan(\frac{\varepsilon}{a})+C
+    I(\varepsilon)=-\arctan\left(\frac{\varepsilon}{a}\right)+C
 \end{equation*}
 しかし、$I(\infty)=0$であるため、$C=\frac{\pi}{2}$でなければならない。
 よって、
 \begin{equation*}
-    I(\varepsilon)=\frac{\pi}{2}-\arctan(\frac{\varepsilon}{a})
+    I(\varepsilon)=\frac{\pi}{2}-\arctan\left(\frac{\varepsilon}{a}\right)
 \end{equation*}
 ここで、$a=1,\varepsilon\to+0$の極限を取ると、$\displaystyle I(0)=\frac{\pi}{2}$となる。
 少し技巧的にはなってしまったが、答えが求められたので良しとしよう。
@@ -1421,15 +1424,15 @@ $\varepsilon\to 0$極限をとって収束値とするやり方がある。こ�
 \subsubsection*{解答}
 そのままだと計算が難しそうなので収束因子を用いる。
 \begin{equation*}
-    J(\varepsilon)=\int_{-\infty}^{\infty}e^{-x^2\varepsilon}\sin(x^2)dx=Im\left(\int_{-\infty}^{\infty}e^{-x^2(\varepsilon-i)}dx\right)
+    J(\varepsilon)=\int_{-\infty}^{\infty}e^{-x^2\varepsilon}\sin(x^2)dx=\mbox{Im}\left(\int_{-\infty}^{\infty}e^{-x^2(\varepsilon-i)}dx\right)
 \end{equation*}
-ここで、$\sqrt{\varepsilon-i}x\to x$の置換を施すと、$Im(\sqrt{\varepsilon-i})>0$であれば、ガウス積分に帰着するので、
+ここで、$\sqrt{\varepsilon-i}x\to x$の置換を施すと、$\mbox{Im}(\sqrt{\varepsilon-i})>0$であれば、ガウス積分に帰着するので、
 \begin{equation*}
-    =Im\left(\frac{1}{\sqrt{\varepsilon-i}}\int_{-\infty}^{\infty}e^{-x^2}dx\right)=\frac{\sqrt{\pi}}{\varepsilon^2+1}Im\left(\sqrt{\varepsilon-i}\right)
+    =\mbox{Im}\left(\frac{1}{\sqrt{\varepsilon-i}}\int_{-\infty}^{\infty}e^{-x^2}dx\right)=\frac{\sqrt{\pi}}{\varepsilon^2+1}\mbox{Im}\left(\sqrt{\varepsilon-i}\right)
 \end{equation*}
-ここで極限$\varepsilon\to 0$を施すと、$Im(\sqrt{\varepsilon-i})$は、
+ここで極限$\varepsilon\to 0$を施すと、$\mbox{Im}(\sqrt{\varepsilon-i})$は、
 \begin{equation*}
-    Im(\sqrt{\varepsilon-i})=Im(i^{\frac{3}{2}})
+    \mbox{Im}(\sqrt{\varepsilon-i})=\mbox{Im}(i^{\frac{3}{2}})
 \end{equation*}
 さて、$\displaystyle e^{i\frac{\pi}{2}}=i$であるため、$i^{\frac{3}{2}}=e^{i\frac{3\pi}{4}}=-\frac{1}{\sqrt{2}}+\frac{i}{\sqrt{2}}$となる。虚部を取ると、
 $Im(i^{\frac{3}{2}})=\frac{1}{\sqrt{2}}>0$となる。よって、ガウス積分に帰着しても大丈夫であることがわかる。積分の計算に話を戻すと、
