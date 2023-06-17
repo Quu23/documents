@@ -6,6 +6,7 @@
 \usepackage{fancyhdr}
 \usepackage{ascmac}
 \usepackage{siunitx}
+\usepackage[dvips]{graphicx}
 
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\roman{subsection}}
@@ -47,7 +48,7 @@ $\Gamma(a)=\Gamma(a')\quad(a\neq a')$であってもよいし、$\Gamma(a)=\phi$
 （ただ実際は主値を取っている。$\arcsin x$なら$-\frac{\pi}{2}\leq \arcsin x\leq \frac{\pi}{2}$）
 \newpage
 写像$f:A\to B$によって$A$の元$a$に$B$の元$b$が対応するとき、$b$を$f$による$a$の\textbf{像}といい、
-$b=f(a)$と表す。このとき、$a$を$f$による$b$の\textbf{原像}という。
+$b=f(a)$と表す。このとき、$a$を$f$による$b$の\textbf{原像}または\textbf{逆像}といい、$a=f^{-1}(b)$と表す。
 
 \uwave{中学生でもわかること}だが、関数$f(x)=4x^2$と関数$g(x)=(2x)^2$は$\mathbb{R}$のどんな元$x$についても$f(x)=g(x)$が成り立つ。
 同じように、$f:A\to B$である写像$f$と$g:A\to B$である写像$g$が、$A$のどんな元$a$についても常に$f(a)=g(a)$となるとき、
@@ -77,6 +78,57 @@ $2^n\times 2^n\times\cdots\times 2^n=(2^n)^m=2^{mn}$となり、答えは$2^{mn}
 \color{black}
 \newpage
 \subsection{合成写像ってなんすか}
+三つの集合$A,B,C$があるときに、$A$から$C$までの写像を$B$を経由して考えることができる。
+つまり、$f:A\to B\quad g:B\to C$とすると$A$から$C$までの写像は$a\in A$として$g(f(a))$となる。
+これを$f,g$の\textbf{合成}または$\textbf{合成写像}$といい$g\circ f$と表す。
 
+\subsubsection*{問5.1}
+二つの写像$f:\mathbb{R}\to\mathbb{R}\quad g:\mathbb{R}\to\mathbb{R}$を$f(x)=x+2,g(x)=x^2+1$で与える。合成写像$f\circ g,\quad g\circ f\\f\circ f,\quad g\circ g$を式で表せ。
+\vspace{30mm}
 
+\subsubsection*{解答}
+\color{red}
+\begin{align*}
+    f\circ g&=(x^2+1)+2=x^2+3\quad && g\circ f=(x+2)^2+1=x^2+4x+5\\
+    f\circ f&=(x+2)+2=x+4\quad && g\circ g=(x^2+1)^2+1=x^4+2x^2+2\\
+\end{align*}
+\color{black}
+
+次に合成写像の\textbf{結合法則}について
+\begin{screen}
+    写像$f:X\to Y,\quad g:Y\to Z,\quad h:Z\to W$の合成について、等式
+    \begin{equation*}
+        h\circ (g\circ f)=(h\circ g)\circ f
+    \end{equation*}
+    が成り立つ。
+\end{screen}
+\paragraph{証明}
+各元$x\in X$に対して、
+\begin{equation*}
+    [h\circ (g\circ f)](x)=h((g\circ f)(x))=h(g(\uwave{f(x)}))=(h\circ g)(f(x))=[(h\circ g)\circ f](x)   
+\end{equation*}
+が成り立つ。$\square$\\ 
+\newpage
+\subsection{像ってなんすか}
+$f:A\to B$を写像とする。$A$の部分集合$A'$に対して、$B$の部分集合$\{f(a)\mid a\in A'\}$を$f$による$A'$の\textbf{像}といい、
+$f(A')$と表す。$B$の部分集合$B'$に対して、$A$の部分集合$\{a\in A \mid f(a)\in B'\}$を$f$による$B'$の\textbf{原像}または\textbf{逆像}といい、$A'=f^{-1}(B')$と表す
+
+\begin{figure}[h]
+    \begin{minipage}{0.5\linewidth}
+        \centering
+        \includegraphics[keepaspectratio,scale=0.35]{img/写像_像.png}
+        \caption{像のイメージ図}
+      \end{minipage}
+      % -- 図2--
+      \begin{minipage}{0.6\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, scale=0.35]{img/写像_逆増.png}
+        \caption{逆像のイメージ図}
+      \end{minipage}
+\end{figure}
+\hrulefill\\
+$f:A\to B$を写像とする。$A$の部分集合$A_1,A_2$および$B$の部分集合$B_1,B_2$に対して、次式が成り立つ。
+\\% ここに式を書く
+
+とはいえ、ただ式を並べただけでは「なんかそういうデータってあるんすか？」と言われてしまうので、しっかり証明もしておこう。
 \end{document}
