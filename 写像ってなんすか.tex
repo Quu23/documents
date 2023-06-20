@@ -43,7 +43,7 @@ $\Gamma(a)=\Gamma(a')\quad(a\neq a')$であってもよいし、$\Gamma(a)=\phi$
 逆に、我々になじみのある$f(x)=x^2$は、ある実数の集合$\mathbb{R}$の元$x$に対して実数の集合の元$x^2$が対応している
 ので写像である。なお、$f(x)=x^2$のように終域が数字である場合は\textbf{関数}といい、それ以外の場合は写像ということが多い。
 
-写像ではない例としては逆三角関数がある。例えば、$\arcsin x$は$-1\leq x\leq 1$の実数$x$に対して無限個の値が存在する。
+写像ではない例としては$x^2+y^2=1$（円の方程式）や逆三角関数がある。例えば、$\arcsin x$は$-1\leq x\leq 1$の実数$x$に対して無限個の値が存在する。
 （ただ実際は主値を取っている。$\mathrm{Arcsin}\hspace{1mm}x$なら$-\frac{\pi}{2}\leq \mathrm{Arcsin}\hspace{1mm}x\leq \frac{\pi}{2}$）\\
 
 写像$f:A\to B$によって$A$の元$a$に$B$の元$b$が対応するとき、$b$を$f$による$a$の\textbf{像}といい、
@@ -103,10 +103,13 @@ $2^n\times 2^n\times\cdots\times 2^n=(2^n)^m=2^{mn}$となり、答えは$2^{mn}
 \end{screen}
 \paragraph{証明}
 各元$x\in X$に対して、
-\begin{equation*}
-    [h\circ (g\circ f)](x)=h((g\circ f)(x))=h(g(\uwave{f(x)}))=(h\circ g)(f(x))=[(h\circ g)\circ f](x)   
-\end{equation*}
-が成り立つ。$\square$\\ 
+\begin{align*}
+    (\text{左辺})=[h\circ (g\circ f)](x)=h((g\circ f)(x))=h(g(f(x)))\\
+    (\text{右辺})=[(h\circ g)\circ f](x)=(h\circ g)(f(x))=h(g(f(x)))\\
+    \therefore (\text{左辺})=(\text{右辺})\square
+\end{align*} 
+\hrulefill\\
+6/21　以下はまだ書き終えていないです。
 \newpage
 \subsection{像ってなんすか}
 $f:A\to B$を写像とする。$A$の部分集合$A'$に対して、$B$の部分集合$\{f(a)\mid a\in A'\}$を$f$による$A'$の\textbf{像}といい、
