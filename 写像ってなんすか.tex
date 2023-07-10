@@ -112,7 +112,7 @@ $2^n\times 2^n\times\cdots\times 2^n=(2^n)^m=2^{mn}$となり、答えは$2^{mn}
 
 \subsection{像ってなんすか}
 $f:A\to B$を写像とする。$A$の部分集合$A'$に対して、$B$の部分集合$\{f(a)\mid a\in A'\}$を$f$による$A'$の\textbf{像}といい、
-$f(A')$と表す。$B$の部分集合$B'$に対して、$A$の部分集合$\{a\in A \mid f(a)\in B'\}$を$f$による$B'$の\textbf{原像}または\textbf{逆像}といい、$f^{-1}(B')$と表す
+$f(A')$と表す。$B$の部分集合$B'$に対して、$A$の部分集合$\{a\in A \mid f(a)\in B'\}$を$f$による$B'$の\textbf{原像}または\textbf{逆像}といい、$f^{-1}(B')$と表す。\footnote{$f^{-1}$はインバースエフと読む}
 
 \begin{figure}[h]
     \begin{minipage}{0.5\linewidth}
@@ -144,13 +144,14 @@ $f:A\to B$を写像とする。$A$の部分集合$A_1,A_2$および$B$の部分�
 とはいえ、ただ式を並べただけでは「なんかそういうデータってあるんすか？」と言われてしまうので、簡単に証明もしておこう。
 
 \paragraph{証明}
-まずは、(1)を証明する。このページの本文の一行目から二行目に書いてあることをそのまま用いる。
+まずは、(1)を証明する。$x\in f(A_1\cup A_2)$とすると、
 
 \begin{align*}
-    f(A_1\cup A_2)
-    &=\left\{f(a)\mid a\in A_1\cup A_2 \right\}\\
-    &=\left\{f(a)\mid a\in A_1\text{または} a\in A_2 \right\}\\
-    &=f(A_1)\cup f(A_2)\quad\square
+    x\in f(A_1\cup A_2)
+    &\leftrightarrow x=f(a)となるような a\in A_1\cup A_2が存在する\\
+    &\leftrightarrow x=f(a_1)となるようなa_1\in A_1または x=f(a_2)となるようなa_2\in A_2が存在する\\
+    &\leftrightarrow x\in f(A_1)またはx\in f(A_2)が存在する\\
+    &\leftrightarrow x\in f(A_1)\cup f(A_2)\square
 \end{align*}
 
 % 左辺の$f(A_1\cup A_2)$は、$\left\{b\in B\mid \text{$b=f(a)$となる元$a\in A_1 \cup A_2$が存在する}\right\}$と書ける。なぜなら、\\
@@ -169,64 +170,74 @@ $f:A\to B$を写像とする。$A$の部分集合$A_1,A_2$および$B$の部分�
 %     &=f(A_1)\cup f(A_2).
 % \end{align*}
 % 通してみてみると意外とあっけない。\\
-
-次に(2)を証明する。こちらも(1)とちがい、後の都合上$f(A_1\cap A_2)$を$$\left\{b\in B\mid \text{$b=f(a)$となる元$a\in A_1 \cap A_2$が存在する}\right\}$$と書く（書ける）。
-左の「～が存在する」という条件を満たす時の$b$のみが入っているのは定義をそのまま書いたようなものだ。（存在しないときはその$b$は集合にいれない）\\
-この次がポイントでこの集合は\\
-$\left\{b\in B\mid \text{$b=f(a_1)$となる元$a_1\in A_1$および$b=f(a_2)$となる元$a_2 \in A_2$が存在する}\right\}$\\
-に\textbf{含まれている}といえる。
-
-なぜなら、この条件「$b=f(a_1)$となる$a_1\in A_1$および$b=f(a_2)$となる$a_2\in A_2$が存在する」は
-\textbf{$A_1$に含まれる元}の条件と\textbf{$A_2$に含まれる元}の条件であるのに対し、最初の条件は$A_1\cap A_2$に含まれる元の条件
-となっており、元が含まれる\ruby{元}{もと}の集合は明らかに前者のほうが大きいためである。おそらく何言ってるかわからないと思うので例を出すと、
-$A_1$と$A_2$の対称差\footnote{$A_1$のみの元の集合と$A_2$のみの元の集合の和集合}の元は、始めの条件の適応外であるが後の条件の範囲内である。\\
-さらにこの条件は、$\left\{b\in B\mid b\in f(A_1)\text{かつ}b\in f(A_2)\right\}$と書き換えられるので、右辺の式そのものとなる。$\square$
-
-これも、式で書くと次のようになる。
+\newpage
+次に(2)を証明する。こちらも(1)と同様$x\in f(A_1\cap A_2)$として証明すると、
+% 左の「～が存在する」という条件を満たす時の$b$のみが入っているのは定義をそのまま書いたようなものだ。（存在しないときはその$b$は集合にいれない）\\
+% この次がポイントでこの集合は\\
+% $\left\{b\in B\mid \text{$b=f(a_1)$となる元$a_1\in A_1$および$b=f(a_2)$となる元$a_2 \in A_2$が存在する}\right\}$\\
+% に\textbf{含まれている}といえる。
+% なぜなら、この条件「$b=f(a_1)$となる$a_1\in A_1$および$b=f(a_2)$となる$a_2\in A_2$が存在する」は
+% \textbf{$A_1$に含まれる元}の条件と\textbf{$A_2$に含まれる元}の条件であるのに対し、最初の条件は$A_1\cap A_2$に含まれる元の条件
+% となっており、元が含まれる\ruby{元}{もと}の集合は明らかに前者のほうが大きいためである。おそらく何言ってるかわからないと思うので例を出すと、
+% $A_1$と$A_2$の対称差\footnote{$A_1$のみの元の集合と$A_2$のみの元の集合の和集合}の元は、始めの条件の適応外であるが後の条件の範囲内である。\\
+% さらにこの条件は、$\left\{b\in B\mid b\in f(A_1)\text{かつ}b\in f(A_2)\right\}$と書き換えられるので、右辺の式そのものとなる。$\square$
+% これも、式で書くと次のようになる。
 \begin{align*}
-    f(A_1\cap A_2)&=\left\{b\in B\mid \text{$b=f(a)$となる元$a\in A_1 \cap A_2$が存在する}\right\}\\
-    &\subset\left\{b\in B\mid \text{$b=f(a_1)$となる元$a_1\in A_1$および$b=f(a_2)$となる元$a_2 \in A_2$が存在する}\right\}\\
-    &=\left\{b\in B\mid b\in f(A_1)\text{かつ} b\in f(A_2)\right\}\\
-    &=f(A_1)\cap f(A_2).\\
-    \therefore f(A_1\cap A_2)&\subset f(A_1)\cap f(A_2).
+    x\in f(A_1\cap A_2)
+    &\leftrightarrow x=f(a)となるような a\in A_1\cap A_2が存在する\\
+    &\rightarrow x=f(a_1)となるようなa_1\in A_1が存在するかつ x=f(a_2)となるようなa_2\in A_2が存在する\\
+    &\leftrightarrow x\in f(A_1)が存在するかつx\in f(A_2)が存在する\\
+    &\leftrightarrow x\in f(A_1)\cap f(A_2)\square
 \end{align*}
-(1)に比べて難しかったと思う。「なぜなら...」のところは図を書いてみると分かりやすいかもしれない。
+(1)に比べて難しかったと思う。二行目は逆は成り立たない。なぜなら$A_1,A_2$の共通部分がない場合はそれぞれの集合について
+$x=$を満たす元が存在することはあっても、$a\in A_1\cap A_2(=\phi)$となる$x=f(a)$は存在しないからである。
 
 次は(3)を証明する。これも前ページの定義をそのまま用いればよい。
 \begin{align*}
-    f^{-1}(B_1\cup B_2)
-    &=\left\{a\in A\mid f(a)\in B_1\cup B_2\right\}\\
-    &=\left\{a\in A\mid f(a)\in B_1 \text{または}f(a)\in B_2\right\}\\
-    &=f^{-1}(B_1)\cup f^{-1}(B_2)\square
+    x\in f^{-1}(B_1\cup B_2)
+    &\leftrightarrow f(x)\in B_1\cup B_2\\
+    &\leftrightarrow f(x)\in B_1またはf(x)\in B_2\\
+    &\leftrightarrow x\in f^{-1}(B_1)またはx\in f^{-1}(B_2)\square
 \end{align*}
 \hrulefill\\
 (4)は省略する。演習問題で解く。\\
 \hrulefill
 
 つづいて(5)を証明する。\\
-定義より、$a\in A_1$ならば$f(a)\in f(A_1)$である。このとき原像の定義から$$f^{-1}(f(A_1))=\left\{a\in A\mid f(a)\in f(A_1)\right\}=\left\{a\in A_1\right\}\cup\left\{a\in A-A_1\mid f(a)\in f(A_1)\right\}$$
-となるため、$A_1\subset f^{-1}(f(A_1))$が成り立つ。$\square$
+\begin{align*}
+    a\in A_1
+    &\leftrightarrow f(a)\in f(A_1) \because 像の定義 \{f(a)\mid a\in A_1\} より\\
+    &\rightarrow a\in f^{-1}(f(A_1))\square 
+\end{align*}
+最後は逆は成り立たない。なぜなら$A_1$と$f^{-1}(f(A_1))$を比べたとき、後者のほうが大きくなることがあるからである。逆に小さくなることはない。
+なぜなら逆像の定義より$a \in A$は$f(a)\in f(A_1)$を必ず満たすためである。
 
 例えば、$A=\mathbb{R},A_1=\{1,2\}\subset\mathbb{R}$とし、$f:\mathbb{R}\to\mathbb{R}$となる写像$f$を考える。この時この写像を$f(x)=x^2$という式で与えたとする。
 そうすると$f(A_1)=\{1,4\}$となる。ではここで$f^{-1}(f(A_1))$を考えると、これは$\{-2,1,1,2\}$となり、この中に$A_1=\{1,2\}$が含まれているのがわかる。\\
 
-つぎは(6)を証明する。まず$b\in f(f^{-1}(B_1))$とする。この時右辺は、
-$$f(f^{-1}(B_1))=\left\{x\in B\mid x=f(a)となるa\in f^{-1}(B_1)が存在する\right\}$$
-であり、仮定より「$b=f(a)$となる元$a\in f^{-1}(B_1)$が存在する」といえる。ここで、原像の定義から$a\in f^{-1}(B_1)$と
-$f(a)\in B_1$が同値であること\footnote{集合の条件に注目}に気づけば、直ちに$b=f(a)\in B_1$とわかる。よって、$f(f^{-1}(B_1))\subset B_1$が成り立つ。$\square$
+つぎは(6)を証明する。
+\begin{align*}
+    b\in f(f^{-1}(B_1))
+    &\leftrightarrow b=f(a)をみたすa\in f^{-1}(B_1)が存在する\\
+    &\leftrightarrow f(a)\in B_1\because 逆像の定義 \{a\in A\mid f(a)\in B_1\}より\\
+    &\rightarrow b\in B_1\square
+\end{align*}
+最後は逆は成り立たない。なぜなら最後の式には$b$の情報がないからである。つまり、ただ$b$が$B_1$に含まれているという情報しかないのである。
 \newpage
 では最後に(7)を証明する。差集合の定義から
 \begin{align*}
-    f(A_1)-f(A_2)
-    &=\left\{b\in B\mid b\in f(A_1)\text{かつ}b\notin f(A_2)\right\}\\
-    &=\left\{b\in B\mid b=f(a)\text{となる元$a\in A_1$が存在し、かつ}b\notin f(A_2)\right\}\\
-    &\subset \left\{b\in B\mid b=f(a)\text{となる元$a\in A_1-A_2$が存在する}\right\}\\
-    &=f(A_1-A_2)
+    b\in f(A_1)-f(A_2) 
+    &\leftrightarrow b\in f(A_1)かつb\notin f(A_2)\\
+    &\leftrightarrow b=f(a)となるa\in A_1が存在するかつb=f(a)となるa\in A_2が存在しない\\
+    &\rightarrow b=f(a)となるa\in A_1-A_2が存在する\\
+    &\leftrightarrow b\in f(A_1-A_2)\square
 \end{align*}
-三番目の式は、$A_1$と$A_2$の共通部分があるときは\textbf{等号}になる。
+三行目の式は逆は成り立たない。なぜなら$A_1,A_2$に共通部分がないときは$A_1-A_2=A_1$となるため、$f(A_1),f(A_2)$も
+共通部分がない場合をのぞいて明らかに$f(A_1)-f(A_2)\subset f(A_1)$であるからである。
+
 
 これも例を見てイメージしよう。例えば、$A_1=\{1,2,3\}\subset\mathbb{R},A_2=\{1,2\}\subset\mathbb{R}$とし、$f:\mathbb{R}\to\mathbb{R}$となる写像$f$を考える。この時この写像を$f(x)=x^2$という式で与えたとする。
-そうすると$f(A_1)-f(A_2)=\{9\}$となり、これは$f(A_1-A_2)$に等しい。ではここで共通部分をなくして$A_2=\{-1,-5\}$を考えると、$f(A_1)-f(A_2)=\{4,9\}$となり、$f(A_1-A_2)=\{1,4,9,25\}$と比べると明らかに$f(A_1-A_2)$に含まれていることがわかる。\\
+そうすると$f(A_1)-f(A_2)=\{9\}$となり、これは$f(A_1-A_2)$に等しい。ではここで共通部分をなくして$A_2=\{-1,-5\}$を考えると、$f(A_1)-f(A_2)=\{4,9\}$となり、$f(A_1-A_2)=\{1,4,9\}$と比べると明らかに$f(A_1-A_2)$に含まれていることがわかる。\\
 \hrulefill\\
 (8)は省略する。演習問題で解く。\\
 \hrulefill
@@ -258,25 +269,25 @@ $f(A_1)=[0,9]\quad f(A_2)=[0,4]\quad A_1-A_2=(-1,-3]$より、
 \vspace{10cm}
 \subsubsection*{解答}
 \color{red}
-(4)の証明。原像の定義より、
+(4)の証明。逆像の定義より、
 \begin{align*}
-    f^{-1}(B_1\cap B_2)
-    &=\left\{a\in A\mid f(a)\in B_1\cap B_2\right\}\\
-    &=\left\{a\in A\mid f(a)\in B_1\text{かつ} f(a)\in B_2\right\}\\
-    &=f^{-1}(B_1)\cap f^{-1}(B_2)\square
+    a\in f^{-1}(B_1\cap B_2)
+    &\leftrightarrow f(a)\in B_1\cap B_2\\
+    &\leftrightarrow f(a)\in B_1かつf(a)\in B_2\\
+    &\leftrightarrow a\in f^{-1}(B_1)かつ a\in f^{-1}(B_2)\square
 \end{align*}
 
-(8)の証明。差集合の定義から
+(8)の証明。右辺から変形する。差集合の定義から
 \begin{align*}
-    f^{-1}(B_1)-f^{-1}(B_2)
-    &=\left\{a\in A\mid a\in f^{-1}(B_1) \text{かつ} a\notin f^{-1}(B_2)\right\}\\
-    &=\left\{a\in A\mid f(a)\in B_1 \text{かつ} f(a)\notin B_2\right\}\\
-    &=\left\{a\in A\mid f(a)\in B_1-B_2\right\}\\
-    &=f^{-1}(B_1-B_2)\square
+    a \in f^{-1}(B_1-B_2)
+    &\leftrightarrow f(a)\in B_1-B_2 \\
+    &\leftrightarrow f(a)\in B_1かつf(a)\notin B_2\\
+    &\leftrightarrow a\in f^{-1}(B_1)かつa\notin f^{-1}(B_2)\\
+    &\leftrightarrow a\in f^{-1}(B_1)-f^{-1}(B_2)\square
 \end{align*}
 \color{black}
 \hrulefill\\
-7/02　以下はまだ書き終えていないです。
+7/11　以下はまだ書き終えていないです。
 \newpage
 \subsection{集合系の演算}
 
