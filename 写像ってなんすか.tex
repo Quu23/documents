@@ -219,7 +219,7 @@ $x=$を満たす元が存在することはあっても、$a\in A_1\cap A_2(=\ph
 \begin{align*}
     b\in f(f^{-1}(B_1))
     &\leftrightarrow b=f(a)をみたすa\in f^{-1}(B_1)が存在する\\
-    &\leftrightarrow f(a)\in B_1\because 逆像の定義 \{a\in A\mid f(a)\in B_1\}より\\
+    &\leftrightarrow f(a)\in B_1,b=f(a)\because 逆像の定義 \{a\in A\mid f(a)\in B_1\}より\\
     &\rightarrow b\in B_1\square
 \end{align*}
 最後は逆は成り立たない。なぜなら最後の式には$b$の情報がないからである。つまり、ただ$b$が$B_1$に含まれているという情報しかないのである。
@@ -258,7 +258,7 @@ $f(x)=x^2$によって写像$f:\mathbb{R}\to\mathbb{R}$を定める。$\mathbb{R
 $f(A_1)=[0,9]\quad f(A_2)=[0,4]\quad A_1-A_2=(-1,-3]$より、
 \begin{alignat*}{2}
     & f(A_1)\cap f(A_2) & = &[1,4]\qquad, f^{-1}(f(A_1))=[-3,3]\\
-    & f(f^{-1}(B_1)) & = &f([0,1]\text{または}[-1,0])=[0,1]\\
+    & f(f^{-1}(B_1)) & = &f([-1,1])=[0,1]\\
     & f(A_1)-f(A_2) & = & (4,9]\qquad,f(A_1-A_2)=(1,9]
 \end{alignat*}
 となる。このことから先ほどの(2),(5),(6),(7)は一般には等号が成り立たないことがわかる。
