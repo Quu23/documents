@@ -219,10 +219,11 @@ $x=$を満たす元が存在することはあっても、$a\in A_1\cap A_2(=\ph
 \begin{align*}
     b\in f(f^{-1}(B_1))
     &\leftrightarrow b=f(a)をみたすa\in f^{-1}(B_1)が存在する\\
-    &\leftrightarrow f(a)\in B_1,b=f(a)\because 逆像の定義 \{a\in A\mid f(a)\in B_1\}より\\
+    &\leftrightarrow b=f(a)をみたすf(a)\in B_1 \in Aが存在する\because 逆像の定義 \{a\in A\mid f(a)\in B_1\}より\\
     &\rightarrow b\in B_1\square
 \end{align*}
-最後は逆は成り立たない。なぜなら最後の式には$b$の情報がないからである。つまり、ただ$b$が$B_1$に含まれているという情報しかないのである。
+最後は逆は成り立たない。なぜなら最後の式で逆が成り立つためには$b\in B_1$であるすべての$b$に対して$b=f(a)$となる$a\in A$が存在しなければならないが、例えば$A$の元の数よりも$B_1$
+の元の数が多いときは成り立たないからである。
 \newpage
 では最後に(7)を証明する。差集合の定義から
 \begin{align*}
