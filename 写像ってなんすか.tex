@@ -150,7 +150,7 @@ $f:A\to B$を写像とする。$A$の部分集合$A_1,A_2$および$B$の部分�
     x\in f(A_1\cup A_2)
     &\leftrightarrow x=f(a)となるような a\in A_1\cup A_2が存在する\\
     &\leftrightarrow x=f(a_1)となるようなa_1\in A_1または x=f(a_2)となるようなa_2\in A_2が存在する\\
-    &\leftrightarrow x\in f(A_1)またはx\in f(A_2)が存在する\\
+    &\leftrightarrow x\in f(A_1)またはx\in f(A_2)\\
     &\leftrightarrow x\in f(A_1)\cup f(A_2)\square
 \end{align*}
 
@@ -186,7 +186,7 @@ $f:A\to B$を写像とする。$A$の部分集合$A_1,A_2$および$B$の部分�
     x\in f(A_1\cap A_2)
     &\leftrightarrow x=f(a)となるような a\in A_1\cap A_2が存在する\\
     &\rightarrow x=f(a_1)となるようなa_1\in A_1が存在するかつ x=f(a_2)となるようなa_2\in A_2が存在する\\
-    &\leftrightarrow x\in f(A_1)が存在するかつx\in f(A_2)が存在する\\
+    &\leftrightarrow x\in f(A_1)かつx\in f(A_2)\\
     &\leftrightarrow x\in f(A_1)\cap f(A_2)\square
 \end{align*}
 (1)に比べて難しかったと思う。二行目は逆は成り立たない。なぜなら$A_1,A_2$の共通部分がない場合はそれぞれの集合について
@@ -219,7 +219,7 @@ $x=$を満たす元が存在することはあっても、$a\in A_1\cap A_2(=\ph
 \begin{align*}
     b\in f(f^{-1}(B_1))
     &\leftrightarrow b=f(a)をみたすa\in f^{-1}(B_1)が存在する\\
-    &\leftrightarrow b=f(a)をみたすf(a)\in B_1 \in Aが存在する\because 逆像の定義 \{a\in A\mid f(a)\in B_1\}より\\
+    &\leftrightarrow b=f(a)をみたすf(a)\in B_1が存在する\because 逆像の定義 \{a\in A\mid f(a)\in B_1\}より\\
     &\rightarrow b\in B_1\square
 \end{align*}
 最後は逆は成り立たない。なぜなら最後の式で逆が成り立つためには$b\in B_1$であるすべての$b$に対して$b=f(a)$となる$a\in A$が存在しなければならないが、例えば$A$の元の数よりも$B_1$
@@ -256,9 +256,9 @@ $f(x)=x^2$によって写像$f:\mathbb{R}\to\mathbb{R}$を定める。$\mathbb{R
 \vspace{3cm}
 \subsubsection*{解答}
 \color{red}
-$f(A_1)=[0,9]\quad f(A_2)=[0,4]\quad A_1-A_2=(-1,-3]$より、
+$f(A_1)=[0,9]\quad f(A_2)=[0,4]\quad A_1-A_2=[-3,-1)$より、
 \begin{alignat*}{2}
-    & f(A_1)\cap f(A_2) & = &[1,4]\qquad, f^{-1}(f(A_1))=[-3,3]\\
+    & f(A_1)\cap f(A_2) & = &[0,4]\qquad, f^{-1}(f(A_1))=[-3,3]\\
     & f(f^{-1}(B_1)) & = &f([-1,1])=[0,1]\\
     & f(A_1)-f(A_2) & = & (4,9]\qquad,f(A_1-A_2)=(1,9]
 \end{alignat*}
@@ -287,10 +287,17 @@ $f(A_1)=[0,9]\quad f(A_2)=[0,4]\quad A_1-A_2=(-1,-3]$より、
     &\leftrightarrow a\in f^{-1}(B_1)-f^{-1}(B_2)\square
 \end{align*}
 \color{black}
+\newpage
+\subsubsection*{補足}
+像の定義$f(A')=\{f(a)\mid a\in A'\}$から$x\in f(A')\leftrightarrow x=f(a)となるような元a\in A'が存在する$
+
+$f(a) \in B' \leftrightarrow a \in f^{-1}(B')$が成り立つ。逆像の定義は$B'\in f(a)$が成り立つような元$a\in A$
+の集合である。
+
 \hrulefill\\
 7/11　以下はまだ書き終えていないです。
 \newpage
-\subsection{集合系の演算}
+\subsection{集合系の演算ってなんすか}
 
 
 \end{document}
