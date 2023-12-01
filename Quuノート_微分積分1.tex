@@ -1,0 +1,103 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage[subrefformat=parens]{subcaption}
+\usepackage{fancyhdr}
+\usepackage{otf}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+\pagestyle{headings}
+
+% \renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\title{Quuノート　ー微分積分\ajRoman{1}ー}
+\date{最終更新 2023/12/01}
+\author{責任者 Quu}
+
+\begin{document}
+    \maketitle
+    \thispagestyle{empty}
+    \centerline{\textbf{概要}}
+    \noindent
+    微分積分学入門についてのノート。\\
+    主に、一変数の極限、一変数の微分・積分、実数の無限級数について扱う。
+    
+    \clearpage
+    \tableofcontents
+    \clearpage
+    
+    \part{前提知識}
+    \section{様々な`数'と数直線}
+        \subsection{数の種類}
+            数学を勉強するうえで、様々な数が登場する。まず一番初めに思いつくのが$1,2,3...$といった\textbf{自然数}である。
+            次の自然数に$0$と負の符号をつけたものを加えた\textbf{整数}が考えられる。整数同士で足し算、引き算、掛け算を行っても
+            その値は整数である。このことを\textbf{和、差、積について閉じている}という。これは$a,b\in \mathbb{N}$となる任意の$a,b$
+            について
+            \begin{equation}
+                a+b , a-b , a\times b \in \mathbb{N}
+            \end{equation}
+            が成り立つことを意味している。
+
+            一方割り算は整数の中に閉じていない。\footnote{例えば$1\div 2$など。}しかし、$0.5,3.14$などの\textbf{有理数}まで数を拡張すれば、その中に商は閉じている。
+            つまり、$a,b \in \mathbb{Q}$となる任意の$a,b$について
+            \begin{equation}
+                \frac{a}{b} \in \mathbb{Q}
+            \end{equation}
+            となる。よって、数を有理数まで拡張すれば\textbf{四則について閉じている}ことがわかる。
+
+            さらに数の拡張を考えよう。たとえば$x^2-2=0$を満たす$x$について考えてみるには、数を\textbf{無理数}まで拡張しなければならない。
+            一般の二次方程式の解も
+            \begin{equation}
+                x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
+            \end{equation}
+            と有理数だけでは表現できないことがわかる。無理数には$\pi,e\footnote{自然対数の底またはネイピア数と呼ばれる。具体的な値は$e=2.71...$}$などの\textbf{超越数}もふくむ。
+
+            私たちの生活の中では有理数と無理数をあわせた\textbf{実数}があれば十分事足りるが、数学の世界ではそうもいかない。先ほどの二次方程式についてより深く調べてみると、
+            解を持たない条件(根号の中身が負)があることがすぐに分かる。例えば、$x^2+1 = 0$は$x^2 = -1$と変形できるが、二乗して負になるような数は実数のうちには存在しない。
+            よってこの方程式は\textbf{解なし}となる。がしかし、ここで
+            \begin{equation}
+                i = \sqrt{-1}
+            \end{equation}
+            となる`数'を定義してあげると、方程式は$x=\pm i$となり、$(実数)+i$を含めた範囲に解をもつことがわかる。
+            この数は、今までの実数とは異なる数であり、実数との和,差は直接計算できない。一般に実数$a,b$と$i$を用いて
+            \begin{equation}
+                z = a + bi
+            \end{equation}
+            として表した$z$を\textbf{複素数}といい、$i$を虚数単位という。さらに$a$を$z$の実部、$b$を$z$の虚部といい、それぞれ
+            $a=\Re z,b=\Im z$と表す。
+
+            先ほど、二次方程式の解を有理数だけでは表現できないといったが、実は無理数を含めてもできない。この複素数を含めることで初めてすべて表現できるようになるのだ。
+        \subsection{数直線}
+            では、数の大小関係をわかりやすくするためにはどうすればよいだろうか。視覚的にわかりやすくするためには数直線を用いればよい。
+            \begin{figure}[h]
+                \centering
+                \includegraphics[keepaspectratio,scale=0.5]{img/QuuNote/NumLine_1.png}
+                \caption{数直線}
+            \end{figure}
+            
+            上の例では、整数、有理数、無理数の一部を記載している。当然書いてある数以外も数直線の中には含まれている。
+            むしろ、数の点の集まりとして数直線を捉える方がイメージがわきやすいかもしれない。
+            ここで注意しなければならないのは、この数直線上に複素数$(\Im z\neq 0)$は含まれないといけないということである。
+            数直線は\underline{実数を表す}直線なので、実数より（集合的に）大きい複素数のすべては含むことができないのである。
+
+            では実数も含めた複素数はどう表せばよいのか。答えは単純で実数の軸\footnote{これを実軸と呼ぶ。}とは別の軸\footnote{虚軸という。}を
+            加えればよい。つまり複素数は平`面'上で表せられるのである。\footnote{この平面を複素平面という。いつものy-xグラフとは見た目は同じだが感覚が違うので注意。}  
+            \newpage
+        \subsection{開区間・閉区間}
+    \clearpage
+    \part{微分}
+
+    \clearpage
+    \part{積分}
+
+    \clearpage
+    \part{無限級数}
+
+\end{document}
