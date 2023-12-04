@@ -17,6 +17,10 @@
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 
+\newcounter{basic_quastion}\setcounter{basic_quastion}{1}
+\newcommand{\basicquestion}{{\huge\fbox{\textbf{\arabic{basic_quastion}}}\addtocounter{basic_quastion}{1}}\quad}
+
+
 \title{Quuノート　ー微分積分\ajRoman{1}ー}
 \date{最終更新 2023/12/01}
 \author{責任者 Quu}
@@ -34,14 +38,22 @@
     \clearpage
     
     \part{前提知識}
+    \vspace*{\stretch{1}}
+    \begin{screen}
+        微分積分を学ぶうえで前提となる知識をまとめた。微分積分は主に関数の微分・積分について扱うわけだから、ある程度の関数の扱い方も知っておく必要がある。
+        そのほか数の種類についてや閉区間・開区間、極限についてもまとめてある。極限は微分積分を学ぶ際にいたるところに出てきて、陰から支える縁の下の力持ち的な役割を持つ。極限は一見すると
+        代入と同じように見えるが、実は違う。極限は代入だと都合が悪い時にありがたみが実感できる。極限に関連して、無限という概念も登場する。
+    \end{screen}
+    \vspace{\stretch{2}}
+    \clearpage
     \section{様々な`数'と数直線}
         \subsection{数の種類}
             数学を勉強するうえで、様々な数が登場する。まず一番初めに思いつくのが$1,2,3...$といった\textbf{自然数}である。
             次の自然数に$0$と負の符号をつけたものを加えた\textbf{整数}が考えられる。整数同士で足し算、引き算、掛け算を行っても
-            その値は整数である。このことを\textbf{和、差、積について閉じている}という。これは$a,b\in \mathbb{N}$となる任意の$a,b$
+            その値は整数である。このことを\textbf{和、差、積について閉じている}という。これは$a,b\in \mathbb{Z}$となる任意の$a,b$
             について
             \begin{equation}
-                a+b , a-b , a\times b \in \mathbb{N}
+                a+b , a-b , a\times b \in \mathbb{Z}
             \end{equation}
             が成り立つことを意味している。
 
@@ -73,7 +85,7 @@
             として表した$z$を\textbf{複素数}といい、$i$を虚数単位という。さらに$a$を$z$の実部、$b$を$z$の虚部といい、それぞれ
             $a=\Re z,b=\Im z$と表す。
 
-            先ほど、二次方程式の解を有理数だけでは表現できないといったが、実は無理数を含めてもできない。この複素数を含めることで初めてすべて表現できるようになるのだ。
+            先ほど、二次方程式の解を有理数だけでは表現できないといったが、実は無理数を含めてもできない。この複素数を含めることで初めてすべて表現できるようになるのだ。\footnote{もちろんこれで数の拡張が終わるわけではない。しかし微分積分を学ぶうち間は複素数まで拡張すれば事足りる。}
         \subsection{数直線}
             では、数の大小関係をわかりやすくするためにはどうすればよいだろうか。視覚的にわかりやすくするためには数直線を用いればよい。
             \begin{figure}[h]
@@ -91,6 +103,57 @@
             加えればよい。つまり複素数は平`面'上で表せられるのである。\footnote{この平面を複素平面という。いつものy-xグラフとは見た目は同じだが感覚が違うので注意。}  
             \newpage
         \subsection{開区間・閉区間}
+            実数が数直線上の一点で表せることはすでに前項で述べた。では点に続いて次は区間について考えていこう。
+
+            区間は大きく二つある。それらはそれぞれ\textbf{開区間}、\textbf{閉区間}と呼ばれる。これらの違いは端点を含むかどうかで、
+            逆に言えば端以外は同じである。例えば、$1<x<2,1\leq x\leq2$について前者は端点$x=1,2$を含まず、後者は端点を含むのである。
+            端点を含まない場合が開区間、端点を含む場合が閉区間である。
+
+            閉区間、開区間を数直線上で表すにはどうすればよいだろうか。これも数直線と同様に区間の端から端まで線を引けばよい。注意しないといけないのが
+            端点で、区間が開区間か閉区間かによって端点を書き分けないといけない。開区間のときは$\circ$、閉区間のときは$\bullet$と書けばよい。
+
+            \begin{figure}[h]
+                \centering
+                \includegraphics[keepaspectratio,scale=0.7]{img/QuuNote/IntervalLine.png}
+                \caption{開区間と閉区間}
+            \end{figure}
+            例えば上図の例をみてみると、$A,B,C$の三つの区間がある。それぞれ$-4\leq x\leq -1,0<x<3,-1\leq x<1$となる。
+            今までは不等号を用いて区間を表現してきたが\footnote{厳密に言えば区間は集合なので、不等号を用いて区間を表現するという言い方は適切ではない。}、もっと簡潔に$(\hspace{1mm}),[\hspace{1mm}]$を用いて表現する方法もある。
+            この表現方法を使えば、$A,B,C$はそれぞれ$[-4,-1],(0,3),[-1,1]$と表せる。$(\hspace{1mm})$が等号を含まない、$[\hspace{1mm}]$が
+            等号を含む、というわけである。
+
+            では、値が無限に続く（例えば実数全体など）場合はどう表現すればよいのか。この場合は無限大の記号$\infty$を用いて$(-\infty,\infty)$などと表せばよい。\footnote{この方法を使えば、a以上の実数などの場合でも$[a,\infty)$と表せばよいことがわかる。}
+            \clearpage
+        \subsection{基本問題}
+            \basicquestion 以下問に答えよ。
+
+            \paragraph{問1}以下の主張のうち正しいものには〇を、間違っているものには×をつけよ。
+                \begin{enumerate}
+                    \item $\sqrt{9}$は無理数である。
+                    \item 有理数は全て分数の形で表せる。
+                    \item $i$は複素数である。
+                    \item 有理数の集合は$\mathbb{Q}$として表し、無理数の集合は$\mathbb{N}$で表す。
+                    \item 自然数全体の集合（区間）は$(0,\infty]$である。
+                \end{enumerate}
+            \paragraph{問2}以下の区間について、数直線上に示せ。もし数直線上に記されていない数字が出てくる場合はそれも記載せよ。
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[keepaspectratio,scale=0.6]{img/QuuNote/NumLine_1.png}
+                    \caption{数直線}
+                \end{figure}
+
+                $1.\quad [2,3]$\hspace{3mm}
+                $2.\quad (3,5)$\hspace{3mm}
+                $3.\quad [-5,\pi]$\hspace{3mm}
+                $4.\quad (-2,0.5]$\hspace{3mm}
+                $5.\quad [-1,0)$\hspace{3mm}
+                $6.\quad (-\infty,0)$\hspace{3mm}
+                $7.\quad [0,\infty)$\hspace{3mm}
+        \clearpage
+        
+        \section{初等関数}
+            
+            
     \clearpage
     \part{微分}
 
