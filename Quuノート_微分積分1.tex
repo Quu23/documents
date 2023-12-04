@@ -18,7 +18,7 @@
 \renewcommand{\Im}{\operatorname{Im}}
 
 \newcounter{basic_quastion}\setcounter{basic_quastion}{1}
-\newcommand{\basicquestion}{{\huge\fbox{\textbf{\arabic{basic_quastion}}}\addtocounter{basic_quastion}{1}}\quad}
+\newcommand{\basicquestion}{{\large 基本問題\hspace{1mm}\huge\fbox{\textbf{\arabic{basic_quastion}}}\addtocounter{basic_quastion}{1}}\thispagestyle{fancy}\lhead{$\Sigma$基本問題}\rhead{\thepage}\cfoot{}\quad}
 
 
 \title{Quuノート　ー微分積分\ajRoman{1}ー}
@@ -124,31 +124,32 @@
 
             では、値が無限に続く（例えば実数全体など）場合はどう表現すればよいのか。この場合は無限大の記号$\infty$を用いて$(-\infty,\infty)$などと表せばよい。\footnote{この方法を使えば、a以上の実数などの場合でも$[a,\infty)$と表せばよいことがわかる。}
             \clearpage
-        \subsection{基本問題}
-            \basicquestion 以下問に答えよ。
+            
+        \noindent
+        \basicquestion 以下問に答えよ。
 
-            \paragraph{問1}以下の主張のうち正しいものには〇を、間違っているものには×をつけよ。
-                \begin{enumerate}
-                    \item $\sqrt{9}$は無理数である。
-                    \item 有理数は全て分数の形で表せる。
-                    \item $i$は複素数である。
-                    \item 有理数の集合は$\mathbb{Q}$として表し、無理数の集合は$\mathbb{N}$で表す。
-                    \item 自然数全体の集合（区間）は$(0,\infty]$である。
-                \end{enumerate}
-            \paragraph{問2}以下の区間について、数直線上に示せ。もし数直線上に記されていない数字が出てくる場合はそれも記載せよ。
-                \begin{figure}[h]
-                    \centering
-                    \includegraphics[keepaspectratio,scale=0.6]{img/QuuNote/NumLine_1.png}
-                    \caption{数直線}
-                \end{figure}
+        \paragraph{問1}以下の主張のうち正しいものには〇を、間違っているものには×をつけよ。
+            \begin{enumerate}
+                \item $\sqrt{9}$は無理数である。
+                \item 有理数は全て分数の形で表せる。
+                \item $i$は複素数である。
+                \item 有理数の集合は$\mathbb{Q}$として表し、無理数の集合は$\mathbb{N}$で表す。
+                \item 自然数全体の集合（区間）は$(0,\infty]$である。
+            \end{enumerate}
+        \paragraph{問2}以下の区間について、数直線上に示せ。もし数直線上に記されていない数字が出てくる場合はそれも記載せよ。
+            \begin{figure}[h]
+                \centering
+                \includegraphics[keepaspectratio,scale=0.6]{img/QuuNote/NumLine_1.png}
+                \caption{数直線}
+            \end{figure}
 
-                $1.\quad [2,3]$\hspace{3mm}
-                $2.\quad (3,5)$\hspace{3mm}
-                $3.\quad [-5,\pi]$\hspace{3mm}
-                $4.\quad (-2,0.5]$\hspace{3mm}
-                $5.\quad [-1,0)$\hspace{3mm}
-                $6.\quad (-\infty,0)$\hspace{3mm}
-                $7.\quad [0,\infty)$\hspace{3mm}
+            $1.\quad [2,3]$\hspace{3mm}
+            $2.\quad (3,5)$\hspace{3mm}
+            $3.\quad [-5,\pi]$\hspace{3mm}
+            $4.\quad (-2,0.5]$\hspace{3mm}
+            $5.\quad [-1,0)$\hspace{3mm}
+            $6.\quad (-\infty,0)$\hspace{3mm}
+            $7.\quad [0,\infty)$\hspace{3mm}
         \clearpage
         
         \section{初等関数}
