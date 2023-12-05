@@ -197,7 +197,8 @@
                 \end{align}
                 また、定義より$\displaystyle\tan \theta = \frac{\sin \theta}{\cos \theta}$が成り立つ。
 
-                三角関数には様々な公式がある。しかしそれらは単位円を書けばすぐに導けるので、一部を除いて割愛する。
+                三角関数には様々な公式がある。\footnote{公式集を眺めるとやたらと二乗がついていることがわかる。つまり三角関数は\underline{二乗に強い}のである。この性質は積分を解く際に重要である。}
+                しかしそれらは単位円を書けばすぐに導けるので、一部を除いて割愛する。
                 また、三角関数の角度の合成についても、全て\textbf{加法定理}より導けるのでここでは加法定理のみ紹介する。
 
                 \begin{align}
@@ -212,7 +213,72 @@
                 \end{align}
             \clearpage
             \subsection{指数・対数関数}
+                `指数的に増加する'という言葉をよく耳にする。これは、なにか爆発的な増加の様子を示している表現である。このように、\textbf{指数関数}は$x$の値が少し変わるだけで値が
+                大きく増加・減少する関数である。その具体的な表式は$a^x$と表される。指数の部分が変数になっているのである。
 
+                指数関数は、$a$の値によって性質が少し異なる。$0<a<1$の場合には単調減少関数となり、$1<a$の場合には単調増加関数になる。
+                このとき$a$が負の値の場合は定義しない。\footnote{例として$(-2)^x$のグラフを書いてその理由を考えてみるといい。}\footnote{実際は定義することができるがその際には複素関数の知識が必要。なので今回は扱わない。}
+
+                以下、指数法則について述べる。$a,b>0\quad x,y\in \mathbb{R}$とすると、
+                \begin{align}
+                    a^x\cdot a^y&=a^{x+y}\\
+                    \frac{a^x}{a^y} &= a^{x-y}\\
+                    (a^x)^y &= a^{xy}\\
+                    (ab)^{x} &= a^x\cdot b^x
+                \end{align}
+
+                指数関数のグラフは、以下のようになる。
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/ExpFuncGraph.png}
+                    \caption{指数関数のグラフ}
+                \end{figure}
+
+                グラフから、$a$が1より大きくても小さくても$x=0$で$y=1$を取ることがわかる。
+
+                なお、底が$e$の場合の指数関数は$e^x=\exp{x}$と書くこともある。\\
+
+                では次に、指数関数の逆関数を考えてみよう。指数関数の逆関数は与えられた値に対して、
+                底を何回掛けたらその値になるかの回数を表す関数である。つまり、指数関数の底ごとに
+                逆関数が存在する。文章で見てもわかりずらいので数式で以下示す。
+
+                \begin{equation}
+                    f(x)=a^x \leftrightarrow x = f^{-1}(y) = \log_a{y}
+                \end{equation}
+                指数関数の逆関数は底が何かを示さないといけないので、逆関数$\log$に下付き文字で書く。
+                しかし、底が$e$だった場合は省略して$\log y$と書いてもよい。この関数を\textbf{自然対数}という。\footnote{自然対数は$\ln x$と書くこともある。natural logarithmのことである。}
+                底が$e$じゃない場合は単に対数と呼ぶ。\footnote{底が10の場合は常用対数という。}
+
+                以下、対数の性質を述べる。必要ない限り底は省略して記載する。指数法則と見比べると理解が深まる。
+
+                \begin{align}
+                    \log(xy)&=\log x+\log y\\
+                    \log\left(\frac{x}{y}\right)&=\log x - \log y\\
+                    \log(a^b) &= b\log a \\
+                    \frac{\log_c b}{\log_c a}&=\log_a b\qquad(\text{\textbf{底の変換公式}})
+                \end{align}
+
+                また、対数の定義より
+                \begin{equation}
+                    \log 1 = 0\quad \log_a a = 1
+                \end{equation}
+                が成り立つ。対数関数$\log x$の引数$x$のことを真数と呼び、これは$x>0$である。\footnote{真数が正であるという条件のことを真数条件という。}
+
+                対数関数のグラフは以下のようになる。
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[keepaspectratio,scale=0.5]{img/QuuNote/LogFuncGraph.png}
+                    \caption{対数関数}
+                \end{figure}
+                
+                グラフを見ればわかるように、底が1より大きいか小さいかで単調増加・減少かが変わる。
+
+                対数関数は爆発的に増加・減少する指数関数とは対照的に、値の変化が（$x<1$を除いて）緩やかである。
+                そのため、値がとても大きい値でも対数を取ることで値のスケールを小さくすることができる。
+                また、対数を取ることで\underline{掛け算を足し算にできる}。この性質は非常に重要である。
+            \clearpage
+            \subsection{逆三角関数}
 
     \clearpage
     \part{微分}
