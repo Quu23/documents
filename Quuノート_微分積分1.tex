@@ -9,6 +9,7 @@
 \usepackage{otf}
 \usepackage[dvipdfmx]{hyperref}
 \usepackage{pxjahyper}
+\usepackage{okumacro}
 
 \pagestyle{headings}
 
@@ -279,6 +280,92 @@
                 また、対数を取ることで\underline{掛け算を足し算にできる}。この性質は非常に重要である。
             \clearpage
             \subsection{逆三角関数}
+                指数関数の逆関数である対数関数を考えたのと同じように、三角関数の逆関数も考えてみよう。
+                三角関数は与えられた角度に対応するそれぞれの三角比を返す関数である。では三角関数の逆関数は
+                与えられた三角比に対応する`角度'を返す関数であることがすぐに分かる。これらを次のように書くことにする。
+                \begin{align}
+                    \arcsin x &= \sin^{-1} x \\
+                    \arccos x &= \cos^{-1} x \\
+                    \arctan x &= \tan^{-1} x
+                \end{align}
+                左辺にちなんで左からそれぞれ「アークサイン」,「アークコサイン」,「アークタンジェント」と読む。これらをまとめて
+                \textbf{逆三角関数}という。表記に左辺を用いるか右辺を用いるかは個人の好みによる。\footnote{だからといって、$\frac{1}{\sin x}$を$\sin^{-1}x$と書くことはまずない。}
+
+                三角関数が周期関数であるため、逆三角関数は多価関数であることは容易に想像できる。
+                逆三角関数を一価関数にするため、値域をそれぞれ$[-\frac{\pi}{2},\frac{\pi}{2}],[0,\pi],[-\frac{\pi}{2},\frac{\pi}{2}]$
+                に制限して用いることがある。このことを\ruby{主枝}{しゅし}を取るという。またこの制限した値域を主枝という。
+                主枝以外の値域を分枝と呼ぶ。
+
+                逆三角関数が主枝を取っていることを明示するために
+                \begin{align}
+                    {\rm Arcsin} x &= {\rm Sin^{-1}} x \\
+                    {\rm Arccos} x &= {\rm Cos^{-1}} x \\
+                    {\rm Arctan} x &= {\rm Tan^{-1}} x
+                \end{align}
+                のように、先頭を大文字で書くこともある。しかし今回はこの記法は採用しない。
+
+                逆三角関数のグラフは以下のようになる。
+                \begin{figure}[h]
+                    \begin{minipage}{5cm}
+                        \centering
+                        \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/ArcsinFuncGraph.png}
+                        \caption{$\arcsin x$のグラフ}
+                    \end{minipage}
+                    \begin{minipage}{5cm}
+                        \centering
+                        \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/ArccosFuncGraph_ver2.png}
+                        \caption{$\arccos x$のグラフ}
+                    \end{minipage}
+                    \begin{minipage}{5cm}
+                        \centering
+                        \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/ArctanFuncGraph.png}
+                        \caption{$\arctan x$のグラフ}
+                    \end{minipage}
+                \end{figure}
+                
+                もちろん主枝を取らない場合は、それぞれと同じグラフが上や下につながっていく。
+            \clearpage
+            \subsection{双曲線関数}
+                いきなりだが、次のように関数を定義する。$e$はネイピア数である。
+                \begin{align}
+                    \sinh x &= \frac{e^x - e^{-x}}{2}\\
+                    \cosh x &= \frac{e^x + e^{-x}}{2}\\
+                    \tanh x &= \frac{\sinh x}{\cosh x} = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+                \end{align}
+                これらは\textbf{双曲線関数}と呼ばれる。読み方はそれぞれ「ハイパボリックサイン」、「ハイパボリックコサイン」、
+                「ハイパボリックタンジェント」である。ただこれだと長ったらしいので「シンチ」、「コッシュ」、「タンチ」と呼ぶ
+                場合もある。
+
+                見た目が三角関数と酷使しているが、実は性質も似たものを持つ。例えば、$\cosh^2 x - \sinh^2 x = 1$など。
+                また、加法定理も符号は若干異なるがほとんど同じ形をしている。
+
+                さらに、オイラーの公式$e^{ix}=\cos x + i\sin x$\footnote{この公式自体はだいぶ後になって解説する。}を用いれば、
+                $\sin ix = i\sinh x,\cos ix=\cosh x$が導ける。\footnote{むしろこの性質が成り立つように双曲線関数を定義するといったほうが正しいかもしれない。}\\
+
+                双曲線関数のグラフは以下のようになる。
+                \begin{figure}[h]
+                    \begin{minipage}{5cm}
+                        \centering
+                        \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/SinhFuncGraph.png}
+                        \caption{$\sinh x$のグラフ}
+                    \end{minipage}
+                    \begin{minipage}{5cm}
+                        \centering
+                        \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/CoshFuncGraph.png}
+                        \caption{$\cosh x$のグラフ}
+                    \end{minipage}
+                    \begin{minipage}{5cm}
+                        \centering
+                        \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/TanhFuncGraph.png}
+                        \caption{$\tanh x$のグラフ}
+                    \end{minipage}
+                \end{figure}
+
+                $\cosh x$のグラフはカテナリーと呼ばれる。電柱などの垂れた線はこれにあたる。
+            \clearpage
+            \subsection{初等関数}
+
+                
 
     \clearpage
     \part{微分}
