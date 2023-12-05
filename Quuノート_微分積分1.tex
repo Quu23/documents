@@ -323,7 +323,13 @@
                     \end{minipage}
                 \end{figure}
                 
-                もちろん主枝を取らない場合は、それぞれと同じグラフが上や下につながっていく。
+                もちろん主枝を取らない場合は、それぞれと同じグラフが上や下につながっていく。\\
+
+                三角関数の公式から、逆三角関数についても公式が導ける。例えば、
+                \begin{equation}
+                    \sin^{-1} x+\cos^{-1} x =\frac{\pi}{2}
+                \end{equation}
+                ほかにも公式が導けるので、各自で考えてみるとよい。
             \clearpage
             \subsection{双曲線関数}
                 いきなりだが、次のように関数を定義する。$e$はネイピア数である。
@@ -364,8 +370,68 @@
                 $\cosh x$のグラフはカテナリーと呼ばれる。電柱などの垂れた線はこれにあたる。
             \clearpage
             \subsection{初等関数}
+                前節まで述べたべき関数、三角関数、指数・対数関数、逆三角関数は\textbf{初等関数}という。
+                また、それらの関数からなる多項式の関数や初等関数の合成関数は初等関数である。例えば、双曲線関数は
+                $e^x,e^{-x}$の和でなっているが、これらは初等関数なので双曲線関数も初等関数である。
 
+                しかし初等関数の逆関数は必ずしも初等関数であるとは言えない。よく例に挙げられるのが$f(x)=xe^x$の逆関数である。
+                この関数はランベルトのW関数とよばれ、$f^{-1}(x)=W(x)$と書かれる。
+
+                初等関数は性質がよく知られているので、微分・積分するうえで比較的扱いやすい。初等関数を微分したもの
+                も初等関数であるが、初等関数を積分したものが必ずしも初等関数である保証はない。とはいえ今は微分も積分も知らないわけだから、
+                単に事実として受け入れるだけでよい。\\
+
+                初等関数に対して高等関数というものもある。これは初等関数以外の関数のことで、初等関数よりも数は多い。
+                先ほど紹介したランベルトのW関数以外には以下のようなものがある。
+
+                \begin{align}
+                    \Gamma(s) &= \int_0^\infty e^{-x}x^{s-1}dx\qquad&&(\text{\textbf{ガンマ関数}})\\ 
+                    B(p,q) &= \int_{0}^{1} x^{p-1}(1-x)^{q-1}dx\qquad&&(\text{\textbf{ベータ関数}})\\
+                    {\rm Li}(x) &= \int \frac{dx}{\log x}\qquad&&(\text{\textbf{対数積分}})\\
+                    \zeta(s) &=  \sum_{n=1}^{\infty}\frac{1}{n^s}\qquad&&(\text{\textbf{ゼータ関数}})
+                \end{align}
+
+                もちろんこれ以外にも様々な関数がある。興味があったら調べてみるといい。
+                \clearpage
+                \noindent
+                \basicquestion 以下の問いに答えよ。
+
+                \paragraph{問1}次の関数が偶関数か奇関数かを判別せよ。
+
+                \noindent
+                (1)$x\sin x$\hspace{3mm}
+                (2)$x^5$\hspace{3mm}
+                (3)$\sinh x$\hspace{3mm}
+                (4)$\log|x^2|$\hspace{3mm}
+                (5)$x^3+x+\sin x$\hspace{3mm}
+                (6)$e^{-x}$\hspace{3mm}
+                (7)$f(\cos x)$\hspace{3mm}
+                (8)$\arctan x$
+
+                \paragraph{問2}以下の等式を証明せよ。
+
+                \noindent
+                $(1)\sin 2x=2\sin x\cos x/\cos 2x=\cos^2 x-\sin^2 x$（\textbf{倍角の公式}）\\
+                $(2)\displaystyle \sin^2\frac{x}{2}=\frac{1-\cos x}{2}/\cos^2\frac{x}{2}=\frac{1+\cos x}{2}$（\textbf{半角の公式}）\\
+                $(3)\sinh(x+y)=\sinh x\cosh y + \cosh x\sinh y/\cosh(x+y)=\cosh(x+y)=\cosh x\cosh y + \sinh x\sinh y$\\
                 
+                \paragraph{問3}以下の値を求めよ。
+
+                \noindent
+                $(1)\sin \pi+\cos \frac{3}{2}\pi + \tan(-\pi)$\hspace{3mm}
+                $(2)\arcsin(\frac{1}{2})$\hspace{3mm}
+                $(3)\arccos(1)$\hspace{3mm}
+                $(4)\log_28$\hspace{3mm}
+                $(5)\log_a(\tan(\frac{\pi}{4}))\quad(a>1)$\\
+                $(6)\log_63+\log_62$\hspace{3mm}
+                $(7)\arcsin(1-\log\pi)-\sin(\log2)\cos(\log 3)+\sin(\log3 -\log 2)-\log e^{\arccos(\log \pi-1)}$
+
+                \paragraph{問4}対数を使えば桁数の多い数字同士の掛け算を足し算で計算することができる。簡単な例として$271\times 314$を
+                対数を用いて計算せよ。ただし、常用対数$\log_{10} 2.71\simeq0.4346,\log_{10} 3.14\simeq0.4969,10^{4.9315}\simeq85408$は用いてよい。
+                
+                \paragraph{問5}$t=\tan\frac{x}{2}$とするとき、$\sin x,\cos x,\tan x$をそれぞれ$t$を用いた式で表せ。\footnote{ヒント：半角の公式を用いる。}
+            \clearpage
+            \section{極限}
 
     \clearpage
     \part{微分}
