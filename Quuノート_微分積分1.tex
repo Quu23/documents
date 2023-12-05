@@ -179,6 +179,39 @@
 
                 図からも$\sqrt{x}$が$x<0$で定義されないことがわかる。また、$x^2$と$\sqrt{x}$は$y=x$を軸にして線対象になっており、
                 $x^2$と$\sqrt{x}$は互いに\textbf{逆関数}であることがわかる。
+            \clearpage
+            \subsection{三角関数}
+                \textbf{三角関数}は三角比を一般角に拡張した関数である。定義からわかるように周期関数であり、周期は$2\pi$である。
+                三角比の定義自体を忘れた人はいないだろうが一応説明しておく。
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[keepaspectratio,scale=0.5]{img/QuuNote/triangleFunc.png}
+                    \caption{三角比}
+                \end{figure}
+
+                上図\footnote{aの辺のことを対辺、bの辺のことを隣辺、cの辺のことを斜辺という。}において
+                \begin{align}
+                    \sin \theta &= \frac{a}{c}\\
+                    \cos \theta &= \frac{b}{c}\\
+                    \tan \theta &= \frac{a}{b}
+                \end{align}
+                また、定義より$\displaystyle\tan \theta = \frac{\sin \theta}{\cos \theta}$が成り立つ。
+
+                三角関数には様々な公式がある。しかしそれらは単位円を書けばすぐに導けるので、一部を除いて割愛する。
+                また、三角関数の角度の合成についても、全て\textbf{加法定理}より導けるのでここでは加法定理のみ紹介する。
+
+                \begin{align}
+                    \sin^2 x + \cos ^2 x &= 1 &\quad 1 + \tan^2 x &= \frac{1}{\cos^2 x}\\
+                    \sin\left(\frac{\pi}{2}-x\right) &= \cos x &\quad \cos\left(\frac{\pi}{2}-x\right) &= \sin x\\
+                    \tan\left(\frac{\pi}{2}-x\right) &= \frac{1}{\tan x} &&
+                \end{align}
+                \begin{align}
+                    \sin(\alpha\pm\beta) &= \sin\alpha\cos\beta \pm \cos\alpha\sin\beta\\
+                    \cos(\alpha\pm\beta) &= \cos\alpha\cos\beta \mp \sin\alpha\sin\beta\\
+                    \tan(\alpha\pm\beta) &= \frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}
+                \end{align}
+            \clearpage
+            \subsection{指数・対数関数}
 
 
     \clearpage
