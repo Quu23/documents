@@ -497,6 +497,131 @@
                 {\color{blue}$\diamondsuit$収束する数列はすべて有界\footnote{有界とは全ての$n$に対して$m\leq a_n \leq M$である定数$m,M$が存在すること。}である。\footnote{詳しい話は無限級数を扱うときに述べる。}}
             \clearpage
             \subsection{関数の極限}
+                次の関数の極限について述べる。数列と違い、無限大以外に近づける場合も出てくる。ひとまず定義域$x\in I=(a,b)$である関数$f(x)$と
+                定数$c\in I$を考えよう。$x$の値を$c$に限りなく近づけたとき、$f(x)$の値がある一定の値$C$に近づくとする。
+                このとき
+                \begin{equation}
+                    \lim_{x\to c}f(x)=C
+                \end{equation}
+                と表し、$f(x)$は\textbf{収束する}という。また、$C$を$x$を$c$に近づけたときの$f(x)$の\textbf{極限値}という。記号の使い方は数列と同じなので馴染みやすい。
+                もちろん$f(x)\to C\quad(x\to c)$という書き方もできる。
+                
+                \paragraph{例}$\displaystyle\lim_{x\to 2}x^2 = 4$　$x<2$の点からでも$x>2$の点からでも$2$に近づければ$f(x)=4$に近づく。これはグラフを見ても直感的にわかる。\\
+                
+                いま$c$は$f(x)$の定義域に含まれている状態で考えてみるが、実は含まれていなくてもよい。
+                例えば、$f(x)=\frac{x^2-1}{x-1}$は$x=1$で定義出来ないが、$x\neq 1$で$f(x)=x+1$であるから$x\to 1$の
+                極限を取ると値は$2$に近づく。このような例で極限と代入との違いがはっきりとわかる。\\
+
+                いま近づけている値は有限の値を想定しているが、数列のように無限大（小）に大きくする極限も考えることが考えることができる。
+                \begin{equation}
+                    \lim_{x\to\infty}f(x)\quad \lim_{x\to-\infty}f(x)
+                \end{equation}
+                のように書く。例えば、$\displaystyle\lim_{x\to \pm\infty}\frac{1}{x}=0$。
+                
+                \noindent
+                極限の性質の公式は、数列と同様であるためここでは述べない。\\
+
+                さて、数列の極限と同様、関数の極限でもより厳密な定義について考えてみよう。それは以下のようになる。
+                \begin{itembox}{関数の極限の定義}
+                    $f(x)$が$x\to a$で$b$に収束する$\Leftrightarrow$任意の$\varepsilon>0$が与えられたとき、それに対応してある$\delta > 0$が\fbox{$|x-a|<\delta$のとき$|f(x)-b|<\varepsilon$}
+                    となるように定められる。
+                \end{itembox}
+                これはいわゆる\textbf{$\varepsilon-\delta$論法}と呼ばれるもので、ぶっちゃけめっちゃ難しい。ただこれも落ち着いてみれば数列の極限の定義\footnote{$\varepsilon-N$論法という。}と似通っているところがあることに気づける。
+
+                数列の極限との違いは$x$の範囲の制限にある。数列の場合は$x>N$だったが、関数の場合は$|x-a|<\delta$となっている。$N,\delta$の役割は同じなので今はただ記号を変えているだけと考えてよい。
+                $|x-a|$は$x$と$a$との数直線上での差、つまり二つの点の距離を表しているので、$|x-a|<\delta$はその距離が$\delta$より小さいときというのを表している。
+                あとは数列の場合と大体同じで、どんなに$f$と極限値が近づいていても（$\varepsilon$を小さくしても）それに対応する$\delta$の値が定められる（$x$が$a$に近づく）ということになる。
+                \newpage
+
+                $\varepsilon-\delta$論法を使って、実際に収束することを証明してみる。
+                \paragraph*{例}$\displaystyle\lim_{x\to 2}x^2=4$を証明する。\\
+                $|x-2|<\delta$とするとき、$|x^2-4|=|x-2|\cdot|x+2|=|x-2|\cdot|(x-2)+4|\leq |x-2|^2+4|x-2|<\delta^2+4\delta$
+                であるため、$\varepsilon=\delta^2+4\delta\leftrightarrow \delta = -2+\sqrt{4+\varepsilon}$となるように$\delta$を取ればよい。このとき$|x-2|<\delta\rightarrow|x^2-4|<\varepsilon$を満たすので証明が終わる。$\square$\\
+
+                試しに、$\varepsilon = 0.1$を代入すると$\delta \thickapprox 0.02484$であるため、$x=2.02483$のとき$|x^2-4|<\varepsilon$を満たすはずである。
+                実際、$|x^2-4|=0.0999770256<0.1=\varepsilon$となっていて満たしている。今回は具体的に$\delta(\varepsilon)$を求めたが、このやり方にとらわれなくても四角で囲った条件を満たすように$\delta$が
+                取れればよい。\\
+
+                ここまで関数の収束について述べたが、ある一定の値に近づかずそのまま値が無限大に増大する場合などについて考えてみる。
+                例えば、$x^3$は$x\to\infty$で$x^3\to\infty$である。このような場合\textbf{無限大に発散する}という。
+                もちろん負の無限大に発散する場合も考えられる。一方で、$\sin x$は$x\to\infty$で値が無限大に増大するわけではないが、
+                値が一つに定まることもない。このような場合は\textbf{振動する}という。\footnote{$\sin x$のグラフを見れば「振動する」という言い方がぴったりだとわかる。}\\
+
+                次に重要な極限の公式を述べる。
+                \begin{align}
+                    \lim_{x\to 0}&\frac{\sin x}{x}=1\label{eq:limit of sin/x}\\
+                    \lim_{x\to 0}&\left(1+\frac{1}{x}\right)^x = e\label{eq:define_e}
+                \end{align}
+                式(\ref{eq:define_e})はネイピア数の定義である。実際は左辺の極限が収束することを証明しないといけないが、ここでは割愛する。
+
+                では式(\ref{eq:limit of sin/x})を証明する。
+                \paragraph{証明}下図のような単位円を考える。
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/circleFor_sin_div_xLimit.png}
+                    \caption{単位円}
+                \end{figure}
+
+                このとき$\triangle OAC< OBC < \triangle OBD$である。それぞれ$\frac{1}{2}OA\cdot AC,\frac{1}{2}OC^2x,\frac{1}{2}OB\cdot BD$なので
+                
+                \begin{alignat}{3}
+                    \frac{1}{2}OA\cdot AC&<& \frac{1}{2}OC^2x &<& \frac{1}{2}OB\cdot BD\notag\\
+                    \frac{1}{2}OC^2 \sin x\cos x & < & \frac{1}{2}OC^2 x & < & \frac{1}{2}OC^2\tan x\notag\\
+                    \sin x\cos x & < & x & < & \tan x\notag\\
+                    \cos x & < & \frac{x}{\sin x} & < & \frac{1}{\cos x}\notag\\
+                    \cos x & < & \frac{\sin x}{x} & < & \frac{1}{\cos x}\label{eq:Hasamiuti}
+                \end{alignat}
+                よって、$x\to 0$の極限を取れば$\displaystyle \cos x\to 1,\frac{1}{\cos x}\to 1$より$\displaystyle\frac{\sin x}{x}\to 1$となる。$\square$\\
+
+                最後の不等式(\ref{eq:Hasamiuti})のような不等式のとき、両側の極限値が一致すれば、間に挟まれた極限値も等しくなる。これを\textbf{はさみうちの原理}という。
+                はさみうちの原理ではうまく挟み込める不等式をつくる必要があるので、慣れるまで時間がかかる。
+
+            \clearpage
+            \subsection{極限の計算}
+                この節では実際に極限の計算方法について学ぶ。単純な場合は代入と同様に計算してよいが$\frac{0}{0}$などの形になる場合は式を変形する必要がある。
+
+                \paragraph{例1}次の極限を求めよ。
+                    \begin{equation*}
+                        \lim_{x\to \infty}\frac{x^3+5x^2+x+2}{x^3+x+10}
+                    \end{equation*}
+                    $\frac{1}{x}\to 0(x\to \infty)$の結果を利用する。分子と分母に$\frac{1}{x^3}$をかけて
+                    \begin{equation*}
+                        \lim_{x\to \infty}\frac{1+\frac{5}{x}+\frac{1}{x^2}+\frac{2}{x^3}}{1+\frac{1}{x^2}+\frac{10}{x^3}}=\frac{1+0+0+0}{1+0+0}=1
+                    \end{equation*}
+                
+                \paragraph{例2}次の極限を求めよ。
+                    \begin{equation*}
+                        \lim_{x\to 0}\frac{x}{1-\sqrt{x+1}}
+                    \end{equation*}
+                    $(a-b)(a+b)=a^2-b^2$を用いる。分子と分母に$1+\sqrt{x+1}$をかけて
+                    \begin{equation*}
+                        \lim_{x\to 0}\frac{x(1+\sqrt{x+1})}{(1-\sqrt{x+1})(1+\sqrt{x+1})}=\lim_{x\to 0}\frac{x(1+\sqrt{x+1})}{-x}=-(1+\sqrt{0+1})=-2
+                    \end{equation*}
+                
+                \paragraph{例3}次の極限を求めよ。
+                    \begin{equation*}
+                        \lim_{x\to\infty}\frac{2^x+1}{3^x}
+                    \end{equation*}
+                    $x$が十分大きいとき$2^x\ll 3^x$であるため、直感的に極限値は0だとわかる。
+                    \begin{equation*}
+                        \lim_{x\to\infty}\left(\left(\frac{2}{3}\right)^x+\frac{1}{3^x}\right)=\lim_{x\to\infty}\left(\frac{2}{3}\right)^x+\lim_{x\to\infty}\frac{1}{3^x}=0+0=0
+                    \end{equation*}
+                    二項目は指数関数の性質$a^x\quad(a<1)$の場合を用いた。三項目は$x\to\infty$のとき$3^x\to\infty$であることを用いた。
+
+                \paragraph{例4}次の等式を証明せよ。
+                    \begin{equation*}
+                        \lim_{x\to 0}\left(1+\frac{1}{x}\right)^x = \lim_{x\to \infty}\left(1+x\right)^\frac{1}{x} 
+                    \end{equation*}
+                    $x=\frac{1}{t}$と置くと、$x\to0$で$t\to\infty$だから
+                    \begin{equation*}
+                        \lim_{x\to 0}\left(1+\frac{1}{x}\right)^x = \lim_{t\to \infty}\left(1+\frac{1}{\frac{1}{t}}\right)^\frac{1}{t}=\lim_{t\to\infty}(1+t)^\frac{1}{t}
+                    \end{equation*}
+                    よって等式が成り立つ。\\
+
+                もちろんこれ以外にも極限の計算を行う際に用いるテクニックは存在するが、もう少し勉強を進めないと使うことができない。その時が来るまで楽しみにしていてほしい。
+                なお、これらのテクニックのほとんどは数列の極限にも用いることができる。
+            \clearpage
+            \basicquestion 以下の問いに答えよ。
     \clearpage
     \part{微分}
 
