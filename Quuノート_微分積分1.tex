@@ -19,7 +19,7 @@
 \renewcommand{\Im}{\operatorname{Im}}
 
 \newcounter{basic_quastion}\setcounter{basic_quastion}{1}
-\newcommand{\basicquestion}{{\large 基本問題\hspace{1mm}\huge\fbox{\textbf{\arabic{basic_quastion}}}\addtocounter{basic_quastion}{1}}\thispagestyle{fancy}\lhead{$\Sigma$基本問題}\rhead{\thepage}\cfoot{}\quad}
+\newcommand{\basicquestion}{\noindent{\large 基本問題\hspace{1mm}\huge\fbox{\textbf{\arabic{basic_quastion}}}\addtocounter{basic_quastion}{1}}\thispagestyle{fancy}\lhead{$\Sigma$基本問題}\rhead{\thepage}\cfoot{}\quad}
 
 
 \title{Quuノート　ー微分積分\ajRoman{1}ー}
@@ -125,7 +125,6 @@
             では、値が無限に続く（例えば実数全体など）場合はどう表現すればよいのか。この場合は無限大の記号$\infty$を用いて$(-\infty,\infty)$などと表せばよい。\footnote{この方法を使えば、a以上の実数などの場合でも$[a,\infty)$と表せばよいことがわかる。}
             \clearpage
             
-        \noindent
         \basicquestion 以下問に答えよ。
 
         \paragraph{問1}以下の主張のうち正しいものには〇を、間違っているものには×をつけよ。
@@ -393,7 +392,6 @@
 
                 もちろんこれ以外にも様々な関数がある。興味があったら調べてみるといい。
                 \clearpage
-                \noindent
                 \basicquestion 以下の問いに答えよ。
 
                 \paragraph{問1}次の関数が偶関数か奇関数かを判別せよ。
@@ -621,7 +619,110 @@
                 もちろんこれ以外にも極限の計算を行う際に用いるテクニックは存在するが、もう少し勉強を進めないと使うことができない。その時が来るまで楽しみにしていてほしい。
                 なお、これらのテクニックのほとんどは数列の極限にも用いることができる。
             \clearpage
-            \basicquestion 以下の問いに答えよ。
+            \subsection{関数の連続}
+                次に、関数の連続について考えていく。ひとまず定義から述べる。関数$f(x)$が$x=a$で\textbf{連続}であるとは、次の三つの条件を満たすことである。
+                \begin{enumerate}
+                    \item $f(a)$が定義されている。
+                    \item $\displaystyle\lim_{x\to a}f(x)$が存在する。
+                    \item $\displaystyle f(a)=\lim_{x\to a}f(x)$である。
+                \end{enumerate}
+                極限の場合は$x=a$で値が存在していなくてもよかったが、連続では$x=a$での値も必要となる。
+
+                連続の条件2について、極限が存在するとはどういうことなのか考えてみよう。関数の極限$x\to a$では、\underline{$x$をどのように$a$
+                に近づけても同じ極限値を取る}必要がある。
+                どのように近づけても、と言われて困るかもしれないが、単に$x>a$の点と$x<a$の点から近づける場合を考えておけばよい。\footnote{二変数関数になると少し事情は変わる。`xy平面上のどの点から'近づけても同じになる必要がある。}
+
+                このうち、$x>a$の点から近づける場合、すなわち数直線の右側から近づける場合を$\displaystyle\lim_{x\to a+0}f(x)$と表し、\textbf{右側極限値}と呼ぶ。
+                同様に$x<a$の点から近づける場合は$\displaystyle\lim_{x\to a-0}f(x)$と表し、\textbf{左側極限値}と呼ぶ。この右側極限値と左側極限値が等しくなる時、
+                極限は存在し、その値は
+                \begin{equation}
+                    \lim_{x\to a}f(x)=\lim_{x\to a+0}f(x)=\lim_{x\to a-0}f(x)
+                \end{equation}
+                となる。
+
+                関数$f(x)$がある区間$I$で連続であるとき、$f(x)$は$I$で\textbf{連続関数}であるという。例えば、$f(x)=\sin x$は区間$(-\infty,\infty)$で連続関数である。
+                一般に、初等関数は値が定義される（無限大にならないなど）全ての$x$について連続である。
+
+                関数がある区間で連続であるといったが、そもそも区間の端での連続はどう定義すればよいだろうか。
+                例えば、関数$f(x)=\sqrt{x}$は明らかに$x\geq 0$のすべての$x$で定義されているが$x=0$において連続の条件
+                が適用できない。そこで、一般に関数が$x\geq a$で定義されているとき
+                \begin{equation}
+                    \lim_{x\to a+0}f(x)=f(a)
+                \end{equation}
+                が成り立てば、$x=a$において連続であるとする。こう定義することで、$\sqrt{x}$が区間$x\geq 0$で連続と定義できる。
+                同様にして$x\leq b$である場合の端でも連続が定義される。この場合
+                \begin{equation}
+                    \lim_{x\to b-0}f(x)=f(b)
+                \end{equation}
+                のように左極限を取ることに注意。\\
+
+                以下連続関数の性質について述べる。まず連続関数$f(x),g(x)$について
+                \begin{equation}
+                    f(x)\pm g(x)\quad f(x)g(x)\quad \frac{f(x)}{g(x)}
+                \end{equation}
+                は連続関数である。ただし、最後の式は$g(x)\neq 0$であるとする。このことから、連続関数の多項式も連続関数であることがわかる。\\
+
+                \noindent
+                例えば、$f(x)=x^n(n\in\mathbb{N})$は区間$(-\infty,\infty)$で連続であるため、多項式
+                \begin{equation}
+                    P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_{1}x+a_0
+                \end{equation}
+                も区間$(-\infty,\infty)$で連続である。ほかにも、以下の\textbf{有理関数}
+                \begin{equation}
+                    R(x)=\frac{a_nx^n+a_{n-1}x^{n-1}+\cdots+a_{1}x+a_0}{b_nx^n+b_{n-1}x^{n-1}+\cdots+b_{1}x+b_0}
+                \end{equation}
+                も分母が0にならない限り連続である。
+
+                また、次の\textbf{合成関数}$f(g(x))$を考えてみると、$f(x),g(x)$が連続関数であるかぎり$f(g(x))$も連続関数である。
+                例えば$\log(\sqrt{x}+1)$は$x\geq 0$のすべての$x$で連続である。\\
+
+                関数$f(x)$が区間$[a,b]$で連続関数である場合、次の二つが成り立つ。
+                \begin{screen}
+                    $f(a)\neq f(b)$なら$f(a)\leq k \leq f(b)$である任意の$k$について
+                    \begin{equation*}
+                        f(x)=k
+                    \end{equation*}
+                    となる点$c\in[a,b]$が少なくとも一つ存在する。（\textbf{中間値の定理}）
+                \end{screen}
+                \begin{screen}
+                    $f(x)$は区間$[a,b]$で必ず最大値$M$と最小値$m$を取る。つまり
+                    \begin{equation*}
+                        m=f(x_m)\leq f(x)\leq f(x_M)=M
+                    \end{equation*}
+                    となる点$x_m,x_M\in[a,b]$が必ず存在する。
+                \end{screen}
+                文字だけだとわかりずらいが、グラフを見ればむしろ当たり前のことのように感じる。
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/ContinuousFuncGraph.png}
+                    \caption{連続関数}\label{fig:連続関数,中間値の定理,最大最小}
+                \end{figure}
+
+                図\ref{fig:連続関数,中間値の定理,最大最小}を見ると、区間$[1,3]$において関数は連続であり、その端での値
+                おおよそ$-3$と$9$の間のすべて値に対して、対応する$x\in[-1,3]$が存在していることがわかる。これが中間値の定理
+                の主張である。また区間における最大値と最小値も存在している（それぞれ$x=-1,3$の点）ことがわかる。
+                ちなみに、点A,Bはそれぞれその周囲の点の間では最大・最小の値である。これらをそれぞれ極大値、極小値とよび、総称して
+                \textbf{極値}という。
+                \newpage
+                また、中間値の定理において$f(a)$と$f(b)$の符号が異なる場合、方程式$f(x)=0$は
+                区間$[a,b]$に実数解を少なくとも持つことがわかる。これは中間値の定理の応用である。
+                \paragraph{例}方程式$x^2+x+1=0$は区間$[-1,1]$に少なくとも一つの実数解を持つかどうか答えよ。
+
+                $f(-1)=1-1+1=1>0,f(1)=1+1+1=3>0$より、$f(-1)$と$f(1)$の符号が同じであるため方程式は区間$[-1,1]$で実数解を持たない。
+                実際、判別式$D=1^2-4\cdot 1\cdot 1=-3<0$より、この二次方程式は解を持っていない。\\
+
+                いままでは連続関数の性質について述べたが、連続の条件が一つでも満たされていない場合についても考えてみよう。
+                このとき関数$f(x)$は$x=a$で\textbf{不連続}であるという。例えば$\frac{1}{x}$は$x=0$で不連続である。
+                一方で関数$\displaystyle g(x)=\frac{x^2-1}{x-1}$も$x=1$で不連続であるが、$x\neq1$では$g(x)=x+1$で連続である。
+                そこで、
+                \begin{equation}
+                    g(x)=\left\{\begin{array}{lr}\displaystyle\frac{x^2-1}{x-1}&(x\neq 1)\\\displaystyle x+1&(x=1)\end{array}\right.
+                \end{equation}
+                のように改めて定義しなおすことで、この関数は$x=1$で連続にできる。各自確かめてみよ。
+                \clearpage
+                \basicquestion 以下の問いに答えよ。
+                
+
     \clearpage
     \part{微分}
 
