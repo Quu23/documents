@@ -18,8 +18,11 @@
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 
+
 \newcounter{basic_quastion}\setcounter{basic_quastion}{1}
 \newcommand{\basicquestion}{\noindent{\large 基本問題\hspace{1mm}\huge\fbox{\textbf{\arabic{basic_quastion}}}\addtocounter{basic_quastion}{1}}\thispagestyle{fancy}\lhead{$\Sigma$基本問題}\rhead{\thepage}\cfoot{}\quad}
+\newcommand{\sign}{\mathop{\mathrm{sign}}\nolimits}
+\newcommand{\linktoMOKUZI}{\vspace{\stretch{1}}\fbox{\centerline{目次\large\pageref{目次}\normalsize ページへ}}}
 
 
 \title{Quuノート　ー微分積分\ajRoman{1}ー}
@@ -35,6 +38,7 @@
     主に、一変数の極限、一変数の微分・積分、実数の無限級数について扱う。
     
     \clearpage
+    \label{目次}
     \tableofcontents
     \clearpage
     
@@ -752,9 +756,40 @@
                 $(3)f(x)=\sqrt{1-x^2}\quad(x=1)$\hspace{1mm}
                 $(4)f(x)=\frac{1}{\sqrt{x}}\quad(x=0)$\\
                 $(5)f(x)=|x|\quad(x=0)$\hspace{1mm}
-                $\displaystyle f(x)=\left\{\begin{array}{lr}\displaystyle x\sin\frac{1}{x}&(x\neq 0)\\1&(x=0)\end{array}\right.$\\
+                $(6)\displaystyle f(x)=\left\{\begin{array}{lr}\displaystyle x\sin\frac{1}{x}&(x\neq 0)\\1&(x=0)\end{array}\right.$\\
 
                 \paragraph{問5}方程式$\sin x=x$が区間$[0,\frac{\pi}{2}]$に実数解をもつかどうか調べよ。
+            \clearpage
+            \section{第I部演習問題}
+                \paragraph{問1} 以下の計算をせよ。ただし$(2)$において$-1<x<1$とする。
+                    \begin{alignat*}{9}
+                        &[1]\log\sqrt{2+\sqrt{3}} &[2]&\sin^{-1}x+\cos^{-1}x &[3]&\cos\left(\frac{5\pi}{12}\right) & [4]&\log(e^{x^2}) & [5]&\sin(12\pi)\\
+                        &[6]\lim_{x\to 0}x^n(n\in\mathbb{N}) &[7]&\lim_{n\to 0}x^n &[8]&\lim_{n\to 0}(\sqrt{n^2+3n}-n) &[9]&\lim_{n\to\infty}(\sqrt[3]{n+1}-\sqrt[3]{n}) & [10]&\lim_{x\to +0}x^x\\
+                        &[11]\lim_{x\to +0}\frac{\sin x}{\sqrt{x}} &[12]& \lim_{x\to\infty}\frac{\sin(x)}{x} &[13]&\lim_{n\to\infty}\sum_{k=1}^{n}k\cdot\left(\frac{k}{n}\right) &[14]&\lim_{t\to 0}\frac{(x+t)^2-x^2}{t}
+                    \end{alignat*}
+                \paragraph{問2}次の式について以下の問いに答えよ。
+                    \begin{equation}
+                        \lim_{n\to n}a_n=a \Rightarrow \lim_{n\to\infty}\frac{a_1+a_2+\cdots+a_n}{n}=a
+                    \end{equation}
+                    \begin{description}
+                        \item[(1\textrm{)}] 上式を証明せよ。
+                        \item[(2\textrm{)}] $\log\left(\frac{2}{1}\times\frac{3}{2}\times\cdots\times\frac{n+1}{n}\right)-\log\frac{n+1}{n}=\log n $を示せ。
+                        \item[(3\textrm{)}] $\displaystyle \lim_{n\to\infty}\frac{\log n}{n}$を求めよ。
+                    \end{description}
+                
+                \paragraph{問3}
+                    次の関数が$[\quad]$の点で連続であるかどうか答えよ。
+                    \begin{align*}
+                        (1)&\sign x = \left\{\begin{array}{cc}\displaystyle 1 & (x>0) \\ 0 & (x=0) \\ -1 & (x<0)\end{array}\right.&\quad [x=0]\\
+                        (2)&f(x)=\lim_{n\to \infty}f_n(x)\quad (f_n(x)=x^n\quad(0\leq x\leq 1))&\quad [x=1]
+                    \end{align*} 
+                    (1)の関数は\textbf{符号関数}という。${\rm sgn}(x)$と書く場合もある。
+
+                \paragraph{問4}
+                    数学において$0^0$は$1$と定義されたりそもそも定義されなかったりする。さて、$0^0=1$と定義する立場での根拠について関数$f(x)=x^x$を用いて極限の観点から述べよ。
+                
+                \linktoMOKUZI
+                
     \clearpage
     \part{微分$f'$}
     \vspace{\stretch{1}}
