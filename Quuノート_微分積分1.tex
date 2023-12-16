@@ -863,7 +863,44 @@
             つまり$x=a$における微分係数は点$a$の接線の傾きを表している。
         \clearpage
         \subsection{微分可能性と連続性}
+            今度は関数が$f(x)$が$x=a$で微分可能であることと連続であることの違いについて考えていこう。
+            一見するとこれら二つは同値であるかのように見える。\footnote{昔の数学者たちの間でも長らく連続関数は明らかに微分可能と考えられていたらしい。だからこそ「エルミートの怪物」
+            のような連続なのにいたるところで微分不可能な関数が発見されたときは、数学界に大きな衝撃を与えたそうだ。\\参考サイト：\url{http://allneedislove380.blog61.fc2.com/blog-entry-291.html}}
+            実際初等関数は連続である区間についてすべて微分可能である。では初等関数ではない関数である$y=|x|$で考えてみよう。
+            もちろん$x>0$では$y=x$、$x<0$では$y=-x$であるので、微分可能である。（実際に試すとよい）
+            しかし$x=0$においては微分可能ではない。それを今から示す。
 
+            微分可能であることは、右方微分係数と左方微分係数が一致すればよいことであるが
+            \begin{equation}
+                \frac{|0+h|-|0|}{h}=\frac{|h|}{h}
+            \end{equation}
+            なので、
+            \begin{align}
+                y'(+0)&=\lim_{h\to +0}\frac{|h|}{h}=\lim_{h\to+0}\frac{h}{h}=1\\
+                y'(-0)&=\lim_{h\to -0}\frac{|h|}{h}=\lim_{h\to -0}\frac{-h}{h}=-1
+            \end{align}
+            となり右方微分係数と左方微分係数が一致しない。したがって$y=|x|$は微分可能ではない。
+            しかし$x=0$で連続ではないので、$y=|x|$は連続であるが微分可能でない関数であることがわかる。
+
+            では逆に$f(x)$が$x=a$で微分可能であるときはどうであろうか。$f(x)$が$x=a$で微分可能であるとき
+            \begin{equation}
+                \lim_{h\to 0}(f(a+h)-f(a))=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}\cdot h=\lim_{h\to 0}f'(a)\cdot h=0 
+            \end{equation}
+            また、$\displaystyle \lim_{h\to 0}(f(a+h)-f(a))=\lim_{h\to 0}f(a+h)-\lim_{h\to 0}f(a)=\lim_{h\to 0}f(a+h)-f(a)$なので、
+            \begin{equation}
+                \lim_{h\to 0}f(a+h)=f(a)
+            \end{equation}
+            が成り立つ。$h=b-a$であったことを思い出すと、$h\to 0$のとき$b\to a$なので
+            \begin{equation}
+                \lim_{b\to a}f(b) = f(a)
+            \end{equation}
+            つまり$x=a$で$f(x)$は連続の条件を満たす。\\\\
+            \noindent
+            以上をまとめると\fbox{$f(x)$が$x=a$で微分可能$\Rightarrow$$f(x)$は$x=a$で連続}である。 \\
+
+            ちなみに、$x=a$で$f(x)$が不連続である場合は、対偶を取ればわかるように微分可能ではない。これは微分係数の定義からもわかる。
+        \clearpage
+        \subsection{導関数の定義}
         
     \clearpage
     \part{積分$\int$}
