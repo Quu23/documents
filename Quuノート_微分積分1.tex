@@ -11,6 +11,7 @@
 \usepackage{pxjahyper}
 \usepackage{okumacro}
 
+
 \pagestyle{headings}
 
 % \renewcommand{\thesubsection}{\arabic{subsection}}
@@ -32,6 +33,12 @@
 \begin{document}
     \maketitle
     \thispagestyle{empty}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{img/QuuNote/icon.png}
+    \end{figure}
+    
+    \vspace{\stretch{1}}
     \centerline{\textbf{概要}}
     \noindent
     微分積分学入門についてのノート。\\
@@ -189,7 +196,7 @@
                 三角比の定義自体を忘れた人はいないだろうが一応説明しておく。
                 \begin{figure}[h]
                     \centering
-                    \includegraphics[keepaspectratio,scale=0.5]{img/QuuNote/triangleFunc.png}
+                    \includegraphics[keepaspectratio,scale=0.3]{img/QuuNote/triangleFunc.png}
                     \caption{三角比}
                 \end{figure}
 
@@ -203,7 +210,7 @@
 
                 三角関数には様々な公式がある。\footnote{公式集を眺めるとやたらと二乗がついていることがわかる。つまり三角関数は\underline{二乗に強い}のである。この性質は積分を解く際に重要である。}
                 しかしそれらは単位円を書けばすぐに導けるので、一部を除いて割愛する。
-                また、三角関数の角度の合成についても、全て\textbf{加法定理}より導けるのでここでは加法定理のみ紹介する。
+                また、二倍角の公式などについても、全て\textbf{加法定理}より導けるのでここでは加法定理のみ紹介する。
 
                 \begin{align}
                     \sin^2 x + \cos ^2 x &= 1 &\quad 1 + \tan^2 x &= \frac{1}{\cos^2 x}\\
@@ -215,6 +222,7 @@
                     \cos(\alpha\pm\beta) &= \cos\alpha\cos\beta \mp \sin\alpha\sin\beta\\
                     \tan(\alpha\pm\beta) &= \frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}
                 \end{align}
+                また、三角関数は\textbf{周期関数}である。$\sin x,\cos x$は周期$2\pi$、$\tan x$は周期$\pi$である。
             \clearpage
             \subsection{指数・対数関数}
                 `指数的に増加する'という言葉をよく耳にする。これは、なにか爆発的な増加の様子を示している表現である。このように、\textbf{指数関数}は$x$の値が少し変わるだけで値が
@@ -747,7 +755,7 @@
                 $(4)\displaystyle \lim_{x\to 0}\frac{x^2}{1-\cos x}$\hspace{3mm}
                 $(5)\displaystyle \lim_{x\to 0}\tan x$\hspace{3mm}
                 $(6)\displaystyle \lim_{x\to\infty}\frac{2^x+3^x}{2^x-3^x}$\\
-                $(7)\displaystyle \lim_{x\to 0}\frac{\sqrt[3]{8+x-2}}{x}$\hspace{3mm}
+                $(7)\displaystyle \lim_{x\to 0}\frac{\sqrt[3]{8+x}-2}{x}$\hspace{3mm}
                 $(8)\displaystyle \lim_{x\to 0}\frac{e^x-1}{x}$
                 
                 \paragraph{問4}次の関数が（）内の点において連続であるかどうか調べよ。\\
