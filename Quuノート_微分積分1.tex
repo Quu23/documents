@@ -773,7 +773,7 @@
                     \end{equation}
                     \begin{description}
                         \item[(1\textrm{)}] 上式を証明せよ。
-                        \item[(2\textrm{)}] $\log\left(\frac{2}{1}\times\frac{3}{2}\times\cdots\times\frac{n+1}{n}\right)-\log\frac{n+1}{n}=\log n $を示せ。
+                        \item[(2\textrm{)}] $\log\left(\frac{2}{1}\times\frac{3}{2}\times\cdots\times\frac{n+1}{n}\right)-\log\frac{n+1}{n}$を求めよ。
                         \item[(3\textrm{)}] $\displaystyle \lim_{n\to\infty}\frac{\log n}{n}$を求めよ。
                     \end{description}
                 
@@ -799,8 +799,72 @@
         また、この章ではテイラー展開などについても扱う。
     \end{screen}
     \clearpage
-    \section{平均変化率・微分係数}
+    \section{導関数}
+        \subsection{平均変化率・微分係数}
+            一次関数$y=\alpha x+b$の傾き$\alpha$を求める方法は直線上の二点の座標がわかればよく、それらを$(x_1,y_1),(x_2,y_2)$と置けば、
+            \begin{equation}
+                \alpha=\frac{y_2-y_1}{x_2-x_1}
+            \end{equation}
+            で求まる。また分子と分母はそれぞれ$(x_1,y_1)$からの$x$方向$y$方向の変化分だと考えられるので、それらを$\Delta x=x_2-x_1,\Delta y=y_2-y_1$と置けば
+            \begin{equation}
+                a= \frac{\Delta y}{\Delta x}
+            \end{equation}
+            となる。これを一般の関数$y=f(x)$に拡張することを考える。ここで注意しておいてほしいのは、
+            一般の関数で考える際は$(x_1,y_1),(x_2,y_2)$の取り方によって傾きの値が変わってしまうことである。
 
+            例えば、$y=x^2$について$(1,1^2)$から$(2,2^2)$の傾きは$\frac{4-1}{2-1}=3$だが、
+            $(3,3^2)$から$(4,4^2)$の傾きは$\frac{16-9}{4-3}=7$となってしまう。つまり$x$の増分が同じであっても
+            $y$の増分が同じであるとは限らないのである。
+
+            とはいえ、傾きの式を$y=f(x)$の場合で拡張するからなにか定義の式が変わるわけではない。やはり二点の座標について
+            \begin{equation}
+                \frac{f(x_2)-f(x_1)}{x_2-x_1}\quad\left(=\frac{y_2-y_1}{x_2-x_1}\right)
+            \end{equation}
+            となる。この$x$の増分と$y$の増分の比のことを\textbf{平均変化率}という。
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.3]{img/QuuNote/heikinhenkaritu.png}
+                \caption{平均変化率と直線}
+            \end{figure}
+
+            上図のように、平均変化率は二点を結んだ直線$l$の傾きを表している。また$a=x_1,b=x_2$と置き、$a$と$b$の差を$h=b-a$と置けば、
+            \begin{equation}
+                \frac{f(a+h)-f(a)}{h}
+            \end{equation}
+            と表すこともできる。
+            
+            次に点$x=b$を点$x=a$に限りなく近づける場合を考えよう。これは$a$と$b$との距離が限りなく小さくなることを意味するので$h\to 0$の極限である。すなわち
+            \begin{equation}
+                \lim_{h\to 0}\frac{f(a+h)-f(a)}{h}
+            \end{equation}
+            となる。この極限値が存在する場合、$f(x)$は$x=a$で\textbf{微分可能}であるという。また、その値を$x=a$における$f(x)$の\textbf{微分係数}といい、$f'(a)$と表す。
+            \clearpage
+            $h$は右側（正の側）から0に近づく場合と左側（負の側）から0に近づく場合がある。
+            前者を\textbf{右方微分係数}といい
+            \begin{equation}
+                f'(a+0)=\lim_{h\to +0}\frac{f(a+h)-f(a)}{h}
+            \end{equation}
+            と表す。同様に後者を\textbf{左方微分係数}といい
+            \begin{equation}
+                f'(a-0)=\lim_{h\to -0}\frac{f(a+h)-f(a)}{h}
+            \end{equation}
+            と表す。微分可能とは$f'(a+0)$と$f'(a-0)$が存在して、$f'(a+0)=f'(a-0)$となることと同義である。
+            もし$f(x)$が$x\geq a$で定義されている場合は、$x=a$における右方微分係数が存在していればよく、$x\leq a$で定義されている場合は左方微分係数が存在していればよい。
+            \\
+
+            では次に微分係数の幾何学的な意味について考えていこう。そのためには$b$を$a$に徐々に近づけた場合の$a-b$を結ぶ直線を書くとわかりやすい。
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.5]{img/QuuNote/differentialCoefficieant_Graph.png}
+                \caption{点$b$を徐々に近づけた場合の直線の変化}
+            \end{figure}
+
+            この図を見ると$b$が$a$に近づくにつれて、二点を結んだ直線も点$a$の\textbf{接線}に近づいていることがわかる。
+            つまり$x=a$における微分係数は点$a$の接線の傾きを表している。
+        \clearpage
+        \subsection{微分可能性と連続性}
+
+        
     \clearpage
     \part{積分$\int$}
 
