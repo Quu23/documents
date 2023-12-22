@@ -560,7 +560,7 @@
                 次に重要な極限の公式を述べる。
                 \begin{align}
                     \lim_{x\to 0}&\frac{\sin x}{x}=1\label{eq:limit of sin/x}\\
-                    \lim_{x\to 0}&\left(1+\frac{1}{x}\right)^x = e\label{eq:define_e}
+                    \lim_{x\to 0}&\left(1+x\right)^\frac{1}{x} = e\label{eq:define_e}
                 \end{align}
                 式(\ref{eq:define_e})はネイピア数の定義である。実際は左辺の極限が収束することを証明しないといけないが、ここでは割愛する。
 
@@ -620,11 +620,11 @@
 
                 \paragraph{例4}次の等式を証明せよ。
                     \begin{equation*}
-                        \lim_{x\to 0}\left(1+\frac{1}{x}\right)^x = \lim_{x\to \infty}\left(1+x\right)^\frac{1}{x} 
+                        \lim_{x\to \infty}\left(1+\frac{1}{x}\right)^x = \lim_{x\to 0}\left(1+x\right)^\frac{1}{x} 
                     \end{equation*}
-                    $x=\frac{1}{t}$と置くと、$x\to0$で$t\to\infty$だから
+                    $x=\frac{1}{t}$と置くと、$x\to\infty$で$t\to0$だから
                     \begin{equation*}
-                        \lim_{x\to 0}\left(1+\frac{1}{x}\right)^x = \lim_{t\to \infty}\left(1+\frac{1}{\frac{1}{t}}\right)^\frac{1}{t}=\lim_{t\to\infty}(1+t)^\frac{1}{t}
+                        \lim_{x\to \infty}\left(1+\frac{1}{x}\right)^x = \lim_{t\to 0}\left(1+\frac{1}{\frac{1}{t}}\right)^\frac{1}{t}=\lim_{t\to\infty}(1+t)^\frac{1}{t}
                     \end{equation*}
                     よって等式が成り立つ。\\
 
@@ -968,6 +968,98 @@
         \clearpage
         \section{導関数の計算}
             \subsection{基礎的な関数の導関数}
+                \noindent
+                ここでは初等関数の基礎的な関数$x^n,\sin x,e^x,\log x$などの導関数を求めていく。\\
+
+                まず、$e^x$から考えてみよう。ひとまず定義に従えば
+                \begin{equation}
+                    \lim_{h\to 0}\frac{e^{x+h}-e^{x}}{h}=e^x\lim_{h\to 0}\frac{e^h-1}{h}
+                \end{equation}
+                と変形できる。そこで、出てきた極限について逆数をとり$t=e^h-1$とおいて計算していく。
+                \begin{equation}
+                    \lim_{h\to 0}\frac{h}{e^h-1}=\lim_{t\to 0}\frac{\log(t+1)}{t}=\lim_{t\to 0}\log(1+t)^\frac{1}{t}
+                \end{equation}
+                と変形できるので、$e$の定義式(\ref{eq:define_e})より真数は$e$となる。したがってこの極限は$1$となるので
+                \begin{equation}
+                    (e^x)'=e^x \cdot \lim_{h\to 0}\frac{e^h-1}{h}=e^x \cdot 1 =e^x
+                \end{equation}
+                つまり$e^x$は\underline{微分しても形が変わらない}のである。
+                また、この結果を使えば一般の指数関数$a^x$の導関数も簡単に求まる。$(e^{ax})'=ae^{ax}$が成り立つ（演習問題）ことから
+                \begin{equation}
+                    (a^x)'=(e^{\log(a^x)})'=(e^{x\log a})'=e^{x\log a}\log a=a^x\log a
+                \end{equation}
+
+                つぎに、$\log x$について考えてみる。これも定義に従って
+                \begin{equation}
+                    \lim_{h\to 0}\frac{\log(x+h)-\log x}{h}=\lim_{h\to 0}\frac{\log\left(\frac{x+h}{x}\right)}{h}=\lim_{h\to 0}\log\left(1+\frac{h}{x}\right)^\frac{1}{h}
+                \end{equation}
+                ここで$t=\frac{h}{x}$と置けば
+                \begin{equation}
+                    \lim_{t \to 0}\log(1+t)^\frac{1}{xt}=\lim_{t\to 0}\frac{\log(1+t)^\frac{1}{t}}{x}=\frac{\log(e)}{x}=\frac{1}{x}
+                \end{equation}
+                と求まる。
+
+                次に、$x^n$で求めてみよう。ただし$n$は自然数であるとする。一般に、
+                \begin{equation}
+                    (x+a)^n=x^n+{}_nC_1ax^{n-1}+{}_nC_2a^2 x^{n-2}+\cdots +{}_nC_ma^{m}x^{n-m}+\cdots {}_nC_1a^{n-1}x+a^n\quad(\text{\textbf{二項定理}})
+                \end{equation}
+                が成り立つので
+                \begin{alignat}{1}
+                    (x^n)'&=\lim_{h\to 0}\frac{(x+h)^n-x^n}{h}=\lim_{h\to 0}\frac{{}_nC_1hx^{n-1}+{}_nC_2h^2 x^{n-2}+\cdots +{}_nC_mh^{m}x^{n-m}+\cdots +{}_nC_1h^{n-1}x+h^n}{h}\\
+                    &=\lim_{h\to 0} {}_nC_1 x^{n-1}+(h\text{についての多項式})=nx^{n-1}
+                \end{alignat}
+                要するに$x^n$の微分は\underline{肩をおろして1を引く}のである。
+                \clearpage
+                最後に$\sin x$の導関数を求めてみよう。こちらも定義通りに計算して
+                \begin{equation}
+                    (\sin x)'=\lim_{h\to 0}\frac{\sin(x+h)-\sin x}{h}=\lim_{h\to 0}\frac{2\cos(\frac{2x+h}{2})\sin(\frac{h}{2})}{h}=\lim_{h\to 0}\cos (x+\frac{h}{2})\cdot \lim_{h\to 0}\frac{\sin\frac{h}{2}}{\frac{h}{2}}=\cos x
+                \end{equation}
+                最後の極限は式\ref{eq:limit of sin/x}を利用した。\\
+
+                これで基礎となる関数の導関数はほとんど導出できた。以下公式としてまとめる。一部導出していないものもあるが演習問題で導出する。これくらいは後々の計算のためにも覚えておくとよい。
+
+                \begin{screen}
+                    \begin{alignat*}{2}
+                        &(x^n)'=nx^{n-1} && (a^x)'=a^x\log a\\
+                        &(e^x)'=e^x && (\log x)'=\frac{1}{x}\\
+                        &(\sin x)'=\cos x \quad&& (\cos x)'=-\sin x
+                    \end{alignat*}
+                \end{screen}
+            \clearpage
+            \subsection{積の微分}
+                今度は 関数同士の積について、公式を導出してみよう。$f,g$は微分可能であるとする。このとき、
+                \begin{equation}
+                    (f(x)g(x))'=\lim_{h\to 0}\frac{f(x+h)g(x+h)-f(x)g(x)}{h}
+                \end{equation}
+                である。当然このままでは計算できないので少し式をいじってあげよう。仮定より分子にどうにかして$f(x+h)-f(x)$もしくは$g(x+h)-g(x)$
+                を作れないか考えてみる。そこで分子に$-f(x+h)g(x)+f(x+h)g(x)=0$を加えてあげると
+                \begin{equation}
+                    \frac{f(x+h)(g(x+h)-g(x))+g(x)(f(x+h)-f(x))}{h}=\frac{f(x+h)(g(x+h)-g(x))}{h}+\frac{g(x)(f(x+h)-f(x))}{h}
+                \end{equation}
+                とできる。あとは$f,g$が微分可能であるので$h\to  0$の極限を取れば
+                \begin{equation}
+                    (f(x)g(x))'=f(x)g'(x)+f'(x)g(x)\label{eq:積の微分公式}
+                \end{equation}
+                こうして積の微分公式が得られた。では、この公式を用いて$\displaystyle y=x^{-n}=\frac{1}{x^{n}}$の導関数も求めてみよう。
+                \begin{equation}
+                    (1)'=\left(\frac{x^n}{x^{n}}\right)'=nx^{n-1}\cdot \frac{1}{x^{n}}+x^n\cdot \left(\frac{1}{x^n}\right)'=\frac{n}{x}+x^{n}y'=0
+                \end{equation}
+                であるため、$y'=$の形に整理すれば
+                \begin{equation}
+                    y'=\frac{-n}{x^{n+1}}=(-n)\cdot x^{(-n)-1}
+                \end{equation}
+                つまり、任意の整数について$(x^n)'=nx^{n-1}$が成り立つことが示せた。\footnote{この例は積の微分公式を使う練習としてはあまり適していない。商の微分を用いるか合成関数の微分法を用いることで見通しよく求められる。}\\
+
+                もう少し簡単な問題で積の微分公式を使う練習をしてみよう。
+                \paragraph{例題}$y=x\sin x$のとき$y'$を求めよ。\\
+                $f=x,g=\sin x$とおいて式\ref{eq:積の微分公式}を適応すると$f'=1,g'=\cos x$だから
+                \begin{equation}
+                    y'=fg'+f'g=x\cos x+\sin x
+                \end{equation}
+                と求まる。
+            \clearpage
+            \subsection{商の微分}
+
     \clearpage
 
     \part{積分$\int$}
