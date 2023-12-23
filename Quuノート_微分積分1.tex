@@ -1086,7 +1086,41 @@
                 と楽に導出できる。
             \clearpage
             \subsection{合成関数の微分}
-
+                では次に合成関数の微分について考えてみる。$y=f(g(x))$として考えてみる。このとき
+                \begin{equation}
+                    y'=\lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}{h}=\lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}\cdot \frac{g(x+h)-g(x)}{h}
+                \end{equation}
+                であるので、$h'=g(x+h)-g(x)$と置けば、$h\to 0$で$h'\to0$なので、
+                \begin{equation}
+                    \lim_{h'\to 0}\frac{f(g(x)+h')-f(g(x))}{h'}\cdot \lim_{h\to 0}\frac{g(x+h)-g(x)}{h}=f'(g(x))\cdot g'(x)
+                \end{equation}
+                となる。$u=g(x)$とおいてこれをライプニッツの記号で書けば
+                \begin{equation}
+                    \frac{dy}{dx}=\frac{dy}{du}\frac{du}{dx}\label{eq:合成関数の微分}
+                \end{equation}
+                こうすれば`形式的に'約分しているように見ることができる。ちなみにこの合成関数の微分の公式を\textbf{チェイン・ルール}という。
+                
+                合成関数の微分公式を用いれば一般の$m$について$(x^m)'=mx^{m-1}$が証明できる。それを今から示す。\footnote{これは対数微分法でも示せる。そもそも対数微分法も今回のやり方も本質的には同じである。}
+                \begin{equation}
+                    (x^m)'=(e^{\log x^m})'=(e^{m\log x})'=e^{m\log x}\cdot (m\log x)'=x^{m}\cdot \frac{m}{x}
+                \end{equation}
+                と計算できるので、
+                \begin{equation}
+                    (x^m)'=mx^{m-1}
+                \end{equation}
+                
+                ほかにも$(2x+1)^5$を微分するとき、通常なら展開して項別微分する必要があるが、合成関数を用いれば
+                \begin{equation}
+                    \left\{(2x+1)^5\right\}'=5(2x+1)^4\cdot (2x+1)'=10(2x+1)^4
+                \end{equation}
+                と非常に簡単に求められる。より一般的には
+                \begin{equation}
+                    (f(ax+b))'=af'(ax+b)
+                \end{equation}
+                である。
+            \clearpage
+            \subsection{逆関数の微分}
+                
     \clearpage
 
     \part{積分$\int$}
