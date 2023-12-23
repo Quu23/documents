@@ -1046,7 +1046,7 @@
                 \end{equation}
                 であるため、$y'=$の形に整理すれば
                 \begin{equation}
-                    y'=\frac{-n}{x^{n+1}}=(-n)\cdot x^{(-n)-1}
+                    y'=\frac{-n}{x^{n+1}}=(-n)\cdot x^{(-n)-1}\label{eq:積微分による1/x^nの微分}
                 \end{equation}
                 つまり、任意の整数について$(x^n)'=nx^{n-1}$が成り立つことが示せた。\footnote{この例は積の微分公式を使う練習としてはあまり適していない。商の微分を用いるか合成関数の微分法を用いることで見通しよく求められる。}\\
 
@@ -1059,6 +1059,33 @@
                 と求まる。
             \clearpage
             \subsection{商の微分}
+                積の微分について考えたら次は商の微分についても考えたくなるものである。商の微分公式について以下にのべる。
+                \begin{equation}
+                    \left(\frac{f(x)}{g(x)}\right)'=\frac{f'(x)g(x)-f(x)g'(x)}{\left\{g(x)\right\}^2}\label{eq:商の微分公式}
+                \end{equation}
+                もちろん$f,g$は微分可能であり$g(x)\neq 0$であるとする。頭の痛くなる形をしていて、覚えるのに苦労しそうである。
+                覚え方は人によってさまざまだろうが、例えば「分子は積の微分の符号反転で分母は二乗する」という覚え方もある。導出については
+                演習問題とする。
+
+                商の微分について$f=1$の特別な場合を知っておくと計算が早くなることがある。試しに公式に代入してみると
+                \begin{equation}
+                    \left(\frac{1}{g}\right)'=\frac{0\cdot g-1\cdot g'}{g^2}=-\frac{g'}{g^2}
+                \end{equation}
+                となる。最後の符号を忘れないように注意しよう。ここまで覚える必要はないが知っておけば多少楽できる。\\
+
+                ではこれを使って$y=x^{-n}$の導関数を導出してみよう。$f=1,g=x^n$として公式に代入すればよい。
+                \begin{equation}
+                    y'=-\frac{(x^n)'}{(x^n)^2}=-\frac{nx^{n-1}}{(x^n)^2}=-\frac{n}{x^{n+1}}=(-n)\cdot x^{(-n)-1}
+                \end{equation}
+                となり、式\ref{eq:積微分による1/x^nの微分}と同じ結果が得られた。こちらの方が自然な導出である。
+
+                次に$y=\tan x$の導関数を導出してみよう。この関数は$\sin x$などと違って定義から計算すると骨が折れる。しかし、商の微分公式を用いれば
+                \begin{equation}
+                    y'=\left(\frac{\sin x}{\cos x}\right)'=\frac{\cos^2 x-(-\sin^2 x)}{\cos^2 x}=\frac{1}{\cos^2 x}
+                \end{equation}
+                と楽に導出できる。
+            \clearpage
+            \subsection{合成関数の微分}
 
     \clearpage
 
