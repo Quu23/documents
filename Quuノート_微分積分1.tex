@@ -23,7 +23,7 @@
 \newcounter{basic_quastion}\setcounter{basic_quastion}{1}
 \newcommand{\basicquestion}{\noindent{\large 基本問題\hspace{1mm}\huge\fbox{\textbf{\arabic{basic_quastion}}}\addtocounter{basic_quastion}{1}}\thispagestyle{fancy}\lhead{$\Sigma$基本問題}\rhead{\thepage}\cfoot{}\quad}
 \newcommand{\sign}{\mathop{\mathrm{sign}}\nolimits}
-\newcommand{\linktoMOKUZI}{\vspace{\stretch{1}}\fbox{\centerline{目次\large\pageref{目次}\normalsize ページへ}}}
+\newcommand{\linktoMOKUZI}{\vspace{\stretch{1}}\fbox{\centerline{\hyperref[目次]{目次に戻る}}}}
 
 
 \title{Quuノート　ー微分積分\ajRoman{1}ー}
@@ -1214,7 +1214,7 @@
                 \begin{eqnarray}
                     \sin\alpha\cos\beta=\frac{1}{2}\left\{\sin(\alpha+\beta)+\sin(\alpha+\beta)\right\}\label{eq:和積の公式sinαcosβ}
                 \end{eqnarray}
-                \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumii})}\setcounter{enumii}{1}
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
                     \item 公式(\ref{eq:和積の公式sinαcosβ})を示せ。
                     \item 公式(\ref{eq:和積の公式sinαcosβ})の両辺を$\alpha$微分せよ。
                     \item 公式(\ref{eq:和積の公式sinαcosβ})の両辺を$\beta$微分せよ。
@@ -1237,5 +1237,56 @@
 
     \clearpage
     \part{無限級数$\sum$}
+    \clearpage
+    \part{終わりに}
+        このノートでは、（高専2年生で扱う）一変数の微分積分+無限級数について主に扱った。ここに書いてあることが大抵わかれば、
+        高専2年の数学程度は楽勝であるはずである。数学書も入門書レベルなら読めるはずである。（...読めてほしい。）
+        
+        さて、何度も言うようにここでは``一変数''関数の微分積分についてのみ扱った。つまり多変数関数についての微分積分は言及してないわけである。
+        多変数の微分積分は一変数と違うところが多々ある。例えば、二変数関数について極限を取るときに、一変数の場合はx軸上での近づき方のみ考えていたが
+        二変数関数となるとxy`平面'での近づき方を考える必要がある。つまり、x軸上,y軸上に沿って近づく場合以外に$x,y$が同時に動く場合も考えなければならない。
+        微分についても多変数の場合は\textbf{偏微分}という名前になり、記号として$\partial$を用いるようになる。積分についても、例えば二変数の場合は積分領域が
+        平面となる。
+
+        多変数の微分積分の先にはどんな学問があるのかという話だが、主に「微分方程式」「複素関数」「ベクトル解析」「フーリエ解析」があげられる。\\
+
+        話は変わるが、このノートを読んでもっと厳密なことを勉強したい、先のことを勉強したい人のためにこのノートを作る際に参考にした書籍を一部上げることにする。
+        \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+            \item \href{https://www.iwanami.co.jp/book/b482316.html}{\textbf{理工系の数学入門コース　新装版 微分積分}}\\ノートで紹介した内容に加えて多変数の微分積分まで扱っている。私が初めて読んだ本でもあり、初学者でも読みやすくなっている。
+            このノートの大部分はこの本に影響されているといっても過言ではない。これの姉妹図書である演習版も併用するとなおよい。コラムも面白い。
+            \item \href{https://www.iwanami.co.jp/book/b265489.html}{\textbf{解析概論}}\\言わずと知れた解析学の名著。著者は高木貞二。理工学生は一度はこの本を読むべきとまで言われる。実際読んでみると、確かにわかりやすい。
+            私自身全部読み切れてはいないが、（それでも）一見の価値ありだと思われる。この本から学ぶことも多かった。
+            \item \href{https://www.dainippon-tosho.co.jp/college_math/differential1.html}{\textbf{新 微分積分}I \textbf{改訂版}}\\高専2年生で使われる教科書。一年生の内容から円滑に理解できるように工夫されている。
+            しかし、極限の定義があいまいであったり、積分が公式ゲーみたいになっているところはあまりよくない。
+            \item （準備中）
+        \end{enumerate}
+    \clearpage
+    \section{模範解答}
+        次ページから問題の模範解答を示す。
+        \clearpage\color{red}
+        \subsection{前提知識　基本問題解答}
+        \clearpage
+        \subsection{微分法　基本問題解答}
+        \clearpage
+        \subsection{積分　基本問題解答}
+        \clearpage
+        \subsection{無限級数　基本問題解答}
+        \clearpage
+        \subsection{演習問題解答}
+        \clearpage
+        \color{black}
+
+        \thispagestyle{fancy}
+        \fancyhead{}
+        \fancyfoot{\centerline{\hyperref[目次]{目次に戻る}}}
+
+        \vspace{\stretch{1}}
+        \begin{figure}
+            \centering
+            \includegraphics[scale=0.5]{img/QuuNote/icon.png}
+        \end{figure}    
+        \vspace{\stretch{1}}
+
+        
 
 \end{document}
