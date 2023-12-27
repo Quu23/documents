@@ -25,6 +25,10 @@
 \newcommand{\sign}{\mathop{\mathrm{sign}}\nolimits}
 \newcommand{\linktoMOKUZI}{\vspace{\stretch{1}}\fbox{\centerline{\hyperref[目次]{目次に戻る}}}}
 
+\newcounter{basic_answer}\setcounter{basic_answer}{1}
+\newcommand{\basicanswer}{\noindent{\large 基本問題\hspace{1mm}\huge\fbox{\textbf{\arabic{basic_answer}}}\addtocounter{basic_answer}{1}}\thispagestyle{fancy}\lhead{基本問題解答}\rhead{\thepage}\cfoot{}\quad}
+
+
 
 \title{Quuノート　ー微分積分\ajRoman{1}ー}
 \date{最終更新 2023/12/01}
@@ -141,7 +145,7 @@
         \paragraph{問1}以下の主張のうち正しいものには〇を、間違っているものには×をつけよ。
             \begin{enumerate}
                 \item $\sqrt{9}$は無理数である。
-                \item 有理数は全て分数の形で表せる。
+                \item 有理数は全て分子分母が整数である分数の形で表せる。
                 \item $i$は複素数である。
                 \item 有理数の集合は$\mathbb{Q}$として表し、無理数の集合は$\mathbb{N}$で表す。
                 \item 自然数全体の集合（区間）は$(0,\infty]$である。
@@ -434,7 +438,7 @@
                 $(4)\log_28$\hspace{3mm}
                 $(5)\log_a(\tan(\frac{\pi}{4}))\quad(a>1)$\\
                 $(6)\log_63+\log_62$\hspace{3mm}
-                $(7)\arcsin(1-\log\pi)-\sin(\log2)\cos(\log 3)+\sin(\log3 -\log 2)-\log e^{\arccos(\log \pi-1)}$
+                $(7)\arcsin(1-\log\pi)-\cos(\log2)\sin(\log 3)+\sin(\log3 -\log 2)-\log e^{\arccos(\log \pi-1)}$
 
                 \paragraph{問4}対数を使えば桁数の多い数字同士の掛け算を足し算で計算することができる。簡単な例として$271\times 314$を
                 対数を用いて計算せよ。ただし、常用対数$\log_{10} 2.71\simeq0.4346,\log_{10} 3.14\simeq0.4969,10^{4.9315}\simeq85408$は用いてよい。
@@ -1265,6 +1269,73 @@
         次ページから問題の模範解答を示す。
         \clearpage\color{red}
         \subsection{前提知識　基本問題解答}
+            \basicanswer 
+            \paragraph{問1}以下の主張のうち正しいものには〇を、間違っているものには×をつけよ。
+            \begin{enumerate}
+                \item $\sqrt{9}$は無理数である。
+                \item 有理数は全て分子分母が整数である分数の形で表せる。
+                \item $i$は複素数である。
+                \item 有理数の集合は$\mathbb{Q}$として表し、無理数の集合は$\mathbb{N}$で表す。
+                \item 自然数全体の集合（区間）は$(0,\infty]$である。
+            \end{enumerate}
+            正しいのは1,2,3、間違っているのは4,5
+            \paragraph{問2}以下の区間について、数直線上に示せ。もし数直線上に記されていない数字が出てくる場合はそれも記載せよ。
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[keepaspectratio,scale=0.6]{img/QuuNote/kihonmondaikaitouzu_1.png}
+                    \caption{数直線}
+                \end{figure}
+
+                $1.\quad [2,3]$\hspace{3mm}
+                $2.\quad (3,5)$\hspace{3mm}
+                $3.\quad [-5,\pi]$\hspace{3mm}
+                $4.\quad (-2,0.5]$\hspace{3mm}
+                $5.\quad [-1,0)$\hspace{3mm}
+                $6.\quad (-\infty,0)$\hspace{3mm}
+                $7.\quad [0,\infty)$\hspace{3mm}
+            \clearpage
+            \basicanswer
+            \paragraph{問1}次の関数が偶関数か奇関数かを判別せよ。
+
+                \noindent
+                (1)偶\hspace{3mm}
+                (2)奇\hspace{3mm}
+                (3)奇\hspace{3mm}
+                (4)偶\hspace{3mm}
+                (5)奇\hspace{3mm}
+                (6)どちらでもない\hspace{3mm}
+                (7)偶\hspace{3mm}
+                (8)奇
+
+                \paragraph{問2}以下の等式を証明せよ。
+
+                \noindent
+                $(1)$加法定理で$\alpha=\beta=x$と置く。$\sin(2x)=\sin x\cos x+\cos x\sin x=2\sin x\cos x$\hspace{1mm}$\cos 2x$も同様。\\
+                $(2)$倍角の公式より、$\cos 2x=\cos^2 x-\sin^2 x=1-2\sin^2 x$変形して$x$に$\frac{x}{2}$を代入すれば半角の公式が得られる。$\cos^2 \frac{x}{2}$も同様。\\
+                $\displaystyle(3)\sinh(x+y)=\frac{e^{x+y}-e^{-(x+y)}}{2}=\frac{e^{x+y}-e^{x-y}+e^{x-y}-e^{-x-y}}{2}=\frac{e^{x}(e^{y}-e^{-y})+e^{-y}(e^x-e^{-x})}{2}=e^x\sinh y+e^{-y}\sinh x=\cosh x\sinh y -e^{-x}\sinh y+\cosh y\sinh x -e^{y}\sinh x$\\
+                ここで$\displaystyle e^{-x}\sinh y+e^{y}\sinh x=\frac{e^{y-x}-e^{-y-x}}{2}+\frac{e^{x+y}-e^{y-x}}{2}=\sinh(x+y)$である。\\
+                よって、$\displaystyle \sinh (x+y)=\cosh x\sinh x+\cosh y\sinh x-\sinh (x+y)\to \sinh(x+y)=\cosh x\sinh x+\cosh y\sinh x$となる。
+                
+                \paragraph{問3}以下の値を求めよ。
+
+                \noindent
+                $(1)0$\hspace{3mm}
+                $(2)\frac{\pi}{6}$\hspace{3mm}
+                $(3)0$\hspace{3mm}
+                $(4)3$\hspace{3mm}
+                $(5)0$\hspace{3mm}
+                $(6)1$\hspace{3mm}
+                $(7)\frac{\pi}{2}-\cos\log 3\sin\log 2$
+                
+                \paragraph{問4}$I=271\times 314$と置けば、$\log_{10} I=\log_{10}2.71+\log_{10}3.14+4$である。よって、$\log_{10}I=4.9315$より$I=10^{4.9315}\simeq 85408$
+                
+                \paragraph{問5}$t=\tan\frac{x}{2}$とするとき、$\sin x,\cos x,\tan x$をそれぞれ$t$を用いた式で表せ。
+                \begin{align*}
+                    \sin x &=2\sin \frac{x}{2}\cos \frac{x}{2}=\frac{2\tan\frac{x}{2}}{\frac{1}{\cos^2\frac{x}{2}}}=\frac{2t}{1+t^2}\\
+                    \cos x &=\cos^2 \frac{x}{2} -\sin^2 \frac{x}{2}=\frac{1-\tan^2\frac{x}{2}}{\frac{1}{\cos ^2\frac{x}{2}}}=\frac{1-t^2}{1+t^2}\\
+                    \tan x &=\frac{\sin x}{\cos x}=\frac{\displaystyle\frac{2t}{1+t^2}}{\displaystyle\frac{1-t^2}{1+t^2}}=\frac{2t}{1-t^2}
+                \end{align*}
+            \clearpage
         \clearpage
         \subsection{微分法　基本問題解答}
         \clearpage
