@@ -1139,7 +1139,7 @@
                 \begin{equation}
                     \frac{dy}{dx}=\frac{1}{\displaystyle\frac{dx}{dy}}\label{eq:逆関数の微分公式}
                 \end{equation}
-                となる。これが逆関数の微分公式である。形式的には$dy,dx$の分子と分母を入れ替えた形と一致する。\\
+                となる。これが逆関数の微分公式である。形式的には$dy,dx$を一つの量とみなして変形した形と一致する。\\
 
                 ではこの公式を用いて件の$\arcsin x$を求めてみることにしよう。$y=\arcsin x$とすれば当然$x=\sin y$であるから、
                 \begin{equation}
@@ -1216,7 +1216,7 @@
 
                 \paragraph{問5}以下の公式について、後の問いに答えよ。
                 \begin{eqnarray}
-                    \sin\alpha\cos\beta=\frac{1}{2}\left\{\sin(\alpha+\beta)+\sin(\alpha+\beta)\right\}\label{eq:和積の公式sinαcosβ}
+                    \sin\alpha\cos\beta=\frac{1}{2}\left\{\sin(\alpha+\beta)+\sin(\alpha-\beta)\right\}\label{eq:和積の公式sinαcosβ}
                 \end{eqnarray}
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
                     \item 公式(\ref{eq:和積の公式sinαcosβ})を示せ。
@@ -1384,6 +1384,68 @@
                 したがって中間値の定理より区間$[0,\frac{\pi}{2}]$に$\cos x=x$は実数解をもつ。
         \clearpage
         \subsection{微分法　基本問題解答}
+            \basicanswer
+                \paragraph{問1}次の関数の(\hspace{2mm})内の区間での平均変化率を求めよ。\\
+                $(1)4$\hspace{3mm}
+                $(2)2$\hspace{3mm}
+                $(3)\frac{\sqrt{3}-1}{\pi/3}$
+
+                \paragraph{問2}次の関数を微分せよ。\\
+                \noindent
+                $(1)y'=1$\hspace{5mm}
+                $(2)y'=0$\hspace{5mm}
+                $(3)y'=3x^2$\hspace{5mm}
+                $(4)y'=a$\hspace{5mm}
+                $(5)y'=2a(x+p)q$
+
+                
+                \paragraph{問3}$y=\sqrt{x}\hspace{1mm}(x\geq 0)$が微分可能であるか調べよ。
+
+                $x=0$について微分可能性を調べると
+                \begin{equation*}
+                    \lim_{h\to +0}\frac{\sqrt{0+h}-\sqrt{0}}{h}=\lim_{h\to+0}\frac{\sqrt{h}}{h}=\lim_{h\to+0}\frac{1}{\sqrt{h}}
+                \end{equation*}
+                この極限は存在しないので、$\sqrt{x}$は（$x=0$で）微分可能ではない。
+
+                \paragraph{問4}
+                \begin{equation*}
+                    \frac{d}{dx}(af(x))=\lim_{h\to 0}\frac{af(x+h)-af(x)}{h}=a\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}=a\frac{d}{dx}f(x)
+                \end{equation*}
+            \clearpage
+            \basicanswer
+                \paragraph{問1}以下の関数の導関数を求めよ。\\
+                $(1)y'=2x$\hspace{2mm}
+                $(2)y'=-\sin x+\cos x$\hspace{2mm}
+                $(3)y'=\frac{1}{x}$\hspace{2mm}
+                $(4)y'=\frac{-1}{\sqrt{1-x^2}}$\hspace{2mm}
+                $(5)y'=\frac{e^{\tan x}}{\cos^2 x}$\\
+                $(6)y'=2e^{x^2}(x\cos2x-\sin 2x)$\hspace{3mm}
+                $(7)y'=\frac{1}{\sqrt{x^2+1}}$\hspace{3mm}
+                $(8)y'=\frac{1}{4\sqrt[4]{x^3}}$
+
+                \paragraph{問2}以下を示せ。\\
+                (1)$\displaystyle\frac{\frac{f(x+h)}{g(x+h)}-\frac{f}{g}}{h}=\frac{f(x+h)g-fg(x+h)}{hgg(x+h)}=\frac{g\cdot(f(x+h)-f)-f\cdot(g(x+h)-g)}{hgg(x+h)}$として$h\to0$の極限を取る。もしくは積の微分公式を利用してもよい。\\
+                (2)$\displaystyle\frac{e^{a(x+h)}-e^{ax}}{h}=ae^{ax}\frac{e^{ah}-1}{ah}$であり、$h\to0$のとき$ah\to 0$であるため、$(e^{ax})'=ae^{ax}$\\
+                (3)$\sin^2 x+\cos ^2 x=1$の両辺を$x$微分すると$2\sin x\cos x+2\cos x(\cos x)'=0$仮定より$\cos x\neq 0$なので、両辺を$2\cos x$で割って移項すると$(\cos x)'=-\sin x$
+
+                \paragraph{問3}以下の関数の導関数を工夫して求めよ。\\
+                $\displaystyle(1)y'=\frac{2(x-1)}{3(x+1\sqrt[3]{(x+1)^2(x^2+1)^2})}$\hspace{3mm}
+                $(2)y'=x^x(\log x+1)$\\
+                $(3)x=\tan \theta$と置くと、$\displaystyle y=\sin^{-1}\frac{\tan \theta}{\sqrt{1+\tan^2\theta}}=\theta$なので、\\
+                $\displaystyle \frac{dy}{dx}=\frac{dy}{d\theta}\frac{d\theta}{dx}=1\cdot\frac{1}{\frac{dx}{d\theta}}=\cos^2 \theta=\frac{1}{1+\tan^2\theta}=\frac{1}{1+x^2}$よって$\displaystyle y'=\frac{1}{1+x^2}$
+
+                \paragraph{問4}双曲線関数について、$\sinh x,\cosh x$の導関数を導出せよ。
+
+                $\sinh x,\cosh x$の定義から求めよ。$(\sinh x)'=\cosh x,(\cosh x)'=\sinh x$
+
+                \paragraph{問5}
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item 右辺に加法定理を適用して示せ。
+                    \item $\displaystyle\cos\alpha\cos\beta=\frac{1}{2}\{\cos(\alpha+\beta)+\cos(\alpha-\beta)\}$
+                    \item $\displaystyle\sin\alpha\sin\beta=-\frac{1}{2}\{\cos(\alpha+\beta)-\cos(\alpha-\beta)\}$
+                \end{enumerate}
+            \clearpage
+
         \clearpage
         \subsection{積分　基本問題解答}
         \clearpage
