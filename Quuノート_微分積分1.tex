@@ -10,7 +10,7 @@
 \usepackage[dvipdfmx]{hyperref}
 \usepackage{pxjahyper}
 \usepackage{okumacro}
-
+\usepackage{tikz}
 
 \pagestyle{headings}
 
@@ -27,6 +27,30 @@
 
 \newcounter{basic_answer}\setcounter{basic_answer}{1}
 \newcommand{\basicanswer}{\noindent{\large 基本問題\hspace{1mm}\huge\fbox{\textbf{\arabic{basic_answer}}}\addtocounter{basic_answer}{1}}\thispagestyle{fancy}\lhead{基本問題解答}\rhead{\thepage}\cfoot{}\quad}
+
+\newcommand{\ner}{
+\begin{tikzpicture}[scale=0.3,baseline=0.3]
+\draw[->,>=stealth] (0,0) to[bend right=45] (1,1);
+\end{tikzpicture}
+}
+
+\newcommand{\nel}{
+\begin{tikzpicture}[scale=0.3,baseline=0.3]
+\draw[->,>=stealth] (0,0) to[bend left=45] (1.2,1);
+\end{tikzpicture}
+}
+
+\newcommand{\sel}{
+\begin{tikzpicture}[scale=0.3,baseline=0.3]
+\draw[->,>=stealth] (0,1) to[bend left=45] (1,0);
+\end{tikzpicture}
+}
+
+\newcommand{\ser}{
+\begin{tikzpicture}[scale=0.3,baseline=0.3]
+\draw[->,>=stealth] (0,1) to[bend right=45] (1.2,0);
+\end{tikzpicture}
+}
 
 
 
@@ -196,7 +220,7 @@
                 $x^2$と$\sqrt{x}$は互いに\textbf{逆関数}であることがわかる。
             \clearpage
             \subsection{三角関数}
-                \textbf{三角関数}は三角比を一般角に拡張した関数である。定義からわかるように周期関数であり、周期は$2\pi$である。
+                \textbf{三角関数}は三角比を一般角に拡張した関数である。直交座標から極座標に変換する際などにしばし用いられる。
                 三角比の定義自体を忘れた人はいないだろうが一応説明しておく。
                 \begin{figure}[h]
                     \centering
@@ -1271,14 +1295,90 @@
                     表\ref{ta:f(x)=x^4-x^3の増減表}の矢印とグラフの増減が一致していることがわかる。
                     \begin{figure}[h]
                         \centering
-                        \includegraphics[scale=0.5]{img/QuuNote/x^4-x^3Graph.png}
-                        \caption{$f(x)=x^4-x^3$のグラフ}
+                        \includegraphics[scale=0.4]{img/QuuNote/x^4-x^3Graph.png}
+                        \caption{$f(x)=x^4-x^3$のグラフ}\label{fig:x^4-x^3グラフ}
                     \end{figure}
-
-                    さて、グラフに着目すると$x=0$の前後で同じ単調減少でもすこし形が異なる様子が見られる。
+                \clearpage
+                \subsection{関数の変曲点}
+                    さて、図\ref{fig:x^4-x^3グラフ}に着目すると$x=0$の前後で同じ単調減少でもすこし形が異なる様子が見られる。
                     $x<0$ではグラフの形が\textbf{下に凸}になっているが、$0<x<\frac{3}{4}$では\textbf{上に凸}になっている。
-                    この違いは何なのだろうか。
-                    
+                    この違いは何なのだろうか。結論から述べるとこれは導関数の増減の変化から生じたものである。
+                    例えば、$f'(x)$の導関数を求めると$f''(x)=12x^2-6x$であり$x=0$で$f''=0$である。つまり$x=0$で$f'(x)$の増減の仕方が変化した
+                    わけである。$x<0$では$f''>0$なので$f'$は単調増加する、すなわち$f(x)$の減少の割合が小さくなっていくのである。これは下に凸にあたる。
+                    一方$0<x(<\frac{1}{2})$では$f'$は単調減少する、つまり$f(x)$の減少の割合が大きくなっていくのである。これは上に凸にあたる。
+                    ところで$f''$は$x=\frac{1}{2}$でも$0$になる。つまり$x>\frac{1}{2}$で$f''>0$なのでこのとき$f'$はまた単調増加し、$f(x)$の減少の割合が小さくなる。
+                    これは上に凸に当たる。こうして減少の割合が小さくなっていき、$x=\frac{4}{3}$を超えると$f'>0$となる。いま$f'$は単調増加するわけだから、これ以降は$f(x)$
+                    の増加の割合が大きくなっていくわけである。
+
+                    以上をまとめると次の結果が得られる。
+                    \begin{screen}
+                        ある$x$の区間$I$について
+                        \begin{itemize}
+                            \item $f''(x)>0$である場合は$y=f(x)$は区間$I$で\underline{下に凸}
+                            \item $f''(x)>0$である場合は$y=f(x)$は区間$I$で\underline{上に凸}
+                        \end{itemize}
+                        が成り立つ。ただし、$f(x)$が二階微分可能であるとする。
+                    \end{screen}
+                    ここで二階微分という言葉が出てきたが、これは単に二回微分できるという意味である。ここで
+                    $f''=0$を満たす点$(x,y)$のことを\textbf{変曲点}という。名前から推察できるように下に凸・上に凸というのは
+                    グラフの曲がり方のことを言っており、変曲点はその曲がり方が変わる点である。今回の場合は$(0,0),(\frac{1}{2},-\frac{1}{16})$である。これを用いればグラフの形をより正確に書くことができる。
+
+                    では二階微分を用いて先ほどの表\ref{ta:f(x)=x^4-x^3の増減表}を書き直してみると、
+                    \begin{table}[h]
+                        \centering
+                        \begin{tabular}{|c||c|c|c|c|c|c|c|}\hline
+                            $x$ & $\cdots$ & $0$ & $\cdots$ & $\frac{1}{2}$ & $\cdots$ & $\frac{3}{4}$ & $\cdots$ \\\hline
+                            $f'(x)$ & $-$ & $0$ & $-$ & $-$ & $-$ & $0$ & $+$ \\\hline
+                            $f''(x)$ & $+$ & $0$ & $-$ & $0$ & $+$ & $+$ & $+$ \\\hline  
+                            $f(x)$ & \ser  & $0$ & \sel & $-\frac{1}{16}$ & \ser &$-\frac{27}{256}$ & \ner \\\hline
+                        \end{tabular}
+                        \caption{$f(x)=x^4-x^3$の増減表（変曲点付き）}\label{ta:f(x)=x^4-x^3の増減表（変曲点付き）}
+                    \end{table}
+
+                    矢印を直線ではなく若干曲げることで上に凸・下に凸を表現した。
+                \clearpage
+                \subsection{関数の最大・最小}
+                    さて、ここまでグラフについての応用を述べたが、それ以外にも関数の増減を調べることでわかることがある。
+                    それは特定の区間内における$f(x)$の最大値・最小値である。具体的に言えばその区間内の極値と区間の端点の値とを
+                    比べればよい。なぜなら、端点から極値までの値は単調に増加・減少するからである。そしてここから、$f(x)$が
+                    極大値（極小値）を一つだけ持つなら、それが$f(x)$の最大値（最小値）であることもわかる。\\
+
+                    関数の最大・最小がわかることは、関数の大小関係を比べる際に役立つ。例えば、$x\geq \sin x\quad(0\leq x \leq 2\pi)$
+                    を示すとする。$f(x)=x-\sin x$とおいて微分すると$f'=1 - \cos x = 0$となる。$[0,2\pi]$の区間でこの方程式の解は$x=0$のみであり、
+                    $x>0$で$f'>0$であるため、$[0,2\pi]$で$f$は単調増加である。すなわち$x=0$が$f$の最小値でありその値は$f(0)=0$となるため、$f(x)\geq 0$と
+                    書ける。よって移項して$x\geq \sin x$だと示せた。
+                    \begin{figure}[h]
+                        \centering
+                        \includegraphics[scale=0.5]{img/QuuNote/x-sinxGraph.png}
+                        \caption{$y=x,y=\sin x$のグラフ}
+                    \end{figure}
+                \clearpage
+                \basicquestion 以下の問いに答えよ。
+
+                \paragraph{問1}次の関数のグラフをかけ。\\
+                $(1)y=x^3-x^2$\hspace{3mm}
+                $\displaystyle(2)y=\frac{1}{1+x^2}$\hspace{3mm}
+                $\displaystyle(3)y=e^{-x^2}$\hspace{3mm}
+                $\displaystyle(4)y=\frac{\log x}{x}$
+
+                \paragraph{問2}次の関数の(\hspace{1mm})内での最大・最小を求めよ。\\
+                $(1)y=x^5-x^3+1\quad(-1\leq x\leq 1)$\hspace{3mm}
+                $(2)e^x(x-1)\quad(-1\leq x\leq 2)$
+
+                \paragraph{問3}$e^x \geq x+1 \quad (x>0)$を示せ。
+
+                \paragraph{問4}図\ref{fig:直流回路}の直流回路について、最初に流れる電流$I$は以下の式で表される。
+                \begin{equation*}
+                    I=\frac{E}{R_0+R}
+                \end{equation*}
+                また、可変抵抗器$R$で消費される電力$P$は$P=I^2R$である。この時、可変抵抗器で消費される最大の電力$P_{max}$
+                の値を求めよ。また、この時の可変抵抗器の値を求めよ。
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[scale=0.5]{img/QuuNote/tyokuryuukairo.png}
+                    \caption{直流回路}\label{fig:直流回路}
+                \end{figure}
             \clearpage
             \section{微分法諸定理}
 
