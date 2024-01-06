@@ -1679,17 +1679,67 @@
         \section{付録}
             \subsection{人名}
                 数学を学ぶ上で様々な人の名前を冠した定理や公式が登場する。このノートではカタカナで書いてきたが、実際にほかの書籍を読む際などは英名で書かれる場合が多い。そこで
-                以下に対応の表を載せる。「主な定理等」には解析学関係のことを述べる。
-
-                \begin{table}[h]
-                    \centering
+                以下に対応の表を載せる。「主な定理等」にはその人が発見・発明した解析学関係のことを述べる。
+                
+                \begin{table}[h]\hspace{-2.5cm}
                     \begin{tabular}{|c|c|c|l|}\hline
                         名前 & 名前（英）& 主な定理等 & メモ\\\hline\hline
                         オイラー & Euler & オイラーの公式など & \begin{tabular}{l}18世紀最大の数学者であり、その業績は解析学に留まらない。\\オイラーの名を冠する定理も多い。\end{tabular}\\\hline
                         ニュートン & Newton & 流率法 & \begin{tabular}{l}古典力学の創始者。\\リンゴの落下から万有引力を思いついた逸話は非常に有名。\end{tabular}\\\hline
                         ライプニッツ & Leibniz & 微積分法の発明 & \begin{tabular}{l}ニュートンとは独立に微積分を発明させた。\\また、記号$\int\frac{d}{dx}$などはライプニッツによるものである。\end{tabular} \\\hline
+                        コーシー & Cauchy & コーシーの積分定理 & \begin{tabular}{l}収束について厳密な定義を考え、のちの$\varepsilon-\delta$論法の原型となった。\\複素解析の業績がとくに有名。\end{tabular} \\\hline
+                        ラグランジュ &  Lagrange & - & \begin{tabular}{l}解析力学を構築し、ニュートン力学を発展させた。\\ラグランジュの未定乗数法などでもその名前を見かける。\end{tabular}\\\hline
+                        リーマン & Riemann & リーマン幾何学/リーマン積分 & \begin{tabular}{l}複素解析のパイオニア。彼が予想したリーマン予想は数学の重要な\\未解決問題の一つであり、ミレニアム懸賞問題のうちの一つである。\end{tabular}\\\hline
+                        ガウス & Gauss & - & \begin{tabular}{l}オイラーと双璧をなす19世紀最大の数学者。数論の分野での功績\\が大きい。彼の名前の付いた法則・記号・単位も多い。\end{tabular}\\\hline
+                        ウォリス & Wallis & ウォリス積分/ウォリスの公式 & \hspace{2mm}無限大の記号$\infty$を導入した。\\\hline
+                        テイラー & Taylor & テイラーの定理/テイラー展開 & \hspace{2mm}特になし\\\hline
+                        マクローリン & Maclaurin & マクローリン展開 & \hspace{2mm}特になし\\\hline
+                        ベルヌーイ & Bernoulli & - & \begin{tabular}{l}ヨーロッパの数学者一族の総称。ベルヌーイ数、ベルヌーイの定理\\などベルヌーイの名前が付いたものも多い。\end{tabular}\\\hline
+                        ロピタル & l'Hôpital & - & \begin{tabular}{l}初めて微分積分の書籍を出したことで有名。\\ちなみにロピタルの定理はロピタル自身が発見したのではなく\\ヨハン・ベルヌーイによるものである。\end{tabular}\\\hline
+                        フーリエ & Fourier & フーリエ級数/フーリエ変換 & \begin{tabular}{l}関数を三角関数の級数で表すというアイデアから始まったフーリエ\\解析は、解析学の厳密化に貢献しただけでなく、物理や工学の幅広い\\部分で応用されている。また、ナポレオンのエジプト遠征に同行した\\ことでも有名。\end{tabular}\\\hline
+                        デデキント &  Dedekind & - & \begin{tabular}{l}デデキントカット（切断）という方法で実数を定義。これは解析概論\\でも用いられている手法である。\end{tabular}\\\hline
+                        {\footnotesize ワイエルシュトラス} & Weierstrass & - & \hspace{2mm}ワイエルシュトラスの$W$関数なども有名。\\\hline
+                        ルベーク & Lebesgue & ルベーク積分 & ここら辺の話は集合論とも絡み合って非常に難しい。\\\hline
+                    \end{tabular}                    
+                \end{table}
+            \clearpage
+            \subsection{文字・記号とその名称}
+                微積分に限らず数学ではよくギリシャ文字や様々な演算子を用いたりする。しかしそれらの文字をどう読むのかまで書いてあるものは少ない。そこで以下に対応表のつけた。
+                \begin{table}[h]
+                    \caption*{ギリシャ文字}
+                    \centering
+                    \begin{tabular}{|c|c|l||c|c|l|}\hline
+                        大文字 & 小文字 & \multicolumn{1}{c||}{読み方} & 大文字 & 小文字 & \multicolumn{1}{c|}{読み方} \\\hline\hline
+                        A & $\alpha$ & アルファ & N & $\nu$ & ニュー\\\hline
+                        B & $\beta$ & ベータ & $\Xi$ & $\xi$ & クシー（クサイ）\\\hline
+                        $\Gamma$ & $\gamma$ & ガンマ & O & $o$ & オミクロン \\\hline
+                        $\Delta$ & $\delta$ & デルタ & $\Pi$ & $\pi$ & パイ\\\hline
+                        E & $\varepsilon$ & イプシロン & P & $\rho$ & ロー \\\hline
+                        Z & $\zeta$ & ゼータ & $\Sigma$ & $\sigma,\varsigma$ & シグマ\\\hline
+                        H & $\eta$ & イータ & T & $\tau$ & タウ\\\hline
+                        $\Theta$ & $\theta,\vartheta$ & シータ & $\Upsilon$ & $\upsilon$ & ウプシロン\\\hline
+                        I & $\iota$ & イオタ & $\Phi$ & $\phi,\varphi$ & ファイ\\\hline
+                        K & $\kappa$ & カッパ & X & $\chi$ & カイ\\\hline
+                        $\Lambda$ & $\lambda$ & ラムダ & $\Psi$ & $\psi$ & プサイ\\\hline
+                        M & $\mu$ & ミュー & $\Omega$ & $\omega$ & オメガ \\\hline
                     \end{tabular}
                     
+                    \caption*{数学の記号}
+                    \centering
+                    \begin{tabular}{|c|c|l|}\hline
+                        記号 & 読み方 & \multicolumn{1}{c|}{意味}\\\hline
+                        $!$ & 階乗 & ある正の整数から$1$までの整数の積\\\hline
+                        $!!$ & 二重階乗 & 階乗の一個飛ばし版。ex:\hspace{1mm}$5!!=5\times3\times1$\\\hline
+                        $\int$ & インテグラル & 積分 \\\hline
+                        $\partial$ & ラウンドディー/デル/パーシャル & 偏微分で用いられる。\\\hline
+                        $f^{-1}(x)$ & エフ・インバース・エックス & $f(x)$の逆関数\\\hline
+                        $\lim$ & リミット & 極限の操作。通常$\displaystyle\lim_{x\to a}$のように用いる。\\\hline
+                        $\nabla$ & ナブラ & 微分作用素の一つ。$\nabla=\left(\frac{\partial}{\partial x},\frac{\partial}{\partial y}\right)$\\\hline
+                        $\mathrm{div}$ & ダイバージェンス & ベクトル場に用いる演算子。ベクトル場の発散(divergence)を表す。\\\hline
+                        $\mathrm{rot}$ & ローテーション & ベクトル場に用いる演算子。ベクトル場の回転(rotation)を表す。\\\hline
+                        $\mathrm{grad}$ & グラディエント & スカラー場に用いる演算子。スカラー場の勾配(gradient)を表す。\\\hline
+                        $\varDelta$ & ラプラス作用素/ラプラシアン & 微分作用素の一つ。ナブラ同士の内積として与えられる。\\\hline
+                    \end{tabular}
                 \end{table}
         \clearpage
 
