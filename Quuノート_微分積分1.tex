@@ -1225,7 +1225,7 @@
                 $(5)y=e^{\tan x}$\hspace{3mm}
                 $(6)y=e^{x^2}\cos 2x$\\
                 $\displaystyle(7)y=\log(x+\sqrt{x^2+1})$\hspace{3mm}
-                $(8)y=f^{-1}(x)\quad (f(x)=x^4)$
+                $(8)y=f^{-1}(x)\quad (f(x)=x^3)$
 
                 \paragraph{問2}以下を示せ。\\
                 (1)商の微分公式(\ref{eq:商の微分公式})を示せ。\\
@@ -1731,17 +1731,99 @@
                     K=\frac{1}{(b-a)^{n+1}}\left[f(b)-\left\{f(a)+f'(a)(b-a)+\frac{1}{2!}f''(a)(b-a)^2+\cdots+\frac{1}{n!}f^{(n)}(a)(b-a)^n\right\}\right]
                 \end{equation*}
                 この時、テイラーの定理\ref{eq:テイラーの定理}を証明せよ。
-
-
-
+            \clearpage
+            \section{第II部演習問題}
+            \paragraph{問1}次の関数を微分せよ。\\
+                $[1]y=x^3+x^2+x+1$\hspace{3mm}
+                $[2]y=\cos^2 x-\sin^2 x$\hspace{3mm}
+                $[3]y=\sinh(2x)$\hspace{3mm}
+                $[4]y=\log\log\log x$\hspace{3mm}
+                $[5]y=\log_{10}x$\\
+                $[6]y=\cos(2\cos^{-1}x)$\hspace{3mm}
+                $[7]y=\sin^{4}(3x)$\hspace{3mm}
+                $\displaystyle[8]y=\frac{1}{\sqrt[3]{x^2+1}}$
             
-            
+            \paragraph{問2}次の関数のグラフをかけ。\\
+                $[1]y=x^2e^x$\hspace{40mm}
+                $[2]y=x^2\log x$\hspace{40mm}
+                $[3]y=e^x\cos x$
+            \paragraph{問3}次の極限を求めよ。\\
+                $\displaystyle[1]\lim_{x\to 1}\frac{1+\cos\pi x}{(x-1)^2}$\hspace{10mm}
+                $\displaystyle[2]\lim_{x\to 0}\frac{\sin x-x\cos x}{x^2\log(1+x)}$\hspace{10mm}
+                $\displaystyle[3]\lim_{x\to\infty}\left\{\sqrt{(x+a)(x+b)}-\sqrt{(x-a)(x-b)}\right\}$
+            \paragraph{問4}平均値の定理\ref{eq:平均値の定理}を用いて$x>0$ならば$\sin x<x$を示せ。
 
-                
+            \paragraph{問5}次の問いに答えよ。
+                \begin{enumerate}
+                    \item $y=\tan^{-1}x$をマクローリン展開せよ。
+                    \item 次を示せ。
+                    \begin{equation*}
+                        \frac{\pi}{4}=1-\frac{1}{3}+\frac{1}{5}-\cdots
+                    \end{equation*}
+                \end{enumerate}
+            \paragraph{問6}次のマクローリン展開を証明し、これを用いて$\log 2$の値を小数点以下4位まで求めよ。
+                \begin{equation*}
+                    \log\left(\frac{1+x}{1-x}\right)=2\left(x+\frac{x^3}{3}+\frac{x^5}{5}+\cdots\right)
+                \end{equation*}
+            
+            \paragraph{問7}$(1+x)^{\alpha}\quad(\alpha\text{は実数})$のマクローリン展開を求め、二項定理を証明せよ。
+
+            \paragraph{問8}以下の問いに答えよ。
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $x,y$が変数$t$の関数として与えられているとき、$y$を$x$の関数（またはその逆）として考えられる。このとき、次の\textbf{媒介変数表示の微分公式}を導け。
+                    \begin{equation}
+                        \frac{dy}{dx}=\frac{\frac{dy}{dt}}{\frac{dx}{dt}}\label{eq:媒介変数の微分公式}
+                    \end{equation}
+                    \item 次の関数について$dy/dx$を求めよ。\\
+                    $[1]x=\sin \theta,y=\cos\theta$\hspace{30mm}
+                    $[2]x=t^3+2t,y=-t^2+3t$
+                \end{enumerate}
+            
+            \paragraph{問9}次の関数の与えられた$x$の値に対応する点における接線の方程式を求めよ。\\
+                $[1]y=x^3-3x^2\quad(x=3)$\hspace{10mm}
+                $[2]y=\tan x\quad(x=0)$\hspace{10mm}
+                $\displaystyle[3]y=\frac{\sin x}{x}\quad(x=\pi)$
+            \paragraph{問10}$y=a^x$を$a$で微分せよ。
+
+            \paragraph{問11}次の関数の導関数の$x=0$での連続性を調べよ。
+                \begin{equation}
+                    f(x)=\left\{\begin{array}{cc}
+                        x^2\sin\frac{1}{x}&(x\neq 0)\\
+                        0&(x=0)
+                    \end{array}\right.
+                \end{equation}
+            \clearpage
+            \paragraph{問12}1つの平面の両側に二点$A,B$が与えられているとする。
+            動点$P$がこの平面の両側でそれぞれ一定の速さ$v_a,v_b$で運動するとき、$P$が
+            $A$から$B$まで最短の時間で行くべき経路を求めよ。（解析概論より）
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.3]{img/QuuNote/snellQuestion.png}
+                \caption{最短経路を求めよ}
+            \end{figure}
+
+            \paragraph{問13}次の\textbf{微分方程式}について以下の問いに答えよ。
+                \begin{equation*}
+                    y'-y-1=0
+                \end{equation*}
+                \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $y=\tan x$が方程式の解の一つであることを確かめよ。
+                    \item (1)以外にどのような解が考えられるか。考えられる解を一つ答えよ。
+                \end{enumerate}
+            
+            \paragraph{問14}指数関数$e^x$は$x$のどんな正のべきよりも早く増加し、対数関数$\log x$は
+            $x$のどんな正のべきよりもゆっくり増加することを示せ。                
     \clearpage
 
     \part{積分$\int$}
-
+        \vspace{\stretch{1}}
+        \begin{screen}
+            ついに微分積分の``積分''の話に移る。積分法は、微分方程式を解いたり、面積を求めたり...と様々な応用例がある。
+            微分と違って具体的なイメージがしやすい反面、公式をそのまま適用できる場合が少なく、計算が難しい。
+            微分と同じで慣れるまで問題をたくさん解くことで、ある程度感覚がつかめてくる。積分には定積分と不定積分の
+            二つがあり、これらは互いに独立した概念である。順番としては不定積分,定積分,の順に扱う。
+            歴史的には定積分,微分,不定積分の順に発明されたというのだから、面白い。
+        \end{screen}
     \clearpage
     \part{無限級数$\sum$}
     \clearpage
