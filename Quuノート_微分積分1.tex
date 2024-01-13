@@ -1504,8 +1504,76 @@
                     として比較的自然に求められる。ちなみに$\sqrt{5}=2.23606\dots$であるので近似値の精度はそこまでよくない。
                 \clearpage
                 \subsection{コーシーの平均値の定理}
+                    先ほど述べた平均値の定理を一般化してみよう。次の二つの関数$f,g$を考える。
+                    この二つの関数は$[a,b]$で連続で、$(a,b)$で微分可能であるとする。またこの区間内では$g'\neq 0$であるとする。
+                    この時平均値の定理から
+                    \begin{equation*}
+                        g(b)-g(a)=(b-a)g'(c_1)\quad(a<c_1<b)
+                    \end{equation*}
+                    $g'(c_1)$は仮定によって$0$ではないので、当然左辺も$0$ではない。そこで、
+                    \begin{equation*}
+                        \lambda=-\frac{f(b)-f(a)}{g(b)-g(a)}
+                    \end{equation*}
+                    とおき、関数
+                    \begin{equation*}
+                        F(x)=f(x)+\lambda g(x)
+                    \end{equation*}
+                    を作る。このとき、
+                    \begin{align*}
+                        F(a)&=f(a)+\lambda g(a)=\frac{f(a)(g(b)-g(a))-(f(b)-f(a))g(a)}{g(b)-g(a)}=\frac{f(a)g(b)-f(b)g(a)}{g(b)-g(a)}\\
+                        &=\frac{(f(a)-f(b))g(b)+(g(b)-g(a)f(b))}{g(b)-g(a)}=f(b)+\lambda g(b)=F(b)
+                    \end{align*}
+                    であるので、ロルの定理が使えて、
+                    \begin{equation*}
+                        F'(c)=0\quad(a<c<b)
+                    \end{equation*}
+                    よって、
+                    \begin{equation*}
+                        F'(c)=f'(c)+\lambda g'(c)=0\leftrightarrow -\lambda = \frac{f'(c)}{g'(c)}
+                    \end{equation*}
+                    したがって次の\textbf{コーシーの平均値の定理}が得られる。
+                    \begin{equation}
+                        \frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(c)}{g'(c)}\quad(a<c<b)\label{eq:コーシーの平均値の定理}
+                    \end{equation}
+                    ここで$g(x)=x$と置けば、平均値の定理\ref{eq:平均値の定理}である。平均値の定理はコーシーの平均値の定理と区別して
+                    ラグランジュの平均値の定理とも呼ばれる。
+    
                 \clearpage
                 \subsection{ロピタルの定理}
+                    極限値の計算を行っているときに、しばし
+                    \begin{equation*}
+                        \frac{0}{0},\quad\frac{\infty}{\infty},\infty -\infty,\infty\cdot\infty
+                    \end{equation*}
+                    などの\textbf{不定形}に遭遇するだろう。こういう不定形の極限値の計算で頭を抱えた経験も多いはずだ。不定形の解消には
+                    様々な方法があるが、ここでは$0/0,\infty/\infty$の不定形に対して抜群な効果を発揮するロピタルの定理を示そう。
+                    
+                    例えば、$x\to a$の極限で$f(x)/g(x)\to 0/0$になってしまったとしよう。この時、$f'(x)/g'(x)$が極限値$b$に収束するならば、
+                    $f(x)/g(x)$も同じ極限値$b$に収束する。なぜならコーシーの平均値の定理より、$f(a)=g(a)=0$のとき、$x>a$である$x$に対して
+                    \begin{equation*}
+                        \frac{f(x)}{g(x)}=\frac{f(x)-f(a)}{g(x)-g(a)}=\frac{f'(x)}{g'(c)}\quad(a<x<c)
+                    \end{equation*}
+                    ここで$x\to a$とすれば$c\to a$である。今$x>a$で考えているが、$x<a$の場合も同様なので、
+                    \begin{equation}
+                        \lim_{x\to a}\frac{f(x)}{g(x)}=\frac{f'(a)}{g'(a)}\label{ロピタルの定理}
+                    \end{equation}
+                    これを\textbf{ロピタルの定理}\footnote{ド・ロピタルの法則とも。}をいう。また、$f'(a)/g'(a)$が不定形$0/0$になるのなら
+                    その時はもう一度ロピタルの定理を適用してあげて$f''(a)/g''(a)$と拡張できる。またロピタルの定理は$\infty/\infty$の不定形にも
+                    適用できる。\footnote{証明は難しいので省略。$\varepsilon-\delta$論法を使えばできる。}
+
+                    ロピタルの定理を用いて極限値を求めてみる。
+                    \paragraph{例}
+                        \begin{align*}
+                            &(1) \lim_{x\to 0}\frac{\cos x-1}{x}=\lim_{x\to 0}\frac{-\sin x}{1}=0\\
+                            &(2) \lim_{x\to \infty}\frac{e^{x}}{x}=\lim_{x\to\infty}\frac{e^x}{1}=\infty\\\
+                            &(3) \lim_{x\to \infty}\frac{x^3+2x^2+1}{2x^3+1}=\lim_{x\to \infty}\frac{3x^2+4x}{6x^2}=\lim_{x\to\infty}\frac{6x+4}{12x}=\lim_{x\to\infty}\frac{6}{12}=\frac{1}{2}
+                        \end{align*}
+                        (1)は$0/0$、(2)は$\infty/\infty$の不定形である。また(3)はロピタルの定理を三回適用した場合である。
+                    以下にロピタルの定理の間違った適用例を上げよう。
+                    \begin{equation*}
+                        \lim_{x\to 0}\frac{x}{\cos x}=\lim_{x\to 0}\frac{1}{-\sin x}=-\infty
+                    \end{equation*}    
+                    これは$0/0$の不定形でも$\infty/\infty$の不定形でもない。そもそも不定形ですらない。ロピタルの定理は使う前に条件をみたすかを確認しておきたいものである。
+                    
                 \clearpage
                 \subsection{テイラーの定理}
 
