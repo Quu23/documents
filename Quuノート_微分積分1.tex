@@ -1705,7 +1705,7 @@
                 \paragraph{問3}次の極限をロピタルの定理を用いて求めよ。\\
                 $\displaystyle(1)\lim_{x\to 0}\frac{x-\log(1+x)}{x^2}$\hspace{3mm}
                 $\displaystyle(2)\lim_{x\to 0}\frac{\sin^{-1}x}{x} $\hspace{3mm}
-                $\displaystyle(3)\lim_{x\to 0}\frac{\log x}{x}$\hspace{3mm}
+                $\displaystyle(3)\lim_{x\to \infty}\frac{\log x}{x}$\hspace{3mm}
                 $\displaystyle(4)\lim_{x\to+0}x^x$\hspace{3mm}
                 $\displaystyle(5)\lim_{x\to\infty}\log(1+e^x)^{\frac{1}{x}}$
 
@@ -1812,7 +1812,9 @@
                 \end{enumerate}
             
             \paragraph{問14}指数関数$e^x$は$x$のどんな正のべきよりも早く増加し、対数関数$\log x$は
-            $x$のどんな正のべきよりもゆっくり増加することを示せ。                
+            $x$のどんな正のべきよりもゆっくり増加することを示せ。   
+            
+            \linktoMOKUZI
     \clearpage
 
     \part{積分$\int$}
@@ -2082,47 +2084,52 @@
             \clearpage
             \basicanswer
                 \paragraph{問1}次の関数の三次導関数を求めよ。\\
-                $(1)y=(2x+1)^3$\hspace{3mm}
-                $(2)\displaystyle y=\frac{1}{1+x}$\hspace{3mm}
-                $(3)y=\sin(2x)$\hspace{3mm}
-                $(4)y=xe^x$\hspace{3mm}
-                $\displaystyle(5)y=\frac{\sin(2x)}{1+x}$
+                $(1)y'''=48$\hspace{3mm}
+                $(2)\displaystyle y'''=\frac{-6}{(1+x)^4}$\hspace{3mm}
+                $(3)y'''=-8\cos(2x)$\hspace{3mm}
+                $(4)y'''=e^x(x+3)$\\
+                $\displaystyle(5)y'''=\frac{12\sin(2x)}{(1+x)^2}-\frac{6\sin(2x)}{(1+x)^4}-\frac{8\cos(2x)}{1+x}+\frac{12\cos(2x)}{(1+x)^3}$
 
                 \paragraph{問2}次の関数の$n$次導関数を求めよ。\\
-                $(1)y=e^{-x}$\hspace{3mm}
-                $(2)y=\cos x$\hspace{3mm}
-                $(3)y=x^n$\hspace{3mm}
-                $(4)y=\log(1+x)$
+                $(1)y^{(n)}=(-1)^ne^{-x}$\hspace{3mm}
+                $(2)y=\cos\left(x+\frac{n\pi}{2}\right)$\hspace{3mm}
+                $(3)y=n!$\hspace{3mm}
+                $(4)y=\frac{(-1)^{n-1}(n-1)!}{(x+1)^{n}}$
 
                 \paragraph{問3}次の極限をロピタルの定理を用いて求めよ。\\
-                $\displaystyle(1)\lim_{x\to 0}\frac{x-\log(1+x)}{x^2}$\hspace{3mm}
-                $\displaystyle(2)\lim_{x\to 0}\frac{\sin^{-1}x}{x} $\hspace{3mm}
-                $\displaystyle(3)\lim_{x\to 0}\frac{\log x}{x}$\hspace{3mm}
-                $\displaystyle(4)\lim_{x\to+0}x^x$\hspace{3mm}
-                $\displaystyle(5)\lim_{x\to\infty}\log(1+e^x)^{\frac{1}{x}}$
+                $(1)\frac{1}{2}$\hspace{2mm}
+                $(2)1$\hspace{2mm}
+                $(3)0$\hspace{2mm}
+                $\displaystyle(4)\lim_{x\to+0}x^x=e^{x\log x}=\lim_{x\to+0}e^{\frac{\log x}{\frac{1}{x}}}$と変形。$\displaystyle\lim_{x\to+0}\frac{\log x}{\frac{1}{x}}=\lim_{x\to+0}x=0$より、答えは$e^{0}=1$
+                $\displaystyle(5)\lim_{x\to\infty}\log(1+e^x)^{\frac{1}{x}}=\lim_{x\to\infty}\frac{\log(1+e^x)}{x}=\lim_{x\to\infty}\frac{e^x}{1+e^x}=\lim_{x\to\infty}\frac{e^x}{e^x}=1$
 
-                \paragraph{問4}次の極限をテイラー展開またはマクローリン展開を用いて求めよ。\\
-                $\displaystyle(1)\lim_{x\to 0}\frac{x-\sin x}{x^3}$\hspace{50mm}
-                $\displaystyle(2)\lim_{x\to \infty}\left\{\sqrt{x^2-3x+1}-x\right\}$
+                \paragraph{問4}定数項がない$x$の多項式について$n\to0,\infty$で減少の速さが$x$で抑えられるとき$P(x)$と書く。\footnote{これはあいまいな表現であり、もっと厳密にランダウの記号として数学で定義されている。ここではfeelingで書いた。ちなみにこのランダウは理論物理学で有名なランダウではなく、数学者のランダウである。}\\
+                \vspace{1mm}$(1)$$\sin x=x-\frac{1}{3!}x^3+P(x^5)$と書けるので\\
+                $\displaystyle\lim_{x\to 0}\frac{x-\sin x}{x^3}=\lim_{x\to 0}\frac{x-\left(x-\frac{1}{3!}x^3+P(x^5)\right)}{x^3}=\lim_{x\to 0}\frac{\frac{1}{3!}x^3-P(x^5)}{x^3}=\lim_{x\to 0}\left\{\frac{1}{3!}-P(x^2)\right\}=\frac{1}{3!}$\\
+                \vspace{3mm}\noindent
+                $(2)\displaystyle\sqrt{x^2-3x+1}=x\sqrt{1-\left(\frac{3}{x}-\frac{1}{x^2}\right)}$と変形する。このとき$\sqrt{1-x}=1-\frac{1}{2}x-\frac{1}{2!}\cdot\frac{3}{4}x^2\cdots$より\\
+                $\displaystyle x\sqrt{1-\left(\frac{3}{x}-\frac{1}{x^2}\right)}=x\left\{1-\frac{1}{2}\left(\frac{3}{x}-\frac{1}{x^2}\right)-\frac{1}{2!}\cdot\frac{3}{4}\left(\frac{3}{x}-\frac{1}{x^2}\right)^2+\cdots\right\}=x\left\{1-\frac{1}{2}\times\frac{3}{x}-P\left(\frac{1}{x^2}\right)\right\}$\\
+                $\displaystyle=x-\frac{3}{2}-P\left(\frac{1}{x^2}\right)$したがって、元の極限は
+                $\displaystyle\lim_{x\to \infty}\left\{x-\frac{3}{2}-P\left(\frac{1}{x^2}\right)-x\right\}=-\frac{3}{2}$
 
-                \paragraph{問5}次の問いに答えよ。
-                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
-                    \item $e^x$のマクローリン展開\ref{eq:e^xのマクローリン展開}を示せ。
-                    \item (1)の$x$に$ix$を代入せよ。
-                    \item $\sin x$のマクローリン展開と$\cos x$のマクローリン展開と(2)から次の\textbf{オイラーの公式}を導け。
-                        \begin{equation}
-                            e^{ix}=\cos x+i\sin x
-                        \end{equation}
-                \end{enumerate}
+                \paragraph{問5}省略
                 
-                \paragraph{問6}関数$f(x)$が$[a,b]$で$n$階まで連続な導関数を持ち、$(a,b)$で$n+1$階微分可能であるとする。また、次の二つをつくる。
+                \paragraph{問6}
+                $g(x)$は$[a,b]$で連続で、$(a,b)$で$n+1$階微分可能である。この時、$g(b)=0$がすぐわかる。また、少し計算すれば$g(a)=0$
+                もわかる。すなわち$g(a)=g(b)$であるため、ロルの定理より
                 \begin{equation*}
-                    g(x)=-f(b)+f(x)+f'(x)(b-x)+\frac{1}{2!}f''(x)(b-x)^2+\cdots+\frac{1}{n!}f^{(n)}(x)(b-x)^n+K(b-x)^{n+1}
+                    g'(c)=0\quad(a<c<b)
                 \end{equation*}
+                である。よって、
+                \begin{align*}
+                    g'(c)&=f'(c)-f'(c)+f''(c)(b-c)-f''(c)(b-c)+\frac{1}{2!}f'''(c)(b-c)^2+\cdots-\frac{1}{(n-1)!}f^{(n)}(c)(b-c)^{n-1}\\
+                    &+\frac{1}{n!}f^{(n+1)}(c)(b-c)^{n}-K(n+1)(b-c)^{n}=0
+                \end{align*}
+                式を整理して
                 \begin{equation*}
-                    K=\frac{1}{(b-a)^{n+1}}\left[f(b)-\left\{f(a)+f'(a)(b-a)+\frac{1}{2!}f''(a)(b-a)^2+\cdots+\frac{1}{n!}f^{(n)}(a)(b-a)^n\right\}\right]
+                    K=\frac{1}{(n+1)!}f^{(n+1)}(c)
                 \end{equation*}
-                この時、テイラーの定理\ref{eq:テイラーの定理}を証明せよ。
+                これを$K$の定義に代入して整理すれば、式\ref{eq:テイラーの定理}である。$\square$
             \clearpage
 
         \clearpage
