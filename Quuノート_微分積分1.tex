@@ -823,7 +823,7 @@
                     (1)の関数は\textbf{符号関数}という。${\rm sgn}(x)$と書く場合もある。
 
                 \paragraph{問4}
-                    数学において$0^0$は$1$と定義されたりそもそも定義されなかったりする。さて、$0^0=1$と定義する立場での根拠について関数$f(x)=x^x$を用いて極限の観点から述べよ。
+                    数学において$0^0$は$1$と定義されたりそもそも定義されなかったりする。さて、$0^0=1$と定義する立場での根拠について数列$\{a_n\}=n^n$を用いて極限の観点から述べよ。
                 
                 \linktoMOKUZI
                 
@@ -1030,7 +1030,7 @@
 
                 次に、$x^n$で求めてみよう。ただし$n$は自然数であるとする。一般に、
                 \begin{equation}
-                    (x+a)^n=x^n+{}_nC_1ax^{n-1}+{}_nC_2a^2 x^{n-2}+\cdots +{}_nC_ma^{m}x^{n-m}+\cdots {}_nC_1a^{n-1}x+a^n\quad(\text{\textbf{二項定理}})
+                    (x+a)^n=x^n+{}_nC_1ax^{n-1}+{}_nC_2a^2 x^{n-2}+\cdots +{}_nC_ma^{m}x^{n-m}+\cdots {}_nC_1a^{n-1}x+a^n\quad(\text{\textbf{二項定理}})\label{eq:二項定理}
                 \end{equation}
                 が成り立つので
                 \begin{alignat}{1}
@@ -1152,7 +1152,7 @@
                 前回までで和・差・積・商のすべての場合について、微分の公式を導入した。これさえあればどんな関数でも微分できそうであるが、実はそうではない。
                 例えば$\arcsin x$は、$\sin x$の逆関数であること以外何も関数についてわかっていない。このような関数の微分について考えよう。
 
-                まず、$f(x)$について、逆関数を$y=f^{-1}(x)$と表すことにすれば、導関数の定義より
+                まず、一価単調連続関数$f(x)$について、逆関数を$y=f^{-1}(x)$と表すことにすれば、導関数の定義より
                 \begin{equation}
                     \lim_{h\to 0}\frac{f^{-1}(x+h)-f^{-1}(x)}{h}
                 \end{equation}
@@ -1410,7 +1410,7 @@
                 $(1)y=x^5-x^3+1\quad(-1\leq x\leq 1)$\hspace{3mm}
                 $(2)e^x(x-1)\quad(-1\leq x\leq 2)$
 
-                \paragraph{問3}$e^x \geq x+1 \quad (x>0)$を示せ。
+                \paragraph{問3}$e^x \geq x+1 \quad (x\geq0)$を示せ。
 
                 \paragraph{問4}図\ref{fig:直流回路}の直流回路について、最初に流れる電流$I$は以下の式で表される。
                 \begin{equation*}
@@ -1630,7 +1630,7 @@
                         \end{equation}
                         ただし$R_{n+1}$は剰余項といい、
                         \begin{equation}
-                            R_{n+1}=\frac{1}{(n+1)!}f^{(n+1)}f(c)(b-a)^{n+1}\quad(a<c<b)
+                            R_{n+1}=\frac{1}{(n+1)!}f^{(n+1)}(c)(b-a)^{n+1}\quad(a<c<b)
                         \end{equation}
                     \end{itembox}
                     $n=0$のときは平均値の定理\ref{eq:平均値の定理}と同じである。証明は複雑であるが、平均値の定理と同様に証明できる。（証明は演習問題とする。）
@@ -1661,7 +1661,7 @@
                     できるだけ小さくする必要があると予想できる。そこで、数列$\{R_n\}=R_1,R_2,R_3,\dots,R_n,\dots$を考え、数列$\{R_n\}$
                     が0に収束するときを考えてみよう。このとき
                     \begin{equation}
-                        \lim_{n\to 0}R_n=0
+                        \lim_{n\to \infty}R_n=0
                     \end{equation}
                     であるので、より多くの項を取る（$n\to\infty$）ほど、展開はよい近似になる。よって
                     \begin{equation}
@@ -1674,7 +1674,7 @@
                     \end{equation}
                     となり、これを\textbf{マクローリン級数}と呼ぶ。
 
-                    \ref{eq:テイラー級数(テイラー展開)}や\ref{eq:マクローリン級数(マクローリン展開)}は無限個の項を足し合わせており、このようなものを\textbf{無限級数}\footnote{加法はふつう有限のときに定義されるわけだから、無限個の和というのは形式的な表現である。実際の定義はのちに述べる。}という。
+                    式\ref{eq:テイラー級数(テイラー展開)}や式\ref{eq:マクローリン級数(マクローリン展開)}は無限個の項を足し合わせており、このようなものを\textbf{無限級数}\footnote{加法はふつう有限のときに定義されるわけだから、無限個の和というのは形式的な表現である。実際の定義はのちに述べる。}という。
                     無限級数については第IV部で詳しく述べることにする。が面白い性質があるので先回りして紹介しておこう。
                     その性質とは、項別微分・項別積分ができることである。積分についてはまだ扱っていないので項別微分のみに着目しよう。これは名前の通り、項別に微分することができるということである。
                     例えば、$\sin x$のマクローリン級数は
@@ -1717,7 +1717,7 @@
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
                     \item $e^x$のマクローリン展開\ref{eq:e^xのマクローリン展開}を示せ。
                     \item (1)の$x$に$ix$を代入せよ。
-                    \item $\sin x$のマクローリン展開と$\cos x$のマクローリン展開と(2)から次の\textbf{オイラーの公式}\footnote{この公式は抜群に役に立つ。数学以外の様々な顔でも出し、人類の至宝と称される。覚えておいて損はないと断言できる。}を導け。
+                    \item $\sin x$のマクローリン展開と$\cos x$のマクローリン展開と(2)から次の\textbf{オイラーの公式}\footnote{この公式は抜群に役に立つ。数学以外の様々な顔でも出し、特に$x=\pi$を代入した結果は人類の至宝とも称される。覚えておいて損はないと断言できる。}を導け。
                         \begin{equation}
                             e^{ix}=\cos x+i\sin x
                         \end{equation}
@@ -1766,7 +1766,7 @@
                     \log\left(\frac{1+x}{1-x}\right)=2\left(x+\frac{x^3}{3}+\frac{x^5}{5}+\cdots\right)
                 \end{equation*}
             
-            \paragraph{問7}$(1+x)^{\alpha}\quad(\alpha\text{は実数})$のマクローリン展開を求め、二項定理を証明せよ。
+            \paragraph{問7}$(1+x)^{\alpha}\quad(\alpha\text{は実数})$のマクローリン展開を求め、二項定理\ref{eq:二項定理}を証明せよ。
 
             \paragraph{問8}以下の問いに答えよ。
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
@@ -2048,6 +2048,81 @@
                     \item $\displaystyle\cos\alpha\cos\beta=\frac{1}{2}\{\cos(\alpha+\beta)+\cos(\alpha-\beta)\}$
                     \item $\displaystyle\sin\alpha\sin\beta=-\frac{1}{2}\{\cos(\alpha+\beta)-\cos(\alpha-\beta)\}$
                 \end{enumerate}
+            \clearpage
+            \basicanswer 以下の問いに答えよ。
+
+                \paragraph{問1}次の関数のグラフをかけ。\\
+                省略
+
+                \paragraph{問2}次の関数の(\hspace{1mm})内での最大・最小を求めよ。\\
+                増減表を書いて求めよ。\\
+                $(1)$最大値：$\left(\frac{3}{5}\right)^{\frac{5}{2}}-\left(\frac{3}{5}\right)^{\frac{3}{2}}$　最小値：$-\left(\frac{3}{5}\right)^{\frac{5}{2}}+\left(\frac{3}{5}\right)^{\frac{3}{2}}$\hspace{3mm}
+                $(2)$最大値：$e^2\hspace{1mm}(x=2)$　最小値：$-1\hspace{1mm}(x=0)$
+
+                \paragraph{問3}$e^x \geq x+1 \quad (x\geq0)$を示せ。\\
+                $f(x)=e^x-x+1$と置く。この時、$f'(x)=e^x-1=0\leftrightarrow x=0$であり、$x>0$で$f'(x)>0$であるので、$f(x)$は
+                $x>0$で単調増加する。よって、$f(x)$の最小値は$x=0$のときであり、その値は$f(0)=e^0-0+1=0$である。
+                すなわち$f(x)\geq 0\leftrightarrow e^x\geq x+1$
+
+                \paragraph{問4}図\ref{fig:直流回路}の直流回路について、最初に流れる電流$I$は以下の式で表される。
+                \begin{equation*}
+                    I=\frac{E}{R_0+R}\quad(\text{オームの法則})
+                \end{equation*}
+                また、可変抵抗器$R$で消費される電力$P$は$P=I^2R$である。この時、可変抵抗器で消費される最大の電力$P_{max}$
+                の値を求めよ。また、この時の可変抵抗器の値を求めよ。
+
+                \begin{equation*}
+                    \frac{dP}{dR}=\frac{d}{dR}\left(\frac{E^2R}{(R_0+R)^2}\right)=\frac{E^2(R_0+R)^2-E^2R\cdot2(R_0+R)}{(R_0+R)^4}=\frac{E^2(R_0-R)}{(R_0+R)^3}=0
+                \end{equation*}
+                $R_0>R>0$のとき$P'>0$であり$R>R_0$のとき$P'<0$なので、$P$は$R=R_0$で最大値を取る。またその値は
+                \begin{equation*}
+                    P_{max}=\frac{E^2R_0}{(R_0+R_0)^2}=\frac{E^2}{4R_0}
+                \end{equation*}
+                一般に、直流回路網は図\ref{fig:直流回路}の回路の回路に直せるので、その際にこの公式が使われる。
+            \clearpage
+            \basicanswer
+                \paragraph{問1}次の関数の三次導関数を求めよ。\\
+                $(1)y=(2x+1)^3$\hspace{3mm}
+                $(2)\displaystyle y=\frac{1}{1+x}$\hspace{3mm}
+                $(3)y=\sin(2x)$\hspace{3mm}
+                $(4)y=xe^x$\hspace{3mm}
+                $\displaystyle(5)y=\frac{\sin(2x)}{1+x}$
+
+                \paragraph{問2}次の関数の$n$次導関数を求めよ。\\
+                $(1)y=e^{-x}$\hspace{3mm}
+                $(2)y=\cos x$\hspace{3mm}
+                $(3)y=x^n$\hspace{3mm}
+                $(4)y=\log(1+x)$
+
+                \paragraph{問3}次の極限をロピタルの定理を用いて求めよ。\\
+                $\displaystyle(1)\lim_{x\to 0}\frac{x-\log(1+x)}{x^2}$\hspace{3mm}
+                $\displaystyle(2)\lim_{x\to 0}\frac{\sin^{-1}x}{x} $\hspace{3mm}
+                $\displaystyle(3)\lim_{x\to 0}\frac{\log x}{x}$\hspace{3mm}
+                $\displaystyle(4)\lim_{x\to+0}x^x$\hspace{3mm}
+                $\displaystyle(5)\lim_{x\to\infty}\log(1+e^x)^{\frac{1}{x}}$
+
+                \paragraph{問4}次の極限をテイラー展開またはマクローリン展開を用いて求めよ。\\
+                $\displaystyle(1)\lim_{x\to 0}\frac{x-\sin x}{x^3}$\hspace{50mm}
+                $\displaystyle(2)\lim_{x\to \infty}\left\{\sqrt{x^2-3x+1}-x\right\}$
+
+                \paragraph{問5}次の問いに答えよ。
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $e^x$のマクローリン展開\ref{eq:e^xのマクローリン展開}を示せ。
+                    \item (1)の$x$に$ix$を代入せよ。
+                    \item $\sin x$のマクローリン展開と$\cos x$のマクローリン展開と(2)から次の\textbf{オイラーの公式}を導け。
+                        \begin{equation}
+                            e^{ix}=\cos x+i\sin x
+                        \end{equation}
+                \end{enumerate}
+                
+                \paragraph{問6}関数$f(x)$が$[a,b]$で$n$階まで連続な導関数を持ち、$(a,b)$で$n+1$階微分可能であるとする。また、次の二つをつくる。
+                \begin{equation*}
+                    g(x)=-f(b)+f(x)+f'(x)(b-x)+\frac{1}{2!}f''(x)(b-x)^2+\cdots+\frac{1}{n!}f^{(n)}(x)(b-x)^n+K(b-x)^{n+1}
+                \end{equation*}
+                \begin{equation*}
+                    K=\frac{1}{(b-a)^{n+1}}\left[f(b)-\left\{f(a)+f'(a)(b-a)+\frac{1}{2!}f''(a)(b-a)^2+\cdots+\frac{1}{n!}f^{(n)}(a)(b-a)^n\right\}\right]
+                \end{equation*}
+                この時、テイラーの定理\ref{eq:テイラーの定理}を証明せよ。
             \clearpage
 
         \clearpage
