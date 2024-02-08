@@ -1882,6 +1882,8 @@
                 \begin{equation*}
                     \int x dx = \int \frac{1}{2}(x^2)'dx=\frac{1}{2}\int (x^2)'dx=\frac{1}{2}x^2+C\quad (\text{$C$は積分定数})
                 \end{equation*}
+
+                上記の例のように、不定積分は微分演算の逆演算である。このことを利用して次節で様々な公式を導出する。
             \clearpage
             \subsection{不定積分の公式}
                 ここでは不定積分の性質と公式についてまとめる。以下積分定数を省略する。まずは加法性について。
@@ -1910,7 +1912,7 @@
                 \end{equation}
                 また、$n=-1$のときは$(\log |x|)'=\frac{1}{x}$であるため、
                 \begin{equation}
-                    \int \frac{dx}{x} = \log |x| \label{eq:log xの不定積分} 
+                    \int \frac{dx}{x} = \log |x| \label{eq:1/xの不定積分} 
                 \end{equation}
 
                 三角関数については、$(\sin x)'=\cos x,(\cos x)'=-\sin x$であるから
@@ -1948,7 +1950,7 @@
 
                 そこで、このような複雑な積分を計算する方法として\textbf{置換積分}法を紹介する。
                 \begin{itembox}{置換積分の公式}
-                    ある関数$g(x)$について$t=g(x)$と置くとき
+                    関数$g(x)$について$t=g(x)$と置くとき
                     \begin{equation}
                         \int f(g(x))g'(x)dx = \int f(t)dt \label{eq:置換積分}
                     \end{equation}
@@ -1980,6 +1982,79 @@
                 となり、あたかも$\frac{dt}{dx}$が$dx$で約分されているように見える。また、$t=g(x)$と置いて$\frac{dt}{dx}$を求める行為は
                 形式的には両辺をそれぞれの文字$t,x$で微分して$dt,dx$を付けたものと等しくなる。つまり、$dt=g'(x)dx$を代入したように見える。
                 この書き方は便利なのでしばし用いられるが、あくまで形式的なものに過ぎない。
+                \clearpage
+                \paragraph{例3}
+                \begin{equation*}
+                    \int \frac{dx}{\sqrt{1+x^2}}
+                \end{equation*}
+                を求める。$x=\sinh t$と置換すると$dx = \cosh t dt$であるため
+                \begin{equation*}
+                    \int \frac{\cosh t}{\sqrt{1+(\sinh t)^2}}dt=\int \frac{\cosh t}{\cosh t}dt=\int dt = t = \sinh^{-1} x
+                \end{equation*}
+                もちろんこのままでもいいが、いい機会なので$\sinh^{-1}x$の具体的な式を求めてみよう。まず、$\sinh$の定義より
+                \begin{equation*}
+                    x = \sinh t = \frac{e^t-e^{-t}}{2}=\frac{e^{2t}-1}{2e^t}
+                \end{equation*}
+                よって、両辺に$e^t$をかけて、$e^t$に関する二次方程式を解くと
+                \begin{equation*}
+                    e^{t} = \frac{2x\pm \sqrt{4x^2+4}}{2}=x\pm\sqrt{x^2+1}
+                \end{equation*}
+                $e^t>0$より、符号は$+$のみである。したがって、対数を取ると
+                \begin{equation}
+                    t=\sinh^{-1}x=\log\left(x+\sqrt{x^2+1}\right)\label{eq:arcsinh}
+                \end{equation}\\
+
+                さて、例3では式\ref{eq:置換積分}の右辺から左辺への変形であった。置換積分は$x=\dots$と置く場合と
+                $t=\dots$と置く場合とがある。どちらの場合でも対応できるようにしておきたいものである。ちなみに、いままで置換の変数に
+                $t$を用いてきたが、こだわらなくてよい。つまり$u=x^2$と置いたり$x=\cos\theta$と置いても何も差し支えない。
+            \clearpage
+            \subsection{部分積分法}
+                置換積分は合成関数の微分から導出されたものであるが、同じように積の微分から新たな公式を導出することができる。それが\textbf{部分積分法}
+                であり、置換積分では計算できない積分などに使う。
+                \begin{itembox}{部分積分法}
+                    関数$f(x),g(x)$について
+                    \begin{equation}
+                        \int f(x)g'(x) dx = f(x)g(x) - \int f'(x)g(x)dx \label{eq:部分積分法}
+                    \end{equation}
+                    が成り立つ。
+                \end{itembox}
+                \paragraph{証明}積の微分公式より
+                \begin{equation}
+                    (fg)'=f'g+fg' \leftrightarrow fg' = (fg)'-f'g
+                \end{equation}
+                あとは両辺を積分すれば式\ref{eq:部分積分法}が得られる。
+
+                \paragraph{例1}
+                \begin{equation*}
+                    \int x\sin x dx
+                \end{equation*}
+                を求める。$f(x)=x,g'(x)=\sin x$とすると
+                \begin{equation*}
+                    \int x(-\cos x)'dx = -x\cos x + \int \cos xdx = -x\cos x+\sin x
+                \end{equation*}
+                となる。
+
+                例1で、$f,g$をうまく選ばないと悲惨な結果になる。例えば$f=\sin x,g=x$と選ぶと
+                \begin{equation*}
+                    \int x\sin xdx=\frac{1}{2}x^2\sin x - \int \frac{1}{2}x^2\cos xdx
+                \end{equation*}
+                とまあより複雑な積分になってしまう。
+
+                \paragraph{例2}$\log x$の不定積分を求める。$(x)'=1$より
+                \begin{equation*}
+                    \int \log xdx=\int (x)'\log xdx=x\log x - \int x\cdot \frac{1}{x}dx=x\log x-\int dx=x\log x-x
+                \end{equation*}
+                したがって次の公式が得られた。
+                \begin{equation}
+                    \int \log xdx=x\log x-x\label{eq:log xの不定積分}
+                \end{equation}\\
+
+                部分積分は、$fg$のうちすくなくとも片方の関数が微分したら周期的に元に戻る関数であるときによく使われる印象である。\footnote{例えば、$\sin x$は4回微分したら元の関数に戻る。$e^x$は1回である。}
+                また、積分漸化式の問題でも用いられる。
+            \clearpage
+            \subsection{有理関数の不定積分}
+
+
 
 
 
