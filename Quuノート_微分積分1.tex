@@ -721,7 +721,7 @@
                 \begin{screen}
                     $f(a)\neq f(b)$なら$f(a)\leq k \leq f(b)$である任意の$k$について
                     \begin{equation*}
-                        f(x)=k
+                        f(c)=k
                     \end{equation*}
                     となる点$c\in[a,b]$が少なくとも一つ存在する。（\textbf{中間値の定理}）
                 \end{screen}
@@ -746,18 +746,17 @@
                 \textbf{極値}という。
                 \newpage
                 また、中間値の定理において$f(a)$と$f(b)$の符号が異なる場合、方程式$f(x)=0$は
-                区間$[a,b]$に実数解を少なくとも持つことがわかる。これは中間値の定理の応用である。
-                \paragraph{例}方程式$x^2+x+1=0$は区間$[-1,1]$に少なくとも一つの実数解を持つかどうか答えよ。
+                区間$[a,b]$に実数解を少なくとも持つことがわかる。\footnote{注：実数解を（少なくとも一つ）もつことは中間値の定理からわかるが、実数解を持たないことは中間値の定理ではいえない。例えば$f(x)=x^2,[-1,2]$では$f(-1),f(2)>0$であるが区間内に実数解をもつ。}これは中間値の定理の応用である。
+                \paragraph{例}方程式$x^3-3x-1=0$は区間$[0,2]$に少なくとも一つの実数解を持つかどうか答えよ。
 
-                $f(-1)=1-1+1=1>0,f(1)=1+1+1=3>0$より、$f(-1)$と$f(1)$の符号が同じであるため方程式は区間$[-1,1]$で実数解を持たない。
-                実際、判別式$D=1^2-4\cdot 1\cdot 1=-3<0$より、この二次方程式は解を持っていない。\\
+                $f(0)=0-0-1=-1<0,f(2)=8-6-1=1>0$より、$f(0)$と$f(2)$の符号が異なるため方程式は区間$[0,2]$で少なくとも一つの実数解をもつ。\\
 
                 いままでは連続関数の性質について述べたが、連続の条件が一つでも満たされていない場合についても考えてみよう。
                 このとき関数$f(x)$は$x=a$で\textbf{不連続}であるという。例えば$\frac{1}{x}$は$x=0$で不連続である。
                 一方で関数$\displaystyle g(x)=\frac{x^2-1}{x-1}$も$x=1$で不連続であるが、$x\neq1$では$g(x)=x+1$で連続である。
                 そこで、
                 \begin{equation}
-                    g(x)=\left\{\begin{array}{lr}\displaystyle\frac{x^2-1}{x-1}&(x\neq 1)\\\displaystyle x+1&(x=1)\end{array}\right.
+                    g(x)=\left\{\begin{array}{lr}\displaystyle\frac{x^2-1}{x-1}&(x\neq 1)\\ x+1&(x=1)\end{array}\right.
                 \end{equation}
                 のように改めて定義しなおすことで、この関数は$x=1$で連続にできる。各自確かめてみよ。
             \clearpage
@@ -917,7 +916,7 @@
                 y'(-0)&=\lim_{h\to -0}\frac{|h|}{h}=\lim_{h\to -0}\frac{-h}{h}=-1
             \end{align}
             となり右方微分係数と左方微分係数が一致しない。したがって$y=|x|$は微分可能ではない。
-            しかし$x=0$で連続ではないので、$y=|x|$は連続であるが微分可能でない関数であることがわかる。
+            しかし$x=0$で微分可能ではないので、$y=|x|$は連続であるが微分可能でない関数であることがわかる。
 
             では逆に$f(x)$が$x=a$で微分可能であるときはどうであろうか。$f(x)$が$x=a$で微分可能であるとき
             \begin{equation}
@@ -1344,9 +1343,9 @@
                     比べればよい。なぜなら、端点から極値までの値は単調に増加・減少するからである。そしてここから、$f(x)$が
                     極大値（極小値）を一つだけ持つなら、それが$f(x)$の最大値（最小値）であることもわかる。\\
 
-                    関数の最大・最小がわかることは、関数の大小関係を比べる際に役立つ。例えば、$x\geq \sin x\quad(0\leq x \leq 2\pi)$
-                    を示すとする。$f(x)=x-\sin x$とおいて微分すると$f'=1 - \cos x = 0$となる。$[0,2\pi]$の区間でこの方程式の解は$x=0$のみであり、
-                    $x>0$で$f'>0$であるため、$[0,2\pi]$で$f$は単調増加である。すなわち$x=0$が$f$の最小値でありその値は$f(0)=0$となるため、$f(x)\geq 0$と
+                    関数の最大・最小がわかることは、関数の大小関係を比べる際に役立つ。例えば、$x\geq \sin x\quad(0\leq x < 2\pi)$
+                    を示すとする。$f(x)=x-\sin x$とおいて微分すると$f'=1 - \cos x = 0$となる。$[0,2\pi)$の区間でこの方程式の解は$x=0$のみであり、
+                    $x>0$で$f'>0$であるため、$[0,2\pi$)で$f$は単調増加である。すなわち$x=0$が$f$の最小値でありその値は$f(0)=0$となるため、$f(x)\geq 0$と
                     書ける。よって移項して$x\geq \sin x$だと示せた。
                     \begin{figure}[h]
                         \centering
@@ -1432,7 +1431,7 @@
                     つまり、$f'''(x)=f^{(3)}(x),f''''(x)=f^{(4)}(x)$である。また、$n$階の導関数$f^{(n)}(x)$は$y^{(n)},D_x^{(n)} y,\displaystyle \frac{d^n y}{dx^n}$と書いたりもする。
                     これらは$n$次導関数ともいう。
 
-                    \paragraph{例}$y=e^{-x}$は$y'=-e^{-x},y''=e^{-x},y^{(3)}=-e^{-x}$である。一般に$y^{(n)}=(-1)^ne^{-x}$\\
+                    \paragraph{例}$y=a^{x}$は$y'=a^x\log a,y''=a^x(\log a)^2,y^{(3)}=a^x(\log a)^3$である。一般に$y^{(n)}=a^x(\log a)^n$\\
 
                     さて、ここで積の$n$階微分について考えてみよう。\footnote{足し算・引き算は線形性より$(u\pm v)^{(n)}=u^{(n)}\pm v^{(n)}$がすぐわかってつまらない。かといって商の微分や合成関数の微分は計算が複雑すぎて
                     公式を導出するのも大変である。（なおかつその公式も複雑である。）}とりあえず、$n=1,2$のときで計算してみると
@@ -1804,7 +1803,7 @@
 
             \paragraph{問13}次の\textbf{微分方程式}について以下の問いに答えよ。
                 \begin{equation*}
-                    y'-y-1=0
+                    y'-y^2-1=0
                 \end{equation*}
                 \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
                     \item $y=\tan x$が方程式の解の一つであることを確かめよ。
@@ -1830,6 +1829,161 @@
         \clearpage
         \section{不定積分}
             \subsection{不定積分の定義}
+                これまで扱ってきた微分は現象の微小な変化を解析するものだった。しかし、現実には現象からある瞬間の変化を調べることに加えて、
+                ある一瞬の変化から現象自身を得る必要も出てくる。実際の自然現象などは常に変化し続けており、それを定式化（方程式）にするには、
+                ある瞬間の変化量を使うほうがその現象を本質的に見ることができる。例を示そう。例えば、空気抵抗を無視した
+                物体の落下運動は最初の落下地点の高さをを$x_0$とすると$x(t)=-\frac{1}{2}gt^2+x_0$と表すことができる。
+                しかし、変位の二階時間微分が加速度であることを考えれば$\ddot{x}=-g$と簡潔に表せる。
+                これだけ見ると、別に微分を使って表す必要もなさそうである。では空気抵抗がある場合を考えてみよう。
+                空気抵抗が速度に定数$k$で比例すると仮定すれば、微分を使わずに表すと\footnote{間違っているかも？各自で確認することをお勧めする。}
+                \begin{equation}
+                    x(t)=-\frac{m^2g}{k^2}e^{\frac{k}{m}t}+\frac{mg}{k}t+\frac{m^2g}{k^2}-\frac{mg}{k}+x_0
+                \end{equation}
+                のようになる。ちなみに$m$は質点の質量である。一方後者の方法で表すと
+                \begin{equation}
+                    m\ddot{x}=k\dot{x}-mg\label{eq:空気抵抗ありのときの落下運動}
+                \end{equation}
+                明らかに後者の方が簡単である。しかも後者の良いところは、初期条件（$t=0$で$x=x_0$など）に関係なく同じ表式が得られるところで、
+                これが現象の本質を表していることを示している。
+
+                一方で、物理現象の本質を明らかにすることとは別に実際にその表式（今回の場合は変位）を得たい場合もある。
+                その場合は式\ref{eq:空気抵抗ありのときの落下運動}のような\textbf{微分方程式}では困るわけである。
+                $y'=x$のような簡単な微分方程式なら$(x^2)'=2x$から簡単に解が予想できるが、$y'=x^2$や$y'=\sin 2x$など
+                問題のたびに微分から予想していては大変である。また、式\ref{eq:空気抵抗ありのときの落下運動}みたいに式が複雑になっていくと
+                解の一つを予想するだけで苦労してしまう。そこで、微分と逆の演算である\textbf{積分}が登場する。この積分を学べば
+                $y'(x)=f(x)$タイプの微分方程式はある程度統一的に解くことができるようになるのである。\\
+
+                ここで、不定積分を定義しよう。ある連続関数$f(x)$に対して
+                \begin{equation}
+                    F'(x)=f(x) \label{eq:原始関数定義}
+                \end{equation}
+                となる関数$F(x)$が存在した時、この関数$F(x)$を$f(x)$の原始関数、もしくは\textbf{不定積分}\footnote{実はこれは不定積分ではなく、原始関数の定義である。基本的に原始関数と不定積分が等しくなる保証はないわけだが、
+                $f$が連続関数であればこれらは同義になる。我々は今基本的に連続関数のみ扱いたいわけだから、これらを同じものとして扱っている。}という。
+                この時$f(x)$を被積分関数といい、不定積分を次のように表す。
+                \begin{equation}
+                    F(x)=\int f(x)dx = \int dx f(x) \label{eq:不定積分の書き方}
+                \end{equation}
+                上のように$f(x)$と$dx$の順序はどちらでもよい。$f$があまりにも複雑なら最後に$dx$をつけ忘れてしまうかもしれない。その場合は後者の方がいい。
+                一方多項式の間に積分が挟まれていて、どこからどこまでが$f$なのかがわかりにくいときなどは前者を使えばいい。
+
+                ある関数の不定積分が$F(x)$なら、当然それに定数を加えた$F(x)+C$も$f$の不定積分になる。なぜなら
+                \begin{equation*}
+                    (F(x)+C)'=F'(x)+(C)'=F'(x)=f(x)
+                \end{equation*}
+                となるから当然である。つまり不定積分は定数の分だけ``不定''なのである。このような任意定数を積分定数という。
+                
+                また、定義から明らかに
+                \begin{equation}
+                    \int \frac{df}{dx}dx = f(x)+C
+                \end{equation}
+                であることがわかる。もちろん常にこんな簡単な積分ばかりではない。
+
+                \paragraph{例}$\displaystyle\int x dx$を求める。$(x^2)'=2x$だから$x=\frac{1}{2}(x^2)'$
+                \begin{equation*}
+                    \int x dx = \int \frac{1}{2}(x^2)'dx=\frac{1}{2}\int (x^2)'dx=\frac{1}{2}x^2+C\quad (\text{$C$は積分定数})
+                \end{equation*}
+            \clearpage
+            \subsection{不定積分の公式}
+                ここでは不定積分の性質と公式についてまとめる。以下積分定数を省略する。まずは加法性について。
+                \begin{equation}
+                    \int \left\{f(x)\pm g(x)\right\}dx=\int f(x)dx\pm \int g(x)dx \label{eq:不定積分の加法性}
+                \end{equation}
+                である。これは定義からわかる。$f,g$の不定積分を$F(x),G(x)$と表すことにすれば
+                \begin{equation}
+                    (F(x)\pm G(x))'=(F(x))'\pm(G(x))'
+                \end{equation}
+                だから、これを両辺不定積分すれば
+                \begin{equation}
+                    F(x)\pm G(x)=\int \left\{(F(x))'+(G(x))'\right\}dx=\int \left\{f(x)\pm g(x)\right\}dx
+                \end{equation}
+                となり式\ref{eq:不定積分の加法性}を得る。
+
+                次に$f(ax+b)$について考えて見る。これも定義から$(F(ax+b))'=\frac{1}{a}F'(ax+b)$なのだから
+                \begin{equation}
+                    \int f(ax+b)dx=\frac{1}{a}F(ax+b)\label{eq:f(ax+b)の不定積分}
+                \end{equation}
+
+                では、それぞれの関数の不定積分を見ていこう。まずは$x^n$について考える。$n\neq -1$のとき
+                $x^{n+1}$を微分すると、$(n+1)x^{n}$となるから次の公式が得られる。
+                \begin{equation}
+                    \int x^n dx = \frac{1}{n+1} x^{n+1}\quad (n\neq -1) \label{eq:x^nの不定積分}
+                \end{equation}
+                また、$n=-1$のときは$(\log |x|)'=\frac{1}{x}$であるため、
+                \begin{equation}
+                    \int \frac{dx}{x} = \log |x| \label{eq:log xの不定積分} 
+                \end{equation}
+
+                三角関数については、$(\sin x)'=\cos x,(\cos x)'=-\sin x$であるから
+                \begin{equation}
+                    \int \sin xdx = -\cos x,\quad \int \cos x dx = \sin x \label{eq:sin,cosの積分}
+                \end{equation}
+                $\tan x$についても、$(\tan x)'=\frac{1}{\cos ^2x}$であるため
+                \begin{equation}
+                    \int \frac{1}{\cos^2 x}dx=\tan x \label{eq:tanの不定積分}
+                \end{equation}
+
+                指数関数$e^x$についてはどうだろうか。$(e^x)'=e^x$であるから
+                \begin{equation}
+                    \int e^x dx = e^x \label{eq:expの不定積分}
+                \end{equation}
+                である。一般の指数関数$a^x$は$(a^x)'=a^x \log a$より
+                \begin{equation}
+                    \int a^x dx =\frac{a^x}{\log a} \label{eq:a^xの不定積分}
+                \end{equation}
+                一方対数関数$\log x$の不定積分を求めるには、あるテクニック/公式が必要なのでここでは省略する。\\
+
+                以上で述べたことは、原理を理解するのはもちろん公式として暗記しておくことを勧める。
+
+            \clearpage
+            \subsection{置換積分法}
+                前節では、単純な関数の積分について述べた。しかし、これらの公式だけではほとんどの積分には太刀打ちできない。例えば
+                \begin{equation*}
+                    \int x(x^2+1)^{1000}dx
+                \end{equation*}
+                など、理論上は展開して計算できるが1000乗の展開など想像するだけでぞっとする。また、
+                \begin{equation*}
+                    \int x\sin(x^2)dx
+                \end{equation*}
+                などのような複雑な関数の積分はどのようの解けばよいだろうか。
+
+                そこで、このような複雑な積分を計算する方法として\textbf{置換積分}法を紹介する。
+                \begin{itembox}{置換積分の公式}
+                    ある関数$g(x)$について$t=g(x)$と置くとき
+                    \begin{equation}
+                        \int f(g(x))g'(x)dx = \int f(t)dt \label{eq:置換積分}
+                    \end{equation}
+                    が成り立つ。
+                \end{itembox}
+                \paragraph{証明} 合成関数の微分法によって
+                \begin{equation}
+                    (F(g(x)))'=F'(g(x))g'(x)=f(g(x))g'(x) 
+                \end{equation}
+                また、$t=g(x)$より
+                \begin{equation}
+                    \frac{d}{dt}F(g(x))=\frac{d}{dt}F(t)=f(t)
+                \end{equation}
+                よってそれぞれ$x,t$で不定積分すれば式\ref{eq:置換積分}が得られる。\\
+
+                \paragraph{例1}
+                \begin{equation*}
+                    \int x\sin(x^2)dx
+                \end{equation*}
+                を求める。$t=g(x)=x^2$と置くと、$g'(x)=2x$であるため、
+                \begin{equation*}
+                    \int \frac{1}{2}\sin(g(x))g'(x)dx=\int \frac{1}{2}\sin t dt = -\frac{1}{2}\cos t = -\frac{1}{2}\cos x^2
+                \end{equation*}\\
+
+                式\ref{eq:置換積分}の$g'(x)$は$\frac{dt}{dx}$のことであるため、書き直すと
+                \begin{equation}
+                    \int f(g(x))\frac{dt}{dx}dx =\int f(t)dt 
+                \end{equation}
+                となり、あたかも$\frac{dt}{dx}$が$dx$で約分されているように見える。また、$t=g(x)$と置いて$\frac{dt}{dx}$を求める行為は
+                形式的には両辺をそれぞれの文字$t,x$で微分して$dt,dx$を付けたものと等しくなる。つまり、$dt=g'(x)dx$を代入したように見える。
+                この書き方は便利なのでしばし用いられるが、あくまで形式的なものに過ぎない。
+
+
+
+
     \clearpage
     \part{無限級数$\sum$}
     \clearpage
@@ -2109,8 +2263,8 @@
                 \vspace{3mm}\noindent
                 $(2)\displaystyle\sqrt{x^2-3x+1}=x\sqrt{1-\left(\frac{3}{x}-\frac{1}{x^2}\right)}$と変形する。このとき$\sqrt{1-x}=1-\frac{1}{2}x-\frac{1}{2!}\cdot\frac{3}{4}x^2\cdots$より\\
                 $\displaystyle x\sqrt{1-\left(\frac{3}{x}-\frac{1}{x^2}\right)}=x\left\{1-\frac{1}{2}\left(\frac{3}{x}-\frac{1}{x^2}\right)-\frac{1}{2!}\cdot\frac{3}{4}\left(\frac{3}{x}-\frac{1}{x^2}\right)^2+\cdots\right\}=x\left\{1-\frac{1}{2}\times\frac{3}{x}-P\left(\frac{1}{x^2}\right)\right\}$\\
-                $\displaystyle=x-\frac{3}{2}-P\left(\frac{1}{x^2}\right)$したがって、元の極限は
-                $\displaystyle\lim_{x\to \infty}\left\{x-\frac{3}{2}-P\left(\frac{1}{x^2}\right)-x\right\}=-\frac{3}{2}$
+                $\displaystyle=x-\frac{3}{2}-P\left(\frac{1}{x}\right)$したがって、元の極限は
+                $\displaystyle\lim_{x\to \infty}\left\{x-\frac{3}{2}-P\left(\frac{1}{x}\right)-x\right\}=-\frac{3}{2}$
 
                 \paragraph{問5}省略
                 
