@@ -1828,7 +1828,7 @@
         \end{screen}
         \clearpage
         \section{不定積分}
-            \subsection{不定積分の定義}
+            \subsection{不定積分とは}
                 これまで扱ってきた微分は現象の微小な変化を解析するものだった。しかし、現実には現象からある瞬間の変化を調べることに加えて、
                 ある一瞬の変化から現象自身を得る必要も出てくる。実際の自然現象などは常に変化し続けており、それを定式化（方程式）にするには、
                 ある瞬間の変化量を使うほうがその現象を本質的に見ることができる。例を示そう。例えば、空気抵抗を無視した
@@ -1853,7 +1853,7 @@
                 解の一つを予想するだけで苦労してしまう。そこで、微分と逆の演算である\textbf{積分}が登場する。この積分を学べば
                 $y'(x)=f(x)$タイプの微分方程式はある程度統一的に解くことができるようになるのである。\\
 
-                ここで、不定積分を定義しよう。ある連続関数$f(x)$に対して
+                ここで、不定積分を（狭い範囲で）定義しよう。ある連続関数$f(x)$に対して
                 \begin{equation}
                     F'(x)=f(x) \label{eq:原始関数定義}
                 \end{equation}
@@ -1983,7 +1983,7 @@
                 形式的には両辺をそれぞれの文字$t,x$で微分して$dt,dx$を付けたものと等しくなる。つまり、$dt=g'(x)dx$を代入したように見える。
                 この書き方は便利なのでしばし用いられるが、あくまで形式的なものに過ぎない。
                 \clearpage
-                \paragraph{例3}
+                \paragraph{例2}
                 \begin{equation*}
                     \int \frac{dx}{\sqrt{1+x^2}}
                 \end{equation*}
@@ -2053,7 +2053,54 @@
                 また、積分漸化式の問題でも用いられる。
             \clearpage
             \subsection{有理関数の不定積分}
+                有理関数$R(x)$の不定積分については次の重要な性質がある。
+                \begin{screen}\centering
+                    有理関数$R(x)$は\underbar{必ず不定積分できる}。
+                \end{screen}
+                ここでいう``不定積分できる''とは、その関数の不定積分が初等関数の範囲で表せられることを言う。\footnote{一般に、初等関数の原始関数が初等関数になる\underbar{ことは起こりえない}。$e^{-x^2},\sin x/x$などが有名な例である。}
+                今からこれを示すが、この証明を理解することよりも有理関数の不定積分ができることを覚えておくことのほうが重要である。
+            \clearpage
+            \basicquestion 以下の問いに答えよ。積分定数は省略してもよい。
 
+            \paragraph{問1}次の不定積分を求めよ。\\
+                $(1)\displaystyle \int x^3dx$\hspace{3mm}
+                $(2)\displaystyle \int \sin(-x) dx$\hspace{3mm}
+                $(3)\displaystyle \int \left(e^{2x}+\frac{1}{x^2}\right)dx$\hspace{3mm}
+                $(4)\displaystyle \int \frac{dx}{ex}$\hspace{3mm}
+                $(5)\displaystyle \int \left(\tan^2 x + 1\right)dx$\hspace{3mm}
+                $(6)\displaystyle \int \sin x\cos xdx$\\
+
+            \paragraph{問2}次の不定積分を(\hspace{1mm})内の置換によって求めよ。\\
+                $(1)\displaystyle \int x\cos(x^2)dx \quad (t=x^2)$\hspace{3mm}
+                $(2)\displaystyle \int x^2(x^3-1)^2dx\quad (t=x^3-1)$\hspace{3mm}
+                $(3)\displaystyle \int \frac{dx}{x^2+1}\quad (x=\tan \theta)$\\
+                $(4)\displaystyle \int \frac{dx}{\sqrt{1-x^2}}\quad (x=\sin \theta)$\hspace{3mm}
+                $(5)\displaystyle \int \sin^3 x\cos x dx \quad(t=\sin x)$\\
+            
+            \paragraph{問3}次の不定積分を部分積分法で求めよ。\\
+                $(1)\displaystyle \int x\cos xdx$\hspace{3mm}
+                $(2)\displaystyle \int xe^x dx$\hspace{3mm}
+                $(3)\displaystyle \int e^x\cos xdx$\hspace{3mm}
+                $(4)\displaystyle \int \log(x^2+1)dx$\\
+
+            \paragraph{問4}次の不定積分を部分分数分解を用いて求めよ。\\
+                $(1)\displaystyle \int \frac{dx}{x^2-3x+2}$\hspace{20mm}
+                $(2)\displaystyle \int \frac{dx}{(x^2+1)(x-2)}$\hspace{20mm}
+                $(3)\displaystyle \int \frac{dx}{x^2-a^2}$\\
+
+            \paragraph{問5}以下証明せよ。
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $\displaystyle \int \sinh x dx = \cosh x$を示せ。
+                    \item $\sin x,\cos x$の有理関数を$f(\sin x,\cos x)$と表す\footnote{例えば、$\frac{\sin x}{1+\cos x}$は、$f(X,Y)=\frac{X}{1+Y}$の形である。引数が二つあると二変数関数みたいに見えるが実際には$x$だけの関数である。}
+                    とする。このとき不定積分
+                        \begin{equation*}
+                            \int f(\sin x,\cos x)dx
+                        \end{equation*}
+                        は$t=\tan\frac{x}{2}$の置換により必ず積分できることを示せ。
+                \end{enumerate}
+        \clearpage
+        \section{定積分}
+            \subsection{面積を求めるには}
 
 
 
