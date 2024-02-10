@@ -2058,7 +2058,93 @@
                     有理関数$R(x)$は\underbar{必ず不定積分できる}。
                 \end{screen}
                 ここでいう``不定積分できる''とは、その関数の不定積分が初等関数の範囲で表せられることを言う。\footnote{一般に、初等関数の原始関数が初等関数になる\underbar{ことは起こりえない}。$e^{-x^2},\sin x/x$などが有名な例である。}
-                今からこれを示すが、この証明を理解することよりも有理関数の不定積分ができることを覚えておくことのほうが重要である。
+                今からこれを示すが、この証明を理解することよりも有理関数の不定積分ができることを覚えておくことのほうが重要である。\\
+
+                さて、有理関数において分母の次数より分子の次数が高いとき、それは多項式と分母の次数のほうが高い有理関数の和で表すことができる。これには正式の除算を用いればよい。
+                例えば、$\frac{x^3+2}{x+1}=x^2-x+1+\frac{1}{x+1}$
+                
+                多項式の積分の方が積分できるのはすぐわかるので、注目すべきは有理関数のほうである。この時この有理関数は
+                \begin{equation}
+                    \frac{1}{(ax+b)^n}\text{と}\frac{px+q}{\left\{(x-a)^2+b^2\right\}^n}
+                \end{equation}
+                の和の形に必ず分解することができる。\footnote{参考:\url{https://www.math.titech.ac.jp/~hoya/Teaching/calculusI2023PDF/bubunbunsu.pdf}}
+                
+                まず前者の積分であるが、これは簡単である。公式を用いて
+                \begin{equation}
+                    \int \frac{dx}{(ax+b)^n} = \left\{\begin{array}{lc}
+                        \displaystyle \frac{1}{a(-n+1)}\frac{1}{(ax+b)^{n-1}} & (n\neq 1) \\
+                        \displaystyle \frac{1}{a}\log|ax+b| & (n=1)
+                    \end{array}\right.
+                \end{equation}
+                となる。後者は少し難しい。式を変形すると
+                \begin{equation*}
+                    \frac{px+q}{\left\{(x-a)^2+b^2\right\}^n}=\frac{p}{2}\frac{2(x-a)}{\left\{(x-a)^2+b^2\right\}^n}+\frac{(q+pa)}{\left\{(x-a)^2+b^2\right\}^n}
+                \end{equation*}
+                と分けられる。右辺第一項の積分は、$t=(x-a)^2+b^2$の置換を行うと
+                \begin{equation*}
+                    \frac{p}{2}\int \frac{dt}{t^n}=\frac{p}{2(-n+1)}\frac{1}{t^{n-1}}=\frac{p}{2(-n+1)}\frac{1}{\left\{(x-a)^2+b^2\right\}^{n-1}}
+                \end{equation*}
+                となる。問題は二項目の積分であり、これを直接解こうとすると大変である。ここは、積分を$I_n$と置いて$n$についての漸化式を作る。定数部分は関係ないので省略する。
+                \begin{align*}
+                    I_n &= \int \frac{dx}{\left\{(x-a)^2+b^2\right\}^n}=\int \frac{dt}{(t^2+b^2)^n} = \frac{t}{(t^2+b^2)^n} - \int (-2n)\cdot\frac{t^2}{(t^2+b^2)^{n+1}}dt\\
+                        &= \frac{t}{(t^2+b^2)^n}+2n\int \frac{t^2+b^2-b^2}{(t^2+b^2)^{n+1}}dt=\frac{t}{(t^2+b^2)^n}+2nI_n-2nb^2I_{n+1}
+                \end{align*}
+                $n+1=m$と置き、式を整理すると、
+                \begin{equation}
+                    I_m = \frac{1}{b^2}\left[\frac{2m-3}{2m-2}I_{m-1}+\frac{1}{2(m-1)}\frac{(x-a)}{\left\{(x-a)^2+b^2\right\}^{m-1}}\right] \label{eq:有理関数の不定積分漸化式}
+                \end{equation}
+                \clearpage
+                式\ref{eq:有理関数の不定積分漸化式}から、$I_m$を求めるには$I_{m-1}$を、$I_{m-1}$を求めるには$I_{m-2}$を・・・とどんどん遡っていき$m=2$まで行くと、不定積分は求められる。
+                なぜなら$m=2$つまり$n=1$のとき
+                \begin{equation*}
+                    I_1 = \int \frac{dx}{(x-a)^2+b^2}=\frac{1}{b}\tan^{-1}\left(\frac{x-a}{b}\right) 
+                \end{equation*}
+                となるからである。以上の結果から有理関数の不定積分は\underline{常に求められる}。\\
+
+                とはいえ、有理関数の不定積分を求めることは簡単なことではなく、計算は煩雑になりがちである。
+                大事なのは、冒頭でも述べた通り不定積分できるという認識を持っておくことである。
+
+                \paragraph{例1}
+                \begin{equation*}
+                    \int \frac{dx}{x^2-1}
+                \end{equation*}
+                を求める。分母を因数分解すると$x^2-1=(x-1)(x+1)$であるため、
+                \begin{equation*}
+                    \frac{1}{x^2-1}=\frac{1}{(x-1)(x+1)}=\frac{1}{2}\left(\frac{1}{x-1}-\frac{1}{x+1}\right)
+                \end{equation*}
+                と部分分数分解して
+                \begin{equation*}
+                    \int \frac{dx}{x^2-1}=\frac{1}{2}\left(\int \frac{dx}{x-1}-\int \frac{dx}{x+1}\right)=\frac{1}{2}\left(\log|x-1|-\log|x+1|\right)=\frac{1}{2}\log\left|\frac{x-1}{x+1}\right|
+                \end{equation*}
+
+                上の例では部分分数分解が簡単にできるが、中には部分分数分解すること自体が大変な場合もある。
+                \paragraph{例2}
+                \begin{equation*}
+                    \frac{1}{x^3+1}
+                \end{equation*}
+                を部分分数分解する。分母を因数分解すると$x^3+1=(x+1)(x^2-x+1)$より
+                \begin{equation*}
+                    \frac{1}{x^3+1}=\frac{1}{(x+1)(x^2-x+1)}=\frac{A}{x+1}+\frac{Bx+C}{x^2-x+1}
+                \end{equation*}
+                と置いて\footnote{二項目は分母が二次式なので分子は$(n-1)=1$次式で置く。}、この恒等式から$A,B,C$を求めればよい。\footnote{$1/(x^2-1)$のときも同様に求めてよい。ただこの場合は簡単なので省いただけ。}
+                両辺の分母に$(x+1)(x^2-x+1)$を掛けると
+                \begin{equation*}
+                    1 = A(x^2-x+1)+(Bx+C)(x+1)=(A+B)x^2+(-A+B+C)x+(A+C)
+                \end{equation*}
+                となるため、
+                \begin{equation*}
+                    \left\{\begin{array}{rrccccl}
+                        &A&+&B& &&=0\\
+                        -&A&+&B&+&C & = 0\\
+                        &A&&&+&C &=1
+                    \end{array}\right.
+                \end{equation*}
+                の連立方程式を解く。あとは代数の計算なので普通に解けばよい。係数的にクラメルの公式が簡単である。
+                $(A,B,C)=(\frac{1}{3},-\frac{1}{3},\frac{2}{3})$より
+                \begin{equation*}
+                    \frac{1}{x^3+1}=\frac{1}{3}\left(\frac{1}{x+1}+\frac{-x+2}{x^2-x+1}\right)
+                \end{equation*}
+
             \clearpage
             \basicquestion 以下の問いに答えよ。積分定数は省略してもよい。
 
