@@ -2194,7 +2194,7 @@
                 埋め尽くして面積を求める方法で、やり方は至極簡単である。
                 \begin{figure}[h]
                     \centering
-                    \includegraphics[scale=0.4]{img/QuuNote/Tritukusi.png}
+                    \includegraphics[scale=0.35]{img/QuuNote/Tritukusi.png}
                     \caption{取りつくし法による円の面積}
                 \end{figure}
 
@@ -2214,8 +2214,54 @@
                 簡単なことではない。そこで、\textbf{定積分}が登場する。
             \clearpage
             \subsection{定積分の定義}
-                
+                以下に定積分の定義を述べよう。まず、xy平面上の関数$y=f(x)$の区間$[a,b]$での面積を求めることを考える。簡単にするために、$[a,b]$で$f\geq0$であるとする。
+                $[a,b]$の間に$x_0=a,x_1,x_2,\dots,x_n=b$の$n+1$個の点を考え、$z_k \in [x_{k-1},x_{k}]$である任意の点$z_1,z_2,z_3,\dots,z_{n}$を考える。
+                $\Delta x_k=x_{k}-x_{k-1}$と定義すると、$y=f(x)$と直線$x=a,x=b$とx軸で囲まれた面積$S$の近似値$S_{\Delta}$は次のように与えられることがわかる。
+                \begin{equation}
+                    S_{\Delta} = \sum_{k=1}^{n}f(z_k)\Delta x_{k} \label{eq:積和の定義}
+                \end{equation}
+                式\ref{eq:積和の定義}で定義された量$S_{\Delta}$を\textbf{積和}と呼ぶ。この積和に$n\to \infty$の極限を取る\footnote{高専の教科書では$\Delta x_k \to 0$としているが、このノートでは解析概論等の数学書に合わせ$n\to 0$とする。どちらも本質は同じである。}、つまり
+                分割の数を極限まで大きくして、ある一定の値に収束したとき、これを
+                \begin{equation}
+                    \int_a^b f(x)dx = \lim_{n\to\infty}\sum_{k=1}^{n}f(z_k)\Delta x_k \label{eq:定積分の定義}
+                \end{equation}
+                と表す。この左辺を$y=f(x)$の区間$[a,b]$での\textbf{定積分}といい、この値は$S$に等しい。（下図\ref{fig:定積分図}参照）
 
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[scale=0.35]{img/QuuNote/integral_picture.png}
+                    \caption{定積分の定義}\label{fig:定積分図}
+                \end{figure}
+
+                記号$\int_a^b f(x)dx$について、$a,b$をそれぞれ積分下限、積分上限という。また、変数$x$を\textbf{積分変数}という。
+                定積分は数値であるので、積分変数によってその結果は変わらない。すなわち
+                \begin{equation}
+                    \int_a^b f(x)dx = \int_a^b f(t)dt
+                \end{equation}
+                のように、積分変数を$x$としても$t$としても同じである。式\ref{eq:定積分の定義}について、右辺の極限が存在するとき、
+                $f(x)$は\textbf{積分可能である}という。$f(x)$が連続関数ならば常に積分可能である。
+
+                先ほどの過程では$f(x)\geq0$としてきたが、もちろん$f\leq0$の場合でも同様に定義される。積和の定義から、$f\leq0$であれば
+                定積分は``負''の面積を与えることがわかる。
+                \clearpage
+                さて、試しに$f(x)=c(\text{定数})$の場合の定積分を求めてみよう。これは長方形の面積を求めることになるから当然答えは$c(b-a)$である。
+                \begin{equation*}
+                    \int_a^b cdx = \lim_{n\to 0}\sum_{k=1}^{n} c\Delta x_k = c\lim\sum (x_{k}-x_{k-1})
+                \end{equation*}
+                あとは$\Sigma$の定義から
+                \begin{equation*}
+                    c\lim\sum (x_k-x_{k-1})=c\lim\left\{(x_1-x_0)+(x_2-x_1)+\cdots+(x_{n-1}-x_{n-2})+(x_n-x_{n-1})\right\}=c\lim (x_{n}-x_0)
+                \end{equation*}
+                $x_n=b,x_0=a$であるから結局
+                \begin{equation}
+                    \int_a^b cdx = c(b-a) \label{eq:int_cdx}
+                \end{equation}
+                となる。なお、上記のように$\sum,\lim$の記号を一部省略して書くことはしばし用いられる。このノートでも以降頻繁に用いる。
+
+                $f(x)=c$というもっとも単純な場合でさえこの計算量なのだから、$f$がもっと複雑になると計算量も途方のないものになる。しかし安心してほしい。
+                数値計算等を除いて式\ref{eq:定積分の定義}を用いて積分を計算することはほとんどない。実はもっと賢いやり方が存在するのである。
+            \clearpage
+            \subsection{定積分の性質}
                 
 
 
