@@ -562,7 +562,7 @@
 
                 さて、数列の極限と同様、関数の極限でもより厳密な定義について考えてみよう。それは以下のようになる。
                 \begin{itembox}{関数の極限の定義}
-                    $f(x)$が$x\to a$で$b$に収束する$\Leftrightarrow$任意の$\varepsilon>0$が与えられたとき、それに対応してある$\delta > 0$が\fbox{$|x-a|<\delta$のとき$|f(x)-b|<\varepsilon$}
+                    $f(x)$が$x\to a$で$b$に収束する$\Leftrightarrow$任意の$\varepsilon>0$が与えられたとき、それに対応してある$\delta > 0$が\fbox{$0<|x-a|<\delta$のとき$|f(x)-b|<\varepsilon$}
                     となるように定められる。
                 \end{itembox}
                 これはいわゆる\textbf{$\varepsilon-\delta$論法}と呼ばれるもので、ぶっちゃけめっちゃ難しい。ただこれも落ち着いてみれば数列の極限の定義\footnote{$\varepsilon-N$論法という。}と似通っているところがあることに気づける。
@@ -574,8 +574,8 @@
 
                 $\varepsilon-\delta$論法を使って、実際に収束することを証明してみる。
                 \paragraph*{例}$\displaystyle\lim_{x\to 2}x^2=4$を証明する。\\
-                $|x-2|<\delta$とするとき、$|x^2-4|=|x-2|\cdot|x+2|=|x-2|\cdot|(x-2)+4|\leq |x-2|^2+4|x-2|<\delta^2+4\delta$
-                であるため、$\varepsilon=\delta^2+4\delta\leftrightarrow \delta = -2+\sqrt{4+\varepsilon}$となるように$\delta$を取ればよい。このとき$|x-2|<\delta\rightarrow|x^2-4|<\varepsilon$を満たすので証明が終わる。$\square$\\
+                $0<|x-2|<\delta$とするとき、$|x^2-4|=|x-2|\cdot|x+2|=|x-2|\cdot|(x-2)+4|\leq |x-2|^2+4|x-2|<\delta^2+4\delta$
+                であるため、$\varepsilon=\delta^2+4\delta\leftrightarrow \delta = -2+\sqrt{4+\varepsilon}$となるように$\delta$を取ればよい。このとき$0<|x-2|<\delta\rightarrow|x^2-4|<\varepsilon$を満たすので証明が終わる。$\square$\\
 
                 試しに、$\varepsilon = 0.1$を代入すると$\delta \thickapprox 0.02484$であるため、$x=2.02483$のとき$|x^2-4|<\varepsilon$を満たすはずである。
                 実際、$|x^2-4|=0.0999770256<0.1=\varepsilon$となっていて満たしている。今回は具体的に$\delta(\varepsilon)$を求めたが、このやり方にとらわれなくても四角で囲った条件を満たすように$\delta$が
@@ -591,9 +591,9 @@
                     \lim_{x\to 0}&\frac{\sin x}{x}=1\label{eq:limit of sin/x}\\
                     \lim_{x\to 0}&\left(1+x\right)^\frac{1}{x} = e\label{eq:define_e}
                 \end{align}
-                式(\ref{eq:define_e})はネイピア数の定義である。実際は左辺の極限が収束することを証明しないといけないが、ここでは割愛する。
+                式\eqref{eq:define_e}はネイピア数の定義である。実際は左辺の極限が収束することを証明しないといけないが、ここでは割愛する。
 
-                では式(\ref{eq:limit of sin/x})を証明する。
+                では式\eqref{eq:limit of sin/x}を証明する。
                 \paragraph{証明}下図のような単位円を考える。
                 \begin{figure}[h]
                     \centering
@@ -612,7 +612,7 @@
                 \end{alignat}
                 よって、$x\to 0$の極限を取れば$\displaystyle \cos x\to 1,\frac{1}{\cos x}\to 1$より$\displaystyle\frac{\sin x}{x}\to 1$となる。$\square$\\
 
-                最後の不等式(\ref{eq:Hasamiuti})のような不等式のとき、両側の極限値が一致すれば、間に挟まれた極限値も等しくなる。これを\textbf{はさみうちの原理}という。
+                最後の不等式\eqref{eq:Hasamiuti}のような不等式のとき、両側の極限値が一致すれば、間に挟まれた極限値も等しくなる。これを\textbf{はさみうちの原理}という。
                 はさみうちの原理ではうまく挟み込める不等式をつくる必要があるので、慣れるまで時間がかかる。
 
             \clearpage
@@ -721,7 +721,7 @@
                 \begin{screen}
                     $f(a)\neq f(b)$なら$f(a)\leq k \leq f(b)$である任意の$k$について
                     \begin{equation*}
-                        f(c)=k
+                        f(c)=k \label{eq:中間値の定理}
                     \end{equation*}
                     となる点$c\in[a,b]$が少なくとも一つ存在する。（\textbf{中間値の定理}）
                 \end{screen}
@@ -1007,7 +1007,7 @@
                 \begin{equation}
                     \lim_{h\to 0}\frac{h}{e^h-1}=\lim_{t\to 0}\frac{\log(t+1)}{t}=\lim_{t\to 0}\log(1+t)^\frac{1}{t}
                 \end{equation}
-                と変形できるので、$e$の定義式(\ref{eq:define_e})より真数は$e$となる。したがってこの極限は$1$となるので
+                と変形できるので、$e$の定義式\eqref{eq:define_e}より真数は$e$となる。したがってこの極限は$1$となるので
                 \begin{equation}
                     (e^x)'=e^x \cdot \lim_{h\to 0}\frac{e^h-1}{h}=e^x \cdot 1 =e^x
                 \end{equation}
@@ -1042,7 +1042,7 @@
                 \begin{equation}
                     (\sin x)'=\lim_{h\to 0}\frac{\sin(x+h)-\sin x}{h}=\lim_{h\to 0}\frac{2\cos(\frac{2x+h}{2})\sin(\frac{h}{2})}{h}=\lim_{h\to 0}\cos (x+\frac{h}{2})\cdot \lim_{h\to 0}\frac{\sin\frac{h}{2}}{\frac{h}{2}}=\cos x
                 \end{equation}
-                最後の極限は式\ref{eq:limit of sin/x}を利用した。\\
+                最後の極限は式\eqref{eq:limit of sin/x}を利用した。\\
 
                 これで基礎となる関数の導関数はほとんど導出できた。以下公式としてまとめる。一部導出していないものもあるが演習問題で導出する。これくらいは後々の計算のためにも覚えておくとよい。
 
@@ -1080,7 +1080,7 @@
 
                 もう少し簡単な問題で積の微分公式を使う練習をしてみよう。
                 \paragraph{例題}$y=x\sin x$のとき$y'$を求めよ。\\
-                $f=x,g=\sin x$とおいて式\ref{eq:積の微分公式}を適応すると$f'=1,g'=\cos x$だから
+                $f=x,g=\sin x$とおいて式\eqref{eq:積の微分公式}を適応すると$f'=1,g'=\cos x$だから
                 \begin{equation}
                     y'=fg'+f'g=x\cos x+\sin x
                 \end{equation}
@@ -1105,7 +1105,7 @@
                 \begin{equation}
                     y'=-\frac{(x^n)'}{(x^n)^2}=-\frac{nx^{n-1}}{(x^n)^2}=-\frac{n}{x^{n+1}}=(-n)\cdot x^{(-n)-1}
                 \end{equation}
-                となり、式\ref{eq:積微分による1/x^nの微分}と同じ結果が得られた。こちらの方が自然な導出である。
+                となり、式\eqref{eq:積微分による1/x^nの微分}と同じ結果が得られた。こちらの方が自然な導出である。
 
                 次に$y=\tan x$の導関数を導出してみよう。この関数は$\sin x$などと違って定義から計算すると骨が折れる。しかし、商の微分公式を用いれば
                 \begin{equation}
@@ -1227,7 +1227,7 @@
                 $(8)y=f^{-1}(x)\quad (f(x)=x^3)$
 
                 \paragraph{問2}以下を示せ。\\
-                (1)商の微分公式(\ref{eq:商の微分公式})を示せ。\\
+                (1)商の微分公式\eqref{eq:商の微分公式}を示せ。\\
                 (2)$(e^{ax})'=ae^{ax}$を導関数の定義から導出せよ。\\
                 (3)$\cos x$の導関数を$\sin^2 x+\cos ^2 x=1$の関係を利用して導出せよ。ただし$\cos x\neq 0$であるとする。
 
@@ -1243,9 +1243,9 @@
                     \sin\alpha\cos\beta=\frac{1}{2}\left\{\sin(\alpha+\beta)+\sin(\alpha-\beta)\right\}\label{eq:和積の公式sinαcosβ}
                 \end{eqnarray}
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
-                    \item 公式(\ref{eq:和積の公式sinαcosβ})を示せ。
-                    \item 公式(\ref{eq:和積の公式sinαcosβ})の両辺を$\alpha$微分せよ。
-                    \item 公式(\ref{eq:和積の公式sinαcosβ})の両辺を$\beta$微分せよ。
+                    \item 公式\eqref{eq:和積の公式sinαcosβ}を示せ。
+                    \item 公式\eqref{eq:和積の公式sinαcosβ}の両辺を$\alpha$微分せよ。
+                    \item 公式\eqref{eq:和積の公式sinαcosβ}の両辺を$\beta$微分せよ。
                 \end{enumerate}
                 
             \clearpage
@@ -1387,7 +1387,7 @@
                     加速度ベクトルは、$\bm{a}=[-\cos t,-\sin t]=-\bm{r}$となる。また、$\bm{r}\cdot \bm{v}=\bm{v}\cdot\bm{a}=0$である。
                     したがって、等速円運動では加速度ベクトルは常に円の中心を向き、位置ベクトルと速度ベクトル、速度ベクトルと加速度ベクトルはそれぞれ直行することがわかる。
 
-                    さて、この結果を式\ref{eq:ニュートンの運動方程式}に代入してみると、次のようになる。
+                    さて、この結果を式\eqref{eq:ニュートンの運動方程式}に代入してみると、次のようになる。
                     \begin{equation}
                         \bm{F}=m\ddot{\bm{x}}=-m\bm{r}
                     \end{equation}
@@ -1521,7 +1521,7 @@
                     \begin{equation*}
                         g'(c)=\frac{f(b)-f(a)}{b-a}-f'(c)=0
                     \end{equation*}
-                    すなわち式\ref{eq:平均値の定理}が成り立つ。$\square$
+                    すなわち式\eqref{eq:平均値の定理}が成り立つ。$\square$
 
                     平均値の定理は様々な式の形に書き換えることができる。例えば
                     \begin{equation}
@@ -1539,9 +1539,9 @@
                     \begin{equation}
                         f(x+\Delta x)=f(x)+\Delta xf'(x+\theta\cdot\Delta x)\quad (0<\theta<1)\label{eq:平均値の定理x用}
                     \end{equation}
-                    となる。もちろんこれらは式\ref{eq:平均値の定理}を書き換えただけに過ぎないわけだが、目的によって
+                    となる。もちろんこれらは式\eqref{eq:平均値の定理}を書き換えただけに過ぎないわけだが、目的によって
                     使い分けができるようになる。例えば、$\sqrt{5}$の近似値を平均値の定理で求めてみることにする。元の式からでは
-                    どう求めるか見当もつかないが、式\ref{eq:平均値の定理1}を用いれば$\sqrt{5}=\sqrt{4+1}$であるため、$f(x)=\sqrt{x}$と置けば
+                    どう求めるか見当もつかないが、式\eqref{eq:平均値の定理1}を用いれば$\sqrt{5}=\sqrt{4+1}$であるため、$f(x)=\sqrt{x}$と置けば
                     \begin{equation*}
                         f(4+1)=f(4)+f'(4+\theta)=2+\frac{1}{2\sqrt{4+\theta}}\thickapprox 2+\frac{1}{2\sqrt{4}}=2.25
                     \end{equation*}
@@ -1579,7 +1579,7 @@
                     \begin{equation}
                         \frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(c)}{g'(c)}\quad(a<c<b)\label{eq:コーシーの平均値の定理}
                     \end{equation}
-                    ここで$g(x)=x$と置けば、平均値の定理\ref{eq:平均値の定理}である。平均値の定理はコーシーの平均値の定理と区別して
+                    ここで$g(x)=x$と置けば、平均値の定理\eqref{eq:平均値の定理}である。平均値の定理はコーシーの平均値の定理と区別して
                     ラグランジュの平均値の定理とも呼ばれる。
     
                 \clearpage
@@ -1620,7 +1620,7 @@
                     
                 \clearpage
                 \subsection{テイラーの定理}
-                    最後に、テイラーの定理について述べよう。これはコーシーの平均値の定理とはまた違った平均値の定理\ref{eq:平均値の定理}の一般化である。
+                    最後に、テイラーの定理について述べよう。これはコーシーの平均値の定理とはまた違った平均値の定理\eqref{eq:平均値の定理}の一般化である。
                     先に定理について述べる。
                     \begin{itembox}{\textbf{テイラーの定理}}
                         関数$f(x)$が$[a,b]$で$n$階まで連続な導関数をもち、$(a,b)$で$n+1$階微分可能であるとき、ある点$c\in(a,b)$が存在し
@@ -1632,7 +1632,7 @@
                             R_{n+1}=\frac{1}{(n+1)!}f^{(n+1)}(c)(b-a)^{n+1}\quad(a<c<b)
                         \end{equation}
                     \end{itembox}
-                    $n=0$のときは平均値の定理\ref{eq:平均値の定理}と同じである。証明は複雑であるが、平均値の定理と同様に証明できる。（証明は演習問題とする。）
+                    $n=0$のときは平均値の定理\eqref{eq:平均値の定理}と同じである。証明は複雑であるが、平均値の定理と同様に証明できる。（証明は演習問題とする。）
 
                     平均値の定理のときと同様に、テイラーの定理から様々な表式を求めてみよう。平均値の定理と同様に$c=a+\theta(b-a)\quad(0<\theta<1)$と置く。
                     さらに$b=x$とすれば
@@ -1666,14 +1666,14 @@
                     \begin{equation}
                         f(x)=f(a)+f'(a)(x-a)+\cdots+f^{(n)}(a)\frac{(x-a)^n}{n!}+\cdots\label{eq:テイラー級数(テイラー展開)}
                     \end{equation}
-                    と書く。最後の$\cdots$はどこまでも項を足していくことを意味する。この時\ref{eq:テイラー級数(テイラー展開)}を\textbf{テイラー級数}という。
+                    と書く。最後の$\cdots$はどこまでも項を足していくことを意味する。この時\eqref{eq:テイラー級数(テイラー展開)}を\textbf{テイラー級数}という。
                     特に$a=0$なら、
                     \begin{equation}
                         f(x)=f(0)+f'(0)x+\cdots+f^{(n)}(0)\frac{x^n}{n!}+\cdots\label{eq:マクローリン級数(マクローリン展開)}
                     \end{equation}
                     となり、これを\textbf{マクローリン級数}と呼ぶ。
 
-                    式\ref{eq:テイラー級数(テイラー展開)}や式\ref{eq:マクローリン級数(マクローリン展開)}は無限個の項を足し合わせており、このようなものを\textbf{無限級数}\footnote{加法はふつう有限のときに定義されるわけだから、無限個の和というのは形式的な表現である。実際の定義はのちに述べる。}という。
+                    式\eqref{eq:テイラー級数(テイラー展開)}や式\eqref{eq:マクローリン級数(マクローリン展開)}は無限個の項を足し合わせており、このようなものを\textbf{無限級数}\footnote{加法はふつう有限のときに定義されるわけだから、無限個の和というのは形式的な表現である。実際の定義はのちに述べる。}という。
                     無限級数については第IV部で詳しく述べることにする。が面白い性質があるので先回りして紹介しておこう。
                     その性質とは、項別微分・項別積分ができることである。積分についてはまだ扱っていないので項別微分のみに着目しよう。これは名前の通り、項別に微分することができるということである。
                     例えば、$\sin x$のマクローリン級数は
@@ -1714,7 +1714,7 @@
 
                 \paragraph{問5}次の問いに答えよ。
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
-                    \item $e^x$のマクローリン展開\ref{eq:e^xのマクローリン展開}を示せ。
+                    \item $e^x$のマクローリン展開\eqref{eq:e^xのマクローリン展開}を示せ。
                     \item (1)の$x$に$ix$を代入せよ。
                     \item $\sin x$のマクローリン展開と$\cos x$のマクローリン展開と(2)から次の\textbf{オイラーの公式}\footnote{この公式は抜群に役に立つ。数学以外の様々な顔でも出し、特に$x=\pi$を代入した結果は人類の至宝とも称される。覚えておいて損はないと断言できる。}を導け。
                         \begin{equation}
@@ -1729,7 +1729,7 @@
                 \begin{equation*}
                     K=\frac{1}{(b-a)^{n+1}}\left[f(b)-\left\{f(a)+f'(a)(b-a)+\frac{1}{2!}f''(a)(b-a)^2+\cdots+\frac{1}{n!}f^{(n)}(a)(b-a)^n\right\}\right]
                 \end{equation*}
-                この時、テイラーの定理\ref{eq:テイラーの定理}を証明せよ。
+                この時、テイラーの定理\eqref{eq:テイラーの定理}を証明せよ。
             \clearpage
             \section{第II部演習問題}
             \paragraph{問1}次の関数を微分せよ。\\
@@ -1750,7 +1750,7 @@
                 $\displaystyle[1]\lim_{x\to 1}\frac{1+\cos\pi x}{(x-1)^2}$\hspace{10mm}
                 $\displaystyle[2]\lim_{x\to 0}\frac{\sin x-x\cos x}{x^2\log(1+x)}$\hspace{10mm}
                 $\displaystyle[3]\lim_{x\to\infty}\left\{\sqrt{(x+a)(x+b)}-\sqrt{(x-a)(x-b)}\right\}$
-            \paragraph{問4}平均値の定理\ref{eq:平均値の定理}を用いて$x>0$ならば$\sin x<x$を示せ。
+            \paragraph{問4}平均値の定理\eqref{eq:平均値の定理}を用いて$x>0$ならば$\sin x<x$を示せ。
 
             \paragraph{問5}次の問いに答えよ。
                 \begin{enumerate}
@@ -1765,7 +1765,7 @@
                     \log\left(\frac{1+x}{1-x}\right)=2\left(x+\frac{x^3}{3}+\frac{x^5}{5}+\cdots\right)
                 \end{equation*}
             
-            \paragraph{問7}$(1+x)^{\alpha}\quad(\alpha\text{は実数})$のマクローリン展開を求め、二項定理\ref{eq:二項定理}を証明せよ。
+            \paragraph{問7}$(1+x)^{\alpha}\quad(\alpha\text{は実数})$のマクローリン展開を求め、二項定理\eqref{eq:二項定理}を証明せよ。
 
             \paragraph{問8}以下の問いに答えよ。
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
@@ -1847,9 +1847,9 @@
                 これが現象の本質を表していることを示している。
 
                 一方で、物理現象の本質を明らかにすることとは別に実際にその表式（今回の場合は変位）を得たい場合もある。
-                その場合は式\ref{eq:空気抵抗ありのときの落下運動}のような\textbf{微分方程式}では困るわけである。
+                その場合は式\eqref{eq:空気抵抗ありのときの落下運動}のような\textbf{微分方程式}では困るわけである。
                 $y'=x$のような簡単な微分方程式なら$(x^2)'=2x$から簡単に解が予想できるが、$y'=x^2$や$y'=\sin 2x$など
-                問題のたびに微分から予想していては大変である。また、式\ref{eq:空気抵抗ありのときの落下運動}みたいに式が複雑になっていくと
+                問題のたびに微分から予想していては大変である。また、式\eqref{eq:空気抵抗ありのときの落下運動}みたいに式が複雑になっていくと
                 解の一つを予想するだけで苦労してしまう。そこで、微分と逆の演算である\textbf{積分}が登場する。この積分を学べば
                 $y'(x)=f(x)$タイプの微分方程式はある程度統一的に解くことができるようになるのである。\\
 
@@ -1857,7 +1857,7 @@
                 \begin{equation}
                     F'(x)=f(x) \label{eq:原始関数定義}
                 \end{equation}
-                となる関数$F(x)$が存在した時、この関数$F(x)$を$f(x)$の原始関数、もしくは\textbf{不定積分}\footnote{実はこれは不定積分ではなく、原始関数の定義である。基本的に原始関数と不定積分が等しくなる保証はないわけだが、
+                となる関数$F(x)$が存在した時、この関数$F(x)$を$f(x)$の原始関数、もしくは\textbf{不定積分}\footnote{実はこれは不定積分ではなく、原始関数の定義である。一般に原始関数と不定積分が等しくなる保証はないわけだが、
                 $f$が連続関数であればこれらは同義になる。我々は今基本的に連続関数のみ扱いたいわけだから、これらを同じものとして扱っている。}という。
                 この時$f(x)$を被積分関数といい、不定積分を次のように表す。
                 \begin{equation}
@@ -1898,7 +1898,7 @@
                 \begin{equation}
                     F(x)\pm G(x)=\int \left\{(F(x))'+(G(x))'\right\}dx=\int \left\{f(x)\pm g(x)\right\}dx
                 \end{equation}
-                となり式\ref{eq:不定積分の加法性}を得る。
+                となり式\eqref{eq:不定積分の加法性}を得る。
 
                 次に$f(ax+b)$について考えて見る。これも定義から$(F(ax+b))'=\frac{1}{a}F'(ax+b)$なのだから
                 \begin{equation}
@@ -1964,7 +1964,7 @@
                 \begin{equation}
                     \frac{d}{dt}F(g(x))=\frac{d}{dt}F(t)=f(t)
                 \end{equation}
-                よってそれぞれ$x,t$で不定積分すれば式\ref{eq:置換積分}が得られる。\\
+                よってそれぞれ$x,t$で不定積分すれば式\eqref{eq:置換積分}が得られる。\\
 
                 \paragraph{例1}
                 \begin{equation*}
@@ -1975,7 +1975,7 @@
                     \int \frac{1}{2}\sin(g(x))g'(x)dx=\int \frac{1}{2}\sin t dt = -\frac{1}{2}\cos t = -\frac{1}{2}\cos x^2
                 \end{equation*}\\
 
-                式\ref{eq:置換積分}の$g'(x)$は$\frac{dt}{dx}$のことであるため、書き直すと
+                式\eqref{eq:置換積分}の$g'(x)$は$\frac{dt}{dx}$のことであるため、書き直すと
                 \begin{equation}
                     \int f(g(x))\frac{dt}{dx}dx =\int f(t)dt 
                 \end{equation}
@@ -2004,7 +2004,7 @@
                     t=\sinh^{-1}x=\log\left(x+\sqrt{x^2+1}\right)\label{eq:arcsinh}
                 \end{equation}\\
 
-                さて、例3では式\ref{eq:置換積分}の右辺から左辺への変形であった。置換積分は$x=\dots$と置く場合と
+                さて、例3では式\eqref{eq:置換積分}の右辺から左辺への変形であった。置換積分は$x=\dots$と置く場合と
                 $t=\dots$と置く場合とがある。どちらの場合でも対応できるようにしておきたいものである。ちなみに、いままで置換の変数に
                 $t$を用いてきたが、こだわらなくてよい。つまり$u=x^2$と置いたり$x=\cos\theta$と置いても何も差し支えない。
             \clearpage
@@ -2022,7 +2022,7 @@
                 \begin{equation}
                     (fg)'=f'g+fg' \leftrightarrow fg' = (fg)'-f'g
                 \end{equation}
-                あとは両辺を積分すれば式\ref{eq:部分積分法}が得られる。
+                あとは両辺を積分すれば式\eqref{eq:部分積分法}が得られる。
 
                 \paragraph{例1}
                 \begin{equation*}
@@ -2094,7 +2094,7 @@
                     I_m = \frac{1}{b^2}\left[\frac{2m-3}{2m-2}I_{m-1}+\frac{1}{2(m-1)}\frac{(x-a)}{\left\{(x-a)^2+b^2\right\}^{m-1}}\right] \label{eq:有理関数の不定積分漸化式}
                 \end{equation}
                 \clearpage
-                式\ref{eq:有理関数の不定積分漸化式}から、$I_m$を求めるには$I_{m-1}$を、$I_{m-1}$を求めるには$I_{m-2}$を・・・とどんどん遡っていき$m=2$まで行くと、不定積分は求められる。
+                式\eqref{eq:有理関数の不定積分漸化式}から、$I_m$を求めるには$I_{m-1}$を、$I_{m-1}$を求めるには$I_{m-2}$を・・・とどんどん遡っていき$m=2$まで行くと、不定積分は求められる。
                 なぜなら$m=2$つまり$n=1$のとき
                 \begin{equation*}
                     I_1 = \int \frac{dx}{(x-a)^2+b^2}=\frac{1}{b}\tan^{-1}\left(\frac{x-a}{b}\right) 
@@ -2218,14 +2218,14 @@
                 $[a,b]$の間に$x_0=a,x_1,x_2,\dots,x_n=b$の$n+1$個の点を考え、$z_k \in [x_{k-1},x_{k}]$である任意の点$z_1,z_2,z_3,\dots,z_{n}$を考える。
                 $\Delta x_k=x_{k}-x_{k-1}$と定義すると、$y=f(x)$と直線$x=a,x=b$とx軸で囲まれた面積$S$の近似値$S_{\Delta}$は次のように与えられることがわかる。
                 \begin{equation}
-                    S_{\Delta} = \sum_{k=1}^{n}f(z_k)\Delta x_{k} \label{eq:積和の定義}
+                    S_{\Delta} = \sum_{k=1}^{n}f(z_k)\Delta x_{k} \label{eq:リーマン和の定義}
                 \end{equation}
-                式\ref{eq:積和の定義}で定義された量$S_{\Delta}$を\textbf{積和}と呼ぶ。この積和に$n\to \infty$の極限を取る\footnote{高専の教科書では$\Delta x_k \to 0$としているが、このノートでは解析概論等の数学書に合わせ$n\to 0$とする。どちらも本質は同じである。}、つまり
+                式\eqref{eq:リーマン和の定義}で定義された量$S_{\Delta}$を\textbf{リーマン和}\footnote{本によっては積和と呼ぶこともある。このノート中はどちらとも使っているかもしれない。}と呼ぶ。この積和に$n\to \infty$の極限を取る\footnote{高専の教科書では$\Delta x_k \to 0$としているが、このノートでは解析概論等の数学書に合わせ$n\to 0$とする。どちらも本質は同じである。}、つまり
                 分割の数を極限まで大きくして、ある一定の値に収束したとき、これを
                 \begin{equation}
                     \int_a^b f(x)dx = \lim_{n\to\infty}\sum_{k=1}^{n}f(z_k)\Delta x_k \label{eq:定積分の定義}
                 \end{equation}
-                と表す。この左辺を$y=f(x)$の区間$[a,b]$での\textbf{定積分}といい、この値は$S$に等しい。（下図\ref{fig:定積分図}参照）
+                と表す。この左辺を$y=f(x)$の区間$[a,b]$での\textbf{定積分}といい、この値は$S$に等しい。（下図\eqref{fig:定積分図}参照）
 
                 \begin{figure}[h]
                     \centering
@@ -2238,7 +2238,7 @@
                 \begin{equation}
                     \int_a^b f(x)dx = \int_a^b f(t)dt
                 \end{equation}
-                のように、積分変数を$x$としても$t$としても同じである。式\ref{eq:定積分の定義}について、右辺の極限が存在するとき、
+                のように、積分変数を$x$としても$t$としても同じである。式\eqref{eq:定積分の定義}について、右辺の極限が存在するとき、
                 $f(x)$は\textbf{積分可能である}という。$f(x)$が連続関数ならば常に積分可能である。
 
                 先ほどの過程では$f(x)\geq0$としてきたが、もちろん$f\leq0$の場合でも同様に定義される。積和の定義から、$f\leq0$であれば
@@ -2259,11 +2259,129 @@
                 となる。なお、上記のように$\sum,\lim$の記号を一部省略して書くことはしばし用いられる。このノートでも以降頻繁に用いる。
 
                 $f(x)=c$というもっとも単純な場合でさえこの計算量なのだから、$f$がもっと複雑になると計算量も途方のないものになる。しかし安心してほしい。
-                数値計算等を除いて式\ref{eq:定積分の定義}を用いて積分を計算することはほとんどない。実はもっと賢いやり方が存在するのである。
+                数値計算等を除いて式\eqref{eq:定積分の定義}を用いて積分を計算することはほとんどない。実はもっと賢いやり方が存在するのである。
             \clearpage
             \subsection{定積分の性質}
-                
+                ここでは定積分の諸性質についてまとめる。仮定として$f,g$は区間$[a,b]$で連続であるとする。
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $\displaystyle \int_a^b \left\{f(x)\pm g(x)\right\}dx=\int_a^b f(x)dx\pm\int_a^b g(x)dx\label{eq:定積分の加法性}$
+                    \item $\displaystyle \int_a^b cf(x)dx=c\int_a^b f(x)dx \quad (c\text{は定数})$
+                    \item $x\in [a,b]$で$f\geq 0$ならば$\displaystyle\int_a^b f(x)dx\geq 0$
+                    \item $x\in [a,b]$で$f\geq g$ならば$\displaystyle\int_a^b f(x)dx\geq \int_a^b g(x)dx\label{eq:関数と積分値の大小関係}$
+                    \item $\displaystyle \int_a^b f(x)dx = f(c)(b-a)\quad (c\in (a,b))\label{eq:積分の平均値の定理}$
+                    \item $\displaystyle \int_a^bf(x)dx=\int_a^c f(x)dx+\int_c^b f(x)dx \quad(c\in(a,b))\label{eq:定積分の区間についての加法性}$
+                    \item $\displaystyle \int_a^b f(x)dx = -\int_b^a f(x)dx\label{eq:int[a,b]=-[b,a]}$
+                    \item $\displaystyle \int_a^a f(x)dx=0\label{eq:int[a,a]=0}$
+                \end{enumerate}
+                式\eqref{eq:積分の平均値の定理}は（積分の）\textbf{第一平均値定理}\footnote{平均値の第一定理とも。文脈によっては単に平均値の定理とも呼ぶこともある。}と呼ばれる。性質\eqref{eq:int[a,b]=-[b,a]}は性質というよりは
+                このように定める（定義）として考えるとよい。\footnote{線積分を学ぶと、この定義が見通しよくなる。なぜなら左辺は$C:a\to b$の曲線に沿った積分$\int_C$であるためである。}数学書の中にはこれを証明させるものもあるが気にしなくてよい。性質\eqref{eq:定積分の区間についての加法性}も同様である。
+                性質\eqref{eq:定積分の加法性}から性質\eqref{eq:関数と積分値の大小関係}と性質\eqref{eq:int[a,a]=0}は容易に証明できるので演習問題とする。よって\eqref{eq:積分の平均値の定理}とを示す。
 
+                \paragraph{平均値の定理の証明}
+                    $f(x)$が定数関数なら明らかに式\eqref{eq:積分の平均値の定理}が成り立つ。よって$f(x)$は区間$[a,b]$で最大値$M$と最小値$m$を取るとする。この時
+                    \begin{equation*}
+                        m\leq f(x) \leq M
+                    \end{equation*}
+                    である。性質\eqref{eq:関数と積分値の大小関係}より
+                    \begin{equation*}
+                        \int_a^b mdx \leq \int_a^b f(x)dx \leq \int_a^b Mdx
+                    \end{equation*}
+                    $m,M$は$x$によらない定数なので
+                    \begin{equation*}
+                        m(b-a) \leq \int f(x)dx \leq M(b-a)
+                    \end{equation*}
+                    各辺を$b-a$で割ると
+                    \begin{equation*}
+                        m \leq \frac{1}{(b-a)}\int_a^b f(x)dx \leq M
+                    \end{equation*}
+                    $f(x)$は$[a,b]$で連続関数だから、中間値の定理\eqref{eq:中間値の定理}より、
+                    \begin{equation*}
+                        \frac{1}{b-a}\int_a^b f(x)dx = f(c)
+                    \end{equation*}
+                    となるような点$c$が区間$(a,b)$内に存在する。よって、平均値の定理\eqref{eq:積分の平均値の定理}が証明された。$\square$
+                \clearpage
+                平均値の定理はしばし次のように書くこともある。
+                \begin{equation}
+                    \int_{a}^{b}f(x)dx = (b-a)f(a+\theta(b-a))\quad (0<\theta < 1) \label{eq:積分の平均値の定理θ}
+                \end{equation}
+                これは$\theta$をラグランジュの平均値の定理\eqref{eq:平均値の定理1}と同じように使っている。
+
+                性質\eqref{eq:定積分の区間についての加法性}では$a<c<b$としているが、性質\eqref{eq:int[a,b]=-[b,a]}を規約することで、この条件がなくても
+                常に\eqref{eq:定積分の区間についての加法性}が成り立つ。
+
+                \vspace{\stretch{1}}
+                \hrulefill
+
+                余談だが、
+                \begin{equation*}
+                    \int_I dx = \int_{a}^{b}dx = b-a
+                \end{equation*}
+                は$I=[a,b]$の長さを表す。同様にして二重積分についても
+                \begin{equation*}
+                    \iint _D dx dy = S(D)
+                \end{equation*}
+                は領域$D$の面積$S(D)$を表す。ここまでくればもちろん三重積分についても
+                \begin{equation*}
+                    \iiint _D dx dy dz = V(D)  
+                \end{equation*}
+                が領域$D$の体積$V(D)$だと予想がつく。（実際そうである。）このノートや高専2年生では多重積分のタの字も出てこないが、
+                こういうちょっとした知識を学ぶだけでも楽しい。
+            \clearpage
+            \subsection{微積分学の基本定理}
+                ここでは解析学上もっとも重要な定理（言いすぎ？）である微積分学の基本定理について述べる。最も重要なのでていねいに導出することにする。
+
+                まず、関数$f(x)$について、$F(x)$を次のように定める。
+                \begin{equation*}
+                    F(x)=\int_a^x f(x)dx
+                \end{equation*}
+                このとき、$F(x+\Delta x)$は区間の加法性\eqref{eq:定積分の区間についての加法性}より
+                \begin{equation*}
+                    F(x+\Delta x)=\int_a^{x+\Delta x}=\int_a^x + \int_{x}^{x+\Delta x}=F(x)+\int_x^{x+\Delta x}f(x)dx
+                \end{equation*}
+                よって、移項して平均値の定理\eqref{eq:積分の平均値の定理θ}より
+                \begin{equation*}
+                    F(x+\Delta x)-F(x)=\Delta xf(x+\theta\Delta x)\quad (0<\theta<1)
+                \end{equation*}
+                式を整理すると
+                \begin{equation*}
+                    f(x+\theta \Delta x) = \frac{F(x+\Delta x)-F(x)}{\Delta x}
+                \end{equation*}
+                ここで、$\Delta x\to 0$の極限を取ると
+                \begin{equation*}
+                    f(x)=F'(x)
+                \end{equation*}
+                すなわち
+                \begin{equation}
+                    f(x)=\frac{d}{dx}\int_a^x f(x)dx\label{eq:微積分学の基本定理}
+                \end{equation}
+                これが\textbf{微積分学の基本定理}である。この定理は微分と積分が互いに逆の演算であることを示している。
+                すなわち$F$は$f$の原始関数になる。$f$が\underline{連続であれば}それが可能なのである。
+
+                $F$が$f$の原始関数であるということは$F+C$も$f$の原始関数である。
+                \begin{equation*}
+                    F(x)+C = \int_a^x f(x)dx
+                \end{equation*}
+                ここで$x=a$とすると性質\eqref{eq:int[a,a]=0}より
+                \begin{equation*}
+                    F(a)+C=0 \leftrightarrow C=-F(a)
+                \end{equation*}
+                よって、$x=b$とすれば
+                \begin{equation}
+                    \int_a^b f(x)dx = F(b)-F(a) \label{eq:微積分学の第二基本定理} 
+                \end{equation}
+                これを\textbf{微積分学の第二基本定理}という。この表現に倣って\eqref{eq:微積分学の基本定理}は微積分学の第一基本定理と呼ばれる。
+
+                式\eqref{eq:微積分学の第二基本定理}の右辺は次の便利な表記法がある。
+                \begin{equation*}
+                    \left[F(x)\right]_a^b = F(x)\left|_a^b\right. = F(b)-F(a)
+                \end{equation*}
+                \clearpage
+                不定積分については、以前すでに不完全であるが定義した。そこで、本当の不定積分の定義を述べようと思う。そもそも、不定積分は
+                定数分の不定性はなく、ある点$a$で固定して定義される。
+                \begin{equation}
+                    F(x)=\int_{a}^{x}f(x)dx
+                \end{equation}
+                これが点$a$における不定積分である。
 
 
 
@@ -2566,7 +2684,7 @@
                 \begin{equation*}
                     K=\frac{1}{(n+1)!}f^{(n+1)}(c)
                 \end{equation*}
-                これを$K$の定義に代入して整理すれば、式\ref{eq:テイラーの定理}である。$\square$
+                これを$K$の定義に代入して整理すれば、式\eqref{eq:テイラーの定理}である。$\square$
             \clearpage
 
         \clearpage
