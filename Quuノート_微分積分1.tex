@@ -87,6 +87,7 @@
     \end{screen}
     \clearpage
     \section{様々な`数'と数直線}
+
         \subsection{数の種類}
             数学を勉強するうえで、様々な数が登場する。まず一番初めに思いつくのが$1,2,3...$といった\textbf{自然数}である。
             次の自然数に$0$と負の符号をつけたものを加えた\textbf{整数}が考えられる。整数同士で足し算、引き算、掛け算を行っても
@@ -2377,11 +2378,67 @@
                 \end{equation*}
                 \clearpage
                 不定積分については、以前すでに不完全であるが定義した。そこで、本当の不定積分の定義を述べようと思う。そもそも、不定積分は
-                定数分の不定性はなく、ある点$a$で固定して定義される。
+                定数分の不定性はなく、ある点$a$で固定して定義される。\footnote{本によっては、$\int_a^x$と$\int_b^x$は定数分の差しかないので下限を省略して$\int $を不定積分と定義するものもある。}
                 \begin{equation}
                     F(x)=\int_{a}^{x}f(x)dx
                 \end{equation}
-                これが点$a$における不定積分である。
+                これが点$a$における不定積分の定義である。ちなみにイギリスかどこかの数学書では不定積分を
+                \begin{equation*}
+                    \int^x f(x)dx
+                \end{equation*}
+                と表記するらしい。
+
+                定積分の計算で公式\eqref{eq:微積分学の第二基本定理}を用いるときは、積分範囲に気を付けなければならない。例えば、
+                \begin{equation*}
+                    \int_{-1}^{1} \frac{dx}{x} = \left[\log|x|\right]_{-1}^1=\log|1|-\log|-1|=0
+                \end{equation*}
+                と行うのは不適である。被積分関数が$x=0$で不連続になってしまうからである。多価関数の場合は、関数が連続になるように
+                分枝を取らなければならない。
+            \clearpage
+            \subsection{定積分の計算}
+                ここでは定積分の計算について述べる。
+                \paragraph{置換積分法}
+                    関数$x=\phi(t)$について、$\phi(t)$と$\phi'(t)$が$[\alpha,\beta]$で連続であり$a=\phi(\alpha),b=\phi(\beta)$とする。このとき
+                    \begin{equation}
+                        \int_{a}^{b}f(x)dx = \int_{\alpha}^{\beta}f(\phi(t))\phi'(t)dt\label{eq:置換積分_定積分}
+                    \end{equation}
+                    が成りたつ。これを置換積分という。
+
+                    公式\eqref{eq:置換積分_定積分}の証明を行おう。
+                    \begin{equation*}
+                        F(x)=\int_{a}^{x}f(x)dx
+                    \end{equation*}
+                    と置くと
+                    \begin{equation*}
+                        \frac{dF}{dt}=\frac{dF}{dx}\frac{dx}{dt}=f(x)\phi'(t)
+                    \end{equation*}
+                    であるため、両辺を$\int_{\alpha}^{\beta}$で積分すると
+                    \begin{equation*}
+                        F(\phi(\beta))-F(\phi(\alpha))=\int_{\alpha}^{\beta}f(\phi(t))\phi'(t)dt
+                    \end{equation*}
+                    左辺は$F(b)-F(a)=\int_a^b $であるため、公式\eqref{eq:置換積分_定積分}を得る。
+
+                \paragraph{部分積分法}
+                    関数$f,g$について、どちらの関数も$[a,b]$で微分可能であり、$f',g'$が連続であれば
+                    \begin{equation}
+                        \int_a^b f(x)g'(x)dx = \left[f(x)g(x)\right]_a^b - \int_a^b f'(x)g(x)dx \label{eq:部分積分_定積分}
+                    \end{equation}
+                    が成り立つ。これを部分積分という。
+
+                    公式\eqref{eq:部分積分_定積分}の証明を行う。まず、明らかに次が成り立つ。
+                    \begin{equation*}
+                        \frac{d}{dx}(fg) = fg' + f'g
+                    \end{equation*}
+                    よって、移項すれば
+                    \begin{equation*}
+                        fg' = \frac{d}{dx}(fg) - f'g
+                    \end{equation*}
+                    ここで両辺を$\int_a^b$で積分すれば公式\eqref{eq:部分積分_定積分}を得る。
+
+                    
+            
+                
+                
 
 
 
