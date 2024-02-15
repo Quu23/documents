@@ -1951,19 +1951,19 @@
 
                 そこで、このような複雑な積分を計算する方法として\textbf{置換積分}法を紹介する。
                 \begin{itembox}{置換積分の公式}
-                    関数$g(x)$について$t=g(x)$と置くとき
+                    関数$\phi(t)$について$x=\phi(t)$と置くとき
                     \begin{equation}
-                        \int f(g(x))g'(x)dx = \int f(t)dt \label{eq:置換積分}
+                        \int f(x)dx = \int f(\phi(t))\phi'(t)dt \label{eq:置換積分}
                     \end{equation}
                     が成り立つ。
                 \end{itembox}
                 \paragraph{証明} 合成関数の微分法によって
                 \begin{equation}
-                    (F(g(x)))'=F'(g(x))g'(x)=f(g(x))g'(x) 
+                    \frac{d}{dt}F(\phi(t))=F'(\phi(t))\phi'(t)=f(\phi(t))\phi'(t) 
                 \end{equation}
-                また、$t=g(x)$より
+                また、$x=\phi(t)$より
                 \begin{equation}
-                    \frac{d}{dt}F(g(x))=\frac{d}{dt}F(t)=f(t)
+                    \frac{d}{dx}F(\phi(t))=\frac{d}{dx}F(x)=f(x)
                 \end{equation}
                 よってそれぞれ$x,t$で不定積分すれば式\eqref{eq:置換積分}が得られる。\\
 
@@ -1976,11 +1976,11 @@
                     \int \frac{1}{2}\sin(g(x))g'(x)dx=\int \frac{1}{2}\sin t dt = -\frac{1}{2}\cos t = -\frac{1}{2}\cos x^2
                 \end{equation*}\\
 
-                式\eqref{eq:置換積分}の$g'(x)$は$\frac{dt}{dx}$のことであるため、書き直すと
+                式\eqref{eq:置換積分}の$\phi'(t)$は$\frac{dx}{dt}$のことであるため、書き直すと
                 \begin{equation}
-                    \int f(g(x))\frac{dt}{dx}dx =\int f(t)dt 
+                    \int f(\phi(t))\frac{dx}{dt}dt =\int f(x)dx 
                 \end{equation}
-                となり、あたかも$\frac{dt}{dx}$が$dx$で約分されているように見える。また、$t=g(x)$と置いて$\frac{dt}{dx}$を求める行為は
+                となり、あたかも$\frac{dx}{dt}$が$dt$で約分されているように見える。また、$t=g(x)$と置いて$\frac{dt}{dx}$を求める行為は
                 形式的には両辺をそれぞれの文字$t,x$で微分して$dt,dx$を付けたものと等しくなる。つまり、$dt=g'(x)dx$を代入したように見える。
                 この書き方は便利なのでしばし用いられるが、あくまで形式的なものに過ぎない。
                 \clearpage
@@ -2164,11 +2164,12 @@
                 $(4)\displaystyle \int \frac{dx}{\sqrt{1-x^2}}\quad (x=\sin \theta)$\hspace{3mm}
                 $(5)\displaystyle \int \sin^3 x\cos x dx \quad(t=\sin x)$\\
             
-            \paragraph{問3}次の不定積分を部分積分法で求めよ。\\
+            \paragraph{問3}次の不定積分を部分積分法で求めよ。{\scriptsize (5)ヒント：$I=$と置き、二回部分積分せよ。}\\
                 $(1)\displaystyle \int x\cos xdx$\hspace{3mm}
                 $(2)\displaystyle \int xe^x dx$\hspace{3mm}
                 $(3)\displaystyle \int e^x\cos xdx$\hspace{3mm}
-                $(4)\displaystyle \int \log(x^2+1)dx$\\
+                $(4)\displaystyle \int \log(x^2+1)dx$\hspace{3mm}
+                $(5)\displaystyle \int e^x\sin xdx$
 
             \paragraph{問4}次の不定積分を部分分数分解を用いて求めよ。\\
                 $(1)\displaystyle \int \frac{dx}{x^2-3x+2}$\hspace{20mm}
@@ -2276,7 +2277,7 @@
                 \end{enumerate}
                 式\eqref{eq:積分の平均値の定理}は（積分の）\textbf{第一平均値定理}\footnote{平均値の第一定理とも。文脈によっては単に平均値の定理とも呼ぶこともある。}と呼ばれる。性質\eqref{eq:int[a,b]=-[b,a]}は性質というよりは
                 このように定める（定義）として考えるとよい。\footnote{線積分を学ぶと、この定義が見通しよくなる。なぜなら左辺は$C:a\to b$の曲線に沿った積分$\int_C$であるためである。}数学書の中にはこれを証明させるものもあるが気にしなくてよい。性質\eqref{eq:定積分の区間についての加法性}も同様である。
-                性質\eqref{eq:定積分の加法性}から性質\eqref{eq:関数と積分値の大小関係}と性質\eqref{eq:int[a,a]=0}は容易に証明できるので演習問題とする。よって\eqref{eq:積分の平均値の定理}とを示す。
+                性質\eqref{eq:定積分の加法性},\eqref{eq:int[a,b]=-[b,a]]}から性質\eqref{eq:関数と積分値の大小関係}と性質\eqref{eq:int[a,a]=0}は容易に証明できるので演習問題とする。よって\eqref{eq:積分の平均値の定理}とを示す。
 
                 \paragraph{平均値の定理の証明}
                     $f(x)$が定数関数なら明らかに式\eqref{eq:積分の平均値の定理}が成り立つ。よって$f(x)$は区間$[a,b]$で最大値$M$と最小値$m$を取るとする。この時
@@ -2427,16 +2428,142 @@
 
                     公式\eqref{eq:部分積分_定積分}の証明を行う。まず、明らかに次が成り立つ。
                     \begin{equation*}
-                        \frac{d}{dx}(fg) = fg' + f'g
+                        (fg)' = fg' + f'g
                     \end{equation*}
                     よって、移項すれば
                     \begin{equation*}
-                        fg' = \frac{d}{dx}(fg) - f'g
+                        fg' = (fg)' - f'g
                     \end{equation*}
-                    ここで両辺を$\int_a^b$で積分すれば公式\eqref{eq:部分積分_定積分}を得る。
+                    ここで両辺を$\int_a^b$で積分すれば公式\eqref{eq:部分積分_定積分}を得る。\\
 
-                    
-            
+                    まとめると、置換積分も部分積分も、不定積分のときとやっていることは変わらない。積分区間等に気を付けさえいれば不定積分と同様に
+                    計算してよいのである。これも基本定理のもたらした恩恵である。
+                \clearpage
+                \subsection{広義積分}
+                    ここでは定積分の定義を拡張した広義積分を扱う。具体的には次の二つの場合を扱う。
+                    \begin{enumerate}
+                        \item 積分区間内で不連続な点が有限個存在する
+                        \item 積分上限・下限の片方もしくは両方がが無限大である
+                    \end{enumerate}
+                    今までの仮定では被積分関数は区間内で連続であったが、この広義積分では不連続な点（有限個）や区間が無限大など
+                    広義の意味での定積分を考えるのである。そういう意味で広義積分というわけである。
+
+                    \paragraph{被積分関数が不連続}
+                        $f(x)$が$[a,b)$で連続であるとする。この時、極限
+                        \begin{equation*}
+                            \lim_{\varepsilon \to +0}\int_{a}^{b-\varepsilon}f(x)dx
+                        \end{equation*}
+                        が存在すれば、その極限値を
+                        \begin{equation*}
+                            \int_{a}^{b}f(x)dx
+                        \end{equation*}
+                        と表す。同様に$(a,b]$で連続である場合も、極限
+                        \begin{equation*}
+                            \lim_{\varepsilon\to +0}\int_{a+\varepsilon}^{b}f(x)dx
+                        \end{equation*}
+                        が存在すれば、その極限値を
+                        \begin{equation*}
+                            \int_{a}^{b}f(x)dx
+                        \end{equation*}
+                        このようにすれば$a\leq c \leq b$であるような$x=c$において$f(x)$が不連続である場合は、下の右辺の極限が存在すると仮定すると
+                        \begin{equation*}
+                            \int_{a}^{b}f(x)dx = \lim_{\varepsilon_1\to +0}\int_{a}^{c-\varepsilon_1}f(x)dx+\lim_{\varepsilon_2\to +0}\int_{c+\varepsilon}^{b}f(x)dx
+                        \end{equation*}       
+                        と計算すればよいことがわかる。このとき$\varepsilon_1,\varepsilon_2$はそれぞれ独立に極限を取ることに注意。\footnote{一方で$\varepsilon_1=\varepsilon_2$として極限を取ることもある。これをコーシーの主値積分という。}\\
+                        上記の極限が収束するとき、\textbf{広義積分は収束する}という。\footnote{実際に広義積分が収束するのを示すためには、よくコーシーの収束条件を使われる。}\\
+
+                        例えば、$1/\sqrt{x}$は$x=0$で不連続であるが、
+                        \begin{equation*}
+                            \int_{0}^{1}\frac{dx}{\sqrt{x}}=\lim_{\varepsilon\to +0}\int_{\varepsilon}^{1}\frac{dx}{\sqrt{x}}=\lim_{\varepsilon\to+0}\left[2\sqrt{x}\right]_{\varepsilon}^1=\lim_{\varepsilon\to +0}2-2\sqrt{\varepsilon}=2
+                        \end{equation*}
+                        よって、広義積分は収束してその値は$2$である。一方で$1/x$について$[-1,1]$で積分すると$x=0$で不連続であることに注意すれば
+                        \begin{equation*}
+                            \int_{-1}^{1}\frac{dx}{x}=\lim_{\substack{\varepsilon_1\to +0\\\varepsilon_2\to +0}}\int_{-1}^{-\varepsilon_1}\frac{dx}{x}+\int_{\varepsilon_2}^{1}\frac{dx}{x}=\lim_{\substack{\varepsilon_1\to +0\\\varepsilon_2\to +0}}\left(\log\varepsilon_1-\log\varepsilon_2\right)
+                        \end{equation*}
+                        である。この極限は存在しない（発散する）ので、広義積分は収束しない。つまりは$\displaystyle \int_{-1}^{1}\frac{dx}{x}$は無意味。
+                    \clearpage
+                    \paragraph{積分区間が無限大}
+                        関数$f(x)$が$x\geq a$で連続であるとする。このとき極限
+                        \begin{equation*}
+                            \lim_{b\to \infty}\int_{a}^{b}f(x)
+                        \end{equation*}
+                        が存在すれば、それを
+                        \begin{equation*}
+                            \int_{a}^{\infty}f(x)dx
+                        \end{equation*}
+                        と表す。同様にして
+                        \begin{align*}
+                            \int_{-\infty}^{b}f(x)dx=\lim_{a\to -\infty}\int_{a}^{b}f(x)dx\\
+                            \int_{-\infty}^{\infty}f(x)dx=\lim_{\substack{a\to -\infty\\b\to\infty}}\int_{a}^{b}f(x)dx
+                        \end{align*}
+                        も定義される。\\
+                        上式の極限が収束するとき、\textbf{広義積分は収束する}という。\\
+
+                        これも例を挙げてみよう。例えば
+                        \begin{equation*}
+                            \int_{0}^{\infty}\frac{dx}{1+x^2}=\lim_{b\to\infty}\int_{0}^{b}\frac{dx}{1+x^2}=\lim_{b\to\infty}\left[\arctan(x)\right]_0^b=\lim_{b\to\infty}\arctan b=\frac{\pi}{2}
+                        \end{equation*}
+                        と計算できる。ちなみにこの結果、すなわち$1/(1+x^2)$の$[0,\infty)$の広義積分が$\pi/2$になるという事実は覚えておくとよい。
+                        一方で、
+                        \begin{equation*}
+                            \int_{1}^{\infty}\frac{dx}{\sqrt{x}}=\lim_{b\to\infty}\int_{1}^{b}\frac{dx}{\sqrt{x}}=\lim_{b\to \infty}\left[2\sqrt{x}\right]_1^b=\lim_{b\to \infty}2(\sqrt{b}-1)
+                        \end{equation*}
+                        は右辺の極限が発散するので、広義積分$\displaystyle\int_{1}^{\infty}\frac{dx}{\sqrt{x}}$は意味を持たないことがわかる。\\
+
+                        今あげた計算を見れば、広義積分について大まかに理解できると思う。本来連続な区間でしか定義していない定積分を不連続点を含む区間や、無限区間で
+                        定義することがわかればよい。どちらの場合にせよ、連続な区間に分けて最後に極限を取るのである。このことを\underline{十分理解できている}なら、実際の計算では
+                        \begin{equation*}
+                            \int_{0}^{\infty}\frac{dx}{1+x^2}=\left[\arctan x\right]_0^\infty = \frac{\pi}{2}
+                        \end{equation*}
+                        と略記してもよい。無限区間の積分は、この微分積分以外にも当たり前のように顔を出す。ぜひともこの機会に慣れておきたいものである。
+                \clearpage
+                \basicquestion 以下の問いに答えよ。
+                    \paragraph{問1}定積分の性質\eqref{eq:定積分の加法性}を用いて性質\eqref{eq:関数と積分値の大小関係}を、性質\eqref{eq:int[a,b]=-[b,a]}を用いて性質\eqref{eq:int[a,a]=0}を示せ。
+
+                    \paragraph{問2}定積分の定義より$\int_{0}^{1}xdx$を計算せよ。ただし$z_k=x_k$とし、$[0,1]$は丁度$n$等分するものとする。
+
+                    \paragraph{問3}以下の定積分の値を求めよ。ただし$0\leq e < 1$である。\\
+                    $(1)\displaystyle \int_{0}^{\pi}\sin x dx$\hspace{3mm}%それにしてもあのsinの曲線下の面積がこんなに簡単に求まるなんて、ただただ驚くばかりである。
+                    $(2)\displaystyle \int_{0}^{\frac{1}{2}}\frac{dx}{\sqrt{1-x^2}}$\hspace{3mm}
+                    $(3)\displaystyle \int_0^2 x^2e^{x}dx$\hspace{3mm}
+                    $(4)\displaystyle \int_{-3}^3\left(x^5+x^4+x^3+x^2+5\right)dx$\hspace{3mm}
+                    $(5)\displaystyle \int_0^\pi \frac{dx}{1+e\cos x}$
+
+                    \paragraph{問4}次の広義積分を求めよ。\\
+                    $(1)\displaystyle \int_{-1}^{-\infty}\frac{dx}{x^4}$\hspace{3mm}
+                    $(2)\displaystyle \int_0^1 \log xdx$\hspace{3mm}
+                    $(3)\displaystyle \int_0^1 \frac{dx}{x\log x}$\hspace{3mm}
+                    $(4)\displaystyle \int_0^a \frac{dx}{\sqrt{ax-x^2}}\quad(a>0)$\hspace{3mm}
+                    $(5)\displaystyle \int_0^\infty \frac{dx}{x^3+1}$
+
+                    \paragraph{問5}以下の式を示せ。
+                    \begin{equation*}
+                        \int_{0}^{2\pi}\cos mx\cos nx dx = \begin{cases}
+                            0 & (m\neq n)\\ \pi & (m=n)
+                        \end{cases}
+                    \end{equation*}
+
+                    \paragraph{問6}次の積分（広義積分）が収束するための$k$の範囲を求めよ。
+                    \begin{equation*}
+                        \int_1^\infty \frac{dx}{x^{k}}
+                    \end{equation*}
+
+                    \paragraph{問7}関数$f(x)$が偶関数であることを$f=f_e$、奇関数であることを$f=f_o$と表記することにする。この時以下を示せ。
+                    \begin{equation}
+                        \int_{-a}^a f(x)dx = \begin{cases}
+                            \displaystyle 2\int_{0}^{a}f(x)dx & (f=f_e) \\ 0 & (f=f_o)
+                        \end{cases}\label{eq:定積分と偶関数・奇関数}
+                    \end{equation}
+
+                    \paragraph{問8}次の問いに答えよ。
+                    \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                        \item $\displaystyle \int_0^\pi \frac{\sin x}{1+\cos^2 x}dx$を求めよ。
+                        \item $x\to\pi -x$の置換により$\displaystyle \int_{0}^{\pi}xf(\sin x)dx=2\int_{0}^{\pi}f(\sin x)dx$を示せ。\\ただし、$f(\sin x)$は$\sin x$の有理関数である。
+                        \item $\displaystyle \int_{0}^{\pi} \frac{x\sin x}{1+\cos^2 x}dx$を求めよ。
+                    \end{enumerate}
+                \clearpage
+                \section{積分法の応用}
+
                 
                 
 
