@@ -2563,6 +2563,192 @@
                     \end{enumerate}
                 \clearpage
                 \section{積分法の応用}
+                    \subsection{面積・体積} 
+                        ここからは定積分の応用を述べる。まずは定積分を用いて面積・体積を求める。面積については、定積分の定義を述べる際に
+                        触れたが、実は体積も求められる。
+
+                        関数$f(x)$と$g(x)$について、区間$[a,b]$で$f(x)\geq g(x)$となるとき、曲線$y=f,y=g$と直線$x=a,x=b$で囲まれた図形の面積は
+                        \begin{equation}
+                            \int_{a}^{b} \left\{f(x)-g(x)\right\}dx \label{eq:曲線で囲まれた面積}
+                        \end{equation}
+                        特に、$f\leq 0$であれば
+                        \begin{equation}
+                            -\int_a^b f(x)dx \label{eq:-負の面積}
+                        \end{equation}
+                        例として、円の面積を求めてみよう。半径$r$の半円の上部$y\geq 0$の面積は
+                        \begin{equation*}
+                            S=\int_{-r}^{r}\sqrt{r^2-x^2}dx
+                        \end{equation*}
+                        で与えられる。$x=r\sin\theta$の置換を行うと、$dx=r\cos\theta d\theta$であるため
+                        \begin{equation*}
+                            S=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\sqrt{r^2-r^2\sin^2\theta}\cdot r\cos\theta d\theta=r^2\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos^2\theta d\theta=2r^2\int_{0}^{\frac{\pi}{2}}\cos^2\theta d\theta
+                        \end{equation*}
+                        半角の公式$\displaystyle \cos^2\theta = \frac{1+\cos2\theta}{2}$であるため、
+                        \begin{equation*}
+                            S=2r^2\int_{0}^{\frac{\pi}{2}}\frac{1+\cos 2\theta}{2}d\theta=2r^2\left[\frac{\theta+\frac{1}{2}\sin 2\theta}{2}\right]_0^{\frac{\pi}{2}}=\frac{\pi}{2}r^2
+                        \end{equation*}
+                        よって、円の面積の公式$\pi r^2$が導けた。
+
+                        次に体積を求めてみよう。x軸上のある点$x$において断面積$S(x)$であるとき、区間$[a,b]$での体積$V$は
+                        \begin{equation}
+                            V=\int_a^b S(x)dx \label{eq:体積の公式}
+                        \end{equation}
+                        で求まる。もちろんこれだけではよくわからないだろうから、図を見て理解しよう。
+                        \begin{figure}[h]
+                            \centering
+                            \includegraphics[scale=0.3]{img/QuuNote/Sx_V.png}
+                            \caption{立体の体積と断面積}
+                        \end{figure}
+
+                        まず、公式中の断面積というのはx軸に垂直な平面で切った時の面積となる。これに$dx$を掛けた量$S(x)dx$は
+                        微小体積$dV$を表すことは容易に想像できる。その微小体積を$[a,b]$まで集めた（$\int$した）ものが$V$となる。少し直感的な説明\footnote{安易に$dx$や$dV$といった量を出したが、これらはあいまいに使っていると感じると思う。ただ、$d$が「微小の」というニュアンスを持っていることはこれまでの話でなんとなく理解できるだろう。}になってしまったが、
+                        ここはイメージさえできればよい。
+
+                        公式\eqref{eq:体積の公式}を用いれば、$y=f(x)$をx軸で回転したときの回転体の公式も導出できる。これも図を見て考えればわかる。
+
+                        \begin{figure}[h]
+                            \centering
+                            \includegraphics[scale=0.5]{img/QuuNote/rolling_Sx.png}
+                            \caption{回転体の体積}
+                        \end{figure}
+
+                        図からわかるように、$y=f(x)$を回転させた回転体の断面積$S(x)$は円の面積の公式$\pi r^2$より$S(x)=\pi\left[f(x)\right]^2$となる。
+                        したがって、回転体の体積$V$は
+                        \begin{equation}
+                            V=\pi\int_{a}^{b}\left[f(x)\right]^2 dx \label{eq:回転体の体積}
+                        \end{equation}
+                        で求まる。
+                    \clearpage
+                    \subsection{曲線の長さ}
+                        次に曲線$y=f(x)$の``長さ''を求めるとする。こちらは直感的な説明ではなく、より厳密に述べることにする。
+                        
+                        まず、区間$[a,b]$に分点$x_0=a,x_1,x_2,\dots,x_{n-1},x_n=b$を定め、$\Delta x_k=x_k - x_{k-1},\Delta y_k = f(x_k)-f(y_{k-1})$とする。
+                        この時、区間$[x_k,x_{k-1}]$の曲線の長さは（$\Delta x_k$が十分小さいとすれば）$\displaystyle \Delta l_k = \sqrt{\Delta x_k^2+\Delta y_k^2}=\sqrt{1+\left(\frac{\Delta y_k}{\Delta x_k}\right)^2}\Delta x_k$と近似できる。
+                        ここで平均値の定理\eqref{eq:平均値の定理}より、
+                        \begin{equation*}
+                            \Delta l_k=\sqrt{1+\left(\frac{\Delta y_k}{\Delta x_k}\right)}\Delta x_k = \sqrt{1+\left(\frac{dy}{dx}(z_k)\right)}\Delta x_k
+                        \end{equation*}
+                        となるような$x_{k-1}<z_k<x_k$が存在する。$y=f(x)$の区間$[a,b]$での曲線の長さは、分割の数$n$を限りなく大きくしたときの$\sum \Delta l_k$に等しいから
+                        \begin{equation}
+                            \int_{a}^{b} \sqrt{1+\left(\frac{dy}{dx}\right)^2}dx \label{eq:曲線の長さ}
+                        \end{equation}
+                        となる。
+
+                        \begin{figure}[h]
+                            \centering
+                            \includegraphics[scale=0.35]{img/QuuNote/curve_length.png}
+                            \caption{曲線の長さ}
+                        \end{figure}
+
+                        これを使って、半径$r$の円周の長さを求めてみる。円の方程式$x^2+y^2=r^2$より、$\displaystyle \left(\frac{dy}{dx}\right)^2=\frac{x^2}{r^2-x^2}$だから
+                        \begin{equation*}
+                            2\int_{-r}^{r}\sqrt{1+\frac{x^2}{r^2-x^2}}dx=4\int_{0}^{r}\frac{r}{\sqrt{r^2-x^2}}dx=4r\sin^{-1}\frac{r}{r}=2\pi r
+                        \end{equation*}
+                        最初の$\times 2$は、元の積分が半円の演習を求めていることによる。よって、円周の公式$2\pi r$が導けた。
+                    \clearpage
+                    \subsection{数値積分法}
+                        最後に数値積分法について簡単であるが述べる。これまでの計算では原始関数が簡単に求まるものばかりであったが、実際は原始関数を求めるのが難しいものもある。むしろそのほうが多いといってもいい。
+                        しかし、原始関数が求められなくても定積分なら（近似して）求められることもある（定義\eqref{eq:定積分の定義}参照）。
+                        ここでは近似計算の公式を紹介し、実際に面積を近似してみよう。なお、以降の計算では計算量の関係から関数電卓を用いることを
+                        強くすすめる。
+
+                        \paragraph{矩形法}まずはもっとも単純な矩形法から述べる。これは積分区間をある一定の幅（\textbf{刻み幅}）で区切り、
+                        被積分関数を、その毎区間の左端での関数値で一定と近似して定積分を求める方法である。刻み幅を$h$と表すことにすれば、この表式は次のようになる。
+                        \begin{equation}
+                            \int_{a}^{b}f(x)dx \approx \sum_{k=1}^{(b-a)/h}f(a+(k-1)h)\cdot h \label{eq:矩形法}
+                        \end{equation}
+                        こういうのは数式や説明を見るより、実際の計算を見たほうが理解しやすいだろう。$f(x)=x^2$の$[0,2]$の定積分を
+                        矩形法で計算してみる。刻み幅は$h=0.5$とする。
+                        \begin{equation*}
+                            \int_{0}^{2}x^2 dx \approx f(0)\cdot h + f(0.5)\cdot h+f(1.0)\cdot h + f(1.5)\cdot h = 0+0.125+0.5+1.125=1.75
+                        \end{equation*}
+                        よって近似値は$1.75$である。実際の値は$\frac{8}{3}\approx 2.67$なので、精度はあまりよくない。刻み幅が大きすぎるのも原因であるが、矩形法自体近似計算としてよい計算方法ではないのもある。
+
+                        \paragraph{台形公式}次に、面積を台形の形で近似する方法を述べる。矩形法では長方形で近似するので、区間の右端の値と$f(a+(k-1)h)$との差が大きいと誤差が大きくなるのは容易に想像できるだろう。
+                        しかし、台形で近似すれば、その誤差は三角形$(a+(k-1)h,f(a+(k-1)h)),(a+kh,f(a+(k-1)h)),(a+kh,f(a+kh))$の分だけ小さくなるのである。
+                        
+                        \begin{figure}[h]
+                            \centering
+                            \includegraphics[scale=0.5]{img/QuuNote/trapezoidalRule.png}
+                            \caption{矩形法(青)と台形近似(橙)の比較}\label{fig:矩形法と台形公式}
+                        \end{figure}
+
+                        分割の数を$n$とし、刻み幅を$h=\frac{b-a}{n}$とすると、図\ref{fig:矩形法と台形公式}からもわかるように各台形の面積は
+                        \begin{equation*}
+                            \frac{1}{2}h(f(a+(k-1)h)+f(a+kh))
+                        \end{equation*}
+                        で表せられるのだから、この$n$個の台形面積の和を取れば
+                        \begin{equation*}
+                            \frac{1}{2}h(f(a)+f(a+h))+\frac{1}{2}h(f(a+h)+f(a+2h))+\cdots+\frac{1}{2}h(f(a+(n-1)h)+f(b))
+                        \end{equation*}
+                        したがって、以下の\textbf{台形公式}が得られる。
+                        \begin{equation}
+                            \int_{a}^{b}f(x)dx \approx \frac{h}{2}\left\{f(a)+2f(a+h+2f(a+2h)+\cdots+2f(a+(n-1)h)+f(b))\right\}\label{eq:台形公式}
+                        \end{equation}
+
+                        \paragraph{シンプソンの公式}最後にシンプソンの公式について述べる。こんどは面積を$n=2m$個の帯に分割する。もちろん刻み幅$h=(b-a)/n=(b-a)/2m$である。
+                        この帯を2つで一つのセットと考えれば、合計$m$個のセットができる。それぞれのセットについて、各点$P_{2k-2},P_{2k-1},P_{2k}$を通る放物線で近似することを考えると、
+                        面積は以下の式で与えられる。
+                        \begin{equation}
+                            \frac{h}{3}\left\{f(a+(2k-2)h)+4f(a+(2k-1)h)+f(a+2kh)\right\} \label{eq:シンプソン各面積}
+                        \end{equation}
+                        
+                        \begin{figure}[h]
+                            \centering
+                            \includegraphics[scale=0.5]{img/QuuNote/simpsonLow.png}
+                            \caption{シンプソンの公式}
+                        \end{figure}
+
+                        なぜなら、三点$\displaystyle Q_0(\alpha,y_0),Q_1\left(\frac{\alpha+\beta}{2},y_1\right),Q_2(\beta,y_2)$を通る放物線$y=Ax^2+Bx+C$の面積は
+                        \begin{equation*}
+                            \int_{\alpha}^{\beta}ydx = \int_{\alpha}^{\beta} \left\{Ax^2+Bx+C\right\}dx = \frac{(\beta-\alpha)}{3}\left\{A(\alpha^2+\alpha\beta+\beta^2)+\frac{3}{2}+B(\beta+\alpha)+3C\right\}
+                        \end{equation*}
+                        となり、放物線は$Q_0,Q_1,Q_2$を通るから
+                        \begin{align*}
+                            y_0 &= A\alpha^2+B\alpha+C \\
+                            y_1 &= A\left(\frac{\alpha+\beta}{2}\right)^2+B\left(\frac{\alpha+\beta}{2}\right)+C\\
+                            y_2 &= A\beta^2+B\beta+C 
+                        \end{align*}
+                        よって、
+                        \begin{equation*}
+                            y_0+4y_1+y_2=2\left\{A(\alpha^2+\alpha \beta+\beta^2)+\frac{3}{2}B(\alpha+\beta)+3C\right\}
+                        \end{equation*}
+                        したがって、
+                        \begin{equation*}
+                            \int_{\alpha}^{\beta}ydx=\frac{\beta-\alpha}{3}\left(y_0+4y_1+y_2\right)
+                        \end{equation*}
+                        が得られる。だから$Q_0=P_{2k-2},Q_1=P_{2k-1},Q_2=P_{2k}$と考えれば、各面積は式\eqref{eq:シンプソン各面積}で与えられるのである。
+
+                        長々と書いてしまったが、$m$個の面積を上記のように近似すれば、\textbf{シンプソンの公式}が得られる。
+                        \begin{equation}
+                            \begin{split}
+                                \int_{b}^{a}f(x)dx \approx &\frac{h}{3}\{f(a)+4f(a+h)+2f(a+2h)+4f(a+3h)+2f(a+4h)\\ &+\cdots+2f(a+(2m-2)h)+4f(a+(2m-1)h)+f(b)\}
+                            \end{split}\label{eq:シンプソンの公式}
+                        \end{equation}\\
+
+                        今回は、数値積分法として三つの方法\footnote{なお、高専の情報基礎では矩形法のみ扱う。先生はシンプソンの公式などを紹介したそうであったが。}を紹介したが、式の複雑さからもわかるように最も誤差が小さく計算できるのはシンプソンの公式である。
+                        プログラミングの知識がある人はそれぞれの方法で計算して誤差を比較してみると楽しい。もちろん上記以外の数値積分の方法も存在する。気になったら調べてみるとよい。
+                    \clearpage
+                    \basicquestion 以下の問いに答えよ。
+
+                    \paragraph{問1}楕円$\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\quad (a,b>0)$の面積を求めよ。
+
+                    \paragraph{問2}$y^2=4px$と$x^2=4py\quad (p>0)$で囲まれた図形の面積を求めよ。
+
+                    \paragraph{問3}半径$r$の球の体積の公式を導け。
+
+                    \paragraph{問4}カテナリー$y=\cosh x$の$-1\leq x\leq 1$での長さを求めよ。
+
+                    \paragraph{問5}底面の半径$r$、高さ$h$の円錐の体積の公式を導け。
+
+                    \paragraph{問6}$\displaystyle \int _0^1 \frac{4}{1+x^2}dx$を台形公式とシンプソンの公式を用いて求めよ。ただし、$n=4$とする。
+
+
+
+
+
+
+
 
                 
                 
