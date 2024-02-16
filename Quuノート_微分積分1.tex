@@ -2164,12 +2164,12 @@
                 $(4)\displaystyle \int \frac{dx}{\sqrt{1-x^2}}\quad (x=\sin \theta)$\hspace{3mm}
                 $(5)\displaystyle \int \sin^3 x\cos x dx \quad(t=\sin x)$\\
             
-            \paragraph{問3}次の不定積分を部分積分法で求めよ。{\scriptsize (5)ヒント：$I=$と置き、二回部分積分せよ。}\\
+            \paragraph{問3}次の不定積分を部分積分法で求めよ。{\scriptsize (3)ヒント：$I=$と置き、二回部分積分せよ。}\\
                 $(1)\displaystyle \int x\cos xdx$\hspace{3mm}
                 $(2)\displaystyle \int xe^x dx$\hspace{3mm}
                 $(3)\displaystyle \int e^x\cos xdx$\hspace{3mm}
                 $(4)\displaystyle \int \log(x^2+1)dx$\hspace{3mm}
-                $(5)\displaystyle \int e^x\sin xdx$
+                $(5)\displaystyle \int \sqrt{a^2-x^2}dx$
 
             \paragraph{問4}次の不定積分を部分分数分解を用いて求めよ。\\
                 $(1)\displaystyle \int \frac{dx}{x^2-3x+2}$\hspace{20mm}
@@ -2438,325 +2438,411 @@
 
                     まとめると、置換積分も部分積分も、不定積分のときとやっていることは変わらない。積分区間等に気を付けさえいれば不定積分と同様に
                     計算してよいのである。これも基本定理のもたらした恩恵である。
-                \clearpage
-                \subsection{広義積分}
-                    ここでは定積分の定義を拡張した広義積分を扱う。具体的には次の二つの場合を扱う。
-                    \begin{enumerate}
-                        \item 積分区間内で不連続な点が有限個存在する
-                        \item 積分上限・下限の片方もしくは両方がが無限大である
-                    \end{enumerate}
-                    今までの仮定では被積分関数は区間内で連続であったが、この広義積分では不連続な点（有限個）や区間が無限大など
-                    広義の意味での定積分を考えるのである。そういう意味で広義積分というわけである。
+            \clearpage
+            \subsection{広義積分}
+                ここでは定積分の定義を拡張した広義積分を扱う。具体的には次の二つの場合を扱う。
+                \begin{enumerate}
+                    \item 積分区間内で不連続な点が有限個存在する
+                    \item 積分上限・下限の片方もしくは両方がが無限大である
+                \end{enumerate}
+                今までの仮定では被積分関数は区間内で連続であったが、この広義積分では不連続な点（有限個）や区間が無限大など
+                広義の意味での定積分を考えるのである。そういう意味で広義積分というわけである。
 
-                    \paragraph{被積分関数が不連続}
-                        $f(x)$が$[a,b)$で連続であるとする。この時、極限
-                        \begin{equation*}
-                            \lim_{\varepsilon \to +0}\int_{a}^{b-\varepsilon}f(x)dx
-                        \end{equation*}
-                        が存在すれば、その極限値を
-                        \begin{equation*}
-                            \int_{a}^{b}f(x)dx
-                        \end{equation*}
-                        と表す。同様に$(a,b]$で連続である場合も、極限
-                        \begin{equation*}
-                            \lim_{\varepsilon\to +0}\int_{a+\varepsilon}^{b}f(x)dx
-                        \end{equation*}
-                        が存在すれば、その極限値を
-                        \begin{equation*}
-                            \int_{a}^{b}f(x)dx
-                        \end{equation*}
-                        このようにすれば$a\leq c \leq b$であるような$x=c$において$f(x)$が不連続である場合は、下の右辺の極限が存在すると仮定すると
-                        \begin{equation*}
-                            \int_{a}^{b}f(x)dx = \lim_{\varepsilon_1\to +0}\int_{a}^{c-\varepsilon_1}f(x)dx+\lim_{\varepsilon_2\to +0}\int_{c+\varepsilon}^{b}f(x)dx
-                        \end{equation*}       
-                        と計算すればよいことがわかる。このとき$\varepsilon_1,\varepsilon_2$はそれぞれ独立に極限を取ることに注意。\footnote{一方で$\varepsilon_1=\varepsilon_2$として極限を取ることもある。これをコーシーの主値積分という。}\\
-                        上記の極限が収束するとき、\textbf{広義積分は収束する}という。\footnote{実際に広義積分が収束するのを示すためには、よくコーシーの収束条件を使われる。}\\
-
-                        例えば、$1/\sqrt{x}$は$x=0$で不連続であるが、
-                        \begin{equation*}
-                            \int_{0}^{1}\frac{dx}{\sqrt{x}}=\lim_{\varepsilon\to +0}\int_{\varepsilon}^{1}\frac{dx}{\sqrt{x}}=\lim_{\varepsilon\to+0}\left[2\sqrt{x}\right]_{\varepsilon}^1=\lim_{\varepsilon\to +0}2-2\sqrt{\varepsilon}=2
-                        \end{equation*}
-                        よって、広義積分は収束してその値は$2$である。一方で$1/x$について$[-1,1]$で積分すると$x=0$で不連続であることに注意すれば
-                        \begin{equation*}
-                            \int_{-1}^{1}\frac{dx}{x}=\lim_{\substack{\varepsilon_1\to +0\\\varepsilon_2\to +0}}\int_{-1}^{-\varepsilon_1}\frac{dx}{x}+\int_{\varepsilon_2}^{1}\frac{dx}{x}=\lim_{\substack{\varepsilon_1\to +0\\\varepsilon_2\to +0}}\left(\log\varepsilon_1-\log\varepsilon_2\right)
-                        \end{equation*}
-                        である。この極限は存在しない（発散する）ので、広義積分は収束しない。つまりは$\displaystyle \int_{-1}^{1}\frac{dx}{x}$は無意味。
-                    \clearpage
-                    \paragraph{積分区間が無限大}
-                        関数$f(x)$が$x\geq a$で連続であるとする。このとき極限
-                        \begin{equation*}
-                            \lim_{b\to \infty}\int_{a}^{b}f(x)
-                        \end{equation*}
-                        が存在すれば、それを
-                        \begin{equation*}
-                            \int_{a}^{\infty}f(x)dx
-                        \end{equation*}
-                        と表す。同様にして
-                        \begin{align*}
-                            \int_{-\infty}^{b}f(x)dx=\lim_{a\to -\infty}\int_{a}^{b}f(x)dx\\
-                            \int_{-\infty}^{\infty}f(x)dx=\lim_{\substack{a\to -\infty\\b\to\infty}}\int_{a}^{b}f(x)dx
-                        \end{align*}
-                        も定義される。\\
-                        上式の極限が収束するとき、\textbf{広義積分は収束する}という。\\
-
-                        これも例を挙げてみよう。例えば
-                        \begin{equation*}
-                            \int_{0}^{\infty}\frac{dx}{1+x^2}=\lim_{b\to\infty}\int_{0}^{b}\frac{dx}{1+x^2}=\lim_{b\to\infty}\left[\arctan(x)\right]_0^b=\lim_{b\to\infty}\arctan b=\frac{\pi}{2}
-                        \end{equation*}
-                        と計算できる。ちなみにこの結果、すなわち$1/(1+x^2)$の$[0,\infty)$の広義積分が$\pi/2$になるという事実は覚えておくとよい。
-                        一方で、
-                        \begin{equation*}
-                            \int_{1}^{\infty}\frac{dx}{\sqrt{x}}=\lim_{b\to\infty}\int_{1}^{b}\frac{dx}{\sqrt{x}}=\lim_{b\to \infty}\left[2\sqrt{x}\right]_1^b=\lim_{b\to \infty}2(\sqrt{b}-1)
-                        \end{equation*}
-                        は右辺の極限が発散するので、広義積分$\displaystyle\int_{1}^{\infty}\frac{dx}{\sqrt{x}}$は意味を持たないことがわかる。\\
-
-                        今あげた計算を見れば、広義積分について大まかに理解できると思う。本来連続な区間でしか定義していない定積分を不連続点を含む区間や、無限区間で
-                        定義することがわかればよい。どちらの場合にせよ、連続な区間に分けて最後に極限を取るのである。このことを\underline{十分理解できている}なら、実際の計算では
-                        \begin{equation*}
-                            \int_{0}^{\infty}\frac{dx}{1+x^2}=\left[\arctan x\right]_0^\infty = \frac{\pi}{2}
-                        \end{equation*}
-                        と略記してもよい。無限区間の積分は、この微分積分以外にも当たり前のように顔を出す。ぜひともこの機会に慣れておきたいものである。
-                \clearpage
-                \basicquestion 以下の問いに答えよ。
-                    \paragraph{問1}定積分の性質\eqref{eq:定積分の加法性}を用いて性質\eqref{eq:関数と積分値の大小関係}を、性質\eqref{eq:int[a,b]=-[b,a]}を用いて性質\eqref{eq:int[a,a]=0}を示せ。
-
-                    \paragraph{問2}定積分の定義より$\int_{0}^{1}xdx$を計算せよ。ただし$z_k=x_k$とし、$[0,1]$は丁度$n$等分するものとする。
-
-                    \paragraph{問3}以下の定積分の値を求めよ。ただし$0\leq e < 1$である。\\
-                    $(1)\displaystyle \int_{0}^{\pi}\sin x dx$\hspace{3mm}%それにしてもあのsinの曲線下の面積がこんなに簡単に求まるなんて、ただただ驚くばかりである。
-                    $(2)\displaystyle \int_{0}^{\frac{1}{2}}\frac{dx}{\sqrt{1-x^2}}$\hspace{3mm}
-                    $(3)\displaystyle \int_0^2 x^2e^{x}dx$\hspace{3mm}
-                    $(4)\displaystyle \int_{-3}^3\left(x^5+x^4+x^3+x^2+5\right)dx$\hspace{3mm}
-                    $(5)\displaystyle \int_0^\pi \frac{dx}{1+e\cos x}$
-
-                    \paragraph{問4}次の広義積分を求めよ。\\
-                    $(1)\displaystyle \int_{-1}^{-\infty}\frac{dx}{x^4}$\hspace{3mm}
-                    $(2)\displaystyle \int_0^1 \log xdx$\hspace{3mm}
-                    $(3)\displaystyle \int_0^1 \frac{dx}{x\log x}$\hspace{3mm}
-                    $(4)\displaystyle \int_0^a \frac{dx}{\sqrt{ax-x^2}}\quad(a>0)$\hspace{3mm}
-                    $(5)\displaystyle \int_0^\infty \frac{dx}{x^3+1}$
-
-                    \paragraph{問5}以下の式を示せ。
+                \paragraph{被積分関数が不連続}
+                    $f(x)$が$[a,b)$で連続であるとする。この時、極限
                     \begin{equation*}
-                        \int_{0}^{2\pi}\cos mx\cos nx dx = \begin{cases}
-                            0 & (m\neq n)\\ \pi & (m=n)
-                        \end{cases}
+                        \lim_{\varepsilon \to +0}\int_{a}^{b-\varepsilon}f(x)dx
                     \end{equation*}
-
-                    \paragraph{問6}次の積分（広義積分）が収束するための$k$の範囲を求めよ。
+                    が存在すれば、その極限値を
                     \begin{equation*}
-                        \int_1^\infty \frac{dx}{x^{k}}
+                        \int_{a}^{b}f(x)dx
                     \end{equation*}
+                    と表す。同様に$(a,b]$で連続である場合も、極限
+                    \begin{equation*}
+                        \lim_{\varepsilon\to +0}\int_{a+\varepsilon}^{b}f(x)dx
+                    \end{equation*}
+                    が存在すれば、その極限値を
+                    \begin{equation*}
+                        \int_{a}^{b}f(x)dx
+                    \end{equation*}
+                    このようにすれば$a\leq c \leq b$であるような$x=c$において$f(x)$が不連続である場合は、下の右辺の極限が存在すると仮定すると
+                    \begin{equation*}
+                        \int_{a}^{b}f(x)dx = \lim_{\varepsilon_1\to +0}\int_{a}^{c-\varepsilon_1}f(x)dx+\lim_{\varepsilon_2\to +0}\int_{c+\varepsilon}^{b}f(x)dx
+                    \end{equation*}       
+                    と計算すればよいことがわかる。このとき$\varepsilon_1,\varepsilon_2$はそれぞれ独立に極限を取ることに注意。\footnote{一方で$\varepsilon_1=\varepsilon_2$として極限を取ることもある。これをコーシーの主値積分という。}\\
+                    上記の極限が収束するとき、\textbf{広義積分は収束する}という。\footnote{実際に広義積分が収束するのを示すためには、よくコーシーの収束条件を使われる。}\\
 
-                    \paragraph{問7}関数$f(x)$が偶関数であることを$f=f_e$、奇関数であることを$f=f_o$と表記することにする。この時以下を示せ。
-                    \begin{equation}
-                        \int_{-a}^a f(x)dx = \begin{cases}
-                            \displaystyle 2\int_{0}^{a}f(x)dx & (f=f_e) \\ 0 & (f=f_o)
-                        \end{cases}\label{eq:定積分と偶関数・奇関数}
-                    \end{equation}
-
-                    \paragraph{問8}次の問いに答えよ。
-                    \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
-                        \item $\displaystyle \int_0^\pi \frac{\sin x}{1+\cos^2 x}dx$を求めよ。
-                        \item $x\to\pi -x$の置換により$\displaystyle \int_{0}^{\pi}xf(\sin x)dx=2\int_{0}^{\pi}f(\sin x)dx$を示せ。\\ただし、$f(\sin x)$は$\sin x$の有理関数である。
-                        \item $\displaystyle \int_{0}^{\pi} \frac{x\sin x}{1+\cos^2 x}dx$を求めよ。
-                    \end{enumerate}
+                    例えば、$1/\sqrt{x}$は$x=0$で不連続であるが、
+                    \begin{equation*}
+                        \int_{0}^{1}\frac{dx}{\sqrt{x}}=\lim_{\varepsilon\to +0}\int_{\varepsilon}^{1}\frac{dx}{\sqrt{x}}=\lim_{\varepsilon\to+0}\left[2\sqrt{x}\right]_{\varepsilon}^1=\lim_{\varepsilon\to +0}2-2\sqrt{\varepsilon}=2
+                    \end{equation*}
+                    よって、広義積分は収束してその値は$2$である。一方で$1/x$について$[-1,1]$で積分すると$x=0$で不連続であることに注意すれば
+                    \begin{equation*}
+                        \int_{-1}^{1}\frac{dx}{x}=\lim_{\substack{\varepsilon_1\to +0\\\varepsilon_2\to +0}}\int_{-1}^{-\varepsilon_1}\frac{dx}{x}+\int_{\varepsilon_2}^{1}\frac{dx}{x}=\lim_{\substack{\varepsilon_1\to +0\\\varepsilon_2\to +0}}\left(\log\varepsilon_1-\log\varepsilon_2\right)
+                    \end{equation*}
+                    である。この極限は存在しない（発散する）ので、広義積分は収束しない。つまりは$\displaystyle \int_{-1}^{1}\frac{dx}{x}$は無意味。
                 \clearpage
-                \section{積分法の応用}
-                    \subsection{面積・体積} 
-                        ここからは定積分の応用を述べる。まずは定積分を用いて面積・体積を求める。面積については、定積分の定義を述べる際に
-                        触れたが、実は体積も求められる。
+                \paragraph{積分区間が無限大}
+                    関数$f(x)$が$x\geq a$で連続であるとする。このとき極限
+                    \begin{equation*}
+                        \lim_{b\to \infty}\int_{a}^{b}f(x)
+                    \end{equation*}
+                    が存在すれば、それを
+                    \begin{equation*}
+                        \int_{a}^{\infty}f(x)dx
+                    \end{equation*}
+                    と表す。同様にして
+                    \begin{align*}
+                        \int_{-\infty}^{b}f(x)dx=\lim_{a\to -\infty}\int_{a}^{b}f(x)dx\\
+                        \int_{-\infty}^{\infty}f(x)dx=\lim_{\substack{a\to -\infty\\b\to\infty}}\int_{a}^{b}f(x)dx
+                    \end{align*}
+                    も定義される。\\
+                    上式の極限が収束するとき、\textbf{広義積分は収束する}という。\\
 
-                        関数$f(x)$と$g(x)$について、区間$[a,b]$で$f(x)\geq g(x)$となるとき、曲線$y=f,y=g$と直線$x=a,x=b$で囲まれた図形の面積は
-                        \begin{equation}
-                            \int_{a}^{b} \left\{f(x)-g(x)\right\}dx \label{eq:曲線で囲まれた面積}
-                        \end{equation}
-                        特に、$f\leq 0$であれば
-                        \begin{equation}
-                            -\int_a^b f(x)dx \label{eq:-負の面積}
-                        \end{equation}
-                        例として、円の面積を求めてみよう。半径$r$の半円の上部$y\geq 0$の面積は
-                        \begin{equation*}
-                            S=\int_{-r}^{r}\sqrt{r^2-x^2}dx
-                        \end{equation*}
-                        で与えられる。$x=r\sin\theta$の置換を行うと、$dx=r\cos\theta d\theta$であるため
-                        \begin{equation*}
-                            S=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\sqrt{r^2-r^2\sin^2\theta}\cdot r\cos\theta d\theta=r^2\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos^2\theta d\theta=2r^2\int_{0}^{\frac{\pi}{2}}\cos^2\theta d\theta
-                        \end{equation*}
-                        半角の公式$\displaystyle \cos^2\theta = \frac{1+\cos2\theta}{2}$であるため、
-                        \begin{equation*}
-                            S=2r^2\int_{0}^{\frac{\pi}{2}}\frac{1+\cos 2\theta}{2}d\theta=2r^2\left[\frac{\theta+\frac{1}{2}\sin 2\theta}{2}\right]_0^{\frac{\pi}{2}}=\frac{\pi}{2}r^2
-                        \end{equation*}
-                        よって、円の面積の公式$\pi r^2$が導けた。
+                    これも例を挙げてみよう。例えば
+                    \begin{equation*}
+                        \int_{0}^{\infty}\frac{dx}{1+x^2}=\lim_{b\to\infty}\int_{0}^{b}\frac{dx}{1+x^2}=\lim_{b\to\infty}\left[\arctan(x)\right]_0^b=\lim_{b\to\infty}\arctan b=\frac{\pi}{2}
+                    \end{equation*}
+                    と計算できる。ちなみにこの結果、すなわち$1/(1+x^2)$の$[0,\infty)$の広義積分が$\pi/2$になるという事実は覚えておくとよい。
+                    一方で、
+                    \begin{equation*}
+                        \int_{1}^{\infty}\frac{dx}{\sqrt{x}}=\lim_{b\to\infty}\int_{1}^{b}\frac{dx}{\sqrt{x}}=\lim_{b\to \infty}\left[2\sqrt{x}\right]_1^b=\lim_{b\to \infty}2(\sqrt{b}-1)
+                    \end{equation*}
+                    は右辺の極限が発散するので、広義積分$\displaystyle\int_{1}^{\infty}\frac{dx}{\sqrt{x}}$は意味を持たないことがわかる。\\
 
-                        次に体積を求めてみよう。x軸上のある点$x$において断面積$S(x)$であるとき、区間$[a,b]$での体積$V$は
-                        \begin{equation}
-                            V=\int_a^b S(x)dx \label{eq:体積の公式}
-                        \end{equation}
-                        で求まる。もちろんこれだけではよくわからないだろうから、図を見て理解しよう。
-                        \begin{figure}[h]
-                            \centering
-                            \includegraphics[scale=0.3]{img/QuuNote/Sx_V.png}
-                            \caption{立体の体積と断面積}
-                        \end{figure}
+                    今あげた計算を見れば、広義積分について大まかに理解できると思う。本来連続な区間でしか定義していない定積分を不連続点を含む区間や、無限区間で
+                    定義することがわかればよい。どちらの場合にせよ、連続な区間に分けて最後に極限を取るのである。このことを\underline{十分理解できている}なら、実際の計算では
+                    \begin{equation*}
+                        \int_{0}^{\infty}\frac{dx}{1+x^2}=\left[\arctan x\right]_0^\infty = \frac{\pi}{2}
+                    \end{equation*}
+                    と略記してもよい。無限区間の積分は、この微分積分以外にも当たり前のように顔を出す。ぜひともこの機会に慣れておきたいものである。
+            \clearpage
+            \basicquestion 以下の問いに答えよ。
+                \paragraph{問1}定積分の性質\eqref{eq:定積分の加法性}を用いて性質\eqref{eq:関数と積分値の大小関係}を、性質\eqref{eq:int[a,b]=-[b,a]}を用いて性質\eqref{eq:int[a,a]=0}を示せ。
 
-                        まず、公式中の断面積というのはx軸に垂直な平面で切った時の面積となる。これに$dx$を掛けた量$S(x)dx$は
-                        微小体積$dV$を表すことは容易に想像できる。その微小体積を$[a,b]$まで集めた（$\int$した）ものが$V$となる。少し直感的な説明\footnote{安易に$dx$や$dV$といった量を出したが、これらはあいまいに使っていると感じると思う。ただ、$d$が「微小の」というニュアンスを持っていることはこれまでの話でなんとなく理解できるだろう。}になってしまったが、
-                        ここはイメージさえできればよい。
+                \paragraph{問2}定積分の定義より$\int_{0}^{1}xdx$を計算せよ。ただし$z_k=x_k$とし、$[0,1]$は丁度$n$等分するものとする。
 
-                        公式\eqref{eq:体積の公式}を用いれば、$y=f(x)$をx軸で回転したときの回転体の公式も導出できる。これも図を見て考えればわかる。
+                \paragraph{問3}以下の定積分の値を求めよ。ただし$0\leq e < 1$である。\\
+                $(1)\displaystyle \int_{0}^{\pi}\sin x dx$\hspace{3mm}%それにしてもあのsinの曲線下の面積がこんなに簡単に求まるなんて、ただただ驚くばかりである。
+                $(2)\displaystyle \int_{0}^{\frac{1}{2}}\frac{dx}{\sqrt{1-x^2}}$\hspace{3mm}
+                $(3)\displaystyle \int_0^2 x^2e^{x}dx$\hspace{3mm}
+                $(4)\displaystyle \int_{-3}^3\left(x^5+x^4+x^3+x^2+5\right)dx$\hspace{3mm}
+                $(5)\displaystyle \int_0^\pi \frac{dx}{1+e\cos x}$
 
-                        \begin{figure}[h]
-                            \centering
-                            \includegraphics[scale=0.5]{img/QuuNote/rolling_Sx.png}
-                            \caption{回転体の体積}
-                        \end{figure}
+                \paragraph{問4}次の広義積分を求めよ。\\
+                $(1)\displaystyle \int_{-1}^{-\infty}\frac{dx}{x^4}$\hspace{3mm}
+                $(2)\displaystyle \int_0^1 \log xdx$\hspace{3mm}
+                $(3)\displaystyle \int_0^1 \frac{dx}{x\log x}$\hspace{3mm}
+                $(4)\displaystyle \int_0^a \frac{dx}{\sqrt{ax-x^2}}\quad(a>0)$\hspace{3mm}
+                $(5)\displaystyle \int_0^\infty \frac{dx}{x^3+1}$
 
-                        図からわかるように、$y=f(x)$を回転させた回転体の断面積$S(x)$は円の面積の公式$\pi r^2$より$S(x)=\pi\left[f(x)\right]^2$となる。
-                        したがって、回転体の体積$V$は
-                        \begin{equation}
-                            V=\pi\int_{a}^{b}\left[f(x)\right]^2 dx \label{eq:回転体の体積}
-                        \end{equation}
-                        で求まる。
-                    \clearpage
-                    \subsection{曲線の長さ}
-                        次に曲線$y=f(x)$の``長さ''を求めるとする。こちらは直感的な説明ではなく、より厳密に述べることにする。
-                        
-                        まず、区間$[a,b]$に分点$x_0=a,x_1,x_2,\dots,x_{n-1},x_n=b$を定め、$\Delta x_k=x_k - x_{k-1},\Delta y_k = f(x_k)-f(y_{k-1})$とする。
-                        この時、区間$[x_k,x_{k-1}]$の曲線の長さは（$\Delta x_k$が十分小さいとすれば）$\displaystyle \Delta l_k = \sqrt{\Delta x_k^2+\Delta y_k^2}=\sqrt{1+\left(\frac{\Delta y_k}{\Delta x_k}\right)^2}\Delta x_k$と近似できる。
-                        ここで平均値の定理\eqref{eq:平均値の定理}より、
-                        \begin{equation*}
-                            \Delta l_k=\sqrt{1+\left(\frac{\Delta y_k}{\Delta x_k}\right)}\Delta x_k = \sqrt{1+\left(\frac{dy}{dx}(z_k)\right)}\Delta x_k
-                        \end{equation*}
-                        となるような$x_{k-1}<z_k<x_k$が存在する。$y=f(x)$の区間$[a,b]$での曲線の長さは、分割の数$n$を限りなく大きくしたときの$\sum \Delta l_k$に等しいから
-                        \begin{equation}
-                            \int_{a}^{b} \sqrt{1+\left(\frac{dy}{dx}\right)^2}dx \label{eq:曲線の長さ}
-                        \end{equation}
-                        となる。
+                \paragraph{問5}以下の式を示せ。
+                \begin{equation*}
+                    \int_{0}^{2\pi}\cos mx\cos nx dx = \begin{cases}
+                        0 & (m\neq n)\\ \pi & (m=n)
+                    \end{cases}
+                \end{equation*}
 
-                        \begin{figure}[h]
-                            \centering
-                            \includegraphics[scale=0.35]{img/QuuNote/curve_length.png}
-                            \caption{曲線の長さ}
-                        \end{figure}
+                \paragraph{問6}次の積分（広義積分）が収束するための$k$の範囲を求めよ。
+                \begin{equation*}
+                    \int_1^\infty \frac{dx}{x^{k}}
+                \end{equation*}
 
-                        これを使って、半径$r$の円周の長さを求めてみる。円の方程式$x^2+y^2=r^2$より、$\displaystyle \left(\frac{dy}{dx}\right)^2=\frac{x^2}{r^2-x^2}$だから
-                        \begin{equation*}
-                            2\int_{-r}^{r}\sqrt{1+\frac{x^2}{r^2-x^2}}dx=4\int_{0}^{r}\frac{r}{\sqrt{r^2-x^2}}dx=4r\sin^{-1}\frac{r}{r}=2\pi r
-                        \end{equation*}
-                        最初の$\times 2$は、元の積分が半円の演習を求めていることによる。よって、円周の公式$2\pi r$が導けた。
-                    \clearpage
-                    \subsection{数値積分法}
-                        最後に数値積分法について簡単であるが述べる。これまでの計算では原始関数が簡単に求まるものばかりであったが、実際は原始関数を求めるのが難しいものもある。むしろそのほうが多いといってもいい。
-                        しかし、原始関数が求められなくても定積分なら（近似して）求められることもある（定義\eqref{eq:定積分の定義}参照）。
-                        ここでは近似計算の公式を紹介し、実際に面積を近似してみよう。なお、以降の計算では計算量の関係から関数電卓を用いることを
-                        強くすすめる。
+                \paragraph{問7}関数$f(x)$が偶関数であることを$f=f_e$、奇関数であることを$f=f_o$と表記することにする。この時以下を示せ。
+                \begin{equation}
+                    \int_{-a}^a f(x)dx = \begin{cases}
+                        \displaystyle 2\int_{0}^{a}f(x)dx & (f=f_e) \\ 0 & (f=f_o)
+                    \end{cases}\label{eq:定積分と偶関数・奇関数}
+                \end{equation}
 
-                        \paragraph{矩形法}まずはもっとも単純な矩形法から述べる。これは積分区間をある一定の幅（\textbf{刻み幅}）で区切り、
-                        被積分関数を、その毎区間の左端での関数値で一定と近似して定積分を求める方法である。刻み幅を$h$と表すことにすれば、この表式は次のようになる。
-                        \begin{equation}
-                            \int_{a}^{b}f(x)dx \approx \sum_{k=1}^{(b-a)/h}f(a+(k-1)h)\cdot h \label{eq:矩形法}
-                        \end{equation}
-                        こういうのは数式や説明を見るより、実際の計算を見たほうが理解しやすいだろう。$f(x)=x^2$の$[0,2]$の定積分を
-                        矩形法で計算してみる。刻み幅は$h=0.5$とする。
-                        \begin{equation*}
-                            \int_{0}^{2}x^2 dx \approx f(0)\cdot h + f(0.5)\cdot h+f(1.0)\cdot h + f(1.5)\cdot h = 0+0.125+0.5+1.125=1.75
-                        \end{equation*}
-                        よって近似値は$1.75$である。実際の値は$\frac{8}{3}\approx 2.67$なので、精度はあまりよくない。刻み幅が大きすぎるのも原因であるが、矩形法自体近似計算としてよい計算方法ではないのもある。
+                \paragraph{問8}次の問いに答えよ。
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $\displaystyle \int_0^\pi \frac{\sin x}{1+\cos^2 x}dx$を求めよ。
+                    \item $x\to\pi -x$の置換により$\displaystyle \int_{0}^{\pi}xf(\sin x)dx=2\int_{0}^{\pi}f(\sin x)dx$を示せ。\\ただし、$f(\sin x)$は$\sin x$の有理関数である。
+                    \item $\displaystyle \int_{0}^{\pi} \frac{x\sin x}{1+\cos^2 x}dx$を求めよ。
+                \end{enumerate}
+            \clearpage
+        \section{積分法の応用}
+            \subsection{面積・体積} 
+                ここからは定積分の応用を述べる。まずは定積分を用いて面積・体積を求める。面積については、定積分の定義を述べる際に
+                触れたが、実は体積も求められる。
 
-                        \paragraph{台形公式}次に、面積を台形の形で近似する方法を述べる。矩形法では長方形で近似するので、区間の右端の値と$f(a+(k-1)h)$との差が大きいと誤差が大きくなるのは容易に想像できるだろう。
-                        しかし、台形で近似すれば、その誤差は三角形$(a+(k-1)h,f(a+(k-1)h)),(a+kh,f(a+(k-1)h)),(a+kh,f(a+kh))$の分だけ小さくなるのである。
-                        
-                        \begin{figure}[h]
-                            \centering
-                            \includegraphics[scale=0.5]{img/QuuNote/trapezoidalRule.png}
-                            \caption{矩形法(青)と台形近似(橙)の比較}\label{fig:矩形法と台形公式}
-                        \end{figure}
+                関数$f(x)$と$g(x)$について、区間$[a,b]$で$f(x)\geq g(x)$となるとき、曲線$y=f,y=g$と直線$x=a,x=b$で囲まれた図形の面積は
+                \begin{equation}
+                    \int_{a}^{b} \left\{f(x)-g(x)\right\}dx \label{eq:曲線で囲まれた面積}
+                \end{equation}
+                特に、$f\leq 0$であれば
+                \begin{equation}
+                    -\int_a^b f(x)dx \label{eq:-負の面積}
+                \end{equation}
+                例として、円の面積を求めてみよう。半径$r$の半円の上部$y\geq 0$の面積は
+                \begin{equation*}
+                    S=\int_{-r}^{r}\sqrt{r^2-x^2}dx
+                \end{equation*}
+                で与えられる。$x=r\sin\theta$の置換を行うと、$dx=r\cos\theta d\theta$であるため
+                \begin{equation*}
+                    S=\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\sqrt{r^2-r^2\sin^2\theta}\cdot r\cos\theta d\theta=r^2\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos^2\theta d\theta=2r^2\int_{0}^{\frac{\pi}{2}}\cos^2\theta d\theta
+                \end{equation*}
+                半角の公式$\displaystyle \cos^2\theta = \frac{1+\cos2\theta}{2}$であるため、
+                \begin{equation*}
+                    S=2r^2\int_{0}^{\frac{\pi}{2}}\frac{1+\cos 2\theta}{2}d\theta=2r^2\left[\frac{\theta+\frac{1}{2}\sin 2\theta}{2}\right]_0^{\frac{\pi}{2}}=\frac{\pi}{2}r^2
+                \end{equation*}
+                よって、円の面積の公式$\pi r^2$が導けた。
 
-                        分割の数を$n$とし、刻み幅を$h=\frac{b-a}{n}$とすると、図\ref{fig:矩形法と台形公式}からもわかるように各台形の面積は
-                        \begin{equation*}
-                            \frac{1}{2}h(f(a+(k-1)h)+f(a+kh))
-                        \end{equation*}
-                        で表せられるのだから、この$n$個の台形面積の和を取れば
-                        \begin{equation*}
-                            \frac{1}{2}h(f(a)+f(a+h))+\frac{1}{2}h(f(a+h)+f(a+2h))+\cdots+\frac{1}{2}h(f(a+(n-1)h)+f(b))
-                        \end{equation*}
-                        したがって、以下の\textbf{台形公式}が得られる。
-                        \begin{equation}
-                            \int_{a}^{b}f(x)dx \approx \frac{h}{2}\left\{f(a)+2f(a+h+2f(a+2h)+\cdots+2f(a+(n-1)h)+f(b))\right\}\label{eq:台形公式}
-                        \end{equation}
+                次に体積を求めてみよう。x軸上のある点$x$において断面積$S(x)$であるとき、区間$[a,b]$での体積$V$は
+                \begin{equation}
+                    V=\int_a^b S(x)dx \label{eq:体積の公式}
+                \end{equation}
+                で求まる。もちろんこれだけではよくわからないだろうから、図を見て理解しよう。
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[scale=0.3]{img/QuuNote/Sx_V.png}
+                    \caption{立体の体積と断面積}
+                \end{figure}
 
-                        \paragraph{シンプソンの公式}最後にシンプソンの公式について述べる。こんどは面積を$n=2m$個の帯に分割する。もちろん刻み幅$h=(b-a)/n=(b-a)/2m$である。
-                        この帯を2つで一つのセットと考えれば、合計$m$個のセットができる。それぞれのセットについて、各点$P_{2k-2},P_{2k-1},P_{2k}$を通る放物線で近似することを考えると、
-                        面積は以下の式で与えられる。
-                        \begin{equation}
-                            \frac{h}{3}\left\{f(a+(2k-2)h)+4f(a+(2k-1)h)+f(a+2kh)\right\} \label{eq:シンプソン各面積}
-                        \end{equation}
-                        
-                        \begin{figure}[h]
-                            \centering
-                            \includegraphics[scale=0.5]{img/QuuNote/simpsonLow.png}
-                            \caption{シンプソンの公式}
-                        \end{figure}
+                まず、公式中の断面積というのはx軸に垂直な平面で切った時の面積となる。これに$dx$を掛けた量$S(x)dx$は
+                微小体積$dV$を表すことは容易に想像できる。その微小体積を$[a,b]$まで集めた（$\int$した）ものが$V$となる。少し直感的な説明\footnote{安易に$dx$や$dV$といった量を出したが、これらはあいまいに使っていると感じると思う。ただ、$d$が「微小の」というニュアンスを持っていることはこれまでの話でなんとなく理解できるだろう。}になってしまったが、
+                ここはイメージさえできればよい。
 
-                        なぜなら、三点$\displaystyle Q_0(\alpha,y_0),Q_1\left(\frac{\alpha+\beta}{2},y_1\right),Q_2(\beta,y_2)$を通る放物線$y=Ax^2+Bx+C$の面積は
-                        \begin{equation*}
-                            \int_{\alpha}^{\beta}ydx = \int_{\alpha}^{\beta} \left\{Ax^2+Bx+C\right\}dx = \frac{(\beta-\alpha)}{3}\left\{A(\alpha^2+\alpha\beta+\beta^2)+\frac{3}{2}+B(\beta+\alpha)+3C\right\}
-                        \end{equation*}
-                        となり、放物線は$Q_0,Q_1,Q_2$を通るから
-                        \begin{align*}
-                            y_0 &= A\alpha^2+B\alpha+C \\
-                            y_1 &= A\left(\frac{\alpha+\beta}{2}\right)^2+B\left(\frac{\alpha+\beta}{2}\right)+C\\
-                            y_2 &= A\beta^2+B\beta+C 
-                        \end{align*}
-                        よって、
-                        \begin{equation*}
-                            y_0+4y_1+y_2=2\left\{A(\alpha^2+\alpha \beta+\beta^2)+\frac{3}{2}B(\alpha+\beta)+3C\right\}
-                        \end{equation*}
-                        したがって、
-                        \begin{equation*}
-                            \int_{\alpha}^{\beta}ydx=\frac{\beta-\alpha}{3}\left(y_0+4y_1+y_2\right)
-                        \end{equation*}
-                        が得られる。だから$Q_0=P_{2k-2},Q_1=P_{2k-1},Q_2=P_{2k}$と考えれば、各面積は式\eqref{eq:シンプソン各面積}で与えられるのである。
+                公式\eqref{eq:体積の公式}を用いれば、$y=f(x)$をx軸で回転したときの回転体の公式も導出できる。これも図を見て考えればわかる。
 
-                        長々と書いてしまったが、$m$個の面積を上記のように近似すれば、\textbf{シンプソンの公式}が得られる。
-                        \begin{equation}
-                            \begin{split}
-                                \int_{b}^{a}f(x)dx \approx &\frac{h}{3}\{f(a)+4f(a+h)+2f(a+2h)+4f(a+3h)+2f(a+4h)\\ &+\cdots+2f(a+(2m-2)h)+4f(a+(2m-1)h)+f(b)\}
-                            \end{split}\label{eq:シンプソンの公式}
-                        \end{equation}\\
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[scale=0.5]{img/QuuNote/rolling_Sx.png}
+                    \caption{回転体の体積}
+                \end{figure}
 
-                        今回は、数値積分法として三つの方法\footnote{なお、高専の情報基礎では矩形法のみ扱う。先生はシンプソンの公式などを紹介したそうであったが。}を紹介したが、式の複雑さからもわかるように最も誤差が小さく計算できるのはシンプソンの公式である。
-                        プログラミングの知識がある人はそれぞれの方法で計算して誤差を比較してみると楽しい。もちろん上記以外の数値積分の方法も存在する。気になったら調べてみるとよい。
-                    \clearpage
-                    \basicquestion 以下の問いに答えよ。
-
-                    \paragraph{問1}楕円$\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\quad (a,b>0)$の面積を求めよ。
-
-                    \paragraph{問2}$y^2=4px$と$x^2=4py\quad (p>0)$で囲まれた図形の面積を求めよ。
-
-                    \paragraph{問3}半径$r$の球の体積の公式を導け。
-
-                    \paragraph{問4}カテナリー$y=\cosh x$の$-1\leq x\leq 1$での長さを求めよ。
-
-                    \paragraph{問5}底面の半径$r$、高さ$h$の円錐の体積の公式を導け。
-
-                    \paragraph{問6}$\displaystyle \int _0^1 \frac{4}{1+x^2}dx$を台形公式とシンプソンの公式を用いて求めよ。ただし、$n=4$とする。
-
-
-
-
-
-
-
-
+                図からわかるように、$y=f(x)$を回転させた回転体の断面積$S(x)$は円の面積の公式$\pi r^2$より$S(x)=\pi\left[f(x)\right]^2$となる。
+                したがって、回転体の体積$V$は
+                \begin{equation}
+                    V=\pi\int_{a}^{b}\left[f(x)\right]^2 dx \label{eq:回転体の体積}
+                \end{equation}
+                で求まる。
+            \clearpage
+            \subsection{曲線の長さ}
+                次に曲線$y=f(x)$の``長さ''を求めるとする。こちらは直感的な説明ではなく、より厳密に述べることにする。
                 
+                まず、区間$[a,b]$に分点$x_0=a,x_1,x_2,\dots,x_{n-1},x_n=b$を定め、$\Delta x_k=x_k - x_{k-1},\Delta y_k = f(x_k)-f(y_{k-1})$とする。
+                この時、区間$[x_k,x_{k-1}]$の曲線の長さは（$\Delta x_k$が十分小さいとすれば）$\displaystyle \Delta l_k = \sqrt{\Delta x_k^2+\Delta y_k^2}=\sqrt{1+\left(\frac{\Delta y_k}{\Delta x_k}\right)^2}\Delta x_k$と近似できる。
+                ここで平均値の定理\eqref{eq:平均値の定理}より、
+                \begin{equation*}
+                    \Delta l_k=\sqrt{1+\left(\frac{\Delta y_k}{\Delta x_k}\right)}\Delta x_k = \sqrt{1+\left(\frac{dy}{dx}(z_k)\right)}\Delta x_k
+                \end{equation*}
+                となるような$x_{k-1}<z_k<x_k$が存在する。$y=f(x)$の区間$[a,b]$での曲線の長さは、分割の数$n$を限りなく大きくしたときの$\sum \Delta l_k$に等しいから
+                \begin{equation}
+                    \int_{a}^{b} \sqrt{1+\left(\frac{dy}{dx}\right)^2}dx \label{eq:曲線の長さ}
+                \end{equation}
+                となる。
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[scale=0.35]{img/QuuNote/curve_length.png}
+                    \caption{曲線の長さ}
+                \end{figure}
+
+                これを使って、半径$r$の円周の長さを求めてみる。円の方程式$x^2+y^2=r^2$より、$\displaystyle \left(\frac{dy}{dx}\right)^2=\frac{x^2}{r^2-x^2}$だから
+                \begin{equation*}
+                    2\int_{-r}^{r}\sqrt{1+\frac{x^2}{r^2-x^2}}dx=4\int_{0}^{r}\frac{r}{\sqrt{r^2-x^2}}dx=4r\sin^{-1}\frac{r}{r}=2\pi r
+                \end{equation*}
+                最初の$\times 2$は、元の積分が半円の演習を求めていることによる。よって、円周の公式$2\pi r$が導けた。
+            \clearpage
+            \subsection{数値積分法}
+                最後に数値積分法について簡単であるが述べる。これまでの計算では原始関数が簡単に求まるものばかりであったが、実際は原始関数を求めるのが難しいものもある。むしろそのほうが多いといってもいい。
+                しかし、原始関数が求められなくても定積分なら（近似して）求められることもある（定義\eqref{eq:定積分の定義}参照）。
+                ここでは近似計算の公式を紹介し、実際に面積を近似してみよう。なお、以降の計算では計算量の関係から関数電卓を用いることを
+                強くすすめる。
+
+                \paragraph{矩形法}まずはもっとも単純な矩形法から述べる。これは積分区間をある一定の幅（\textbf{刻み幅}）で区切り、
+                被積分関数を、その毎区間の左端での関数値で一定と近似して定積分を求める方法である。刻み幅を$h$と表すことにすれば、この表式は次のようになる。
+                \begin{equation}
+                    \int_{a}^{b}f(x)dx \approx \sum_{k=1}^{(b-a)/h}f(a+(k-1)h)\cdot h \label{eq:矩形法}
+                \end{equation}
+                こういうのは数式や説明を見るより、実際の計算を見たほうが理解しやすいだろう。$f(x)=x^2$の$[0,2]$の定積分を
+                矩形法で計算してみる。刻み幅は$h=0.5$とする。
+                \begin{equation*}
+                    \int_{0}^{2}x^2 dx \approx f(0)\cdot h + f(0.5)\cdot h+f(1.0)\cdot h + f(1.5)\cdot h = 0+0.125+0.5+1.125=1.75
+                \end{equation*}
+                よって近似値は$1.75$である。実際の値は$\frac{8}{3}\approx 2.67$なので、精度はあまりよくない。刻み幅が大きすぎるのも原因であるが、矩形法自体近似計算としてよい計算方法ではないのもある。
+
+                \paragraph{台形公式}次に、面積を台形の形で近似する方法を述べる。矩形法では長方形で近似するので、区間の右端の値と$f(a+(k-1)h)$との差が大きいと誤差が大きくなるのは容易に想像できるだろう。
+                しかし、台形で近似すれば、その誤差は三角形$(a+(k-1)h,f(a+(k-1)h)),(a+kh,f(a+(k-1)h)),(a+kh,f(a+kh))$の分だけ小さくなるのである。
                 
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[scale=0.5]{img/QuuNote/trapezoidalRule.png}
+                    \caption{矩形法(青)と台形近似(橙)の比較}\label{fig:矩形法と台形公式}
+                \end{figure}
 
+                分割の数を$n$とし、刻み幅を$h=\frac{b-a}{n}$とすると、図\ref{fig:矩形法と台形公式}からもわかるように各台形の面積は
+                \begin{equation*}
+                    \frac{1}{2}h(f(a+(k-1)h)+f(a+kh))
+                \end{equation*}
+                で表せられるのだから、この$n$個の台形面積の和を取れば
+                \begin{equation*}
+                    \frac{1}{2}h(f(a)+f(a+h))+\frac{1}{2}h(f(a+h)+f(a+2h))+\cdots+\frac{1}{2}h(f(a+(n-1)h)+f(b))
+                \end{equation*}
+                したがって、以下の\textbf{台形公式}が得られる。
+                \begin{equation}
+                    \int_{a}^{b}f(x)dx \approx \frac{h}{2}\left\{f(a)+2f(a+h+2f(a+2h)+\cdots+2f(a+(n-1)h)+f(b))\right\}\label{eq:台形公式}
+                \end{equation}
 
+                \paragraph{シンプソンの公式}最後にシンプソンの公式について述べる。こんどは面積を$n=2m$個の帯に分割する。もちろん刻み幅$h=(b-a)/n=(b-a)/2m$である。
+                この帯を2つで一つのセットと考えれば、合計$m$個のセットができる。それぞれのセットについて、各点$P_{2k-2},P_{2k-1},P_{2k}$を通る放物線で近似することを考えると、
+                面積は以下の式で与えられる。
+                \begin{equation}
+                    \frac{h}{3}\left\{f(a+(2k-2)h)+4f(a+(2k-1)h)+f(a+2kh)\right\} \label{eq:シンプソン各面積}
+                \end{equation}
+                
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[scale=0.5]{img/QuuNote/simpsonLow.png}
+                    \caption{シンプソンの公式}
+                \end{figure}
 
+                なぜなら、三点$\displaystyle Q_0(\alpha,y_0),Q_1\left(\frac{\alpha+\beta}{2},y_1\right),Q_2(\beta,y_2)$を通る放物線$y=Ax^2+Bx+C$の面積は
+                \begin{equation*}
+                    \int_{\alpha}^{\beta}ydx = \int_{\alpha}^{\beta} \left\{Ax^2+Bx+C\right\}dx = \frac{(\beta-\alpha)}{3}\left\{A(\alpha^2+\alpha\beta+\beta^2)+\frac{3}{2}+B(\beta+\alpha)+3C\right\}
+                \end{equation*}
+                となり、放物線は$Q_0,Q_1,Q_2$を通るから
+                \begin{align*}
+                    y_0 &= A\alpha^2+B\alpha+C \\
+                    y_1 &= A\left(\frac{\alpha+\beta}{2}\right)^2+B\left(\frac{\alpha+\beta}{2}\right)+C\\
+                    y_2 &= A\beta^2+B\beta+C 
+                \end{align*}
+                よって、
+                \begin{equation*}
+                    y_0+4y_1+y_2=2\left\{A(\alpha^2+\alpha \beta+\beta^2)+\frac{3}{2}B(\alpha+\beta)+3C\right\}
+                \end{equation*}
+                したがって、
+                \begin{equation*}
+                    \int_{\alpha}^{\beta}ydx=\frac{\beta-\alpha}{3}\left(y_0+4y_1+y_2\right)
+                \end{equation*}
+                が得られる。だから$Q_0=P_{2k-2},Q_1=P_{2k-1},Q_2=P_{2k}$と考えれば、各面積は式\eqref{eq:シンプソン各面積}で与えられるのである。
+
+                長々と書いてしまったが、$m$個の面積を上記のように近似すれば、\textbf{シンプソンの公式}が得られる。
+                \begin{equation}
+                    \begin{split}
+                        \int_{b}^{a}f(x)dx \approx &\frac{h}{3}\{f(a)+4f(a+h)+2f(a+2h)+4f(a+3h)+2f(a+4h)\\ &+\cdots+2f(a+(2m-2)h)+4f(a+(2m-1)h)+f(b)\}
+                    \end{split}\label{eq:シンプソンの公式}
+                \end{equation}\\
+
+                今回は、数値積分法として三つの方法\footnote{なお、高専の情報基礎では矩形法のみ扱う。先生はシンプソンの公式などを紹介したそうであったが。}を紹介したが、式の複雑さからもわかるように最も誤差が小さく計算できるのはシンプソンの公式である。
+                プログラミングの知識がある人はそれぞれの方法で計算して誤差を比較してみると楽しい。もちろん上記以外の数値積分の方法も存在する。気になったら調べてみるとよい。
+            \clearpage
+            \basicquestion 以下の問いに答えよ。
+
+                \paragraph{問1}楕円$\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\quad (a,b>0)$の面積を求めよ。
+
+                \paragraph{問2}$y^2=4px$と$x^2=4py\quad (p>0)$で囲まれた図形の面積を求めよ。
+
+                \paragraph{問3}半径$r$の球の体積の公式を導け。
+
+                \paragraph{問4}カテナリー$y=\cosh x$の$-1\leq x\leq 1$での長さを求めよ。
+
+                \paragraph{問5}底面の半径$r$、高さ$h$の円錐の体積の公式を導け。
+
+                \paragraph{問6}$\displaystyle \int _0^1 \frac{4}{1+x^2}dx$を台形公式とシンプソンの公式を用いて求めよ。ただし、どちらも$n=4$とする。
+            \clearpage
+            \section{第III部演習問題}
+            \paragraph{問1}以下の不定積分を求めよ。\\
+                $\displaystyle [1]\int (x^2+1)^3dx$\hspace{3mm}
+                $\displaystyle [2]\int x^2\cos xdx$\hspace{3mm}
+                $\displaystyle [3]\int \frac{dx}{\sin x}$\hspace{3mm}
+                $\displaystyle [4]\int \tan xdx$\hspace{3mm}
+                $\displaystyle [5]\int \sin^5 xdx$
+                $\displaystyle [6]\int \frac{dx}{\sqrt{(x-a)(x-\beta)}}$\hspace{3mm}
+                $\displaystyle [7]\int \frac{x^2}{(x+1)^2(x-2)}dx$\hspace{3mm}
+                $\displaystyle [8]\int\frac{dx}{a^2\cos^2 x+b^2\sin^2 x}\quad(ab\neq 0)$ \hspace{5mm}
+                $\displaystyle [9]\int \sqrt{1+\cos x}dx$
+            
+            \paragraph{問2}以下の定積分（広義積分も含む）を求めよ。\\
+                $\displaystyle [1]\int_1^2\frac{5x^2-3x+4}{\sqrt{x}}dx$\hspace{3mm}
+                $\displaystyle [2]\int_{-\infty}^{\infty}\frac{dx}{\cosh x}$\hspace{3mm}
+                $\displaystyle [3]\int_1^e \frac{\sin(\pi\log x)}{x}dx$\hspace{3mm}
+                $\displaystyle [4]\int_1^2 \frac{x-1}{x^2}e^xdx$\hspace{3mm}
+                $\displaystyle [5]\int_0^1 \frac{dx}{(x^2+1)^{\frac{5}{2}}}$\hspace{3mm}
+                $\displaystyle [6]\int_0^{\frac{\pi}{2}}|\sin x-2\cos x|dx$\hspace{3mm}
+                $\displaystyle [7]\int_0^{\frac{\pi}{2}}\log\sin xdx$\hspace{3mm}
+                $\displaystyle [8]\int_0^3\frac{dx}{(3-x)^{\frac{3}{2}}}$\hspace{3mm}
+                $\displaystyle [9]\int_0^\infty e^{-wx}dx $\hspace{3mm}
+                $\displaystyle [10]\int_0^1\frac{dx}{\left[ax+b(1-x)\right]^2}$
+            
+            \paragraph{問3}以下の図形の面積・体積を求めよ。
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $y=\sin x,y=\cos x$と直線$x=0,\pi$に囲まれた図形の面積
+                    \item $x^2+(y-a)^2 = r^2$をx軸周りに回転してできる立体（トーラス）の体積
+                \end{enumerate}
+            
+            \paragraph{問4}$s>0$で定義される（実は複素数まで定義できる！）関数$\Gamma(s)$の定義は
+                \begin{equation}
+                    \Gamma(s) = \int_{0}^{\infty}x^{s-1}e^{-x}dx \label{eq:ガンマ関数}
+                \end{equation}
+                である。この$\Gamma(s)$を\textbf{ガンマ関数}という。この時以下を示せ。
+                \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $\Gamma(s+1)=s\Gamma(s)$
+                    \item $\Gamma(n+1)=n!\quad (n\in \mathbb{N})$
+                \end{enumerate}
+
+            \paragraph{問5}$m,n$を負でない整数とするとき、次の積分を求めよ。
+                \begin{equation*}
+                    \int_0^1 x^m(1-x)^ndx
+                \end{equation*}
+
+            \paragraph{問6}$n=0,1,2,\dots$とするとき、次の定積分を求めよ。
+                \begin{equation*}
+                    G_{n}=\int_{-\infty}^{\infty}x^{n}e^{-x^2}
+                \end{equation*}
+                ただし、$\displaystyle \int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\pi}$（\textbf{ガウス積分}）は用いてよい。
+
+            \paragraph{問7}$x$と$\sqrt{ax^2+bx+c}\quad(a>0)$の有理関数$f(x,\sqrt{ax^2+bx+c})$について、$t=\sqrt{ax^2+bx+c}+\sqrt{a}x$と置換することにより
+                \begin{equation*}
+                    \int f(x,\sqrt{ax^2+bx+c})dx
+                \end{equation*}
+                は必ず積分できることを示せ。
+            \clearpage
+            \paragraph{問8}以下の問いに答えよ。
+            \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                \item $n=0,1,2,\dots$とするとき
+                    \begin{equation*}
+                        I_n=\int_{n\pi}^{(n+1)\pi}dxe^{-x}\sin x
+                    \end{equation*}を求めよ。
+                \item 以下の積分を求めよ。
+                    \begin{equation*}
+                        I=\int_{0}^{\infty}dx e^{-x}|\sin x|
+                        \end{equation*}
+            \end{enumerate}
+
+            \paragraph{問9}以下の$g(x)$について、$g'(x)$を求めよ。
+                \begin{equation*}
+                    g(x)=\int_{0}^{x}f(t)\cos(x+t)dt
+                \end{equation*}
+                
+            \paragraph{問10}%mynote 59参照
+                半径$r$の直円柱について、底面の直径$AB$を通り、平面と$\frac{\pi}{4}$の角をなす平面で切るとき、
+                底面と平面の間の部分の体積$V$を以下の指示に従って求めよ。
+                \begin{enumerate}
+                    \item 底面の円周上の点$P$と円の中心$O$とがなす角を$\theta$とする（下図参照）。このとき、直径$AB$に対して垂直な平面で図形を切った時の断面積を$\theta$を用いて表せ。
+                    \item $\theta$を十分小さな$\Delta \theta$だけ動かした点の位置を$P'$とするとき、この体積の微小変化分$\Delta V$を求めよ。
+                    \item 立体の体積$V$を求めよ。
+                \end{enumerate}
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[keepaspectratio,scale=0.5]{img/QuuNote/questionForIntegral.png}
+                    \caption{直円柱を平面で切る}
+                \end{figure}
+            \linktoMOKUZI
     \clearpage
+
     \part{無限級数$\sum$}
+    \vspace{\stretch{1}}
+    \begin{screen}
+        いよいよ最後の部である無限級数に入る。ここでは主に無限級数が収束するかどうかの判定がメインになる。収束の判定には様々な方法があるが、まずは自分が気に入ったもの一つを会得するのがよいだろう。
+        また、ここではべき級数についても扱う。べき級数には収束する範囲内において``一様収束''するという性質がある。この一様収束という概念がとっつきにくいが、
+        これを満たす関数級数は微分積分の観点において非常によい性質を持っているのである。無限級数の話はこれから先の数学等でもひんぱんに用いられる非常に重要なものの基礎である。
+        これを土台にして複素関数論・フーリエ級数・微分方程式も発展している。
+    \end{screen}
+    \clearpage
+        \section{無限級数とは}
     \clearpage
     \part{終わりに}
         このノートでは、（高専2年生で扱う）一変数の微分積分+無限級数について主に扱った。ここに書いてあることが大抵わかれば、
