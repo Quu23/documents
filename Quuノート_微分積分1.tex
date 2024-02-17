@@ -2268,7 +2268,7 @@
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
                     \item $\displaystyle \int_a^b \left\{f(x)\pm g(x)\right\}dx=\int_a^b f(x)dx\pm\int_a^b g(x)dx\label{eq:定積分の加法性}$
                     \item $\displaystyle \int_a^b cf(x)dx=c\int_a^b f(x)dx \quad (c\text{は定数})$
-                    \item $x\in [a,b]$で$f\geq 0$ならば$\displaystyle\int_a^b f(x)dx\geq 0$
+                    \item $x\in [a,b]$で$f\geq 0$ならば$\displaystyle\int_a^b f(x)dx\geq 0 \label{eq:被積分関数が正なら面積も正}$
                     \item $x\in [a,b]$で$f\geq g$ならば$\displaystyle\int_a^b f(x)dx\geq \int_a^b g(x)dx\label{eq:関数と積分値の大小関係}$
                     \item $\displaystyle \int_a^b f(x)dx = f(c)(b-a)\quad (c\in (a,b))\label{eq:積分の平均値の定理}$
                     \item $\displaystyle \int_a^bf(x)dx=\int_a^c f(x)dx+\int_c^b f(x)dx \quad(c\in(a,b))\label{eq:定積分の区間についての加法性}$
@@ -2277,7 +2277,7 @@
                 \end{enumerate}
                 式\eqref{eq:積分の平均値の定理}は（積分の）\textbf{第一平均値定理}\footnote{平均値の第一定理とも。文脈によっては単に平均値の定理とも呼ぶこともある。}と呼ばれる。性質\eqref{eq:int[a,b]=-[b,a]}は性質というよりは
                 このように定める（定義）として考えるとよい。\footnote{線積分を学ぶと、この定義が見通しよくなる。なぜなら左辺は$C:a\to b$の曲線に沿った積分$\int_C$であるためである。}数学書の中にはこれを証明させるものもあるが気にしなくてよい。性質\eqref{eq:定積分の区間についての加法性}も同様である。
-                性質\eqref{eq:定積分の加法性},\eqref{eq:int[a,b]=-[b,a]]}から性質\eqref{eq:関数と積分値の大小関係}と性質\eqref{eq:int[a,a]=0}は容易に証明できるので演習問題とする。よって\eqref{eq:積分の平均値の定理}とを示す。
+                性質\eqref{eq:定積分の加法性},\eqref{eq:被積分関数が正なら面積も正}と\eqref{eq:int[a,b]=-[b,a]}から性質\eqref{eq:関数と積分値の大小関係}と性質\eqref{eq:int[a,a]=0}は容易に証明できるので演習問題とする。よって\eqref{eq:積分の平均値の定理}とを示す。
 
                 \paragraph{平均値の定理の証明}
                     $f(x)$が定数関数なら明らかに式\eqref{eq:積分の平均値の定理}が成り立つ。よって$f(x)$は区間$[a,b]$で最大値$M$と最小値$m$を取るとする。この時
@@ -2518,16 +2518,16 @@
                     と略記してもよい。無限区間の積分は、この微分積分以外にも当たり前のように顔を出す。ぜひともこの機会に慣れておきたいものである。
             \clearpage
             \basicquestion 以下の問いに答えよ。
-                \paragraph{問1}定積分の性質\eqref{eq:定積分の加法性}を用いて性質\eqref{eq:関数と積分値の大小関係}を、性質\eqref{eq:int[a,b]=-[b,a]}を用いて性質\eqref{eq:int[a,a]=0}を示せ。
+                \paragraph{問1}定積分の性質\eqref{eq:定積分の加法性},\eqref{eq:被積分関数が正なら面積も正}を用いて性質\eqref{eq:関数と積分値の大小関係}を、性質\eqref{eq:int[a,b]=-[b,a]}を用いて性質\eqref{eq:int[a,a]=0}を示せ。
 
                 \paragraph{問2}定積分の定義より$\int_{0}^{1}xdx$を計算せよ。ただし$z_k=x_k$とし、$[0,1]$は丁度$n$等分するものとする。
 
-                \paragraph{問3}以下の定積分の値を求めよ。ただし$0\leq e < 1$である。\\
+                \paragraph{問3}以下の定積分の値を求めよ。ただし$0\leq \epsilon < 1$である。\\
                 $(1)\displaystyle \int_{0}^{\pi}\sin x dx$\hspace{3mm}%それにしてもあのsinの曲線下の面積がこんなに簡単に求まるなんて、ただただ驚くばかりである。
                 $(2)\displaystyle \int_{0}^{\frac{1}{2}}\frac{dx}{\sqrt{1-x^2}}$\hspace{3mm}
                 $(3)\displaystyle \int_0^2 x^2e^{x}dx$\hspace{3mm}
                 $(4)\displaystyle \int_{-3}^3\left(x^5+x^4+x^3+x^2+5\right)dx$\hspace{3mm}
-                $(5)\displaystyle \int_0^\pi \frac{dx}{1+e\cos x}$
+                $(5)\displaystyle \int_0^\pi \frac{dx}{1+\epsilon\cos x}$
 
                 \paragraph{問4}次の広義積分を求めよ。\\
                 $(1)\displaystyle \int_{-1}^{-\infty}\frac{dx}{x^4}$\hspace{3mm}
@@ -2536,7 +2536,7 @@
                 $(4)\displaystyle \int_0^a \frac{dx}{\sqrt{ax-x^2}}\quad(a>0)$\hspace{3mm}
                 $(5)\displaystyle \int_0^\infty \frac{dx}{x^3+1}$
 
-                \paragraph{問5}以下の式を示せ。
+                \paragraph{問5}以下の式を示せ。ただし$m,n$は正整数とする。
                 \begin{equation*}
                     \int_{0}^{2\pi}\cos mx\cos nx dx = \begin{cases}
                         0 & (m\neq n)\\ \pi & (m=n)
@@ -2558,7 +2558,7 @@
                 \paragraph{問8}次の問いに答えよ。
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
                     \item $\displaystyle \int_0^\pi \frac{\sin x}{1+\cos^2 x}dx$を求めよ。
-                    \item $x\to\pi -x$の置換により$\displaystyle \int_{0}^{\pi}xf(\sin x)dx=2\int_{0}^{\pi}f(\sin x)dx$を示せ。\\ただし、$f(\sin x)$は$\sin x$の有理関数である。
+                    \item $x\to\pi -x$の置換により$\displaystyle \int_{0}^{\pi}xf(\sin x)dx=\frac{\pi}{2}\int_{0}^{\pi}f(\sin x)dx$を示せ。\\ただし、$f(\sin x)$は$\sin x$の有理関数である。
                     \item $\displaystyle \int_{0}^{\pi} \frac{x\sin x}{1+\cos^2 x}dx$を求めよ。
                 \end{enumerate}
             \clearpage
@@ -3193,6 +3193,60 @@
                     \end{enumerate}
                 \clearpage
                 \basicanswer
+                    \paragraph{問1}
+                    性質\eqref{eq:関数と積分値の大小関係}は、式を移項して$\int (f-g)dx \geq 0$を示せ。性質\eqref{eq:int[a,a]=0}は、\eqref{eq:int[a,b]=-[b,a]}で$b=a$とし、移項せよ。
+
+                    \paragraph{問2}区間$[0,1]$をちょうど$n$等分すると$x_k=\frac{k}{n}$であり、$\Delta x_k = \frac{1}{n}$となる。したがって、$\displaystyle \int_0^1 xdx = \lim \sum \left(\frac{k}{n}\right) \frac{1}{n}=\lim \frac{1}{n^2} \sum k=\lim_{n\to 0}\frac{n(n+1)}{2n^2}=\frac{1}{2}$
+
+                    \paragraph{問3}以下の定積分の値を求めよ。ただし$0\leq \epsilon < 1$である。\\
+                    $(1)\displaystyle 2$\hspace{3mm}
+                    $(2)\displaystyle \frac{\pi}{6}$\hspace{3mm}
+                    $(3)\displaystyle 2(e^2-1)$\hspace{3mm}
+                    $(4)\displaystyle \frac{726}{5}$\hspace{3mm}
+                    $(5)t=\tan\frac{x}{2}$と置け。$\displaystyle \frac{\pi}{\sqrt{1-\epsilon^2}}$\\
+                    それにしてもあのsinの曲線下の面積(1)がこんなに簡単に求まるなんて、ただただ驚くばかりである。
+
+                    \paragraph{問4}次の広義積分を求めよ。\\
+                    $(1)\displaystyle -\frac{1}{3}$\hspace{3mm}
+                    $(2)\displaystyle \int_0^1 \log xdx$\hspace{3mm}
+                    $(3)\displaystyle \lim_{\varepsilon\to +0}\varepsilon\log \varepsilon = 0$を用いよ。$-1$\\
+                    $(4)x=a\sin^2 \theta\quad(0\leq\theta\leq \frac{\pi}{2})$と置換すると$dx = 2a\sin\theta\cos\theta d\theta$より、\\$\displaystyle \int_0^{\frac{\pi}{2}} \frac{2a\sin\theta\cos\theta}{\sqrt{a^2\sin^2\theta-a^2\sin^4\theta}}d\theta=2\int_{0}^{\frac{\pi}{2}}d\theta =\pi$\\
+                    $(5)$普通に部分分数分解してもよいが、ここでは違った解き方を示そう。積分変数は何でもよいので、$x\to \frac{1}{x}$の置換を行うと、
+                    \begin{equation*}
+                        \int_{0}^{\infty}\frac{dx}{x^3+1}=\int_{\infty}^{0}\frac{-\frac{1}{x^2}}{\left(\frac{1}{x}\right)^3+1}dx=\int_{0}^{\infty}\frac{x}{x^3+1}dx
+                    \end{equation*}
+                    よって、最初の積分と足し合わせると
+                    \begin{equation*}
+                        \frac{1}{2}\int_{0}^{\infty}\frac{x+1}{x^3+1}dx=\frac{1}{2}\int_{0}^{\infty}\frac{dx}{x^2-x+1}=\frac{1}{2}\int_{0}^{\infty}\frac{dx}{\left(x-\frac{1}{2}\right)^2+\frac{3}{4}}=\left[\frac{1}{\sqrt{3}}\tan^{-1}\frac{x-\frac{1}{2}}{\frac{\sqrt{3}}{2}}\right]_0^\infty=\frac{\pi}{2\sqrt{3}}+\frac{\pi}{6\sqrt{3}}=\frac{2\pi}{3\sqrt{3}}
+                    \end{equation*}
+
+                    \paragraph{問5}三角関数の公式を用いて$\cos$の和の形に直し、それぞれ場合分けせよ。
+
+                    \paragraph{問6}次の積分（広義積分）が収束するための$k$の範囲を求めよ。
+                    \begin{equation*}
+                        \int_1^\infty \frac{dx}{x^{k}}=\lim_{b\to\infty}\left[\frac{1}{1-k}\frac{1}{x^{k-1}}\right]_1^b=\lim \frac{1}{1-k}\left(\frac{1}{b^{k-1}}-1\right)
+                    \end{equation*}
+                    よって、収束するためには$k-1>0$であればよいので、$k>0$.
+
+                    \paragraph{問7}関数$f(x)$が偶関数であることを$f=f_e$、奇関数であることを$f=f_o$と表記することにする。この時以下を示せ。
+                    \begin{equation*}
+                        \int_{-a}^a f(x)dx = \int_{0}^{a}+\int_{-a}^{0}
+                    \end{equation*}
+                    であるため、右辺二項目の積分に$x\to -x$の置換を行うと、
+                    \begin{equation*}
+                        \int_{-a}^{a}f(x)dx = \int_0^a f(x)dx - \int_{a}^{0}f(-x)dx=\int_{0}^{a}\left\{f(x)+f(-x)\right\} dx
+                    \end{equation*}
+                    $f=f_e$なら$f(-x)=f(x)$、$f=f_o$なら$f(-x)=-f(x)$であるため、公式\eqref{eq:定積分と偶関数・奇関数}を得る。
+
+                    \paragraph{問8}次の問いに答えよ。
+                    \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                        \item $\displaystyle \cos x = t$と置け。$\displaystyle \frac{\pi}{2}$
+                        \item 置換$x\to\pi -x$を行うと、$\sin(\pi-\theta)=\sin\theta$より、$\displaystyle I=\int_{0}^{\pi}xf(\sin x)dx=\int_{0}^{\pi}(\pi-x)f(\sin(\pi-x))dx = \pi\int_{0}^{\pi}f(\sin x)dx - I.$したがって$\displaystyle I=\frac{\pi}{2}\int_{0}^{\pi}f(\sin x)dx$
+                        \item $(1),(2)$の結果を用いる。$\displaystyle\frac{\pi^2}{4}$
+                    \end{enumerate}
+                \clearpage
+                \basicanswer
+                        
         \clearpage
         \subsection{無限級数　基本問題解答}
         \clearpage
