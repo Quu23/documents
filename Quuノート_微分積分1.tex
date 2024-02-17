@@ -2174,7 +2174,7 @@
             \paragraph{問4}次の不定積分を部分分数分解を用いて求めよ。\\
                 $(1)\displaystyle \int \frac{dx}{x^2-3x+2}$\hspace{20mm}
                 $(2)\displaystyle \int \frac{dx}{(x^2+1)(x-2)}$\hspace{20mm}
-                $(3)\displaystyle \int \frac{dx}{x^2-a^2}$\\
+                $(3)\displaystyle \int \frac{dx}{x^2-a^2}\quad (a>0)$\\
 
             \paragraph{問5}以下証明せよ。
                 \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
@@ -3145,6 +3145,54 @@
 
         \clearpage
         \subsection{積分　基本問題解答}
+            \basicanswer
+                \paragraph{問1}次の不定積分を求めよ。\\
+                    $(1)\displaystyle \frac{1}{4}x^4$\hspace{3mm}
+                    $(2)\displaystyle \cos x$\hspace{3mm}
+                    $(3)\displaystyle \frac{1}{2}e^{x}-\frac{1}{x}$\hspace{3mm}
+                    $(4)\displaystyle \frac{\log x}{e}$\hspace{3mm}
+                    $(5)\displaystyle \tan^2 x + 1=\frac{1}{\cos^2 x}$より$\tan x$\hspace{3mm}
+                    $(6)\displaystyle \sin x\cos x=\frac{1}{2}\sin 2x$より$\displaystyle -\frac{1}{4}\cos 2x$
+
+                \paragraph{問2}次の不定積分を(\hspace{1mm})内の置換によって求めよ。\\
+                    $(1)\displaystyle \frac{1}{2}\sin(x^2)$\hspace{3mm}
+                    $(2)\displaystyle \frac{1}{9}(x^3-1)^3$\hspace{3mm}
+                    $(3)\displaystyle \tan^{-1}x$ \hspace{3mm}
+                    $(4)\displaystyle \sin^{-1} x$\hspace{3mm}
+                    $(5)\displaystyle \frac{1}{4}\sin^4 x$
+                
+                \paragraph{問3}次の不定積分を部分積分法で求めよ。\footnote{$(3)$はほかにも面白い解きかたがある。例えば、オイラーの公式を使えば積分は$\Re\int e^{(i+1)x}dx$と表せるので、これを解けばよい。}\\
+                    $(1)\displaystyle x\sin x+\cos x$\hspace{3mm}
+                    $(2)\displaystyle (x-1)e^x$\\
+                    $(3)\displaystyle I=e^x\cos x+\int e^x\sin xdx=e^x\cos x+e^x\sin x - \int e^x\cos xdx=e^x(\sin x+\cos x)-I$\\$\therefore I=\frac{e^x}{2}(\sin x+\cos x)$\\
+                    $(4)\displaystyle \int=x\log(x^2+1)-2\int \frac{x^2}{x^2+1}dx=x\log(x^2+1)-2\int\left(1-\frac{1}{x^2+1}\right)dx=x\log(x^2+1)-2x+2\tan^{-1}x$\\
+                    $(5)\displaystyle I=\int \sqrt{a^2-x^2}dx=x\sqrt{a^2-x^2}+\int \frac{x^2}{\sqrt{a^2-x^2}}dx=x\sqrt{a^2-x^2}-\int\left[\sqrt{a^2-x^2}-\frac{a^2}{\sqrt{a^2-x^2}}\right]dx=x\sqrt{a^2-x^2}+a^2\sin^{-1}\left(\frac{x}{a}\right)-I$
+                    したがって、$\displaystyle I=\frac{1}{2}\left[x\sqrt{a^2-x^2}+a^2\sin^{-1}\left(\frac{x}{a}\right)\right]$
+
+                \paragraph{問4}次の不定積分を部分分数分解を用いて求めよ。\\
+                    $(1)\displaystyle \log\left|\frac{2-x}{1-x}\right|$\hspace{3mm}
+                    $(2)\displaystyle \frac{1}{(x^2+1)(x-2)}=\frac{Ax+B}{x^2+1}+\frac{C}{x-2}$と置けば、$A=\frac{-1}{5},B=\frac{-2}{5},C=\frac{1}{5}$となるので、答えは$\displaystyle \frac{1}{10}\left(-\log(x^2+1)+2\log|x-2|-4\tan^{-1}x\right)$\hspace{3mm}
+                    $(3)\displaystyle \frac{1}{2a}\log\left|\frac{x-a}{x+a}\right|$
+
+                \paragraph{問5}以下証明せよ。
+                    \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                        \item $\sinh x$の定義から導け。
+                        \item $t=\tan\frac{x}{2}$と置くと、
+                        \begin{equation*}
+                            \sin x = \frac{2t}{1+t^2},\quad \cos x = \frac{1-t^2}{1+t^2}
+                        \end{equation*}
+                        と表せる。また、$t = \tan\frac{x}{2} \rightarrow x = 2\tan^{-1}t $より
+                        \begin{equation*}
+                            dx = \frac{2}{1+t^2}dt
+                        \end{equation*}
+                        したがって、元の積分は
+                        \begin{equation*}
+                            \int f\left(\frac{2t}{1+t^2},\frac{1-t^2}{1+t^2}\right)\frac{2dt}{1+t^2}
+                        \end{equation*}
+                        となるので、被積分関数は$t$の有理関数に帰着する。よって、必ず積分できる。$\square$
+                    \end{enumerate}
+                \clearpage
+                \basicanswer
         \clearpage
         \subsection{無限級数　基本問題解答}
         \clearpage
