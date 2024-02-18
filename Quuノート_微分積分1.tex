@@ -2827,7 +2827,7 @@
 
             \paragraph{問6}$n=0,1,2,\dots$とするとき、次の定積分を求めよ。
                 \begin{equation*}
-                    G_{n}=\int_{-\infty}^{\infty}x^{n}e^{-x^2}
+                    G_{n}=\int_{-\infty}^{\infty}x^{n}e^{-x^2}dx
                 \end{equation*}
                 ただし、$\displaystyle \int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\pi}$（\textbf{ガウス積分}）は用いてよい。
 
@@ -2880,6 +2880,108 @@
     \end{screen}
     \clearpage
         \section{無限級数とは}
+            \subsection{無限級数の定義}
+                まずは、無限級数の定義について述べよう。まず無限数列を$\left\{a_n\right\}=a_1,a_2,a_3,\dots$とする。このとき、これらの和を取り
+                \begin{equation}
+                    a_1+a_2+a_3+\dots \label{eq:無限級数の直感的な定義}
+                \end{equation}
+                を考え、これを
+                \begin{equation}
+                    \sum_{n=1}^{\infty}a_n,\quad \sum_{n} a_n,\quad \sum a_n \label{eq:無限級数の書き方}
+                \end{equation}
+                とかく。これを\textbf{無限級数}または単に級数と呼ぶ。無限級数の書き方は上記の三つが主であるが、もちろん最初の書き方が一番丁寧である。
+
+                加法は通常有限の項に対して定義されるので、上記の定義は形式なものになる。そこで、$\left\{a_n\right\}$の第$n$部分和$\left\{S_n\right\}$を
+                \begin{equation*}
+                    S_n = a_1+a_2+a_3+\cdots+a_n
+                \end{equation*}
+                と考えれば、式\eqref{eq:無限級数の直感的な定義}は、$S_n$の$n\to \infty$の極限を取ることと同じになる。よって、
+                \begin{equation}
+                    S=\lim_{n\to \infty}S_n
+                \end{equation}
+                の極限値$S$が存在すれば、$S=\sum a_n$と書き、無限級数は\textbf{収束する}という。また、この$S$を無限級数の和という。逆に、極限値が有限確定ではない場合、この級数は\textbf{発散する}という。\\
+
+                以下に無限級数の性質を述べる。
+                \begin{enumerate}
+                    \item 無限級数の各項に0じゃない定数を書けても、その級数の収束or発散は変わらない。\\特に、$S=\sum a_n\leftrightarrow kS=\sum k a_n$
+                    \item 級数に有限個の項を足し引きしても、その級数の収束or発散は変わらない。
+                    \item $\sum a_n$が収束するならば$\lim a_n=0$
+                \end{enumerate}
+                特に性質3が重要で、これを言い換えると「$\lim a_n \neq 0 \rightarrow \sum a_n$は発散」となる。これを用いれば、級数が発散するかどうか調べることができる。注意しなければいけないのは、
+                これの逆について、すなわち$\lim a_n=0$のときについては何も言及していないことである。すなわち、たとえ$a_n$が0に収束しようとも、その近づき方があまりにもゆっくりだった場合は級数が発散してしまうのである。
+
+                例えば、$a_n=\sqrt{n+1}-\sqrt{n}$は、$\lim a_n = 0$であるが、
+                \begin{equation*}
+                    S_n = a_1+a_2+\cdots+a_n = (\sqrt{2}-\sqrt{1})+(\sqrt{3}-\sqrt{2})+\cdots+(\sqrt{n+1}-\sqrt{n})=\sqrt{n+1}-1
+                \end{equation*}
+                であるため、$S_n=\sum a_n$は発散してしまう。
+            \clearpage
+            \subsection{単調で有界な数列}
+                次節以降で無限級数の収束を判定する方法等について述べるために、ここでは数列の補足を行う。\\
+
+                まずは、有界について説明しよう。すべての$n$について、$a_n\leq M$となる定数$M$が存在するとき、
+                数列$\{a_n\}$は\textbf{上に有界}であるという。この時の$M$を\textbf{上界}という。一方、すべての$n$
+                について、$m\leq a_n$となる定数$m$が存在するとき、$\{a_n\}$は\textbf{下に有界}であるという。この時の
+                $m$を\textbf{下界}という。すべての$n$に対して、$m\leq a_n \leq M$であれば、数列$\{a_n\}$は\textbf{有界である}という。
+
+                収束する数列は、すべて有界である。それを今から示そう。まず、仮定により
+                \begin{equation*}
+                    n \geq  N \Rightarrow |a_n - \alpha|<\varepsilon
+                \end{equation*}
+                となるような$N(\varepsilon)$が存在する。$\varepsilon$は任意の正数だから、例えば$\varepsilon=1$とすると、
+                $a_{N(1)},a_{N(1)+1},\cdots < |\alpha|+1$である。\footnote{$|a_n-\alpha|\geq ||a_n|-|\alpha||\geq |a_n|-|\alpha|$を用いた。}$n<N(1)$である各要素の数は有限個だから、これらの最大値は
+                必ず確定することができる。したがって、$M=\max(|a_1|,|a_2|,|a_3|,\dots,|a_{N(1)-1}|,|\alpha|+1)$として$M$を定めると、
+                $|a_n| \leq M$すなわち$-M\leq a_n \leq M$となる定数$M$が存在する。よって、収束する数列は必ず有界であることが示された。$\square$
+
+                収束すればかならず有界であるが、その逆、すなわち「有界である数列は必ず収束する」は必ずしも成り立たないことに注意しよう。
+                例えば、$a_n=(-1)^{n}$は、$-1\leq a_n\leq 1$で有界であるが、$n$を大きくしても$-1,1-1,1,\cdots$として値が確定しない（収束しない）。\\
+
+                次に、単調数列について説明しよう。数列$\{a_n\}$について、$a_{n+1}>a_{n}$であるとき、この数列は\textbf{単調増加}であるという。
+                また、等号を含めてた$a_{n+1}\geq a_n$ならば、この数列は\textbf{広義の単調増加}であるという。同様にして、$a_{n+1}< a_n$なら\textbf{単調減少}、
+                等号を含めて$a_{n+1}\leq a_n$なら\textbf{広義の単調減少}であるという。
+                単調増加数列と単調減少数列を総称して、\textbf{単調数列}という。\\
+
+                さて、いま、有界な広義単調増加数列
+                \begin{equation*}
+                    a_1 \leq a_2 \leq a_3 \leq \cdots \leq a_{n} \leq \cdots   
+                \end{equation*}
+                を考えよう。この数列は（広義の）単調増加であるから、$n$をどんどん大きくしていくと、$a_n$
+                はどんどん大きくなっていく。等号も含めているので、途中で一定の値になることはあるが、値が減少することはない。
+                一方この数列は有界であるから、$a_n \leq  M$で上から抑えられているので、増加のスピードはだんだん減少していくはずである。
+                そうすれば、やがて$a_n$はある一定の値に近づいていくことが容易に想像できるだろう。この一定の値は極限値である。
+                同様のことは、広義単調減少数列にも言える。以上をまとめると
+                \begin{screen}
+                    \centerline{すべての有界な広義の単調数列は収束する。}
+                \end{screen}
+                \paragraph*{例}$a_n = 1 - \frac{1}{n}$は、単調増加で$0\leq a_n < 1$で有界であるので、
+                収束する。実際、$\lim a_n =1$
+            \clearpage
+            \basicquestion 以下の問いに答えよ。
+
+                \paragraph{問1}次の無限級数が収束するか発散するかを調べ、収束するならその和を答えよ。\\
+                $(1)\displaystyle\sum n$\hspace{3mm}
+                $(2)\displaystyle\sum (-1)^{n}$\hspace{3mm}
+                $(3)\displaystyle\sum \frac{n}{n+1}$\hspace{3mm}
+                $(4)\displaystyle\sum \frac{1}{n(n+1)}$\hspace{3mm}
+                $(5)\displaystyle\sum \frac{n}{(n+1)!}$
+
+                \paragraph{問2}以下の数列が収束することを示せ。\\
+                $\displaystyle (1)\frac{n}{2n+1}$\hspace{30mm}
+                $\displaystyle (2)\frac{1}{2}\left(1-\frac{1}{3^n}\right)$\hspace{30mm}
+                $\displaystyle (3)\frac{1}{\sqrt{n}}$
+
+                \paragraph{問3}$\sum a_n$が収束するならば$\lim a_n =0$　を示せ。
+
+                \paragraph{問4}\textbf{等比級数}$\displaystyle \sum_{n=1}^{\infty} ar^{n-1} \quad (a\neq 0)$が収束する$r$の条件を求めよ。
+
+                \paragraph{問5}古代ギリシャの自然哲学者ゼノンは「ある地点に到達するためには、その半分の中間点に到達しなければならない。
+                さらにその中間点に到達するためには、その中間点までの半分に到達しなければならない。この論法を繰り返していくと、結局いつまでたっても最初の目標地点には到達できない」
+                というパラドクスを述べた。一見これは正しそうに見えるが、実は誤りである。なぜなら、この論理の前提が「距離を無限に分割するためには無限の時間がかかる」となっているからである。
+                
+                では、このゼノンのパラドクスが誤りであることを級数を使って示せ。
+        \clearpage    
+        \section{正項級数と収束判定}
+            \subsection{正項級数}
     \clearpage
     \part{終わりに}
         このノートでは、（高専2年生で扱う）一変数の微分積分+無限級数について主に扱った。ここに書いてあることが大抵わかれば、
