@@ -2982,6 +2982,24 @@
         \clearpage    
         \section{正項級数と収束判定}
             \subsection{正項級数}
+                級数$\sum a_n$のすべての項が負ではない級数を\textbf{正項級数}という。正項級数の収束するには、部分和からなる数列$\{S_n\}$
+                が有界であればよい。なぜなら、$S_n=a_1+a_2+\cdots+a_n$で、各項が$a_n \geq 0$だから、当然$S_n \geq a_1+a_2+\cdots+a_{n-1}=S_{n-1}$
+                したがって、$\{S_n\}$は広義単調数列となるので、有界であれば収束する。すなわち$\sum a_n$は収束する。逆に、$\sum a_n$が収束すれば
+                収束する数列はすべて誘拐なのだから、数列$\{S_n\}$は有界である。
+
+                まとめると、正項級数$\sum a_n$は、\underline{第n部分和がnに関係しないある定数より小さいときに限り収束する。}
+
+                \paragraph{例}正項級数$\displaystyle \sum \left(\frac{1}{2}\right)^n$は、$\displaystyle S_n = 1-\left(\frac{1}{2}\right)^n$
+                だから、有界。すなわち$\sum (1/2)^n$は収束。
+
+                \begin{figure}[h]
+                    \centering
+                    \includegraphics[scale=0.5]{img/QuuNote/seikoukyusu.png}
+                    \caption{$n=10$までの部分和の比較}
+                \end{figure}
+            \clearpage
+            \subsection{判定法}
+                
     \clearpage
     \part{終わりに}
         このノートでは、（高専2年生で扱う）一変数の微分積分+無限級数について主に扱った。ここに書いてあることが大抵わかれば、
