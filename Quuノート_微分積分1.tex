@@ -12,6 +12,7 @@
 \usepackage{okumacro}
 \usepackage{tikz}
 \usepackage{bm}
+\usepackage{ulem}
 
 \pagestyle{headings}
 
@@ -2999,6 +3000,213 @@
                 \end{figure}
             \clearpage
             \subsection{判定法}
+                これから正項級数の収束・発散を判定する方法をいくつか述べる。
+
+                \paragraph{比較法}正項級数$\sum a_n , \sum b_n$に対して、
+                \begin{equation}
+                    a_n \leq b_n \quad (n\geq N) \label{eq:比較法}
+                \end{equation}
+                であるとすれば、
+                \begin{itemize}
+                    \item $\sum b_n$が収束するとき、$\sum a_n$は収束する。
+                    \item $\sum a_n$が発散するとき、$\sum b_n$は発散する。
+                \end{itemize}
+                これはよく考えたら当たり前のように感じる。証明もすごく簡単で、比較法の条件\eqref{eq:比較法}より、
+                $n$が十分大きいとき$\sum^n a_n \leq \sum^n b_n$だから\footnote{$\sum^n a_n$は$a_n$の第$n$部分和を表すことにする。}、
+                $\sum b_n$が収束するなら、ある定数$M$が存在して$\sum^n a_n \leq \sum^n b_n \leq M$となる。したがって$0\leq \sum^n a_n \leq M$となり、
+                $\sum a_n$の$n$部分和も有界。よって$\sum a_n$も収束。さらに対偶を取れば$\sum a_n$が発散するとき$\sum b_n$も発散するとわかる。
+
+                応用上は$N=1$として用いることが多い、また、級数の各項を定数倍しても級数の収束・発散は変わらないから、条件\eqref{eq:比較法}は$k>0$として
+                $a_n \leq k b_n$としても、上記の判定法の結果は変わらない。
+
+                これは最も基本的かつ有用な判定法である。以降の判定法もこの判定法から導出されるものが多い。この判定法は無意識に（わざわざ「比較法より」と書かずに）用いられる
+                ことがよくある。\\
+
+                \textbf{[例]}\hspace{1mm}$\displaystyle\sum \frac{1}{e^n + 1}$が収束するか調べる。明らかに$\displaystyle \frac{1}{e^n+1}\leq \frac{1}{e^n}$であり、$\sum e^{-n}$は収束するから
+                $\displaystyle\sum \frac{1}{e^n+1}$も収束する。
+
+                上の例からわかるように比較法の``キモ''はシグマの中の不等式評価をいかにうまくできるかにかかっている。例のような簡単な級数ならすぐ浮かぶが、中には
+                技巧的な評価を行うもの（例えば調和数列など）もある。
+
+                \paragraph{コーシーの判定法}正項級数$\sum a_n$において、
+                \begin{equation}
+                    \lim_{n\to \infty}\sqrt[n]{a_n} = L \label{eq:コーシーの判定法}
+                \end{equation}
+                とすると、
+                \begin{itemize}
+                    \item $0\leq L <1$ならば、$\sum a_n$は収束する。
+                    \item $L>1$ならば、$\sum a_n$は発散する。
+                \end{itemize}
+                \paragraph{ダランベールの判定法}正項級数$\sum a_n$において、
+                \begin{equation}
+                    \lim_{n\to \infty}\frac{a_{n+1}}{a_n}=L\label{eq:ダランベールの判定法}
+                \end{equation}
+                とすると、
+                \begin{itemize}
+                    \item $0\leq L <1$ならば、$\sum a_n$は収束する。
+                    \item $L>1$ならば、$\sum a_n$は発散する。
+                \end{itemize}
+                \clearpage
+                コーシーの判定法もダランベールの判定法も、ともに等比級数と比較することで得られる。\sout{証明は}\\\sout{演習問題としよう。}\\
+
+                \textbf{[例]}\hspace{1mm}$\displaystyle \sum_{n=0}^\infty \frac{x^n}{n!}$は$x$が有限な正の数であるとき収束することを示す。ダランベールの判定法を用いると
+                \begin{equation*}
+                    \lim_{n\to\infty}\frac{{x^{n+1}}/{(n+1)!}}{{x^n}/{n!}}=\lim_{n\to\infty}\frac{x}{n+1}=0
+                \end{equation*}
+                したがって、$L=0$より$\displaystyle\sum \frac{x^n}{n!}$は収束する。ちなみにこの級数の和は$e^x$である。\\
+
+                どちらの判定法も\underline{$L=1$のときには何も言っていない（役に立たない）}ことに注意しよう。例を挙げるなら、
+                $\sum 1/n^p$は、ダランベールの判定法を用いると
+                \begin{equation*}
+                    \lim_{n\to \infty}\frac{a_{n+1}}{a_n}=\lim_{n\to\infty}\frac{1/(n+1)^p}{1/n^p}=\lim_{n\to \infty}\frac{n^p}{(n+1)^p}=\lim_{n\to\infty}\frac{1}{\left(1+\frac{1}{n}\right)^p}=1
+                \end{equation*}
+                となり、$p$の値によらず$L=1$となってしまう。しかし実際には$p>1$なら収束し、$p\geq 1$なら発散するのである。
+
+                \paragraph{積分判定法}正項級数を$\sum a_n$とする。このとき、関数$f(x)$を次のように選ぶ。$f$は$x\geq N$で$f>0$で、連続な広義減少
+                関数であり、$x=N,N+1,N+2,\cdots$の点で、$a_{N},a_{N+1},a_{N+2},\cdots$を取るとする。すなわち
+                \begin{equation*}
+                    f(n)=a_n \quad (n=N,N+1,N+2,\cdots)
+                \end{equation*}
+                とする。このとき、無限積分
+                \begin{equation*}
+                    \int_{N}^{\infty}f(x)dx = \lim_{M\to\infty}\int_{N}^{M}f(x)dx \label{eq:積分判定法}
+                \end{equation*}
+                が収束すれば、正項級数$\sum a_n$は収束する。発散についても同様である。
+
+                積分判定法のイメージにはグラフを書くことをお勧めする。級数の$n$部分和の図形的な意味も考えるとわかると思う。例えば、$N=1$で考えてみよう。$S_n=a_1+a_2+\cdots +a_n=1\times a_1 + 1\times a_2 +\cdots+1\times a_n$
+                であるから、$S_n$は横の長さが1、縦の長さが$a_n$の各長方形の面積の和だと考えられる。$f$は広義の単調減少だから、これら長方形は各区間$[1,2],[2,3],\cdots,[n,n+1]$における各$f(x)$グラフ下の面積よりも大きい。
+                すなわち
+                \begin{equation*}
+                    S_n \geq \int_1^{n+1} f(x)dx
+                \end{equation*}
+                である。また、各長方形の高さを$a_1\Rightarrow a_2,a_2\Rightarrow a_3,\cdots,a_{n}\Rightarrow a_{n+1}$とすれば、その面積の総和は
+                $1\times a_{2}+1\times a_3+\cdots+1\times a_{n+1}=S_{n+1} - a_1$である。これらの各面積は$f$が広義単調減少だから、各$f(x)$のグラフ下の面積よりも小さい。
+                すなわち
+                \begin{equation*}
+                    \int_{1}^{n+1}f(x)dx \geq S_{n+1}-a_1
+                \end{equation*}
+                である。
+                \clearpage
+                以上２つの不等式を合わせると、
+                \begin{equation*}
+                    S_n \geq \int_{1}^{n+1}f(x)dx \geq S_{n+1}-a_1
+                \end{equation*}
+                となるので、$n\to \infty$で積分が収束するかどうかが$S_n$が収束するかどうか、すなわち級数が収束するかどうかと同じだとわかるのである。\footnote{例えば$I_{n+1}=\int^{n+1}$を一つの数列と考えれば、この広義積分が収束するとき数列$I_n$は有界である。よって$\int^{n+1}\geq S_{n+1}-a_1$の不等式から、$S_n$も有界、つまり収束する。
+                発散についても、$I_n$は広義単調増加するので考えられる発散の仕方は$I_n\to \infty$のみ。このとき不等式より$S_n \geq \infty$であるので、$S_n$は発散する。}
+
+                積分判定法を用いれば、級数$\displaystyle \sum\frac{1}{n^p}$の収束・発散も調べられる。まず、$f$として$f(x)=1/x^p$を選べば、$f(n)=1/n^p =a_n \quad (n\geq 1)$となる。よって、
+                積分$\displaystyle \int_{1}^{\infty}\frac{dx}{x^p}$が収束・発散の条件を調べればよい。積分の部の基本問題にあったように、$p>1$ならこの無限積分は収束し、$p\geq 1$なら発散する。
+                したがって、級数$\displaystyle \sum \frac{1}{n^p}$は$p>1$ならば収束し、$p\geq 1$なら発散する。
+
+                なお、$p>1$なる区間では級数の和は$p$の関数であるから、変数を$s$に変え、その関数を$\zeta(s)$とかく。これを\textbf{ゼータ関数}という。実は$s$は複素数まで
+                拡張できる！実際、$\Re s > 1$であればゼータ関数は収束する。さらに解析接続\footnote{解析的延長とも。}という方法を用いればもっと広い範囲、例えば$\zeta(-1)$などまで
+                関数を定義することができる。しかし、これは複素解析の話であり、このノートで扱う範囲を大きく超えているのでここでは扱わない。  
+                
+                \paragraph{名前がない判定法}上記の$\sum \frac{1}{n^p}$の性質と、比較法とを組み合わせると、次の判定法が得られる。この判定法は名前は私が知る限りでは無い。
+
+                正項級数$\sum a_n$に対して、
+                \begin{equation}
+                    \lim_{n\to\infty}n^p a_n = A \label{eq:名もなき判定法}
+                \end{equation}
+                を計算する。
+                \begin{itemize}
+                    \item $p>1$で$A$が有限ならば、$\sum a_n$は収束する。
+                    \item $p\leq 1$で$A\neq 0$（無限大も含めて）なら、$\sum a_n$は発散する。
+                \end{itemize}
+                ちなみにこの判定法に限らず、たいていの判定法を導出するにはコーシーの判定法\footnote{これは数列に関するコーシーの収束定理から導ける。}という方法を用いるが、このノートでは扱わないので証明を載せることはできない。\\
+
+                \textbf{[例]}\hspace{1mm}$\sum \sin^2(\frac{1}{n})$の収束を調べる。十分大きい$n$について$\sin \frac{1}{n} = \frac{1}{n}$が成り立つ\footnote{イメージは$x\to 0$で$\sin x/x\to 1$であることから。}ので、$p=2$として
+                $\lim n^2\cdot\frac{1}{n^2}=\lim 1=1=A.$したがって、$A$は有限なので級数は収束する。
+
+                \paragraph{ラーベの判定法}正項級数を$\sum a_n$とすると、
+                \begin{equation}
+                    \lim_{n\to\infty}n\left(\frac{a_n}{a_{n+1}}-1\right)=r \label{eq:ラーベの判定法}
+                \end{equation}
+                このとき、$r>1$ならば収束し、$r<1$ならば発散する。
+            \clearpage
+            \subsection{交項級数}
+                これまでは、級数の各項の符号が同じ場合についてのみ扱った。ここからは符号が一定でない場合の級数も含めて扱っていく。
+
+                まず、符号が交互に代わる級数（\textbf{交項級数}）を考えよう。これは各項が負ではない数列$\left\{b_n\right\}$を用いて
+                \begin{equation}
+                    b_1-b_2+b_3-b_4+\cdots
+                \end{equation}
+                と表せられる。交項級数は以下の条件が満たされるときに収束する。
+                \begin{enumerate}
+                    \item $0\leq b_{n+1}\leq b_n$
+                    \item $\lim b_n = 0$
+                \end{enumerate}
+                上記の条件が満たされていると仮定して収束することを示す。この時、最初の$2M$項の和は
+                \begin{equation}
+                    S_{2M}=(b_1-b_2)+(b_3-b_4)+(b_5-b_6)+\cdots +(b_{2M-1}-b_{2M})\label{eq:交項級数証明用1}
+                \end{equation}
+                また、
+                \begin{equation}
+                    S_{2M}=b_1-(b_2-b_3)-(b_4-b_5)-\cdots - (b_{2M-2}-b_{2M_1})-b_{2M}\label{eq:交項級数証明用2}
+                \end{equation}
+                式\eqref{eq:交項級数証明用1}では、すべての(\hspace{2mm})が負ではない。したがって、
+                \begin{equation}
+                    S_{2M}\geq 0,\quad S_2\leq S_4\leq\cdots\leq S_{2M}
+                \end{equation}
+                また、式\eqref{eq:交項級数証明用2}でも、(\hspace{2mm})内の量はすべて負ではないし、$b_{2M}\geq 0$であるから、$S_{2M}\leq b_1$である。
+                したがって、
+                \begin{equation}
+                    0\leq S_2\leq S_4\leq\cdots\leq S_{2M}\leq b_1
+                \end{equation}
+                すなわち、$\left\{S_{2M}\right\}$は広義単調減少で有界であるから、収束し、極限値$S$を持つ。
+
+                さらに、$S_{2M+1}=S_{2M}+b_{2M+1}$であるから、$\lim b_{2M+1}=0$より
+                \begin{equation*}
+                    \lim_{n\to\infty}S_{2M+1}=\lim_{n\to\infty}\left\{S_{2M}+b_{2M+1}\right\}=S+0=S
+                \end{equation*}
+                よって、この級数の第$n$部分和$S_n$は、$n$が偶数でも奇数でも極限値$S$を持ち、収束する。
+
+                \paragraph{例}$\displaystyle\sum (-1)^{n+1}\frac{1}{n}$は収束する。なぜなら、$\displaystyle 0\leq \frac{1}{n+1}\leq \frac{1}{n}$であり、$\displaystyle\lim_{n\to \infty}\frac{1}{n}=0$
+                であるから、交項級数の収束条件が満たされる。
+            \clearpage
+            \subsection{絶対収束級数}
+                今度は符号の制限をなくし、任意の符号を持つ数列$\{a_n\}$からつくられる級数
+                \begin{equation*}
+                    \sum a_n = a_1+a_2+a_3+\cdots+a_n+\cdots \label{eq:絶対収束用級数}
+                \end{equation*}
+                を考えよう。この級数の各項の絶対値を取った
+                \begin{equation*}
+                    \sum |a_n| = |a_1|+|a_2|+|a_3|+\cdots+|a_n|+\cdots\label{eq:絶対収束用級数_絶対値}
+                \end{equation*}
+                は正項級数である。
+
+                このとき、級数\eqref{eq:絶対収束用級数_絶対値}が収束するならば、級数\eqref{eq:絶対収束用級数}は\textbf{絶対収束する}といい、
+                このような級数を\textbf{絶対収束級数}という。
+
+                それぞれの級数の第$n$部分和を
+                \begin{equation*}
+                    S_n = \sum_{k=1}^{n}a_k,\quad T_n = \sum_{k=1}^{n}|a_k|
+                \end{equation*}
+                と置けば、
+                \begin{equation*}
+                    S_n+T_n=(a_1+|a_1|)+(a_2+|a_2|)+\cdots+(a_n+|a_n|)\leq 2(|a_1|+|a_2|+\cdots+|a_n|)
+                \end{equation*}
+                である。ここで$\sum a_n$が絶対収束するとすれば、$a_n+|a_n|\leq 0$であることを併せて、$S_n+T_n$は
+                有界な広義の単調増加数列となる。すなわち、$\lim (S_n+T_n)$は収束する。よって、$\lim S_n$も収束する。
+                つまり、絶対収束級数は``絶対に''収束するのである。名前負けしてないのが面白い。
+
+                逆に、$\sum a_n$は収束するが、$\sum|a_n|$が発散するとき、$\sum a_n$は\textbf{条件収束する}という。
+                またこの級数を\textbf{条件収束級数}という。\\
+
+                以前正項級数の判定法を述べたが、これは絶対収束の判定にも使うことができる。むしろ、絶対収束の判定のために
+                これまでの判定法を述べたのである、というのは過言か。
+
+                \paragraph{例}級数
+                \begin{equation*}
+                    \sum_{n=0}^{\infty}\frac{x^n}{n!}
+                \end{equation*}
+                は、すべての有限な$x$に対して絶対収束する。なぜなら、ダランベールの判定法を用いると、
+                \begin{equation*}
+                    \lim_{n\to \infty}\frac{{|x^{n+1}|}/{(n+1)!}}{{|x^n|}/{n!}}=\lim_{n\to\infty}\frac{|x|}{n+1}=0
+                \end{equation*}
+                よって、この級数は絶対収束し、収束する。
+
+                
                 
     \clearpage
     \part{終わりに}
@@ -3029,7 +3237,7 @@
             \item \href{https://www.utp.or.jp/book/b302122.html}{\textbf{解析演習}}\\この本ではさまざまな微積分（解析）の問題が載っている。豊富な例題とそれに関連した問題がたくさんあり、これを読むだけでも問題を解く力が付きそうである。扱う内容
             も幅広く、複素関数・ベクトル解析（微分形式も含む！）・フーリエ解析に加えて多様体・複素ベクトル解析という明らかにやばそうなものまで扱っている。また、例題を解く前にまとめられている「要項」では簡単であるが、積分などの定義についてこのノート
             で述べた内容なんかよりもはるかに厳密に書かれている。主に積分の問題を選ぶ際の参考にさせてもらった。
-            \item \href{https://ts-webstore.net/?pid=120253578}{\textbf{微積分／基礎の極意}}\\この本は理論というよりは、計算に重きを置いた本である。しかし、ここで述べられた直感的な説明は微積分の感覚をつかむよい足掛かりになるのではないか。
+            \item \href{https://ts-webstore.net/?pid=120253578}{\textbf{微積分／基礎の極意}}\\この本は厳密な理論というよりは、計算に重きを置いた本である。しかし、ここで述べられた直感的な説明は微積分の感覚をつかむよい足掛かりになるのではないだろうか。
             このノートで直接参考になった部分は定積分の問題である。
         \end{enumerate}
     \clearpage
