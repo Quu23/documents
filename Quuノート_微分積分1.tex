@@ -871,7 +871,7 @@
     \begin{screen}
         いよいよ微分積分の``微分''の話に移る。微分法は、関数の挙動について解析するときに用いる。具体的な計算は公式に当てはめるだけなので
         そこまで難しくない。それにもかかわらず微分の応用例は幅広い。理屈がわかったらあとは練習あるのみである。
-        また、この章ではテイラー展開などについても扱う。
+        また、ここではテイラー展開などについても扱う。
     \end{screen}
     \clearpage
     \section{導関数}
@@ -1290,7 +1290,7 @@
             \clearpage
             \section{微分法の応用}
                 \subsection{関数の増減}
-                    この章からは微分法の応用について述べる。まずは、微分法を用いて関数の増減について調べていこう。ひとまず
+                    この節からは微分法の応用について述べる。まずは、微分法を用いて関数の増減について調べていこう。ひとまず
                     微分係数が何を示しているかを復習しておくと、これは$y=f(x)$のグラフにおいてその点の接線の傾きを示しているのだった。
                     傾きの大きさ（度合い）は一旦無視してその符号にのみ着目すると、傾きが正であるとき（一次関数のグラフと同様）その点周辺で$f(x)$は増加しており
                     逆に負の場合は減少していることがわかる。すなわち次の結果が得られる。
@@ -1393,7 +1393,7 @@
                     \end{figure}
                 \clearpage
                 \subsection{物理と微分}
-                    この章の最後に物理と微分との関係について述べよう。力学では速度・加速度というものを学んだ。例えば速度は、「平均の速度」と「瞬間の速度」というものがあったと思う。
+                    この節の最後に物理と微分との関係について述べよう。力学では速度・加速度というものを学んだ。例えば速度は、「平均の速度」と「瞬間の速度」というものがあったと思う。
                     瞬間の速度の定義は
                     \begin{equation}
                         \frac{\Delta x}{\Delta t}
@@ -3205,6 +3205,42 @@
                     \lim_{n\to \infty}\frac{{|x^{n+1}|}/{(n+1)!}}{{|x^n|}/{n!}}=\lim_{n\to\infty}\frac{|x|}{n+1}=0
                 \end{equation*}
                 よって、この級数は絶対収束し、収束する。
+            \clearpage
+            \basicquestion 以下の問いに答えよ。
+                \paragraph{問1}比較法を用いて、次の級数の収束、発散を調べよ。\\
+                $\displaystyle(1)\sum_{n=2}^{\infty}\frac{1}{\log n}$\hspace{15mm}
+                $\displaystyle(2)\sum_{n=1}^{\infty}\frac{\log n}{n^3+1}$\hspace{15mm}
+                $\displaystyle(3)\sum_{n=1}^{\infty}\frac{n^2+1}{n^3+1}$
+
+                \paragraph{問2}コーシーの判定法かダランベールの判定法を用いて、次の級数の収束、発散を調べよ。\\
+                $\displaystyle(1)\sum_{n=1}^{\infty}\frac{1}{n^n}$\hspace{15mm}
+                $\displaystyle(2)\sum_{n=1}^{\infty}n^5e^{-n^2}$\hspace{15mm}
+                $\displaystyle(3)\sum_{n=1}^{\infty}\left(\frac{n}{2n+1}\right)^n$
+
+                \paragraph{問3}積分判定法より、次の級数の収束、発散を調べよ。\\
+                $\displaystyle(1)\sum_{n=1}^{\infty}\frac{n}{n^2+2}$\hspace{15mm}
+                $\displaystyle(2)\sum_{n=1}^{\infty}ne^{-n^2}$\hspace{15mm}
+                $\displaystyle(3)\sum_{n=2}^{\infty}\frac{1}{n\log n}$
+
+                \paragraph{問4}$\lim n^p a_n$を計算することで、次の級数の収束、発散を調べよ。\\
+                $\displaystyle(1)\sum_{n=1}^{\infty}\frac{n}{3n^3-1}$\hspace{15mm}
+                $\displaystyle(2)\sum_{n=1}^{\infty}\frac{\log n}{\sqrt{n+2}}$\hspace{15mm}
+                $\displaystyle(3)\sum_{n=1}^{\infty}\sin^3\left(\frac{1}{n}\right)$
+
+                \paragraph{問5}次の級数の収束、絶対収束を調べよ。\\
+                $\displaystyle(1)\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^2}$\hspace{15mm}
+                $\displaystyle(2)\sum_{n=1}^{\infty}(-1)^{n-1}\frac{\log n}{n^3+1}$\hspace{15mm}
+                $\displaystyle(3)\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}$
+                
+                \paragraph{問6}次の収束・発散を調べよ。\\
+                $\displaystyle (1)\sum_{n=1}^{\infty}\frac{(a+1)(2a+1)\cdots(na+1)}{(b+1)(2b+1)\cdots(nb+1)}\quad (a,b>0)$\\
+                $\displaystyle (2)\sum_{n=2}^{\infty}(-1)^n\frac{\log n}{n}$\\
+                $\displaystyle (3)\sum_{n=1}^{\infty}\frac{(a+1)(a+2)\cdots(a+n)}{(b+1)(b+2)\cdots(b+n)}\quad (a,b>0)$
+
+                \paragraph{問7}条件$0\leq b_{n+1} \leq b_n,\lim b_n =0$を満たす交項級数$b_1-b_2+b_3-\cdots$において、ある項までで打ち切ることによる
+                誤差は、次の項の絶対値より小さい。これを示せ。ただし、誤差とは級数をある項までで打ち切った時の和と級数の和との差の絶対値とする。
+            \clearpage
+        \section{関数級数}
 
                 
                 
@@ -3418,7 +3454,7 @@
                 (3)$\sin^2 x+\cos ^2 x=1$の両辺を$x$微分すると$2\sin x\cos x+2\cos x(\cos x)'=0$仮定より$\cos x\neq 0$なので、両辺を$2\cos x$で割って移項すると$(\cos x)'=-\sin x$
 
                 \paragraph{問3}以下の関数の導関数を工夫して求めよ。\\
-                $\displaystyle(1)y'=\frac{2(x-1)}{3(x+1\sqrt[3]{(x+1)^2(x^2+1)^2})}$\hspace{3mm}
+                $\displaystyle(1)y'=\frac{2(x-1)}{3(x+1)\sqrt[3]{(x+1)^2(x^2+1)^2}}$\hspace{3mm}
                 $(2)y'=x^x(\log x+1)$\\
                 $(3)x=\tan \theta$と置くと、$\displaystyle y=\sin^{-1}\frac{\tan \theta}{\sqrt{1+\tan^2\theta}}=\theta$なので、\\
                 $\displaystyle \frac{dy}{dx}=\frac{dy}{d\theta}\frac{d\theta}{dx}=1\cdot\frac{1}{\frac{dx}{d\theta}}=\cos^2 \theta=\frac{1}{1+\tan^2\theta}=\frac{1}{1+x^2}$よって$\displaystyle y'=\frac{1}{1+x^2}$
