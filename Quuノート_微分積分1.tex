@@ -706,7 +706,11 @@
                     \item $\displaystyle\lim_{x\to a}f(x)$が存在する。
                     \item $\displaystyle f(a)=\lim_{x\to a}f(x)$である。
                 \end{enumerate}
-                極限の場合は$x=a$で値が存在していなくてもよかったが、連続では$x=a$での値も必要となる。
+                極限の場合は$x=a$で値が存在していなくてもよかったが、連続では$x=a$での値も必要となる。なお、これを$\varepsilon-\delta$風に書けば、
+                \begin{screen}
+                    任意の$\varepsilon>0$に対して、ある$\delta >0$が存在して、$|x-a|<\delta $のとき、$|f(x)-\delta|<\varepsilon$
+                \end{screen}
+                である。$0<|x-a|<\delta$でないことに注意されたい。
 
                 連続の条件2について、極限が存在するとはどういうことなのか考えてみよう。関数の極限$x\to a$では、\underline{$x$をどのように$a$
                 に近づけても同じ極限値を取る}必要がある。
@@ -2312,10 +2316,11 @@
                     \item $\displaystyle \int_a^bf(x)dx=\int_a^c f(x)dx+\int_c^b f(x)dx \quad(c\in(a,b))\label{eq:定積分の区間についての加法性}$
                     \item $\displaystyle \int_a^b f(x)dx = -\int_b^a f(x)dx\label{eq:int[a,b]=-[b,a]}$
                     \item $\displaystyle \int_a^a f(x)dx=0\label{eq:int[a,a]=0}$
+                    \item $\displaystyle \left|\int_{a}^{b}f(x)dx\right|\leq \int_{a}^{b}|f(x)|dx$\label{eq:積分の三角不等式}
                 \end{enumerate}
                 式\eqref{eq:積分の平均値の定理}は（積分の）\textbf{第一平均値定理}\footnote{平均値の第一定理とも。文脈によっては単に平均値の定理とも呼ぶこともある。}と呼ばれる。性質\eqref{eq:int[a,b]=-[b,a]}は性質というよりは
                 このように定める（定義）として考えるとよい。\footnote{線積分を学ぶと、この定義が見通しよくなる。なぜなら左辺は$C:a\to b$の曲線に沿った積分$\int_C$であるためである。}数学書の中にはこれを証明させるものもあるが気にしなくてよい。性質\eqref{eq:定積分の区間についての加法性}も同様である。
-                性質\eqref{eq:定積分の加法性},\eqref{eq:被積分関数が正なら面積も正}と\eqref{eq:int[a,b]=-[b,a]}から性質\eqref{eq:関数と積分値の大小関係}と性質\eqref{eq:int[a,a]=0}は容易に証明できるので演習問題とする。よって\eqref{eq:積分の平均値の定理}とを示す。
+                性質\eqref{eq:定積分の加法性},\eqref{eq:被積分関数が正なら面積も正}と\eqref{eq:int[a,b]=-[b,a]}から性質\eqref{eq:関数と積分値の大小関係}と性質\eqref{eq:int[a,a]=0}は容易に証明できるので演習問題とする。よって\eqref{eq:積分の平均値の定理}とを示す。\footnote{なお、性質\eqref{eq:積分の三角不等式}も簡単に示せる。時間がある人はやってみよう。}
 
                 \paragraph{平均値の定理の証明}
                     $f(x)$が定数関数なら明らかに式\eqref{eq:積分の平均値の定理}が成り立つ。よって$f(x)$は区間$[a,b]$で最大値$M$と最小値$m$を取るとする。この時
@@ -2339,7 +2344,6 @@
                         \frac{1}{b-a}\int_a^b f(x)dx = f(c)
                     \end{equation*}
                     となるような点$c$が区間$(a,b)$内に存在する。よって、平均値の定理\eqref{eq:積分の平均値の定理}が証明された。$\square$
-                \clearpage
                 平均値の定理はしばし次のように書くこともある。
                 \begin{equation}
                     \int_{a}^{b}f(x)dx = (b-a)f(a+\theta(b-a))\quad (0<\theta < 1) \label{eq:積分の平均値の定理θ}
@@ -3241,6 +3245,131 @@
                 誤差は、次の項の絶対値より小さい。これを示せ。ただし、誤差とは級数をある項までで打ち切った時の和と級数の和との差の絶対値とする。
             \clearpage
         \section{関数級数}
+            いよいよ最後の節となった。ここでは関数列からなる級数である関数級数について、一様収束という概念と絡めて述べていく。
+            \subsection{一様収束}
+                一般に、\textbf{関数列}$\{u_n(x)\}=u_1(x),u_2(x),\dots$から作られる級数を\textbf{関数級数}という。
+                \begin{equation}
+                    \sum_{n=1}^{\infty}u_n=u_1(x)+u_2(x)+\cdots\label{eq:関数級数}
+                \end{equation}
+                例えば、フーリエ級数やべき級数がある。フーリエ級数はフーリエ解析で特別詳しく扱うだろうからここでは深く述べない。その代わり、べき級数について後になって扱う。
+ 
+                さて、関数級数\eqref{eq:関数級数}の第$n$部分和を$f_n(x)$で表すことにすれば、
+                \begin{equation}
+                    f_n(x)=u_1(x)+u_2(x)+\cdots+u_n(x)\label{eq:関数級数のn部分和}
+                \end{equation}
+                である。この時、任意の正数$\varepsilon>0$に対して、\underline{$x$に関係ない}数$N$が存在して、$n\geq N$のすべての$n$に対して
+                \begin{equation}
+                    |f(x)-f_n(x)|<\varepsilon\quad (n\geq N)\label{eq:一様収束}
+                \end{equation}
+                が成り立つならば、この級数は\textbf{一様収束}するという。そして、$f(x)$を\textbf{関数級数の和}という。下線部のところの条件が重要で、
+                この時$N=N(\varepsilon)$であり、$N=N(\varepsilon,x)$であってはいけないのである。\footnote{逆に、$x$にも依存して$f$が決まる場合は\textbf{各点収束する}という。}
+
+                一様収束と収束の違いはどのようなものだろうか。たとえば簡単なものとして、$f_n(x) = e^{-nx}$を$0\leq x< \infty$考えてみよう。この時$n\to \infty$の極限でこの級数は収束して、
+                \begin{equation*}
+                    \lim_{n\to\infty}f_n(x)=\begin{cases}
+                        1\quad &(x=0)\\0\quad &(x>0)
+                    \end{cases}
+                \end{equation*}
+                である。しかし、一様収束はしない。なぜなら、$x>0$のとき、$1>e^{-nx}$であるから、
+                \begin{equation*}
+                    |f(x)-f_n(x)|=|1-e^{-nx}|=1-e^{-nx}<\varepsilon\quad (\varepsilon < 1)
+                \end{equation*}
+                となればよいが、そのためには
+                \begin{equation*}
+                    N=\left\lfloor\frac{1}{x}\log\left(\frac{1}{1-\varepsilon}\right)\right\rfloor+1
+                \end{equation*}
+                と$N$を取らなければならない。ここで、ガウス記号\footnote{実数$x$に対して整数$n$が$n\leq x<n+1$であるとき、$n=\lfloor x\rfloor$と表す。}を用いた。$N$は$x$が$0$に近づくにつれて大きくとらなければならない。すなわち、
+                $N$は$\varepsilon$だけでなく$x$にも依存してしまっているのである。
+            \clearpage
+            \subsection{一様収束の性質}
+                ここからは、関数級数が一様収束すると何がうれしいのかについて述べる。まず、区間$a\leq x\leq b$で$\{u_n(x)\}$の各項が連続であるとしよう。この時、この関数列から作られる級数
+                \begin{equation*}
+                    \sum_{n=1}^{\infty}u_n(x)=u_1(x)+u_2(x)+u_3(x)+\cdots
+                \end{equation*}
+                を考えるとしよう。また、第$n$項までの和を
+                \begin{equation*}
+                    f_n(x)=u_1(x)+u_2(x)+u_3(x)+\cdots +u_n(x)
+                \end{equation*}
+                と置く。
+
+                \paragraph{連続性}連続関数級数$\sum u_n(x)$が和$f(x)$に一様収束するなら、$f(x)$は連続な関数である。言い換えると、一様収束するなら$f_n(x)$の連続性は$f(x)$に遺伝する。
+
+                これを一様収束の定義から導出してみよう。まず、$x$と$x+h$が区間$[a,b]$内にあるとする。このとき、
+                \begin{align*}
+                    |f(x+h)-f(x)|&=|f(x+h)-f_n(x+h)+f_n(x+h)-f_n(x)+f_n(x)-f(x)|\\ &\leq |f(x+h)-f_n(x+h)|+|f_n(x+h)-f_n(x)|+|f_n(x)-f(x)|
+                \end{align*}
+                である。まず、$f_n$が一様収束するのだから、$n$を十分大きくとると
+                \begin{equation*}
+                    |f(x+h)-f_n(x+h)|<\frac{\varepsilon}{3},\quad |f(x)-f_n(x)|<\frac{\varepsilon}{3}
+                \end{equation*}
+                とできる。さらに、$f_n$は連続であるから、
+                \begin{equation*}
+                    |f_n(x+h)-f_n(x)|<\frac{\varepsilon}{3}\quad (|h|<\delta)
+                \end{equation*}
+                となるように$\delta$を取ることができる。\footnote{なぜなら、十分大きく$n$を取っているので、その値を$N_0(\frac{\varepsilon}{3})$とすれば、$f_{N_0(\frac{\varepsilon}{3})}$は連続なので、ある$\delta_{N_0(\frac{\varepsilon}{3})}$が存在するはずである。ここでは関数列$\{f_n(x)\}$の中から一つ関数を取ってくるのがポイントである。そうしないとそれぞれの$n$に対して$\delta_n$が存在してしまうため、例えば$\delta=\delta_n$と選ぼうとすると、$n$に依存してしまうのである。}
+                よって、
+                \begin{equation*}
+                    |f(x+h)-f(x)|<\varepsilon \quad (|h|<\delta)
+                \end{equation*}
+                が成り立つので、$f(x)$は連続である。
+
+                この定理の対偶を取れば、次の事実が得られる。それは、和$f(x)$がある点で不連続ならば、級数$\sum u_n(x)$はその点を含む区間で一様収束しない。
+
+                例えば、$f_n(x)=e^{-nx}$は、$f(x)$が$x=0$で不連続であるため、区間$[0,\infty)$で一様収束しない。
+                \clearpage
+                \paragraph{項別積分}連続関数級数$\sum u_n(x)$が和$f(x)$に一様収束すれば、
+                \begin{equation}
+                    \sum_{n=1}^{\infty}\int_{a}^{b}u_n(x)dx = \int_a^b f(x)dx \label{eq:項別積分}
+                \end{equation}
+                すなわち、一様収束すれば級数は項別に積分できる。
+
+                これも、一様収束の定義から導出できる。まず、部分和$f_n(x)$と和$f(x)$は$a\leq x\leq b$で連続だから積分できる。
+                したがって、任意の$\varepsilon>0$に対し、$x$と無関係な$N$が存在して、$n\geq N$なら、
+                \begin{equation*}
+                    \left|\int_{a}^{b}f_n(x)dx -\int_a^b f(x)dx\right|=\left|\int_{a}^{b}f_n(x)-f(x)dx\right|\leq \int_{a}^{b}|f_n(x)-f(x)|dx<\int_{a}^{b}\varepsilon dx=\varepsilon(b-a)
+                \end{equation*}
+                とできる。ここで、積分$\int_{a}^{b}f_ndx$を数列と見れば、
+                \begin{equation*}
+                    \lim_{n\to\infty}\int_{a}^{b}f_n(x)dx = \int_{a}^{b}f(x)dx=\int_{a}^{b}\lim_{n\to \infty}f_n(x)dx
+                \end{equation*}
+                を意味する。すなわち、\eqref{eq:項別積分}が示された。
+
+                これは、一様収束する関数列は\underline{積分と極限が交換できる}ことを示している。この性質は非常に重要で、安易に積分記号と極限を入れ替えてはいけないことを思い出させてくれる。
+
+                \paragraph{項別微分}連続関数級数$\sum u_n(x)$が和$f(x)$に一様収束\footnote{実はこの時$\{f_n\}$が一様収束ではなく、各点収束でもこれは成り立つ。}し、導関数から作られた連続関数級数$\sum u_n'(x)$が和$g(x)$に一様収束すれば、
+                \begin{equation}
+                    \frac{d}{dx}f(x)=g(x) \Leftrightarrow \frac{d}{dx}\sum_{n=1}^{\infty}u_n(x)=\sum_{n=1}^{\infty}\frac{d}{dx}u_n(x) \label{eq:項別微分}
+                \end{equation}
+                すなわち、級数$\sum u_n(x)$は項別微分ができる。
+
+                もちろんこれも一様収束の定義から導出できる。ということで示していく。まず、$g(x)=\sum u_n'(x)$は一様収束するから、項別に積分ができて、
+                \begin{equation*}
+                    \int_{a}^{x}g(x)dx = \sum_{n=1}^{\infty}\int_{a}^{x}u_n'(x)dx = \sum_{n=1}^{\infty}\left\{u_n(x)-u_n(a)\right\}=f(x)-f(a)
+                \end{equation*}
+                よって、両辺を$x$微分すれば、式\eqref{eq:項別微分}を得る。
+
+                これは、部分和$f_n(x)=u_1(x)+u_2(x)+\cdots+u_n(x)$が作る関数列に対して、微分と極限が交換できることを示している。
+                \begin{equation*}
+                    \frac{d}{dx}\lim_{n\to\infty}f_n(x)=\lim_{n\to\infty}\frac{d}{dx}f(x)
+                \end{equation*}\\
+
+                上記の結果をまとめると、一様収束する連続関数級数は連続であり、項別に微分積分できる。これは、有限個の項の和$u_1(x)+u_2(x)+\cdots+u_n(x)$
+                が持つ性質が成り立つということである。一様収束が持つ性質のよさがわかってもらえただろうか。正直一様収束性をいちいち気にして極限と積分を入れ替える
+                なんて面倒なことをしたくないものだが、厳密な論理のためにはこれは必要なのである。
+            \clearpage
+            \subsection{べき級数}
+                ついに最後の項に入る。ここではべき級数（巾級数）について述べる。べき級数は解析学で最も重要な級数であり、これを用いれば、関数の性質を調べたり近似したり、より広い範囲の関数を扱えるようになる。
+                べき級数がなぜ大事かについては最後にまとめて述べることにして、まずはその性質を調べていこう。\\
+
+                まず、$a_0,a_1,a_2,a_3\cdots$を定数として、無限級数
+                \begin{equation}
+                    \sum_{n=0}^{\infty}a_n x^n =a_0+a_1x+a_2x^2+a_3x^3+\cdots\label{eq:べき級数}
+                \end{equation}
+                を$x$の\textbf{べき級数}という。本によっては整級数と書くこともある。また、
+                \begin{equation}
+                    \sum_{n=0}^{\infty}a_n (x-a)^n =a_0+a_1(x-a)+a_2(x-a)^2+a_3(x-a)^3+\cdots
+                \end{equation}
+                を$x-a$のべき級数という。これは式\eqref{eq:べき級数}で$x=(x-a)$としたものだから以降は$\sum a_nx^n$の形で扱う。
 
                 
                 
