@@ -3117,7 +3117,7 @@
                     \item $p>1$で$A$が有限ならば、$\sum a_n$は収束する。
                     \item $p\leq 1$で$A\neq 0$（無限大も含めて）なら、$\sum a_n$は発散する。
                 \end{itemize}
-                ちなみにこの判定法に限らず、たいていの判定法を導出するにはコーシーの判定法\footnote{これは数列に関するコーシーの収束定理から導ける。}という方法を用いるが、このノートでは扱わないので証明を載せることはできない。\\
+                ちなみにこの判定法に限らず、たいていの判定法を導出するにはコーシーの収束判定法\footnote{これは数列に関するコーシーの収束定理から導ける。}という方法を用いるが、このノートでは扱わないので証明を載せることはできない。\\
 
                 \textbf{[例]}\hspace{1mm}$\sum \sin^2(\frac{1}{n})$の収束を調べる。十分大きい$n$について$\sin \frac{1}{n} = \frac{1}{n}$が成り立つ\footnote{イメージは$x\to 0$で$\sin x/x\to 1$であることから。}ので、$p=2$として
                 $\lim n^2\cdot\frac{1}{n^2}=\lim 1=1=A.$したがって、$A$は有限なので級数は収束する。
@@ -3546,6 +3546,60 @@
                 \end{equation*}
         \clearpage
         \section{第IV部演習問題}
+            \paragraph{問1}以下の級数の収束・発散を調べよ。\\
+            $\displaystyle [1]\sum_{n=1}^{\infty}\frac{5n^2-n+3}{n^3+n^2-2n+1}$\hspace{3mm}
+            $\displaystyle [2]\sum_{n=1}^{\infty}\frac{n+\sqrt{n}}{3n^2-2}$\hspace{3mm}
+            $\displaystyle [3]\sum_{n=1}^{\infty}\frac{\log n}{n^2+2}$\hspace{3mm}
+            $\displaystyle [4]\sum_{n=1}^{\infty}n\sin^2\frac{1}{n}$\hspace{3mm}
+            $\displaystyle [5]\sum_{n=1}^{\infty}e^{-n^2}$\hspace{3mm}
+            $\displaystyle [6]\sum_{n=1}^{\infty}\frac{\log n}{n}$
+
+            \paragraph{問2}次の級数の収束・絶対収束を調べよ。\\
+            $\displaystyle [1]\sum_{n=1}^{\infty}(-1)^{n-1}\frac{1}{3n-1}$\hspace{3mm}
+            $\displaystyle [2]\sum_{n=2}^{\infty}(-1)^{n-1}\frac{1}{n\log^2 n}$\hspace{3mm}
+            $\displaystyle [3]\sum_{n=1}^{\infty}(-1)^{n-1}\frac{n}{n^2+2}$\hspace{3mm}
+            $\displaystyle [4]\sum_{n=1}^{\infty}(-1)^{n-1}\frac{n^2}{n^2+1}$\hspace{3mm}
+            $\displaystyle [5]\sum_{n=1}^{\infty}(-1)^{n-1}\frac{1}{2n-1}\sin\frac{1}{\sqrt{n}}$\hspace{3mm}
+
+            \paragraph{問3}次のべき級数が収束する$x$の範囲を求めよ。{\scriptsize (5)は$n\in\mathbb{N}$であることも意識しておくとよい。}\\
+            $\displaystyle [1]\sum_{n=1}^{\infty}(-1)^{n-1}\frac{x^n}{n^2}$\hspace{3mm}
+            $\displaystyle [2]\sum_{n=1}^{\infty}\frac{x^{n-1}}{n\cdot 3^n}$\hspace{3mm}
+            $\displaystyle [3]\sum_{n=1}\frac{(x+4)^{2n-2}}{(2n-2)!}$\hspace{3mm}
+            $\displaystyle [4]\sum_{n=1}^{\infty}\frac{e^{nx}}{n^2+n+2}$\hspace{3mm}
+            $\displaystyle [5]\sum_{n=1}^{\infty}\frac{1}{(x+n)(x+n-1)}$
+
+            \paragraph{問4}$y=\arctan x$のマクローリン級数を導出したい。以下の問いに答えよ。
+            \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                \item 公式\eqref{eq:1/x+1のマクローリン級数}を導出せよ。
+                \item $\displaystyle \frac{1}{1+x^2}$のマクローリン級数を求めよ。
+                \item 上記の結果を用いて、$\arctan x$のマクローリン級数を求めよ。$x$の収束する範囲も求めよ。
+            \end{enumerate}
+
+            \paragraph{問5}$\displaystyle \zeta(2)= \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}$である（\textbf{バーゼル問題}）。では以下の問いに答えよ。
+            \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                \item 以下の等式を満たす定数$A,B,C,D$を求めよ。
+                    \begin{equation*}
+                        \frac{1}{n^2(n+1)^2}=\frac{A}{n^2}+\frac{B}{(n+1)^2}+\frac{C}{n}+\frac{D}{n+1}
+                    \end{equation*}
+                \item 上記の結果を用いて、$\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^2(n+1)^2}$を求めよ。
+            \end{enumerate}
+
+            \paragraph{問6}振り子の運動の周期$T$は、ひもの長さを$l$、重力加速度を$g$、$k$を定数$(k^2<1)$として、
+            \begin{equation*}
+                T=4\sqrt{\frac{l}{g}}K(k)
+            \end{equation*}
+            で与えられる。\footnote{\url{https://www.ne.jp/asahi/tokyo/nkgw/www_2/gakusyu/rikigaku/Tanfuriko/Tanfuriko_kaisetu/Tanfuriko_kaisetu.html}}ここで、定積分
+            \begin{equation*}
+                K(k)=\int_{0}^{\pi}\frac{d\phi}{\sqrt{1-k^2\sin^2\phi}}
+            \end{equation*}
+            は第一種の\textbf{完全楕円積分}である。この関数(?)は初等関数で表すことができない。
+
+            さて、以下の公式から
+            \begin{equation*}
+                T=2\pi \sqrt{\frac{l}{g}}\left\{1+\left(\frac{1}{2}\right)^2k^2+\left(\frac{1\cdot 3}{2\cdot 4}\right)^2k^4+\cdots+\left(\frac{(2n-1)!!}{(2n)!!}\right)^2k^{2n}+\cdots\right\}
+            \end{equation*}
+            を示せ。
+
                 
     \clearpage
     \part{終わりに}
