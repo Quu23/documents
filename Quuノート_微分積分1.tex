@@ -3371,7 +3371,181 @@
                 \end{equation}
                 を$x-a$のべき級数という。これは式\eqref{eq:べき級数}で$x=(x-a)$としたものだから以降は$\sum a_nx^n$の形で扱う。
 
-                
+                さて、べき級数の収束について基本的なことを述べよう。
+                \begin{itembox}{アーベルの定理}
+                    もしべき級数$\sum a_nx^n$が$x=x_0$のときに収束すれば、$|x|<|x_0|$であるすべての$x$の値に関して絶対収束し、領域$|x|<|x_0|$に含まれる
+                    任意の閉区域において一様に収束する。
+                \end{itembox}
+                まずはこれを証明しておく。仮定により$\sum a_nx_0^n$は収束するので、$\lim a_nx_0^n=0$である。したがって、任意の$\varepsilon>0$に対し、
+                ある$N(\varepsilon)$が存在して、$n\geq N$であるとすれば、$|a_nx_0^n|<\varepsilon$が常に成り立つ。今$0<\theta<1$として、$|x|\leq \theta|x_0|$とすれば、
+                $|a_nx^n|\leq |a_nx_0^n|\theta ^n<\varepsilon\theta^n$である。したがって、
+                \begin{equation*}
+                    \sum_{k=N}^{n} |a_kx^k|<\varepsilon\sum_{k=N}^n \theta^k =\varepsilon\cdot \left(\sum_{k=1}^{n}\theta^k-\sum_{k=1}^{N-1}\theta^k\right)=\varepsilon\cdot\left(\frac{\theta(1-\theta^n)}{1-\theta}-\frac{\theta(1-\theta^{N-1})}{1-\theta}\right)<\frac{\varepsilon\theta^N}{1-\theta}
+                \end{equation*}
+                すなわち、べき級数は閉区域$|x|\leq \theta|x_0|$で、絶対にかつ一様に収束する。$\square$
+
+                もし、$x=x_0$で発散すれば、そのべき級数は$|x|>|x_0|$であるすべての$x$に対して発散する。なぜなら、仮にある$|x_1|>|x_0|$である点$x=x_1$で収束するとすれば、当然$x=x_0$も収束することになるため、仮定に反してしまう。
+
+                以上をまとめると、べき級数を収束せしめる$|x|$の値には上限があることがわかる。これを$r$と置けば、べき級数は$|x|<r$であるとき、
+                すなわち原点中心半径$r$の円の内側にあるときに収束し、円の外側にあるときに発散する。このような円をべき級数の収束円といい、その半径$r$を\textbf{収束半径}という。
+                いまは$x$の範囲が一次元的（x軸）であるため、円のイメージを持ちにくいが、$x$を複素数$z=x+iy$に拡張すれば、$z$の範囲は二次元的（実軸と虚軸）になるので、自然な命名であるように感じる。
+                もっとも、それは複素解析の範囲であるのでここでは扱わないが。
+
+                なお、べき級数が任意の$x$に対して収束するなら$r=\infty$とし、$x=0$以外では収束しないときは$r=0$とする。例えば、$\sum x^n$の収束半径は$r=1$である。また、$\sum x^n/n!$は$r=\infty$である。
+                \clearpage
+                収束半径$r$は、ダランベールの判定法とコーシーの判定法を用いれば、以下の公式で求められる。
+                \begin{equation}
+                    r=\lim_{n\to\infty}\left|\frac{c_n}{c_{n+1}}\right|=r\label{eq:ダランベールの判定法と収束半径}
+                \end{equation}
+                \begin{equation}
+                    \frac{1}{r}=\lim_{n\to\infty}\sqrt[n]{|a_n|}\label{eq:コーシーの判定法と収束半径}
+                \end{equation}
+
+                \paragraph{例}べき級数$\displaystyle\sum_{n=1}^\infty(-1)^{n-1}\frac{x^n}{n}$が収束する$x$の範囲を求める。公式\eqref{eq:ダランベールの判定法と収束半径}を用いると、
+                \begin{equation*}
+                    r=\lim_{n\to\infty}\left|\frac{(-1)^{n-1}\frac{1}{n}}{(-1)^n\frac{1}{n+1}}\right|=\lim_{n\to\infty}\left|\frac{n+1}{n}\right|=1
+                \end{equation*}
+                よって、$|x|<1$では収束する。$|x|=1$では、まず$x=1$のとき、級数$\sum (-1)^{n-1}\frac{1}{n}$は収束する。一方$x=-1$のとき、級数$\sum \frac{1}{n}$は収束しない。
+                まとめると、収束する範囲は$-1<x\leq 1$である。
+
+                上の例からわかるように、$|x|=r$のときは個別に収束するかどうか調べなければならない。つまり、区間の端点$x=r,x=-r$のときを調べればよい。\\
+
+                先ほどの定理でも述べたように、べき級数は$|x|<r$で一様収束する。すなわち、以下の性質が成り立つ。
+                \begin{enumerate}
+                    \item[\textbf{連続性}] 開区間$|x|<r$で連続な関数を表す。
+                        \begin{equation}
+                            f(x)=\sum_{n=0}^{\infty}a_nx^n = a_0+a_1x+a_2x^2+\cdots
+                        \end{equation}
+                    \item[\textbf{項別積分}] 開区間$|x|<r$の任意の点において、項別積分が可能で、得られたべき級数$\sum a_n x^{n+1}/(n+1)$は同じ収束半径$r$をもち、その級数の和は$f(x)$を積分したものと等しい。
+                        \begin{equation}
+                            \int_{0}^{x}f(x)dx=\sum_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1}
+                        \end{equation}
+                    \item[\textbf{項別微分}] 開区間$|x|<r$の任意の点において、項別積分が可能で、得られたべき級数$\sum a_n nx^{n-1}$は同じ収束半径$r$をもち、その級数の和は$f(x)$を微分したものと等しい。 
+                        \begin{equation}
+                            \frac{d}{dx}f(x)=\sum_{n=1}^{\infty}nc_{n}x^{n-1}
+                        \end{equation}
+                \end{enumerate}
+
+                項別微分の性質から、収束半径$r$を持つべき級数は何回でも項別微分可能で、収束半径はすべておなじ$r$であることがわかる。もちろん項別積分についても同様のことが言える。
+                このことから、関数をべき級数表示してみよう。まず、収束半径を$r$として、
+                \begin{equation*}
+                    f(x)=c_0+c_1x+c_2c^2+\cdots\quad (|x|<r)
+                \end{equation*}
+                であるとしよう。この時、項別微分を次々に行うと、
+                \begin{align*}
+                    f'(x)&=c_1+2c_2x+3c_3x^2+\cdot\\
+                    f''(x)&=2c_2+3\cdot 2 c_3x+4\cdot 3c_{4}x^2\\
+                    &\cdots\cdots\\
+                    f^{(n)}(x)&=n!c_n+(n+1)n\cdots3\cdot2c_{n+1}x+\cdots
+                \end{align*}
+                である。ここで、$x=0$を代入すれば、
+                \begin{equation*}
+                    c_0=f(0),\quad c_1=f'(0),\quad 2c_2=f''(0),\cdots,n!c_n = f^{(n)}(0),\cdots
+                \end{equation*}
+                が得られる。すなわち、
+                \begin{equation}
+                    f(x)=f(0)+\frac{f'(0)}{1!}x+\frac{f''(0)}{2!}x^2+\cdots+\frac{f^{(n)}(0)}{n!}x^n+\cdots\quad(|x|<r)\label{eq:マクローリン級数}
+                \end{equation}
+                が得られる。この級数は$f(x)$をマクローリン展開したものと同じであるので、\textbf{マクローリン級数}という。
+
+                同様に、$|x-a|<r$で収束するべき級数に対しても、
+                \begin{equation}
+                    f(x)=f(a)+\frac{f'(a)}{1!}(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n+\cdots\quad(|x-a|<r)\label{eq:テイラー級数}
+                \end{equation}
+                が成り立つ。これを\textbf{テイラー級数}という。\eqref{eq:マクローリン級数}も合わせてテイラー級数ということもある。
+
+                以下に主な関数のマクローリン展開を上げよう。
+                \begin{align}
+                    \frac{1}{x+1}&=\sum_{n=0}^{\infty}(-1)^nx^n \quad &&(-1<x<1)\label{eq:1/x+1のマクローリン級数}\\
+                    e^x &= \sum_{n=0}^{\infty}\frac{x^n}{n!} &&(-\infty<x<\infty)\label{eq:expのマクローリン級数}\\
+                    \sin x &= \sum_{n=0}^{\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!} &&(-\infty<x<\infty)\label{eq:sin xのマクローリン級数}\\
+                    \cos x &= \sum_{n=0}^{\infty}(-1)^n\frac{x^{2n}}{(2n)!} &&(-\infty<x<\infty)\label{eq:cos xのマクローリン級数}\\
+                    \log(x+1) &= \sum_{n=0}^{\infty}(-1)^n\frac{x^{n+1}}{(n+1)} &&(-1<x\leq 1)\label{eq:log x+1のマクローリン級数}
+                \end{align}
+                最後の収束範囲について気を付けなければならない。これに限らず、（基本的には）公式はまず適用条件を確かめる必要がある。
+
+                以前も述べたように、べき級数は$x$を複素数$z$まで拡張して定義することができる。そして、複素数に拡張したとしても上式\eqref{eq:expのマクローリン級数},\eqref{eq:sin xのマクローリン級数},\eqref{eq:cos xのマクローリン級数}
+                の収束半径は$r=\infty$のままである。よって、$e^x$に$x=i\theta$を入れれば、
+                \begin{equation}
+                    e^{i\theta}=\cos\theta + i\sin\theta
+                \end{equation}
+                が導ける。つまり、三角関数が（複素）指数関数に含まれてしまうのである！これを\textbf{オイラーの公式}という。
+
+                最後に、べき級数がなぜ大事なのかについて少しだけだが述べよう。まずはやはり関数の近似が行える点だろう。これにはテイラー級数やマクローリン級数を用いればよい。
+                次に、初等関数で表せない関数だとしても、べき級数で書けば情報を得ることができる。例えば、不定積分
+                \begin{equation*}
+                    f(x)=\int_{0}^{x}e^{-x^2}dx
+                \end{equation*}
+                は初等関数で表せないが、被積分関数をべき級数で表し、項別積分すれば、有用な表式が得られる。さらに、べき級数は収束範囲内の$x$に対して一つの値$y$を与える。
+                これにより、より広い範囲の関数を扱う対象とできるようになる。
+                \clearpage
+            \subsection{補足}
+                重要であるが、本文の流れを損なわないために書けなかったこと等について軽くまとめておく。
+                \begin{itembox}{アーベルの連続定理}
+                    べき級数$f(z)=\sum a_nz^n$が収束円の円周上の点$z=\zeta$において収束すれば、$z$が半径に沿って$\zeta$に近づくとき
+                    \begin{equation}
+                        \lim_{z\to\zeta}f(z)=\sum_{n=0}^{\infty}a_n\zeta^n
+                    \end{equation}
+                \end{itembox}
+                これは自明ではない。なぜなら、上記等式は
+                \begin{equation*}
+                    \lim_{z\to\zeta}\left(\lim_{n\to\infty}\sum_{k=0}^{n}a_kz^{k}\right)=\lim_{n\to\infty}\left(\lim_{z\to\zeta}\sum_{k=0}^{n}a_kz^{k}\right)
+                \end{equation*}
+                を意味するが、極限$\lim$を無頓着に入れ替えてはいけないことはよくわかっていることだろう。つまりこの定理の意味とは、右辺の極限が確定ならば、$\lim$の入れ替えが可能であるというのである。
+                なお、これは複素数まで拡張した場合のべき級数で、これを実数版に直すなら、例えば$r=1$のときは、
+                \begin{equation*}
+                    \lim_{x\to 1-0}f(x)=f(1)
+                \end{equation*}
+                である。\\
+
+                \begin{itembox}{フーリエ級数展開}
+                    区間$[-\pi,\pi]$において与えられた関数$f(x)$は\underline{或る条件}のもとにおいて、次の三角級数に展開される。
+                    \begin{equation}
+                        f(x)=\frac{a_0}{2}+\sum_{\infty}^{n=1}\left\{a_n\cos(nx)+b_n\sin(nx)\right\}
+                    \end{equation}
+                    このような級数を$f(x)$のフーリエ級数（フーリエ級数展開）という。もし、このような展開が可能であるとして、$f$が積分可能で、さらに級数に項別積分ができるとすれば、$a_n,b_n$は確定して、
+                    \begin{equation*}
+                        a_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos(nx)dx,\quad b_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin xdx
+                    \end{equation*}
+                    である。ただし、$a_n$において$n=0,1,2,\cdots$であり$b_n$において$n=1,2,\cdots$である。
+                \end{itembox}
+                すこしだけフーリエ解析の内容を入れてみた。これがフーリエ級数展開できる条件を導くのは今の状態ではとても難しいので省略する。\footnote{正規直交関数系の話をここでしたら補足どころでは済まない。}例えば高木貞二の解析概論を参照。
+
+                ここでのポイントは、三角関数の$[-\pi,\pi]$での積分$\cos mx\cos nx,\sin mx\sin nx$が$m=n$以外ではすべて0になることに起因する。
+
+                フランスの数学者フーリエは、（厳密な理論ではないが）この理論を熱伝導の問題を研究中に考えたという。彼の主張では、すべての関数が三角級数で表せると大きく出ている。もちろんこれは間違いで
+                当時の数学者からも批判が殺到した。しかし、当時の曖昧であった極限の概念等が、フーリエの主張をきっかけにして次々に見直されていき、解析学の厳密に大きく貢献した。さらに、このフーリエ級数から
+                始まるフーリエ解析ではフーリエ変換という手法が生まれ、これは微分方程式を解くときなど、様々な場面で活用されている。
+
+                \paragraph{例}
+                \begin{align*}
+                    x&=2\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}\sin nx\\
+                    |x|&=\frac{\pi}{2}-\frac{4}{\pi}\sum_{n=1}^{\infty}\frac{1}{(2n-1)^2}\cos((2n-1)x)
+                \end{align*}
+            \clearpage
+            \basicquestion 以下の問いに答えよ。
+            \paragraph{問1}$f_n(x)=nxe^{-nx^2}(n=1,2,3,\cdots,0\leq x\leq 1)$とする。この時、
+                \begin{equation*}
+                    \lim_{n\to \infty}\int_{0}^{1}f_n(x)dx\text{と}\int_{0}^{1}\lim_{n\to \infty}f_n(x)dx
+                \end{equation*}
+                を比べ、その結果を説明せよ。
+
+            \paragraph{問2}次のべき級数が収束する$x$の範囲を求めよ。\\
+                $\displaystyle(1)\sum_{n=1}^{\infty}nx^n$\hspace{25mm}
+                $\displaystyle(2)\sum_{n=1}^{\infty}\frac{x^n}{n^3}$\hspace{25mm}
+                $\displaystyle(3)\sum_{n=1}^{\infty}n!(x-1)^n$\hspace{25mm}
+                $\displaystyle(4)\sum_{n=1}^{\infty}(-1)^{n-1}\frac{n}{x^{n-1}}$
+            
+            \paragraph{問3}公式\eqref{eq:ダランベールの判定法と収束半径}と\eqref{eq:コーシーの判定法と収束半径}を証明せよ。
+
+            \paragraph{問4}べき級数$\sum a_nx^n$が項別微分・積分した後も同じ収束半径を持つことを証明せよ。
+
+            \paragraph{問5}$0<a<b$とする。この時、次の値を求めよ。
+                \begin{equation*}
+                    \lim_{n\to\infty}\int_{a}^{b}e^{-nx^2}dx
+                \end{equation*}
+        \clearpage
+        \section{第IV部演習問題}
                 
     \clearpage
     \part{終わりに}
