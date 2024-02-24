@@ -83,10 +83,10 @@
         目指し、二年生の微分積分学Iが丸暗記の勉強にならず、円滑に授業を受けられるようにしたつもりである。しかし、中途半端に厳密で不満に思う人もいるかもしれない。そんな人のために
         ノートの最後に参考書籍を上げている。ぜひ参考にしてほしい。
 
-        演習問題についてだが、それぞれの話題で最低限抑えておくべき問題を中心に選んだつもりである。それに加えて、内容に関連する面白い問題等も加えている。したがって、学んだあといきなり解くには問題の難易度が
-        違いすぎるものもあるかもしれない。問題が解けなくても落ち込む必要はないのである。むしろ、5分考えてわからない問題はさっさと解答を見たほうが何倍も自分の勉強になると思う。ただし、最初から答えを見るのは論外である。
+        演習問題についてだが、それぞれの話題で最低限抑えておくべき問題を中心に選んだつもりである。それに加えて、内容に関連する面白い問題等も加えている。そうなると必然的に、学んだあといきなり解くには難易度が
+        高すぎるもの含まれてしまう。つまるところ、問題が解けなくても落ち込む必要はないのである。むしろ、5分考えてわからない問題はさっさと解答を見たほうが何倍も自分の勉強になると思う。ただし、最初から答えを見るのは論外である。
 
-        本来なら、微分積分の発明の歴史も詳しく述べられたらよかったが、書く気力がなかったので書かなかった。気になる人は各自で調べるとよい。
+        本来なら、微分積分の発明の歴史も詳しく述べられたらよかったが、書く気力がなかったので書かなかった。気になる人は各自で調べてほしい。
 
         このノート中では同じ表式でも別の記号使っていることがある。例えば、$\sin^{-1}$と書いたり$\arcsin$と書いたり。本来ならどちらかに統一すべきだが、ここではどちらの記法にも慣れてもらうために
         意図的に混同して使っている。しかし、これに限らずだが、意図しない間違い等もあるかもしれない。その時は遠慮せず報告をお願いしたい。
@@ -3395,7 +3395,7 @@
                 \clearpage
                 収束半径$r$は、ダランベールの判定法とコーシーの判定法を用いれば、以下の公式で求められる。
                 \begin{equation}
-                    r=\lim_{n\to\infty}\left|\frac{c_n}{c_{n+1}}\right|=r\label{eq:ダランベールの判定法と収束半径}
+                    r=\lim_{n\to\infty}\left|\frac{a_n}{a_{n+1}}\right|\label{eq:ダランベールの判定法と収束半径}
                 \end{equation}
                 \begin{equation}
                     \frac{1}{r}=\lim_{n\to\infty}\sqrt[n]{|a_n|}\label{eq:コーシーの判定法と収束半径}
@@ -3524,26 +3524,26 @@
                 \end{align*}
             \clearpage
             \basicquestion 以下の問いに答えよ。
-            \paragraph{問1}$f_n(x)=nxe^{-nx^2}(n=1,2,3,\cdots,0\leq x\leq 1)$とする。この時、
-                \begin{equation*}
-                    \lim_{n\to \infty}\int_{0}^{1}f_n(x)dx\text{と}\int_{0}^{1}\lim_{n\to \infty}f_n(x)dx
-                \end{equation*}
-                を比べ、その結果を説明せよ。
+                \paragraph{問1}$f_n(x)=nxe^{-nx^2}(n=1,2,3,\cdots,0\leq x\leq 1)$とする。この時、
+                    \begin{equation*}
+                        \lim_{n\to \infty}\int_{0}^{1}f_n(x)dx\text{と}\int_{0}^{1}\lim_{n\to \infty}f_n(x)dx
+                    \end{equation*}
+                    を比べ、その結果を説明せよ。
 
-            \paragraph{問2}次のべき級数が収束する$x$の範囲を求めよ。\\
-                $\displaystyle(1)\sum_{n=1}^{\infty}nx^n$\hspace{25mm}
-                $\displaystyle(2)\sum_{n=1}^{\infty}\frac{x^n}{n^3}$\hspace{25mm}
-                $\displaystyle(3)\sum_{n=1}^{\infty}n!(x-1)^n$\hspace{25mm}
-                $\displaystyle(4)\sum_{n=1}^{\infty}(-1)^{n-1}\frac{n}{x^{n-1}}$
-            
-            \paragraph{問3}公式\eqref{eq:ダランベールの判定法と収束半径}と\eqref{eq:コーシーの判定法と収束半径}を証明せよ。
+                \paragraph{問2}次のべき級数が収束する$x$の範囲を求めよ。\\
+                    $\displaystyle(1)\sum_{n=1}^{\infty}nx^n$\hspace{25mm}
+                    $\displaystyle(2)\sum_{n=1}^{\infty}\frac{x^n}{n^3}$\hspace{25mm}
+                    $\displaystyle(3)\sum_{n=1}^{\infty}n!(x-1)^n$\hspace{25mm}
+                    $\displaystyle(4)\sum_{n=1}^{\infty}(-1)^{n-1}\frac{n}{x^{n-1}}$
+                
+                \paragraph{問3}公式\eqref{eq:ダランベールの判定法と収束半径}と\eqref{eq:コーシーの判定法と収束半径}を証明せよ。
 
-            \paragraph{問4}べき級数$\sum a_nx^n$が項別微分・積分した後も同じ収束半径を持つことを証明せよ。
+                \paragraph{問4}べき級数$\sum a_nx^n$が項別微分・積分した後も同じ収束半径を持つことを証明せよ。
 
-            \paragraph{問5}$0<a<b$とする。この時、次の値を求めよ。
-                \begin{equation*}
-                    \lim_{n\to\infty}\int_{a}^{b}e^{-nx^2}dx
-                \end{equation*}
+                \paragraph{問5}$0<a<b$とする。この時、次の値を求めよ。
+                    \begin{equation*}
+                        \lim_{n\to\infty}\int_{a}^{b}e^{-nx^2}dx
+                    \end{equation*}
         \clearpage
         \section{第IV部演習問題}
             \paragraph{問1}以下の級数の収束・発散を調べよ。\\
@@ -4048,6 +4048,107 @@
                         
         \clearpage
         \subsection{無限級数　基本問題解答}
+            \basicanswer 
+
+                \paragraph{問1}次の無限級数が収束するか発散するかを調べ、収束するならその和を答えよ。\\
+                $(1)\lim n \neq 0$より発散。\hspace{3mm}
+                $(2)\lim (-1)^n\neq 0$より発散。\hspace{3mm}
+                $(3)\displaystyle \lim \frac{n}{n+1}\neq 0$より発散。\\
+                $(4)\displaystyle\frac{1}{n(n+1)}=\frac{1}{n}-\frac{1}{n+1}$より、$S_n = 1-\frac{1}{n+1}$である。したがって収束して和は$1$\\
+                $(5)\displaystyle \frac{n}{(n+1)!}=\frac{n\cdot n!}{(n+1)!\cdot n!}=\frac{1}{n!}-\frac{1}{(n+1)!}$より、$S_n=1-\frac{1}{(n+1)!}$である。したがって収束して和は$1$
+
+                \paragraph{問2}以下の数列が収束することを示せ。\\
+                $\displaystyle (1)a_{n+1}-a_n = \frac{n+1}{2n+3}-\frac{n}{2n+1}=\frac{2n^2+3n+1-2n^2-3n}{(2n+3)(2n+1)}=\frac{1}{(2n+3)(2n+1)}>0$したがって、$a_n$は単調増加である。
+                さらに、$\displaystyle a_n = \frac{n}{2n+1}=\frac{1}{2}\left(1-\frac{1}{2n+1}\right)$より、$a_n < \frac{1}{2}$である。単調増加だから下界ももちろん存在する。したがって、$a_n$は有界である。
+                よって、収束する。$(2),(3)$も同様。
+
+                \paragraph{問3}仮定より級数の$n$部分和を$S_n$と表せば、$\lim S_n$は収束する。ここで、$S_n - S_{n-1} = a_n$であるため、
+                $\lim a_n = \lim \{S_n-S_{n-1}\}=S-S=0$である。$\square$
+
+                \paragraph{問4}等比数列の和の公式より、$S_n = \frac{a(1-r^n)}{1-r}$である。したがって、等比級数が収束するかどうかは$r^n$が収束するかどうかと（ほぼ）同じである。この時、$|r|\leq 1$であれば、$r^n$は収束する。
+                しかし、$r=1$のとき分母が$0$になるので、答えは$|r|<1$
+
+                \paragraph{問5}移動する初めの場所から目的地までの距離を$l$とする。$n$回目の移動で進む距離は$\frac{l}{2^n}$である。よって、$n$回の移動で最初の地点から
+                進んだ合計の距離は$\displaystyle \sum_1^n \frac{l}{2^n}$と表せる。よって、$n\to\infty$の極限を取ると級数は収束してその値は$l$となる。つまり、ゼノンの``論法''を繰り返しても、
+                結局最初の目標地点に到達することができる。
+            \clearpage
+            \basicanswer 
+                \paragraph{問1}比較法を用いて、次の級数の収束、発散を調べよ。\\
+                $\displaystyle(1)\frac{1}{\log n}>\frac{1}{n}$より、発散\hspace{15mm}
+                $\displaystyle(2)\frac{\log n}{n^3+1}<\frac{n}{n^3}=\frac{1}{n^2}$より収束\hspace{15mm}
+                $\displaystyle(3)\frac{n^2+1}{n^3+1}\geq  \frac{1}{n}$より、発散
+
+                \paragraph{問2}コーシーの判定法かダランベールの判定法を用いて、次の級数の収束、発散を調べよ。\\
+                $\displaystyle(1)$コーシーの判定法を用いる。$L=\lim \sqrt[n]{n^{-n}}=0$よって収束\\
+                $\displaystyle(2)$ダランベールの判定法を用いる。$L=\lim \frac{(n+1)^5e^{-(n+1)^2}}{n^5e^{-n^2}}=0$よって収束\\
+                $\displaystyle(3)$コーシーの判定法を用いる。$L=\lim \sqrt[n]{\left(\frac{n}{2n+1}\right)^n}=\frac{1}{2}<1$よって収束
+
+                \paragraph{問3}積分判定法より、次の級数の収束、発散を調べよ。\\
+                $\displaystyle(1)\int_1^\infty \frac{x}{x^2+2}dx = \left[\frac{1}{2}\log(x^2+2)\right]_1^\infty$よって発散\\
+                $\displaystyle(2)\int_1^\infty xe^{-x^2}dx = \left[\frac{1}{2}e^{-x^2}\right]_1^\infty=\frac{1}{2e}$よって収束\\
+                $\displaystyle(3)\int_2^\infty \frac{dx}{x\log x}=\left[\log\log x\right]_2^\infty$よって発散
+
+                \paragraph{問4}$\lim n^p a_n$を計算することで、次の級数の収束、発散を調べよ。\\
+                $\displaystyle(1)\lim n^2 \cdot\frac{n}{3n^3-1}=\frac{1}{3}$よって収束\hspace{5mm}
+                $\displaystyle(2)\lim \sqrt{n}\cdot\frac{\log n}{\sqrt{n+2}}=\infty$よって発散\hspace{5mm}
+                $\displaystyle(3)\lim n^3\cdot \sin^3\left(\frac{1}{n}\right)=1$よって収束
+
+                \paragraph{問5}次の級数の収束、絶対収束を調べよ。\\
+                $\displaystyle(1)$絶対収束する。\hspace{5mm}
+                $\displaystyle(2)$絶対収束する。\hspace{5mm}
+                $\displaystyle(3)$絶対収束しない。しかし、$\lim \frac{1}{n}=0$であり、$0< \frac{1}{n+1}< \frac{1}{n}$であるから、収束する。したがって条件収束。
+                
+                \paragraph{問6}次の収束・発散を調べよ。\\
+                $\displaystyle (1)$ダランベールの判定法を用いる。$\displaystyle L=\lim\frac{(a+1)(2a+1)\cdots((n+1)a+1)}{(b+1)(2b+1)\cdots((n+1)b+1)}/\frac{(a+1)(2a+1)\cdots(na+1)}{(b+1)(2b+1)\cdots(nb+1)}=\lim \frac{(n+1)a+1}{(n+1)b+1}=\frac{a}{b}$よって、$a>b$で発散し、$a<b$で収束。$a=b$のとき、級数は$\sum 1$となるので発散する。\\
+                $\displaystyle (2)y=\frac{\log x}{x}$と置けば、この関数は$x=e$で極大値を取る。すなわち、$x>e$で単調減少。したがって、離散化した$\frac{\log n}{n}$も$n\geq 3$で単調に減少し、常に0より大きい。さらに、$\lim \frac{\log n}{n}=0$だから、交項級数の収束条件より収束する。\\
+                $\displaystyle (3)$ラーベの判定法を用いる。$\displaystyle r=\lim n\left(\left(\frac{(a+1)(a+2)\cdots(a+n)}{(b+1)(b+2)\cdots(b+n)}/\frac{(a+1)(a+2)\cdots(a+n+1)}{(b+1)(b+2)\cdots(b+n+1)}\right)-1\right)=\lim n\left(\frac{n+b+1}{n+a+1}-1\right)=\lim \frac{b-a}{1+(a+1)/n}=b-a$よって、$b-a>1$のとき収束し、$b-a<1$のときに発散。
+                $b-a=1$のとき、$b=a+1$であるため、元の級数に代入して計算すれば、$\displaystyle \sum \frac{a+1}{a+1+n}$である。ここで$\lim n\cdot \frac{a+1}{a+1+n}=a+1 \neq 0$より、発散する。
+                結局、$b-a>1$のときのみ収束する。
+
+                \paragraph{問7}$n$項で打ち切ったとする。この時、誤差$\varepsilon$は、$\varepsilon=|(-1)^{n}b_{n+1}+(-1)^{n+1}b_{n+2}+(-1)^{n+2}b_{n+3}+(-1)^{n+3}b_{n+4}\cdots|=b_{n+1}-b_{n+2}+b_{n+3}-b_{n+4}+\cdots$である。
+                ここで、$\varepsilon=b_{n+1}-\left\{(b_{n+2}-b_{n+3})+(b_{n+4}-b_{n+5})+\cdots\right\}$とすれば、条件から(\hspace{1mm})内はすべて正である。したがって、$b_n\geq b_{n+1} > \varepsilon$すなわち$b_n > \varepsilon $
+                が示された。
+            \clearpage
+            \basicanswer
+                \paragraph{問1}
+                \begin{equation*}
+                    \lim_{n\to \infty}\int_{0}^{1}f_n(x)dx=\frac{1}{2},\int_{0}^{1}\lim_{n\to \infty}f_n(x)dx=0
+                \end{equation*}
+                である。これは$f_n(x)=nxe^{-nx^2}$が$0$に一様収束しないことに起因する。一様収束であるためには、$0\leq x\leq 1$のどんな$n$においても、$n$を十分に大きくすれば$|f-f_n|=f_n$がいくらでも小さくできなければならない。しかし、$f_n(x)$の最大値
+                は、$x=1/\sqrt{2n}$における値$\displaystyle\sqrt{\frac{n}{2}}e^{-\frac{1}{2}}$であり、これは$n\to\infty$とすると限りなく増大する。したがって、$|f-f_n|$を任意に小さくできないので一様収束しない。よって積分と極限が入れ替えられない。
+
+
+
+                \paragraph{問2}次のべき級数が収束する$x$の範囲を求めよ。\\
+                    $\displaystyle(1)r=\lim\frac{n}{n+1}=1.$また、$x=1,-1$のときは$\lim a_n\neq 0$だから発散。したがって$-1<x<1$\\
+                    $\displaystyle(2)r=\lim\frac{1/n^3}{1/(n+1)^3}=\lim\frac{(n+1)^3}{n^3}=1$また、$|x|=1$のとき、級数は（絶対）収束するから$-1\leq x\leq 1$\\
+                    $\displaystyle(3)r=\lim\frac{n!}{(n+1)!}=\lim\frac{1}{n+1}=0$よって、$|x-1|=0\leftrightarrow x=1$で収束。\\
+                    $\displaystyle(4)r=\lim\left|\frac{(-1)^{n-1}n}{(-1)^n(n+1)}\right|=\lim\frac{n}{n+1}=1$よって、$\left|\frac{1}{x}\right|<1\leftrightarrow 1<x,x<-1$で収束。なお、$x=1,-1$のときは発散する。
+                
+                \paragraph{問3}公式\eqref{eq:ダランベールの判定法と収束半径}と\eqref{eq:コーシーの判定法と収束半径}を証明せよ。\\
+
+                \eqref{eq:ダランベールの判定法と収束半径}の証明：ダランベールの判定法を用いる。$\displaystyle\lim \left|\frac{a_{n+1}x^{n+1}}{a_nx^n}\right|=|x|\cdot\lim\left|\frac{a_{n+1}}{a_n}\right|<1$であれば収束する。
+                すなわち、$\displaystyle|x|<\lim \left|\frac{a_n}{a_{n+1}}\right|$であるとき、べき級数は収束し、この右辺の値は収束半径の定義に他ならない。\\
+
+                \eqref{eq:コーシーの判定法と収束半径}の証明：コーシーの判定法を用いる。$\lim \sqrt[n]{|a_nx^n|}=|x|\cdot \lim\sqrt[n]{|a_n|}<1$のときに収束する。すなわち、$\displaystyle |x| < \lim\frac{1}{\sqrt[n]{|a_n|}}$
+                のときに収束し、この時右辺は収束半径に他ならない。
+
+                \paragraph{問4}べき級数$\sum a_nx^n$が項別微分・積分した後も同じ収束半径を持つことを証明せよ。\\
+                $\displaystyle r=\lim\left|\frac{a_n}{a_{n+1}}\right|$と置けば、項別微分したら$\sum na_n x^{n-1}$,項別積分したら$\sum 1/(n+1)a_nx^{n+1}$であるため、これらの収束半径を求めると、
+                \begin{equation*}
+                    r_{\text{微}}=\lim\left|\frac{na_n}{(n+1)a_{n+1}}\right|=\lim\left|\frac{a_n}{a_{n+1}}\right|=r,\quad r_{\text{積}}=\lim \left|\frac{1/(n+1)a_n}{1/(n+2)a_{n+1}}\right|=\lim\left|\frac{a_n}{a_{n+1}}\right|=r
+                \end{equation*}
+                したがって、項別微分・積分しても収束半径は変わらない。
+
+                \paragraph{問5}$0<a<b$とする。この時、次の値を求めよ。
+                    \begin{equation*}
+                        \lim_{n\to\infty}\int_{a}^{b}e^{-nx^2}dx
+                    \end{equation*}
+                    被積分関数を$f_n(x)$と置くと、この関数列は区間$[a,b]$で一様収束する。その理由を今から説明しよう。まず、この関数は$x=0$で最大値を取るが、$a,b>0$であるから積分区間では単調減少である。
+                    つまり、$x=a$のときが最大であり、この時任意の正数$\varepsilon>0$に対し、$|f-f_n|=e^{-nx^2}\leq e^{-na^2}<\varepsilon$は、$\displaystyle N=\left\lfloor\frac{1}{a^2}\log\frac{1}{\varepsilon}\right\rfloor +1$と取れば、
+                    $n\geq N(\varepsilon)$であるすべての$f_n$は$\varepsilon$で抑えることができる。よって、$f_n$は一様収束する。したがって、極限と積分を入れ替えれば答えは$0$となる。
+            \clearpage
+
         \clearpage
         \subsection{演習問題解答}
         \clearpage
