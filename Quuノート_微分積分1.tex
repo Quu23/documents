@@ -843,8 +843,8 @@
                 \paragraph{問1} 以下の計算をせよ。ただし$(2)$において$-1<x<1$とする。
                     \begin{alignat*}{9}
                         &[1]\log\sqrt{2+\sqrt{3}} &[2]&\sin^{-1}x+\cos^{-1}x &[3]&\cos\left(\frac{5\pi}{12}\right) & [4]&\log(e^{x^2}) & [5]&\sin(12\pi)\\
-                        &[6]\lim_{x\to 0}x^n(n\in\mathbb{N}) &[7]&\lim_{n\to 0}x^n &[8]&\lim_{n\to 0}(\sqrt{n^2+3n}-n) &[9]&\lim_{n\to\infty}(\sqrt[3]{n+1}-\sqrt[3]{n}) & [10]&\lim_{x\to +0}x^x\\
-                        &[11]\lim_{x\to +0}\frac{\sin x}{\sqrt{x}} &[12]& \lim_{x\to\infty}\frac{\sin(x)}{x} &[13]&\lim_{n\to\infty}\sum_{k=1}^{n}k\cdot\left(\frac{k}{n}\right) &[14]&\lim_{t\to 0}\frac{(x+t)^2-x^2}{t}
+                        &[6]\lim_{x\to 0}x^n(n\in\mathbb{N}) &[7]&\lim_{n\to 0}x^n &[8]&\lim_{n\to 0}(\sqrt{n^2+3n}-n) &[9]&\lim_{n\to\infty}(\sqrt[3]{n+1}-\sqrt[3]{n}) & [10]&\lim_{x\to \infty}\tanh x\\
+                        &[11]\lim_{x\to +0}\frac{\sin x}{\sqrt{x}} &[12]& \lim_{x\to\infty}\frac{\sin(x)}{x} &[13]&\lim_{n\to\infty}\sum_{k=1}^{n}\left(\frac{k}{n}\right)\cdot \frac{1}{n} &[14]&\lim_{t\to 0}\frac{(x+t)^2-x^2}{t}
                     \end{alignat*}
                 \paragraph{問2}次の式について以下の問いに答えよ。
                     \begin{equation}
@@ -865,7 +865,7 @@
                     (1)の関数は\textbf{符号関数}という。${\rm sgn}(x)$と書く場合もある。
 
                 \paragraph{問4}
-                    数学において$0^0$は$1$と定義されたりそもそも定義されなかったりする。さて、$0^0=1$と定義する立場での根拠について数列$\{a_n\}=n^n$を用いて極限の観点から述べよ。
+                    数学において$0^0$は$1$と定義されたりそもそも定義されなかったりする。さて、$0^0=1$と定義する立場での根拠について関数$f(x)=x^x$を用いて極限の観点から述べよ。
                 
                 \linktoMOKUZI
                 
@@ -4151,7 +4151,60 @@
 
         \clearpage
         \subsection{演習問題解答}
+            次ページから演習問題の解答を示す。あくまで解答例であることを念頭に置いて読んでほしい。
+            \clearpage
+            \subsection*{第I部解答}
+                \paragraph{問1}
+                    $[1]\log\frac{1+\sqrt{3}}{2}$\hspace{1mm}
+                    $[2]\frac{\pi}{2}$\hspace{1mm}
+                    $[3]\frac{1-\sqrt{3}}{2}$\hspace{1mm}
+                    $[4]x^2$\hspace{1mm}
+                    $[5]0$\hspace{1mm}
+                    $[6]0$\hspace{1mm}
+                    $[7]1$\hspace{1mm}
+                    $[8]\frac{3}{2}$\hspace{1mm}
+                    $[9]0$\hspace{1mm}
+                    $[10]1$\hspace{1mm}
+                    $[11]0$\hspace{1mm}
+                    $[12]0$\hspace{1mm}
+                    $[13]\frac{1}{2}$\hspace{1mm}
+                    $[14]2x$
+
+                \paragraph{問2}$(1)$仮定より、任意の$\varepsilon'>0$に対し、ある$N_0(\varepsilon')$が存在し、$n\geq N_0\Rightarrow |a_n-a|<\varepsilon'$が成り立つ。ここで、
+                    \begin{equation*}
+                        \left|\frac{a_1+a_2+\cdots+a_n}{n}-a\right|=\left|\frac{a_1-a+a_2-a+\cdots+a_n-a}{n}\right|\leq \frac{|a_1-a|+|a_2-a|+\cdots+|a_n-a|}{n}
+                    \end{equation*}
+                    と変形でき、さらに仮定の条件より
+                    \begin{align*}
+                        \frac{|a_1-a|+|a_2-a|+\cdots+|a_n-a|}{n}&=\frac{|a_1-a|+|a_2-a|+\cdots+|a_{N_0}-a|+\cdots+|a_n-a|}{n}\\ &<\frac{|a_1-a|+|a_2-a|+\cdots+|a_{N_0-1}-a|+(n-N_0+1)\varepsilon'}{n}
+                    \end{align*}
+                    とできる。$\frac{1}{n}\to 0$だから、$\displaystyle \frac{|a_1-a|}{n},\frac{|a_2-a|}{n},\cdots,\frac{|a_{N_0-1}-a|}{n}$は、$n$を十分大きくすれば、任意の正数$\frac{\varepsilon}{2}>0$で抑えることができる。
+                    この大きくとったそれぞれの値$N$の最大値を$N_m$とおく。加えて、$\varepsilon'$は任意だから、$\varepsilon'=\frac{\varepsilon}{2}$と置けば、$n\geq N_0\left(\frac{\varepsilon}{2}\right)$のとき
+                    $|a_n-a|<\frac{\varepsilon}{2}$である。つまり、$\displaystyle \frac{n-N_0+1}{n}\cdot \varepsilon'=\frac{n-N_0+1}{n}\cdot \frac{\varepsilon}{2}\leq \frac{\varepsilon}{2}$となる。
+                    したがって、$N(\frac{\varepsilon}{2})=\max(N_0(\frac{\varepsilon}{2}),N_m(\frac{\varepsilon}{2}))$と定めると、
+                    \begin{equation*}
+                        n\geq N \Rightarrow \left|\frac{a_1+a_2+\cdots+a_n}{n}-a\right|<\varepsilon
+                    \end{equation*}
+                    が成り立つ。$\square$\hspace{1mm}
+                    $(2)\log n$\hspace{1mm}
+                    $(3)a_n=\log\frac{n+1}{n}=\log(1+\frac{1}{n})$と置くと、$\log n = a_1+\cdots+a_n - \log\frac{n+1}{n}$である。
+                    \begin{equation*}
+                        \lim_{n\to\infty}\frac{\log n}{n} = \lim_{n\to\infty}\frac{a_n}{n}-\lim_{n\to\infty}\frac{1}{n}\log\left(1+\frac{1}{n}\right)
+                    \end{equation*}
+                    よって、(1)の結果から、一項目の極限は$\lim_{n\to\infty}a_n = \log 1 =0$であり、二項目は$0$に収束する。したがって求める答えは$0$
+                
+                    \paragraph{問3}$(1)\displaystyle\lim_{x\to -0}\sign x =-1,\lim_{x\to+0}\sign x = 1$より極限が存在しない。したがって不連続。\hspace{1mm}
+                        $(2)\displaystyle 0\leq x<1$で$f(x)=0,x=1$で$f(x)=1$である。したがって、$\displaystyle \lim_{x\to1-0}f(x)=0\neq f(1)$より不連続。
+
+                    \paragraph{問4}$\displaystyle \lim_{x\to+0}x^x = \lim_{t\to\infty}\left(\frac{1}{t}\right)^{\frac{1}{t}}=\lim_{t\to\infty}e^{-\frac{\log t}{t}}=e^{-0}=1.$よって、$y=x^x$は$x\to 0$で$x^x\to 1$へと近づくので、
+                    $0^0=1$と定義すれば、$y=x^x$を連続にできる（ほかの理由でも可）。ここで、$x=\frac{1}{t}$とおき、問2(3)の結果を用いた。
+            \clearpage
+            \subsection*{第II部解答}
+
+
+                    
         \clearpage
+            
         \color{black}
         \section{付録}
             \subsection{人名}
