@@ -4199,7 +4199,116 @@
                     \paragraph{問4}$\displaystyle \lim_{x\to+0}x^x = \lim_{t\to\infty}\left(\frac{1}{t}\right)^{\frac{1}{t}}=\lim_{t\to\infty}e^{-\frac{\log t}{t}}=e^{-0}=1.$よって、$y=x^x$は$x\to 0$で$x^x\to 1$へと近づくので、
                     $0^0=1$と定義すれば、$y=x^x$を連続にできる（ほかの理由でも可）。ここで、$x=\frac{1}{t}$とおき、問2(3)の結果を用いた。
             \clearpage
-            \subsection*{第II部解答}
+            \subsection*{第II部解答}        
+                \paragraph{問1}
+                    $[1]3x^2+2x+1$\hspace{1mm}
+                    $[2]-2\sin 2x$\hspace{1mm}
+                    $[3]2\cosh 2x$\hspace{1mm}
+                    $[4]\frac{1}{\log\log x}\frac{1}{\log x}\frac{1}{x}$\hspace{1mm}
+                    $[5]\frac{1}{x\log 10}$\\
+                    $[6](\cos(2\cos^{-1}x))'=(2x^2-1)'=4x$\hspace{1mm}
+                    $[7]12\sin^3(3x)\cos(3x)$\hspace{1mm}
+                    $[8]\displaystyle \frac{-2x}{3\sqrt[3]{(x^2+1)^4}}$
+                
+                \paragraph{問2}各自グラフ描画アプリで確認せよ。$[2]$は$y>0$で定義されていることに注意せよ。原点は白丸になっているはずである。
+                $[3]$は、とりあえず$[0,2\pi]$の範囲でのグラフを書き、そこから$x\to \pm\infty$の時に振幅がどうなるかを考えると概形がある程度予想ができる。
+
+                \paragraph{問3}$[1]$はロピタルの定理を用いた。$[2],[3]$は関数のマクローリン展開を用いた。
+                    \begin{equation*}
+                        \lim_{x\to 1}\frac{1+\cos \pi x}{(x-1)^2}=\lim_{x\to\infty}\frac{-\pi\sin\pi x}{2(x-1)}=-\frac{\pi}{2}\lim_{x\to 1}\frac{\pi\cos\pi x}{1}=\frac{\pi^2}{2}
+                    \end{equation*}
+                    $[2]\displaystyle\sin x = x-\frac{x^3}{3!}+\cdots,\cos x = 1-\frac{x^2}{2!}+\cdots,\log(1+x)=x-\frac{x^2}{2}+\cdots$だから、
+                    \begin{equation*}
+                        \lim_{x\to0}\frac{\sin x-x\cos x}{x^2\log(1+x)}=\lim_{x\to0}\frac{\frac{2}{3!}x^3-\frac{4}{5!}x^5\cdots}{x^3-\frac{1}{2}x^4+\frac{1}{3}x^5\cdots}=\lim_{x\to0}\frac{\frac{2}{3!}-\frac{4}{5!}x^5/x^3\cdots}{1-\frac{1}{2}x^4/x^3+\frac{1}{3}x^5/x^3\cdots}=\frac{2}{3!}=\frac{1}{3}
+                    \end{equation*}
+                    $[3]\displaystyle \sqrt{1+x}=1+\frac{x}{2\cdot 1!}-\frac{x^2}{4\cdot 2!}+\frac{x^3}{8\cdot 4!}+\cdots+\frac{(-1)^{n-1}x^n}{2^nn!}+\cdots$を利用する。
+                    \begin{equation*}
+                        \lim_{x\to\infty}\left\{\sqrt{(x+a)(x+b)}-\sqrt{(x-a)(x-b)}\right\}=\lim_{x\to\infty}x\left\{\sqrt{\left(1+\frac{a}{x}\right)\left(1+\frac{b}{x}\right)}-\sqrt{\left(1-\frac{a}{x}\right)\left(1-\frac{b}{x}\right)}\right\}
+                    \end{equation*}
+                    と変形する。ここで、$\sqrt{1+x}=\cdots$を代入して、
+                    \begin{equation*}
+                        \lim_{x\to\infty}x\left\{\left(1+\frac{\frac{a}{x}}{2}-\frac{\left(\frac{a}{x}\right)^2}{4\cdot 2!}\cdots\right)\left(1+\frac{\frac{b}{x}}{2}-\frac{\left(\frac{b}{x}\right)^2}{4\cdot 2!}\cdots\right)-\left(1-\frac{\frac{a}{x}}{2}-\frac{\left(\frac{a}{x}\right)^2}{4\cdot 2!}\cdots\right)\left(1-\frac{\frac{b}{x}}{2}-\frac{\left(\frac{b}{x}\right)^2}{4\cdot 2!}\cdots\right)\right\}
+                    \end{equation*}
+                    $k=1,2,3,\dots$とすれば、$\displaystyle \lim_{x\to\infty}\frac{1}{x^k}= 0$であるから、$\{$\hspace{2mm}$\}$内は、$\frac{1}{x}$もしくは定数の項にのみ注目すればよい。
+                    よって、$\displaystyle \left\{(1+\frac{\frac{a}{x}}{2}+\frac{\frac{b}{x}}{2})-\left(1-\frac{\frac{a}{x}}{2}-\frac{\frac{b}{x}}{2}\right)\right\}=\frac{a+b}{x}$より、求める答えは、$\displaystyle\lim_{x\to\infty}x\left\{\frac{a+b}{x}\right\}=a+b$
+
+                    \paragraph{問4}$-1\leq \sin x \leq 1$だから、$x>1$のときは明らかである。よって、$0<x\leq 1$のときを示す。このとき平均値の定理より、
+                    \begin{equation*}
+                        \frac{\sin x-\sin 0}{x-0}=\cos \theta x \quad (0<\theta<1)
+                    \end{equation*}
+                    が成り立つ。条件からわかるように、$0<\theta x<1<\frac{\pi}{2}$である。したがって式を変形すれば、$\sin x = x\cos\theta x < x$が成り立つ。すなわち$x>\sin x$が示された。
+
+                    \paragraph{問5}
+                        $\displaystyle 1.\arctan x = x-\frac{x^3}{3}+\frac{x^5}{5}-\cdots +(-1)^n\frac{x^{2n+1}}{2n+1}+R_{2n+2}$\hspace{1mm}$2.\arctan x=\cdots$の式に$x=1$を代入せよ。
+                    
+                    \paragraph{問6}$\displaystyle \log (1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots$を利用する。
+                    $\displaystyle \log(1-x)=-x-\frac{x^2}{2}-\frac{x^3}{3}-\frac{x^4}{4}-\cdots$だから、
+                    $\displaystyle \log\left(\frac{1+x}{1-x}\right)=\log(1+x)-\log(1-x)=2\left(x+\frac{x^3}{3}+\cdots\right)$
+                    あとは$x=\frac{1}{3}$を代入し、5項目ぐらいまで求めれば$\log 2=0.6931\cdots$
+                    \clearpage
+                    \paragraph{問7}$\displaystyle (1+x)^{\alpha}=1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2+\cdots+\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^n+R_{n+1}$である。
+                    ここで$\alpha=n\in\mathbb{N}$とすれば、$\displaystyle R_{n+1}=\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)(\alpha-n)}{(n+1)!}(1+\theta x)^{\alpha-n-1}=0$であるから、
+                    有限項となり、これは二項定理\eqref{eq:二項定理}と一致する。
+
+                    \paragraph{問8}$\displaystyle(1)\frac{\frac{dy}{dt}}{\frac{dx}{dt}}=\lim_{\Delta t\to 0}\frac{\frac{\Delta y}{\Delta t}}{\frac{\Delta x}{\Delta t}}=\lim_{\Delta t\to 0}\frac{\Delta y}{\Delta x}.$ここで、$\Delta t\to 0$のとき、$\Delta x=x(t+\Delta t)-x(t)\to 0$だから、
+                    $\displaystyle \lim_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=\frac{dy}{dx}\square$\hspace{3mm}$(2)[1]\displaystyle-\frac{1}{\tan\theta}$\hspace{1mm}$[2]\displaystyle\frac{-2t+3}{3t^2+2}$
+
+                    \paragraph{問9}点$(x_0,y_0)$での接線の方程式は、$m$を接線の傾きとして、$y-y_0=m(x-x_0)$である。ここで、$m=f'(x_0)$であることがわかれば、
+                    $[1]y=9x-27$\hspace{1mm}$[2]y=x$\hspace{1mm}$[3]y=-\frac{x}{\pi}+1$
+
+                    \paragraph{問10}$\displaystyle \frac{d}{da}a^x = xa^{x-1}$
+
+                    \paragraph{問11}$\displaystyle \lim_{x\to 0}f'(x)=\lim_{x\to 0}\left(2x\sin\frac{1}{x}-\cos\frac{1}{x}\right)$であるが、このとき、$\cos \frac{1}{x}$は収束しない。例えば$x\to +0$のときは$\cos \frac{1}{x}\to \cos \infty$であるが、これは振動してしまう。
+                    したがって、$\displaystyle \lim_{x\to 0}f'(x)$が存在しないので$x=0$で不連続。ちなみに、$\displaystyle f'(0)=\lim_{h\to 0}\frac{f(h+0)-f(0)}{h}=\lim_{h\to0}h\sin \frac{1}{h}$であり、
+                    この極限は収束するから、$f(x)$は$x=0$で微分可能である。極限が収束する理由は、$0\leq h\sin\frac{1}{h}\leq h$からわかる。（はさみうちの原理を使えばよい。）
+
+                    \paragraph{問12}$OA$の長さを$L$,x軸と$B$との距離を$l$と置く。また、動点$P$がx軸と交わる点を$Q(x,0)$と置く。さらに、$B$とy軸との距離を$X$と置く。（下図参照） 
+                        \begin{figure}[h]
+                            \centering
+                            \includegraphics[scale=0.5]{img/QuuNote/Mondai2_12.png}
+                        \end{figure}
+
+                        この時、$A$から$B$まででかかる時間を$T(x)$とすると、
+                        \begin{equation*}
+                            T(x)=\frac{\sqrt{L^2+x^2}}{v_a}+\frac{\sqrt{l^2+(X-x)^2}}{v_b}
+                        \end{equation*}
+                        となる。よって、$x$微分すると
+                        \begin{equation*}
+                            \frac{dT}{dx} = \frac{x}{v_a \sqrt{L^2+x^2}}-\frac{X-x}{v_b\sqrt{l^2+(X-x)^2}}
+                        \end{equation*}
+                        しかし、このまま普通に$T'(x)=0$として$x$を求めようとしても、計算量が膨大で大変なことになる。よって少し賢いやり方をしよう。まず、$T'(0)<0,T'(X)>0$であるから、中間値の定理より
+                        $T'(x)=0$をみたす$x$が区間$(0,X)$に少なくとも一つ存在することがわかる。さらに、第一項は単調増加、第二項は単調減少である。したがって、$T'(x)=0$のとき、式を移項すれば
+                        $(\text{単調増加})=(\text{単調減少})$となり、解が一つしか存在しないことがわかる。よってその時の値を$x=x_0$とすれば、
+                        先ほど述べたように$T'(0)<0,T'(X)>0$だから、$T(x_0)$が極小値であり、この区間で最小値だとわかる。すなわち$x=x_0$が求める解である。
+
+                        とはいえ、何度も言うように$x_0$の値を具体的に求めることが難しい。しかし、我々が今求めたいのは$x_0$の値ではなく最短の経路である。今わかっている情報は$T'(x)=0$が成り立つ
+                        とき、最短経路であるということである。これをもっと具体的な式で表してみよう。
+
+                        まず、点$Q_0(x_0,0)$におけるx軸に垂直な直線を考え、この直線と線分$AQ_0$がなす角を$\theta_1$とする。同様に線分$BQ_0$となす角を$\theta_2$とする。
+                        この時、$\displaystyle \sin\theta_1 = \frac{x}{\sqrt{L^2+x^2}},\sin\theta_2 = \frac{X-x}{\sqrt{l^2+(X-x)^2}}$である（$\sin$の定義）。よって、$T'=0$は次のように書ける。
+                        \begin{equation*}
+                            T'=\frac{\sin \theta_1}{v_a}-\frac{\sin\theta_2}{v_b}=0
+                        \end{equation*}
+                        二項目を移項すれば
+                        \begin{equation*}
+                            \frac{\sin\theta_1}{v_a}=\frac{\sin\theta_2}{v_b}
+                        \end{equation*}
+                        つまり、この関係を満たす経路が求める経路である。これは光の屈折則（スネルの法則）に他ならない。
+
+                    \paragraph{問13}$(1)y=\tan x$を方程式の左辺に代入し、$=0$になるか確かめよ。\hspace{1mm}$(2)$例えば$y=\tan(x+1).$一般に$y=\tan(x+a)$は解となる。
+
+                    \paragraph{問14}ロピタルの定理を用いよ。
+                        \begin{align*}
+                            \lim_{x\to\infty}&\frac{x^n}{e^x} = 0\\
+                            \lim_{x\to\infty}&\frac{\log x}{x^n} = 0 
+                        \end{align*}
+                        なお、この問題の結果は非常に重要なので覚えておこう。もっと言えば、$0<a<b$のとき、$n\to\infty$では
+                        \begin{equation*}
+                            \log n\ll {\small n^a} \ll {\normalsize n^b} \ll {\large e^{n}} \ll {\huge n!} 
+                        \end{equation*}
+                \clearpage
+                \subsection*{第III部解答}
+
 
 
                     
@@ -4295,7 +4404,7 @@
             外積は、二つのベクトル$\bm{a},\bm{b}$に直行するベクトルを与える。三次元だと二つ存在するが、例えばベクトル
             $\bm{a}\times \bm{b}$は、ベクトル$\bm{a}$から$\bm{b}$の方向に右ネジを回すときのネジの進む方向となる。
 
-            次に\textbf{ベクトル値関数}を定義する。これは独立変数（スカラー）を$t$に対して、従属変数は各成分が$t$の関数となるベクトルのことである。これを$\|\bm{a}(t)\|$のように書く。
+            次に\textbf{ベクトル値関数}を定義する。これは独立変数（スカラー）を$t$に対して、従属変数は各成分が$t$の関数となるベクトルのことである。これを$\bm{a}(t)$のように書く。
             ベクトルの関数といわれて少し戸惑ってしまうが、少しも怖がる必要はない。ベクトルも所詮スカラーをまとめて扱っているだけなので、結局各成分が$t$の関数となるだけなのである。式で書けば、
             $\bm{a}(t)=[a_1(t),a_2(t),a_3(t)]$である。
 
