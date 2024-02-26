@@ -2792,7 +2792,7 @@
                 $\displaystyle [3]\int \frac{dx}{\sin x}$\hspace{3mm}
                 $\displaystyle [4]\int \tan xdx$\hspace{3mm}
                 $\displaystyle [5]\int \sin^5 xdx$
-                $\displaystyle [6]\int \frac{dx}{\sqrt{(x-a)(x-\beta)}}$\hspace{3mm}
+                $\displaystyle [6]\int \frac{dx}{\sqrt{(x-\alpha)(x-\beta)}}$\hspace{3mm}
                 $\displaystyle [7]\int \frac{x^2}{(x+1)^2(x-2)}dx$\hspace{3mm}
                 $\displaystyle [8]\int\frac{dx}{a^2\cos^2 x+b^2\sin^2 x}\quad(ab\neq 0)$ \hspace{5mm}
                 $\displaystyle [9]\int \sqrt{1+\cos x}dx$
@@ -4308,6 +4308,123 @@
                         \end{equation*}
                 \clearpage
                 \subsection*{第III部解答}
+                    以下積分定数を$C$と置く。
+                    \paragraph{問1}
+                        $\displaystyle[1]\frac{x^7}{7}+\frac{3}{5}x^5+x^3+x+C\hspace{1mm}[2]x^2\sin x+2x\cos x-2\sin x+C\hspace{1mm}[3]\frac{1}{\sin x}=\frac{1}{2\sin\frac{x}{2}\cos\frac{x}{2}}=\frac{1}{2}\frac{1/\cos^2\frac{x}{2}}{\tan\frac{x}{2}}\text{だから}\log\left|\tan\frac{x}{2}\right|+C\hspace{1mm}[4]-\log|\cos x|+C
+                        \hspace{1mm}[5]\cos x-\frac{2}{3}\cos^3x+\frac{1}{5}\cos^5x+C$\hspace{1mm}$[6]t^2=x-a$と置くと、$dx = 2tdt$であり、$x-\beta = t^2+\alpha -\beta$であるので、$\displaystyle \int \frac{2t}{\sqrt{t^2(t^2+\alpha-\beta)}}dt=2\int \frac{dt}{\sqrt{t^2+\alpha-\beta}}=2\log\left|t+\sqrt{t^2+\alpha-\beta}\right|=2\log\left|\sqrt{x-a}+\sqrt{x-\beta}\right|+C
+                        \hspace{1mm}[7]\frac{x^2}{(x+1)^2(x-1)}=\frac{-1}{3(x+1)^2}+\frac{5}{9(x+1)}+\frac{4}{9(x-2)}\text{だから}\frac{1}{3}\frac{1}{x+1}+\frac{5}{9}\log|x+1|+\frac{4}{9}\log|x-2|+C\hspace{1mm}[8]\frac{1}{ab}\arctan\left(\frac{a}{b}\tan x\right)\hspace{1mm}\sqrt{1+\cos x}=\sqrt{2\cos^2\frac{x}{2}}=\sqrt{2}\cos^2\frac{x}{2}\text{より}2\sqrt{2}\sin\frac{x}{2}+C$
+                    
+                    \paragraph{問2}
+                        $[1]12\sqrt{2}-8\hspace{1mm}[2]\pi\hspace{1mm}[3]\frac{2}{\pi}\hspace{1mm}[4]\frac{1}{x^2}\cdot(x-1)e^x\text{と分けて、$1/x^2$を積分する部分積分を実行。}\frac{e^2}{2}-e\hspace{1mm}[5]x=\tan\theta\text{と置くと}\frac{5}{6\sqrt{2}}\hspace{1mm}[6]\sin x-2\cos x = \sqrt{5}\sin(x-\sin^{-1}\frac{2}{\sqrt{5}})$であるから、区間$[0,\frac{\pi}{2}]$で
+                        符号が変わるのは$x=\sin^{-1}\frac{2}{\sqrt{5}}$のとき。よって$[0,\frac{\pi}{2}]=[0,\sin^{-1}\frac{2}{\sqrt{5}}]+[\sin^{-1}\frac{2}{\sqrt{5}},\frac{\pi}{2}]$と区間を分けてそれぞれ計算すれば、$2\sqrt{5}-3$\hspace{1mm}$\displaystyle[7]I=\int_{0}^{\frac{\pi}{2}}\log\sin xdx \overset{x\to\frac{\pi}{2}-x}{=} \int_{0}^{\frac{\pi}{2}}\cos\log xdx=\frac{1}{2}\int_{0}^{\frac{2}{\pi}}\log(\sin x\cos x)dx = \frac{1}{2}\int_{0}^{\frac{\pi}{2}}\log(\frac{1}{2}\sin 2x)dx=\frac{1}{2}\int_{0}^{\frac{\pi}{2}}\log\sin2x-\log 2dx=\frac{\pi}{4}\log 2 + \frac{1}{2}\int_{0}^{\frac{\pi}{2}}\log\sin2xdx.$
+                        ここで、最後の積分を$J$と置き、$2x\to x$の置換を行うと、$\displaystyle J=\frac{1}{4}\int_{0}^{\pi}\log\sin xdx =\frac{1}{4}I+ \frac{1}{4}\int_{\frac{2}{\pi}}^{\pi}\log\sin xdx\overset{x\to \pi-x}{=}\frac{1}{4}I+\frac{1}{4}\int_{0}^{\frac{\pi}{2}}\log\sin xdx = \frac{I}{2}.$したがって、$I=\frac{\pi}{4}\log 2 + J =\frac{\pi}{4}\log 2 + \frac{I}{2} \leftrightarrow I=-\frac{\pi}{2}\log 2\hspace{1mm}[8]\infty \hspace{1mm}[9]w>0\text{のとき収束して}\frac{1}{w}$\hspace{1mm}$\displaystyle[10]\frac{1}{ab}$\\
+                        $[10]$はファインマンのパラメータ積分と呼ばれる。これにより、一般に$\frac{1}{a^nb^m}$を積分形で表せる。
+                    
+                    \paragraph{問3}
+                        $\displaystyle(1)\int_{0}^{\pi}|\sin x-\cos x|dx = 2\sqrt{2}\hspace{1mm}(2)a>0$で考える。このとき、$y_+ = +\sqrt{r^2-x^2}+a,y_-=-\sqrt{r^2-x^2}+a$と置くと、求める体積は
+                        $\displaystyle \pi\int_{-r}^{r}(y_+)^2-(y_-)^2dx = 2\pi a\cdot \pi r^2$となる。$a<0$のときも同様に考えて、$ 2\pi (-a)\cdot \pi r^2.$ここで、回転体の公式\eqref{eq:回転体の体積}を用いた。
+
+                    \paragraph{問4}
+                        $(1)g' = e^{-x}$として部分積分する。$\displaystyle\lim_{x\to\infty} \frac{x^s}{e^x}$は、$s>0$より$0$であることを利用せよ。\hspace{1mm}$(2)\gamma(1=1)$と$(1)$の結果を利用せよ。
+
+                    \paragraph{問5}普通に部分積分すればよい。
+                        \begin{equation*}
+                            \int_{0}^{1}x^{m}(1-x)^ndx = \left[\frac{1}{m+1}x^{m+1}(1-x)^n\right]_0^1 + \int_{0}^{1}\frac{n}{m+1}x^{m+1}(1-x)^{n-1}dx = \frac{n}{m+1}\int_0^1 x^{m+1}(1-x)^{n-1}dx
+                        \end{equation*}
+                        あとはこれを、あとはこれを$n-1$回繰り返せば、
+                        \begin{equation*}
+                            \cdots = \frac{n!}{(m+1)(m+2)\cdots(m+n)}\int_{0}^{1}x^{m+n+1}dx = \frac{n!}{(m+1)\cdots (m+n+1)}=\frac{n!m!}{(m+n+1)!}
+                        \end{equation*}
+                        最後の式変形は分子分母に$m!$をかけた。
+                    \clearpage
+                    \paragraph{問6}
+                        $n$が奇数のとき、被積分関数は機関数だから値は$0$である。（注：本来なら$\int_a^b,a\to\infty,b\to-\infty$なのだから、直ちにこの結果は得られない。しかし、$n=2k+1$と置いて、$t=x^2$の置換を行って実際に計算すると、
+                        被積分関数は$t^{k}e^{-t}$の形になり、この$[a^2,b^2]$の積分は、部分積分を繰り返して結局0になる。）
+
+                        よって、$n$が偶数のときを考える。$n=2k\quad(k=0,1,2,\dots)$とすると、
+                        \begin{equation*}
+                            G_{2k}=\int_{\infty}^{-\infty}x^{2k}e^{-x^2}dx = \left[-\frac{1}{2}e^{-x^2}x^{2k-1}\right]_{-\infty}^{\infty}+(2k-1)\int_{-\infty}^{\infty}x^{2(k-1)}e^{-x^2}dx
+                        \end{equation*}
+                        ここで、$g'=xe^{-x^2}$として部分積分を行った。さて、[\hspace{2mm}]内は結局0であるから
+                        \begin{equation*}
+                            G_{2k}=(2k-1)G_{2(k-1)}
+                        \end{equation*}
+                        よってこの漸化式を解けばよい。$G_0=\sqrt{\pi}$であるから、
+                        \begin{equation*}
+                            G_{2k} = (2k-1)G_{2(k-1)}=(2k-1)(2k-3)G_{2(k-2)}=\cdots =(2k-1)!!\sqrt{\pi} 
+                        \end{equation*}
+                        ここで二重階乗$!!$を用いた。例えば、$7!! = 7\times 5\times 3\times 1$である。（後ろのページの付録参照。）\\よってまとめると、$G_{2k}=(2k-1)!!\sqrt{\pi},I_{2k+1}=0.$
+
+                    \paragraph{問7}
+                        $t-\sqrt{a}x=\sqrt{ax^2+bx+c}\leftrightarrow t^2-2\sqrt{a}tx+ax^2 = ax^2+bx+c$
+                        よって整理して、$\displaystyle x = \frac{1}{c}\left(\frac{t^2}{2\sqrt{a}t+b}\right)\leftrightarrow dx = \frac{1}{c}\left(\frac{2\sqrt{a}t^2+2bt}{(2\sqrt{a}t+b)^2}\right)dt$
+                        また、$\displaystyle\sqrt{ax^2+bx+c} = t-\sqrt{a}x =t-\frac{\sqrt{a}}{c}\left(\frac{t^2}{2\sqrt{a}t+b}\right)$
+
+                        したがって、元の積分は
+                        \begin{equation*}
+                            \int f(x,\sqrt{ax^2+bx+c})dx = \int f\left(\frac{1}{c}\left(\frac{t^2}{2\sqrt{a}t+b}\right),t-\frac{\sqrt{a}}{c}\left(\frac{t^2}{2\sqrt{a}t+b}\right)\right)\frac{1}{c}\left(\frac{2\sqrt{a}t^2+2bt}{(2\sqrt{a}t+b)^2}\right)dt
+                        \end{equation*}
+                        となり、$t$の有理関数で表せたので必ず積分できる。
+                    
+                    \paragraph{問8}
+                        $(1)\sin(k\pi) =0$と$[\cos (n+1)\pi = \pm 1\leftrightarrow \cos n\pi = \mp 1]\Leftrightarrow \cos(n+1)\pi = (-1)^{n-1}$を利用する。$\int e^{-x}\sin xdx = \frac{-1}{2}e^{-x}\left\{\sin x+\cos x\right\}$より、
+                        \begin{equation*}
+                            I_n = -\frac{1}{2}\left[e^{-x}(\sin x+\cos x)\right]_{n\pi}^{(n+1)\pi}=\frac{(-1)^n}{2}\left(\frac{1}{e^{(n+1)\pi}}+\frac{1}{e^{n\pi}}\right)=\frac{(-1)^n}{2}(e^{-\pi}+1)e^{-n\pi}
+                        \end{equation*}
+                        $(2)$求める積分を$[0,\pi],[\pi,2\pi],\dots,[m,(m+1)\pi],\dots$に分割すれば、それぞれは$I_n$で与えられるので、これを足し合わせればよい。$m$回までの和は
+                        \begin{equation*}
+                            \sum_{n=0}^{m}\int_{n\pi}^{(n+1)\pi}e^{-x}|\sin x|dx = \sum_{n=0}^{m}\left|\frac{(-1)^n}{2}(e^{-\pi}+1)e^{-n\pi}\right| =\frac{e^{-\pi}}{2}\sum_{n=0}^{m}e^{-n\pi}=\frac{e^{-\pi}}{2}\left\{1+\sum_{n=1}^{m}e^{-n\pi}\right\}
+                        \end{equation*}
+                        ここで、求める和を$S_m$と置けば、
+                        \begin{alignat*}{4}
+                            S_m &= &e^{-\pi}+&e^{-2\pi}+&e^{-3\pi}+&\cdots + &e^{-m\pi}&{}\\
+                            e^{-\pi}S_m &=&{}&e^{-2\pi}+&e^{-3\pi}+&\cdots + &e^{-m\pi}&+e^{-(m+1)\pi}
+                        \end{alignat*}
+                        であるから、$S_m-e^{-\pi}S_m = e^{-\pi}-e^{-(m+1)\pi}$である。すなわち、$\displaystyle S_m = \frac{e^{-\pi}(1-e^{-m\pi})}{1-e^{-\pi}}$
+
+                        求める答えは、$m\to\infty$の極限であるから、この時$\displaystyle I=\frac{e^{-\pi}}{2}\cdot \left(1+\frac{e^{-\pi}}{1-e^{-\pi}}\right)=\frac{1}{2}\cdot \frac{1+e^{-\pi}}{1-e^{-\pi}.}$なお、
+                        $S_m$を求める過程は、等比数列$a_n =ar^{n-1}$と置くと、一般に$\displaystyle S_n =\frac{a(1-r^{n})}{1-r}$で与えられる。 
+                    \clearpage
+                    \paragraph{問9}
+                        \begin{equation*}
+                            g(x)=\int_{0}^{x}f(t)\cos(x+t)dt=\int_{0}^{x}\left\{\cos x\cos t-\sin x\sin t\right\}dt=\cos x\int_{0}^{x}f(t)\cos tdt-\sin x\int_{0}^{x}f(t)\sin tdt
+                        \end{equation*}
+                        であるから、積の微分公式を用いて、\\
+                        $\displaystyle g'(x)=\left(-\sin x\int_0^x f(t)\cos tdt+\cos^2xf(x)\right)-\left(\cos x\int_0^xf(t)\sin tdt+\sin^2 xf(x)\right)$すなわち、\\$g'(x)=\cos 2xf(x)-\int_0^xf(t)\sin(x+t)dt.$が答えになる。
+                    
+                    \paragraph{問10}$(1)$下図を参照。$S(\theta)=\frac{1}{2}r\sin\theta\cdot(r\sin\theta)\tan\frac{\pi}{4}=\frac{1}{2}r^2\sin^2\theta$
+                        \begin{figure}[h]
+                            \centering
+                            \includegraphics[scale=0.5]{img/QuuNote/Mondai3_10_1.png}
+                        \end{figure}
+
+                        $(2)\Delta \theta$が十分小さいとき、体積の微小変化$\Delta V$は以下図の三角柱のように近似できる。
+                        \begin{figure}[h]
+                            \centering
+                            \includegraphics[scale=0.3]{img/QuuNote/Mondai3_10_2.png}
+                        \end{figure}
+
+                        \noindent したがって、$\Delta V=S(\theta)(r\cos(\theta+\Delta \theta)-r\cos\theta)=2rS(\theta)\sin\frac{\Delta \theta}{2}\sin\left(\theta+\frac{\Delta\theta}{2}\right).$\\
+
+                        $(3)$求める体積$V$は、区間$\theta\in[0,\pi]$を$n$分割し、各区間の任意の角度を$\theta_k$、各``幅''を$\Delta \theta_k$と置くと、次のように近似できる。
+                        \begin{equation*}
+                            S_\Delta =\sum_{k=1}^{n}rS(\theta_k)\sin\frac{\Delta\theta_k}{2}\sin\left(\theta_k+\frac{\Delta\theta_k}{2}\right)=2r^3\sum_{k=1}^{n}\sin^2\theta_k \sin\left(\theta_k+\frac{\Delta \theta_k}{2}\right)\cdot \frac{\sin\frac{\Delta \theta_k}{2}}{\frac{\Delta\theta_k}{2}}\Delta \theta_k
+                        \end{equation*}
+                        ここで、分割数$n$を限りなく大きくすると、$\Delta \theta_k\to 0$だから、$\displaystyle \sin\left(\theta_k +\frac{\Delta\theta_k}{2}\right)\to\sin\theta_k,\frac{\sin\frac{\Delta \theta_k}{2}}{\frac{\Delta\theta_k}{2}}\to 1$であるから、この極限は積分を用いて次のように表せる。
+                        \begin{equation*}
+                            V=\frac{r^3}{2}\int_{0}^{\pi}\sin^3\theta d\theta
+                        \end{equation*}
+                        よって、求める体積は$V=\frac{2}{3}r^3.$
+
+                        実は、このやり方を行わなくても、$S(\theta)$を$x$の関数で表せば、これの$[-r,r]$の積分で答えが求められる。このように、図形の体積を求める問題は、
+                        断面積の求め方が``かんどころ''になってくる。このやり方のように計算量の少ないやり方もあれば、問題のやり方のように計算量がとんでもないし、近似計算
+                        ばかりで厳密な答えなのか疑ってしまうようなやり方もある。それでもこの複雑なやり方を問題に選んだのは、式中に$\sqrt{}$が出てくるのをむやみに嫌がって別の
+                        やり方を試そうとする人への警告である。
+                \clearpage
+                \subsection*{第IV部解答}
+                
+                    
+                        
 
 
 
