@@ -3572,7 +3572,7 @@
             \begin{enumerate}\setcounter{enumi}{0}\renewcommand{\labelenumi}{(\arabic{enumi})}
                 \item 公式\eqref{eq:1/x+1のマクローリン級数}を導出せよ。
                 \item $\displaystyle \frac{1}{1+x^2}$のマクローリン級数を求めよ。
-                \item 上記の結果を用いて、$\arctan x$のマクローリン級数を求めよ。$x$の収束する範囲も求めよ。
+                \item 上記の結果を用いて、$\arctan x$のマクローリン級数を求めよ。
             \end{enumerate}
 
             \paragraph{問5}$\displaystyle \zeta(2)= \sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}$である（\textbf{バーゼル問題}）。では以下の問いに答えよ。
@@ -4151,7 +4151,7 @@
 
         \clearpage
         \subsection{演習問題解答}
-            次ページから演習問題の解答を示す。あくまで解答例であることを念頭に置いて読んでほしい。
+            次ページから演習問題の解答を示す。あくまで解答例であることを念頭に置いて読んでほしい。また、どうしても答えが合わない場合はこちらの計算ミスの可能性がある。その際は遠慮なく教えてほしい。
             \clearpage
             \subsection*{第I部解答}
                 \paragraph{問1}
@@ -4373,7 +4373,7 @@
                         \end{equation*}
                         $(2)$求める積分を$[0,\pi],[\pi,2\pi],\dots,[m,(m+1)\pi],\dots$に分割すれば、それぞれは$I_n$で与えられるので、これを足し合わせればよい。$m$回までの和は
                         \begin{equation*}
-                            \sum_{n=0}^{m}\int_{n\pi}^{(n+1)\pi}e^{-x}|\sin x|dx = \sum_{n=0}^{m}\left|\frac{(-1)^n}{2}(e^{-\pi}+1)e^{-n\pi}\right| =\frac{e^{-\pi}}{2}\sum_{n=0}^{m}e^{-n\pi}=\frac{e^{-\pi}}{2}\left\{1+\sum_{n=1}^{m}e^{-n\pi}\right\}
+                            \sum_{n=0}^{m}\int_{n\pi}^{(n+1)\pi}e^{-x}|\sin x|dx = \sum_{n=0}^{m}\left|\frac{(-1)^n}{2}(e^{-\pi}+1)e^{-n\pi}\right| =\frac{e^{-\pi}+1}{2}\sum_{n=0}^{m}e^{-n\pi}=\frac{e^{-\pi}+1}{2}\left\{1+\sum_{n=1}^{m}e^{-n\pi}\right\}
                         \end{equation*}
                         ここで、求める和を$S_m$と置けば、
                         \begin{alignat*}{4}
@@ -4382,7 +4382,7 @@
                         \end{alignat*}
                         であるから、$S_m-e^{-\pi}S_m = e^{-\pi}-e^{-(m+1)\pi}$である。すなわち、$\displaystyle S_m = \frac{e^{-\pi}(1-e^{-m\pi})}{1-e^{-\pi}}$
 
-                        求める答えは、$m\to\infty$の極限であるから、この時$\displaystyle I=\frac{e^{-\pi}}{2}\cdot \left(1+\frac{e^{-\pi}}{1-e^{-\pi}}\right)=\frac{1}{2}\cdot \frac{1+e^{-\pi}}{1-e^{-\pi}.}$なお、
+                        求める答えは、$m\to\infty$の極限であるから、この時$\displaystyle I=\frac{e^{-\pi}+1}{2}\cdot \left(1+\frac{e^{-\pi}}{1-e^{-\pi}}\right)=\frac{1}{2}\cdot \frac{1+e^{-\pi}}{1-e^{-\pi}.}$なお、
                         $S_m$を求める過程は、等比数列$a_n =ar^{n-1}$と置くと、一般に$\displaystyle S_n =\frac{a(1-r^{n})}{1-r}$で与えられる。 
                     \clearpage
                     \paragraph{問9}
@@ -4422,13 +4422,65 @@
                         やり方を試そうとする人への警告である。
                 \clearpage
                 \subsection*{第IV部解答}
+                    \paragraph{問1}[1]発散[2]発散[3]収束[4]発散[5]収束[6]$\displaystyle f(x)=\frac{\log x}{x}$と置くと、$f$は$x>e>2$で単調減少だから$\int_3^\infty f(x)dx $
+                    が収束するかを調べればよい。この積分は発散するので、発散.
+
+                    \paragraph{問2}
+                    絶対収束するとき収束するので、以降わざわざ収束まで書かない。
+                    [1]条件収束[2]絶対収束[3]条件収束[4]発散[5]絶対収束.\hspace{2mm}ここで[4]は「$\lim a_n\neq 0\rightarrow\sum a_n$発散」を用いた。
                 
-                    
-                        
+                    \paragraph{問3}
+                        $[1]-1\leq x\leq 1\hspace{1mm}[2]-3\leq x<3\hspace{1mm}[3]-\infty <x<\infty\hspace{1mm}[4]x\leq 0\hspace{1mm}[5]$
+                        $\displaystyle \frac{1}{(x+n-1)(x+n)}=\frac{1}{x+n-1}-\frac{1}{x+n},S_n = \left(\frac{1}{x}-\frac{1}{x+1}\right)+\left(\frac{1}{x+1}-\frac{1}{x+2}\right)+\cdots+\left(\frac{1}{x+n-1}-\frac{1}{x+n}\right)=\frac{1}{x}-\frac{1}{x+n}$
+                        したがって、$x\neq 0$で$\displaystyle \lim_{n\to\infty}S_n = \frac{1}{x}.$さらに、$n=1,2,3,\cdots$だから、$n\to\infty$で$x+n \neq 0$であるためには$x\neq -1,-2,-3,\dots$であればよい。したがって、$x\neq  0,1,2,3,\dots$で収束.
 
+                    \paragraph{問4}$(1)\displaystyle f(x)=\frac{1}{x+1}$と置くと、$f^{(n)}(x)=\frac{(-1)^nn!}{(x+1)^{n+1}}$であるので、$f^{(n)}(0)=(-1)^nn!.$よって、$\displaystyle \frac{1}{x+1}=\sum_{n=0}^\infty(-1)^n n!\cdot \frac{x^n}{n!}=\sum (-1)^nx^n.$$x$の収束する範囲は$-1< x< 1.$
+                    \hspace{1mm}$(2)f(x)$に$x=x^2$を代入せよ。$\displaystyle \frac{1}{1+x^2}=\sum_{n=0}^\infty (-1)^n x^{2n}.$$x$の収束する範囲は$-1<x<1.$
+                    \hspace{1mm}$(3)\int f(x^2)dx =\arctan x$を利用する。$(2)$の式を積分すると、$\displaystyle \arctan x = \int_{0}^{x}\frac{dx}{1+x^2}=\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}x^{2n+1}.$
+                    $x$の収束する範囲は$-1\leq x\leq 1.$
 
+                    \paragraph{問5}$(1)\displaystyle \frac{1}{n^2(n+1)^2}=\frac{1}{n^2}+\frac{1}{(n+1)^2}-2\left(\frac{1}{n}-\frac{1}{n+1}\right)$\hspace{2mm}
+                    $(2)$求める級数の第$n$部分和$S_n$は、$(1)$より$\displaystyle \frac{1}{n}-\frac{1}{n+1}$の項は相殺されて$1-\frac{1}{n+1}$となり、$\displaystyle \frac{1}{n^2}+\frac{1}{(n+1)^2}$の項は、
+                    $\displaystyle \sum_{m=1}^{n}\frac{1}{(m+1)^2}=\sum_{m=1}^{n}\frac{1}{m^2}-1+\frac{1}{(n+1)^2}$であるから、
+                    \begin{equation*}
+                        S_n = 2\sum_{m=1}^{n}\frac{1}{m^2}-1+\frac{1}{(n+1)^2}-2\left(1-\frac{1}{n+1}\right)
+                    \end{equation*}
+                    ここで$n\to \infty$の極限を取ると、求める級数の和は、$\frac{\pi^2}{3}-2$だとわかる。
 
-                    
+                    \paragraph{問6}
+                        $\displaystyle f(x)=\frac{1}{\sqrt{1-x}}$と置くと、$f^{(n)}(x)=\frac{(2n-1)!!}{2^n}(1-x)^{-\frac{1}{2}-n}$であるから、$\displaystyle f^{(n)}(0)=\frac{(2n-1)!!}{2^n}$である。
+                        したがって、$f(x)$のマクローリン級数は、$\displaystyle f(x)=\sum_{n=0}^{\infty}\frac{(2n-1)!!}{2^nn!}x^n$である。また、収束半径は$r=1$である。
+                        ここで、$2^nn!=(2\times 1) \times (2\times 2)\times \cdots\times  (2\times n)=(2n)!!$であるから、$\displaystyle \frac{1}{\sqrt{1-x}}=\sum \frac{(2n-1)!!}{(2n)!!}x^n$とできる。
+                        $k^2<1$で、もちろん$\sin^2\phi \leq 1$だから、$0<k^2\sin^2\phi<1$よって、$f(k^2\sin^2\phi)$としてもよい。このとき楕円積分は、
+                        \begin{equation*}
+                            K(k)=\sum_{n=0}^{\infty}\frac{(2n-1)!!}{(2n)!!}k^{2n}\cdot \int_{0}^{\pi}\sin^{2n}\phi d\phi
+                        \end{equation*}
+                        である。ここで、積分区間を$[0,\frac{\pi}{2}],[\frac{\pi}{2}\pi]$に分け、後者の積分に$\phi \to \pi -\phi$の置換を行うと、$\displaystyle \int_{0}^{\pi}\sin^{2k}\phi d\phi = 2\int_{0}^{\frac{\pi}{2}}\sin^{2k}\phi d\phi $
+                        とできる。よって、$\displaystyle I_m=\int_{0}^{\frac{\pi}{2}}\sin^{m}\phi d\phi$の積分を考察していく。
+                        \clearpage
+                        $\sin^{m}\phi = \sin\phi\cdot \sin^{m-1}\phi$と変形し、部分積分を行うと、\\
+                        $\displaystyle I_m = \left[-\cos\phi\sin^{m-1}\phi\right]_0^{\frac{\pi}{2}}+\int_{0}^{\frac{\pi}{2}}\cos\phi\cdot (m-1)\sin^{m-2}\phi\cdot \cos\phi d\phi=(m-1)\int_{0}^{\frac{\pi}{2}}\sin^{m-2}\phi-\sin^{m}\phi d\phi = (m-1)(I_{m-2}-I_m)$となる。
+                        ここで、$\cos^2 \phi =1-\sin^2\phi$を用いた。よって、式を整理して、$\displaystyle I_m=\frac{m-1}{m}I_{m-2}$の漸化式を解けばよい。すぐわかるように、$I_0 = \frac{\pi}{2}$であるから、
+                        $m=2k$のとき、
+                        \begin{equation*}
+                            I_{2k} = \frac{2n-1}{2n}I_{2n-2}=\frac{2n-1}{2n}\frac{2n-3}{2n-2}I_{2n-4}=\cdots=\frac{(2n-1)!!}{(2n)!!}I_0=\frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2}
+                        \end{equation*}
+                        この結果を$K(k)$の式に代入すれば、
+                        \begin{equation*}
+                            K(k)=\sum_{n=0}^{\infty}\frac{(2n-1)!!}{(2n)!!}k^{2n}\cdot \left\{\frac{(2n-1)!!}{(2n)!!}\frac{\pi}{2}\right\}=\frac{\pi}{2}\sum_{n=0}^{\infty}\left\{\frac{(2n-1)!!}{(2n)!!}\right\}k^{2n}
+                        \end{equation*}
+                        したがって、
+                        \begin{equation*}
+                            T=4\sqrt{\frac{l}{g}}K(k)=2\pi \sum_{n=0}^{\infty}\left\{\frac{(2n-1)!!}{(2n)!!}\right\}^2k^{2n}
+                        \end{equation*}
+                        が示された。\\
+
+                        なお、途中に出てきた積分$\int_{0}^{\frac{\pi}{2}}\sin^{n}xdx$をウォリス積分という。$n=2m+1$のときは、
+                        \begin{equation*}
+                            \int_{0}^{\frac{\pi}{2}}\sin^n x dx=\frac{(2m)!!}{(2m+1)!!}
+                        \end{equation*}
+                        である。ここで$I_1=1$を利用した。
+                                            
         \clearpage
             
         \color{black}
@@ -4487,7 +4539,7 @@
                         $\forall$ & 任意の-/すべての- & 全称記号。$\forall x \in \mathbb{N}$は「任意の自然数$x$について-」の意。\\\hline
                         $\exists$ & ある-/-が存在して & 存在記号。$\exists x \in \mathbb{N}$は「ある自然数$x$に対して-」の意。 \\\hline
                         $!$ & 階乗 & ある正の整数から$1$までの整数の積\\\hline
-                        $!!$ & 二重階乗(二度びっくり？) & 階乗の一個飛ばし版。ex:\hspace{1mm}$5!!=5\times3\times1$\\\hline
+                        $!!$ & 二重階乗(二度びっくり？) & 階乗の一個飛ばし版。ex:\hspace{1mm}$5!!=5\times3\times1/(0)!!=(-1)!!=0$\\\hline
                         $\int$ & インテグラル & 積分 \\\hline
                         $\partial$ & ラウンドディー/デル/パーシャル & 偏微分で用いられる。\\\hline
                         $f^{-1}(x)$ & エフ・インバース・エックス & $f(x)$の逆関数\\\hline
@@ -4579,6 +4631,10 @@
             以上がベクトル解析入門の内容である。本来ならストークスの定理やガウスの発散定理も入れればよかったが、おそらく使わないだろうから泣く泣く飛ばした。そもそも
             限られたページ数ですべてを説明することなど不可能に近いのだから仕方ない。これにより3Eの電磁気学を乗り越えれることを祈るばかりだ。
         
+        \clearpage
+            \subsection*{メモ欄}
+        \clearpage
+            \subsection*{メモ欄}
         \clearpage
 
         \thispagestyle{fancy}
