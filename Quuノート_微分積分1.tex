@@ -1637,7 +1637,7 @@
                     例えば、$x\to a$の極限で$f(x)/g(x)\to 0/0$になってしまったとしよう。この時、$f'(x)/g'(x)$が極限値$b$に収束するならば、
                     $f(x)/g(x)$も同じ極限値$b$に収束する。なぜならコーシーの平均値の定理より、$f(a)=g(a)=0$のとき、$x>a$である$x$に対して
                     \begin{equation*}
-                        \frac{f(x)}{g(x)}=\frac{f(x)-f(a)}{g(x)-g(a)}=\frac{f'(x)}{g'(c)}\quad(a<x<c)
+                        \frac{f(x)}{g(x)}=\frac{f(x)-f(a)}{g(x)-g(a)}=\frac{f'(c)}{g'(c)}\quad(a<c<x)
                     \end{equation*}
                     ここで$x\to a$とすれば$c\to a$である。今$x>a$で考えているが、$x<a$の場合も同様なので、
                     \begin{equation}
@@ -3376,13 +3376,11 @@
                     もしべき級数$\sum a_nx^n$が$x=x_0$のときに収束すれば、$|x|<|x_0|$であるすべての$x$の値に関して絶対収束し、領域$|x|<|x_0|$に含まれる
                     任意の閉区域において一様に収束する。
                 \end{itembox}
-                まずはこれを証明しておく。仮定により$\sum a_nx_0^n$は収束するので、$\lim a_nx_0^n=0$である。したがって、任意の$\varepsilon>0$に対し、
-                ある$N(\varepsilon)$が存在して、$n\geq N$であるとすれば、$|a_nx_0^n|<\varepsilon$が常に成り立つ。今$0<\theta<1$として、$|x|\leq \theta|x_0|$とすれば、
-                $|a_nx^n|\leq |a_nx_0^n|\theta ^n<\varepsilon\theta^n$である。したがって、
+                まずはこれを証明しておく。  やることは非常に単純である。まず、べき級数を次のように変形する。
                 \begin{equation*}
-                    \sum_{k=N}^{n} |a_kx^k|<\varepsilon\sum_{k=N}^n \theta^k =\varepsilon\cdot \left(\sum_{k=1}^{n}\theta^k-\sum_{k=1}^{N-1}\theta^k\right)=\varepsilon\cdot\left(\frac{\theta(1-\theta^n)}{1-\theta}-\frac{\theta(1-\theta^{N-1})}{1-\theta}\right)<\frac{\varepsilon\theta^N}{1-\theta}
+                    \sum a_nx^n = \sum a_n x_0^n\cdot\left(\frac{x}{x_0}\right)^n
                 \end{equation*}
-                すなわち、べき級数は閉区域$|x|\leq \theta|x_0|$で、絶対にかつ一様に収束する。$\square$
+
 
                 もし、$x=x_0$で発散すれば、そのべき級数は$|x|>|x_0|$であるすべての$x$に対して発散する。なぜなら、仮にある$|x_1|>|x_0|$である点$x=x_1$で収束するとすれば、当然$x=x_0$も収束することになるため、仮定に反してしまう。
 
