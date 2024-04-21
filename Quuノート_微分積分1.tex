@@ -3372,14 +3372,28 @@
                 を$x-a$のべき級数という。これは式\eqref{eq:べき級数}で$x=(x-a)$としたものだから以降は$\sum a_nx^n$の形で扱う。
 
                 さて、べき級数の収束について基本的なことを述べよう。
-                \begin{itembox}{アーベルの定理}
+                \begin{itembox}{アーベルの定理(?)}
                     もしべき級数$\sum a_nx^n$が$x=x_0$のときに収束すれば、$|x|<|x_0|$であるすべての$x$の値に関して絶対収束し、領域$|x|<|x_0|$に含まれる
                     任意の閉区域において一様に収束する。
                 \end{itembox}
-                まずはこれを証明しておく。  やることは非常に単純である。まず、べき級数を次のように変形する。
+                まずはこれを証明しておく。まず、$|x|<|x_0|$である$x$をもちいて、べき級数を次のように変形する。
                 \begin{equation*}
                     \sum a_nx^n = \sum a_n x_0^n\cdot\left(\frac{x}{x_0}\right)^n
                 \end{equation*}
+                ダランベールの判定法から
+                \begin{equation*}
+                    L=\lim \left|\frac{a_{n+1}x_0^{n+1}\cdot \left(\frac{x}{x_0}\right)^{n+1}}{a_{n}x_0^{n}\cdot\left(\frac{x}{x_0}\right)^{n}}\right|=\lim\left|\frac{a_{n+1}x_0^{n+1}}{a_{n}x_0^{n}}\right|\cdot \lim\left|\frac{\left(\frac{x}{x_0}\right)^{n+1}}{ \left(\frac{x}{x_0}\right)^{n}}\right|=\lim\left|\frac{a_{n+1}x_0^{n+1}}{a_{n}x_0^{n}}\right|\cdot \left|\frac{x}{x_0}\right|
+                \end{equation*}
+                ここで、$x_0$の点においてべき級数が収束すると仮定すれば、最後の極限値$L_0$は$0\leq L_0<1$である。条件から$\left|\frac{x}{x_0}\right|<1$であるから、$0\leq L<1$、すなわち級数は収束する。よって$|x|<|x_0|$である$x$について級数は絶対収束する。また、$\sum a_nx_0^n$は収束するのだから、十分大きな$n$に対しては$|a_nx_0^n| < \varepsilon$とできる。
+                すなわち、
+                \begin{equation*}
+                    \left|\sum_{k}^\infty a_kx^k - \sum_k^{\text{十分大きな}n}a_kx^k\right|=\left|\sum_{k=n+1}a_kx^{k}\right|\leq \sum_{n}|a_kx^k|=\sum_{n}|a_kx_0^k\cdot \frac{x^k}{x_0^k}|<\varepsilon\sum_{n}\left|\frac{x}{x_0}\right|^k=\varepsilon\cdot \frac{\left|\frac{x}{x_0}\right|^n}{1-\left|\frac{x}{x_0}\right|}
+                \end{equation*}
+                とできる。最後の等式は級数を最初の変形のように分けて実際に計算することで得られる。ここで、先ほども述べたように$\left|\frac{x}{x_0}\right|<1$であるから
+                \begin{equation*}
+                    \left|\sum_{k}^\infty a_kx^k - \sum_k^{\text{十分大きな}n}a_kx^k\right|<\frac{\varepsilon}{1-\left|\frac{x}{x_0}\right|}
+                \end{equation*}
+                $\varepsilon$は任意であるから、結局$n$を十分大きくすれば、（$x$の値に関係なく）$|\sum^{\infty}-\sum^{n}|$をいくらでも小さくできる。すなわち、べき級数$\sum a_nx^n$は$|x|<|x_0|$に含まれる任意の兵区域において一様に収束する。$\square$
 
 
                 もし、$x=x_0$で発散すれば、そのべき級数は$|x|>|x_0|$であるすべての$x$に対して発散する。なぜなら、仮にある$|x_1|>|x_0|$である点$x=x_1$で収束するとすれば、当然$x=x_0$も収束することになるため、仮定に反してしまう。
@@ -3499,7 +3513,7 @@
                 \begin{itembox}{フーリエ級数展開}
                     区間$[-\pi,\pi]$において与えられた関数$f(x)$は\underline{或る条件}のもとにおいて、次の三角級数に展開される。
                     \begin{equation}
-                        f(x)=\frac{a_0}{2}+\sum_{\infty}^{n=1}\left\{a_n\cos(nx)+b_n\sin(nx)\right\}
+                        f(x)=\frac{a_0}{2}+\sum_{n=1}^{\infty}\left\{a_n\cos(nx)+b_n\sin(nx)\right\}\label{eq:フーリエ級数}
                     \end{equation}
                     このような級数を$f(x)$のフーリエ級数（フーリエ級数展開）という。もし、このような展開が可能であるとして、$f$が積分可能で、さらに級数に項別積分ができるとすれば、$a_n,b_n$は確定して、
                     \begin{equation*}
@@ -3507,9 +3521,57 @@
                     \end{equation*}
                     である。ただし、$a_n$において$n=0,1,2,\cdots$であり$b_n$において$n=1,2,\cdots$である。
                 \end{itembox}
-                すこしだけフーリエ解析の内容を入れてみた。これがフーリエ級数展開できる条件を導くのは今の状態ではとても難しいので省略する。\footnote{正規直交関数系の話をここでしたら補足どころでは済まない。}例えば高木貞二の解析概論を参照。
+                すこしだけフーリエ解析の内容を入れてみた。これがフーリエ級数展開できる条件を導くのは今の状態ではとても難しいので省略する。\footnote{むしろ証明を補足でしたらそれは果たして補足といえるのだろうか？}例えば高木貞二の解析概論を参照。
 
-                ここでのポイントは、三角関数の$[-\pi,\pi]$での積分$\cos mx\cos nx,\sin mx\sin nx$が$m=n$以外ではすべて0になることに起因する。
+                とはいえ、いきなりこの式を丸暗記するというのも難しい話である。そこで以下で、フーリエ級数の各係数$a_n,b_n$がどのようにして上記のように与えられているかを簡単に追ってみようと思う。説明を簡単にするために厳密な説明等がなされていない場合があるが大目に見てほしい。
+
+                まず、$0$ではない有限個または無限この関数の集まりを関数系と呼ぶと呼ぶことにする。ここでいう$0$ではないの意味は、$f(x)=0$となる$x$が存在しないという意味ではなく、どんな$x$に対しても$f(x)=0$である関数ではないという意味である。すなわち、恒等的に$0$ではない関数という意味である。さて、その関数系のすべての関数$\phi_n(x)$が
+                ある変域において定義され、$|\phi_n(x)|,[\phi_n(x)]^2$がその辺域内の任意の区間において積分可能だとする。
+
+                一般に
+                \begin{equation*}
+                    C_0\phi_0+C_1\phi_1+C_2\phi_2+\cdots+C_n\phi_n = 0
+                \end{equation*}
+                が、定数$C_0=C_1=C_2=\cdots=C_n=0$のときのみ成立するとき、上記の関数系を\textbf{線形独立}な関数系といい、そうでなければ線形従属な関数系という。ここあたりは線形代数と同じで特別難しくないだろう。
+
+                さて、関数系が定義された変域内の任意の区間$(a,b)$について
+                \begin{equation*}
+                    (\phi_m,\phi_n)=\int_{a}^{b} \phi_m(x)\phi_n(x)dx \quad (m,n =0,1,2,\dots)
+                \end{equation*}
+                と定め、$(i+1,j+1)$成分が$(\phi_i,\phi_j)$である行列の行列式を$\Delta$とおくことにしよう。ただし$i,j=0,1,2\dots,n$である。実はこの時、上記の関数系が線形独立ではないための必要十分条件として$\Delta = 0$が得られる。
+                すなわち、関数系が線形独立であるには$\Delta \neq 0$であればよい。
+
+                次に関数系の任意の関数の間に
+                \begin{equation*}
+                    \int_{a}^{b}\phi_m(x)\phi_n(x)dx = 0 \quad (m\neq n)
+                \end{equation*}
+                の関係が成り立つとき、この関数系は区間$(a,b)$において互いに直行系を構成すると呼ぶ。さらに、
+                \begin{equation*}
+                    \int_{a}^{b}\phi_n^2(x)dx=1
+                \end{equation*}
+                であれば、この関数系は\textbf{正規直交関数系}であると呼ぶ。例えば、
+                \begin{equation*}
+                    \frac{1}{\sqrt{2\pi}},\frac{1}{\sqrt{\pi}}\cos x,\frac{1}{\sqrt{\pi}}\sin x,\frac{1}{\sqrt{\pi}}\cos 2x,\frac{1}{\sqrt{\pi}}\sin 2x,\dots
+                \end{equation*}
+                は区間$(a,a+2\pi)$で正規直交関数系である。また、明らかに$\Delta =1$であるから、正規直交関数系は線形独立な関数系である。
+
+                では、この関数系について変域を$-\pi\leq x\leq \pi$と定めて、この変域内で定義された関数系について
+                \begin{equation*}
+                    f(x)=\frac{A_0}{\sqrt{2\pi}}+\frac{A_1}{\sqrt{\pi}}\cos x+\frac{B_1}{\sqrt{\pi}}\sin x+\frac{A_2}{\sqrt{\pi}}\cos 2x+\frac{B_2}{\sqrt{\pi}}\sin 2x+\cdots
+                \end{equation*}
+                と置くことにしよう。もちろんこの関数系によって$f(x)$が上記のような級数に展開できるとは限らないのではあるが、この場のみそれが可能であるとしよう。加えて、この級数が一様収束するとしてみよう。
+                このときの級数の各係数$A_0,A_1,B_1,A_2,B_2,\dots$を求めてみよう。まず、両辺を$\int_{-\pi}^{\pi}\frac{1}{\sqrt{2\pi}}dx$で積分すれば、正規直交関数系の自分自身の関数以外の積の積分は$0$となり、自分自身なら$1$となる性質から
+                \begin{equation*}
+                    \frac{1}{\sqrt{2\pi}}\int_{-\pi}^{\pi}f(x)dx = \int_{-\pi}^{\pi}\frac{1}{\sqrt{2\pi}}\cdot\frac{A_0}{\sqrt{2\pi}}dx = A_0
+                \end{equation*}
+                同様にして、ほかの係数についてもそれぞれ$\int_{-\pi}^{\pi}\frac{1}{\sqrt{\pi}}\cos nxdx,\int_{-\pi}^{\pi}\frac{1}{\sqrt{\pi}}\sin nxdx$を両辺にかければ
+                \begin{align*}
+                    A_n&=\frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi}f(x)\cos xdx \\
+                    B_n&=\frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi}f(x)\sin xdx
+                \end{align*}
+                が得られる。ここで、$a_0/2 = A_0/\sqrt{2\pi},A_n/\sqrt{\pi}=a_n,B_n/\sqrt{\pi}=b_n$と置けば、最初に述べた\eqref{eq:フーリエ級数}と一致するわけである。
+
+                長々と話してしまったが、フーリエ級数の係数が上記の式で与えられることの理解の助けとなれば幸いである。より厳密なことを学びたい人は、専用の教科書や、高木貞二の解析概論、寺澤寛一の自然科学者のための数学概論等を読み漁っていただきたい。後ろ二つの本は上の内容を書く際の参考にさせていただいた。\\
 
                 フランスの数学者フーリエは、（厳密な理論ではないが）この理論を熱伝導の問題を研究中に考えたという。彼の主張では、すべての関数が三角級数で表せると大きく出ている。もちろんこれは間違いで
                 当時の数学者からも批判が殺到した。しかし、当時の曖昧であった極限の概念等が、フーリエの主張をきっかけにして次々に見直されていき、解析学の厳密に大きく貢献した。さらに、このフーリエ級数から
