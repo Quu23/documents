@@ -1,0 +1,69 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{bm}
+\usepackage[margin=15truemm,nohead]{geometry}
+
+
+\renewcommand{\thesubsection}{問\arabic{subsection}}
+
+\renewcommand{\thesubsubsection}{(\arabic{subsubsection})}
+
+\begin{document}
+    \section*{ベクトル解析 小テスト1}
+        各問題の横についている数字[X]は配点。
+        \subsection{ベクトルの基本計算[20]}
+            \subsubsection{ベクトルの成分表示}
+                \begin{equation*}
+                    \bm{a} = [1,1],\quad \bm{b}=[2,3],\quad \bm{c} = [9,5]
+                \end{equation*}
+                と置くとき、$\bm{a} + \bm{b}$の成分表示および長さを求めよ。また、$\bm{c}$を正規化せよ。
+            \subsubsection{内積}
+                前問の$\bm{a}$と$\bm{b}$について、内積$\bm{a}\cdot\bm{b}$を計算し、$\bm{a}$と$\bm{b}$のなす角度を求めよ。
+                また、$\bm{a},\bm{b}$を図示せよ。
+            \subsubsection{外積}
+                外積の意味を説明し、$\bm{A}\times (\bm{B} + \bm{C}) = \bm{A}\times \bm{B} + \bm{A} \times\bm{C}$を実際に計算することで示せ。
+            \subsubsection{ベクトル三重積}
+                $(\bm{A} \times \bm{B})\times \bm{C}$を内積のみを用いて表せ。（外積の記号$\times$を使わずにかけ。）
+        \subsection{ベクトル値関数[20]}
+            次の公式を証明せよ。
+            \subsubsection{外積のLeibniz則}
+                \begin{equation*}
+                    \left\{\bm{a}\times \bm{b}\right\}' = \bm{a}'\times \bm{b} + \bm{a}\times \bm{b}'
+                \end{equation*}
+            \subsubsection{スカラー三重積の微分}
+                \begin{equation*}
+                    [\bm{a},\bm{b},\bm{c}]'=[\bm{a}',\bm{b},\bm{c}]+[\bm{a},\bm{b}',\bm{c}]+[\bm{a},\bm{b},\bm{c}']
+                \end{equation*}
+            \subsubsection{ベクトル三重積の微分}
+                \begin{equation*}
+                    \left\{\bm{a}\times(\bm{b}\times\bm{c})\right\}' = \bm{a}'\times(\bm{b}\times\bm{c}) + \bm{a}\times(\bm{b}'\times\bm{c}) + \bm{a}\times(\bm{b}\times\bm{c}') 
+                \end{equation*}
+            \subsubsection{}
+                \begin{equation*}
+                    (\bm{a}\times\bm{a}')' = \bm{a}\times\bm{a}'
+                \end{equation*}
+            \subsubsection{}
+                \begin{equation*}
+                    [\bm{a},\bm{a}',\bm{a}'']' = [\bm{a},\bm{a}',\bm{a}''']
+                \end{equation*}
+        \clearpage
+        \subsection{平面曲線[20]}
+            $y=a\sin x$の曲率の大きさが最大の点とその点における曲率半径を求めよ。
+        \subsection{Frenet-Serretの公式[20]}
+            \subsubsection{公式の導出}
+                Frenet-Serretの公式を導出せよ。        
+            \subsubsection{}
+                半径$R$の球面の経線および緯線は捩率が恒等的に0であることを示せ。
+            \subsubsection{}
+                捩率が恒等的に0な曲線$\bm{r}(s)$は平面曲線であることを示せ。{\tiny Hint:平面曲線であることを示すには定ベクトル$\bm{C}$および定数$d$を用いて$\bm{C}\cdot\bm{r}(s)=d$を示せばよい。}
+            \subsubsection{力学への応用}
+                一般の軌道を運動する質点は常に向心力がかかっていることを示せ。
+            \subsubsection{}
+                次の公式を示せ。ただし、$\bm{v} = \dot{\bm{r}},\bm{a} = \dot{\bm{v}}$であるとし、$v = |\bm{v}|,a=\dot{v}$とおく。ここで$\dot{\bm{A}}$は$\bm{A}$の時間$t$の微分である。
+                \begin{equation*}
+                    \frac{1}{\rho^6}=\frac{(\bm{v}\times\bm{a})^2}{v^6} = \frac{v^2a^2-(\bm{v}\cdot{\bm{a}})^2}{v^6}
+                \end{equation*}
+        \subsection{応用問題[5]}
+            力学のKeplerの第二法則\footnote{面積速度一定の法則：惑星と太陽とを結ぶ線分が単位時間に掃く面積（面積速度）は、一定である。}を示せ。ただし、面積速度は$\bm{A}(t)=\frac{1}{2}\bm{r}(t)\times \bm{v}(t)$で与えられる。
+\end{document}
