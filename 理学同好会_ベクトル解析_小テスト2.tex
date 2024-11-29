@@ -1,0 +1,70 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{bm}
+
+\usepackage[margin=15truemm,nohead]{geometry}
+\usepackage{qexam}
+
+\begin{document}
+    \part*{理学同好会　ベクトル解析　模擬1}
+    \question{問1}
+        ベクトルの基礎的な計算について考える。以下の問いに答えよ。
+        \begin{qparts}
+            \qpart まずは平面ベクトルで計算してみよう。
+            \begin{qlist}
+                \qitem ベクトル$\bm{A}=[0,3]$の大きさを求めよ。
+                \qitem ベクトル$\bm{B}=[2,0]$を正規化せよ。
+                \qitem 内積$\bm{A}\cdot \bm{B}$を求めよ。
+                \qitem ベクトル$\bm{A},\bm{B}$のなす角度を求めよ。
+            \end{qlist}
+            \qpart 次に空間ベクトルでも計算してみよう。基本ベクトルを$\bm{i}=[1,0,0],\bm{j}=[0,1,0],\bm{k}=[0,0,1]$とする。
+            \begin{qlist}
+                \qitem ベクトル$\bm{A}=2\bm{i}$と同じ向きの単位ベクトルの成分を求めよ。また、$\bm{A}$の方向余弦も求めよ。\label{q:1ii5}
+                \qitem 二つのベクトル$\bm{B}=[B_x,B_y,B_z],\bm{C}=[C_x,C_y,C_z]$について、$|\bm{B}+\bm{C}|$を求めよ。
+                \qitem ベクトル$\bm{D}=[0,2,0]$を正規化し、問\qref{q:1ii5}で求めた単位ベクトルとの内積を求めよ。
+                \qitem 外積$\bm{A}\times \bm{D}$を求めよ。
+            \end{qlist}
+            \qpart 以下ではベクトルはすべて空間ベクトルを指すものとする。
+            \begin{qlist}
+                \qitem ベクトル$[2,1,0]\times [1,2,0]$が$[2,1,0]$に直行することを計算によって確かめよ。
+                \qitem スカラー三重積の公式
+                \begin{equation}
+                    \bm{a}\cdot(\bm{b}\times\bm{c}) = \bm{c}\cdot(\bm{a}\times\bm{b})
+                \end{equation}
+                をEinsteinの規約を用いて求めよ。
+            \end{qlist}
+        \end{qparts}
+
+    \question{問2}
+        ベクトル値関数の微分演算について考える。以下の問いに答えよ。
+        \begin{qparts}
+            \qpart 単純な計算をしてみる。
+            \begin{qlist}
+                \qitem 直線$\bm{r}=[t,t]$を$t$で微分せよ。
+                \qitem 曲線$\bm{r}=[t,t,0]$を$t$で微分せよ。
+            \end{qlist}
+            \qpart 大きさが一定のベクトルは微分すると元のベクトルに直行することを示せ。
+            \qpart 物体が回転運動を行うとき、物体の位置を$\bm{r}(t)=[x(t),y(t),z(t)]$とすると、その速度は$\bm{\omega}\times\bm{r}$で与えられる。ここで$\bm{\omega}$は
+            角速度ベクトルで、回転軸の方向を向き、大きさが回転の角速度の大きさと一致する。回転軸$\bm{\omega}$をz軸に取って、$|\bm{\omega}|=\omega=一定$であるとき、
+            これが等速円運動であることを示せ。
+        \end{qparts}
+    \clearpage
+    \question{問3}
+        以下では曲線について曲率等のパラメータを求めてみる。
+        \begin{qparts}
+            \qpart 平面曲線について考えてみる。
+            \begin{qlist}
+                \qitem 直線$\displaystyle y=ax$の曲率を求めよ。\vspace{0.5mm}
+                \qitem 円$\displaystyle x^2+y^2=a^2$の$x=a,y=0$における曲率半径を求めよ。
+            \end{qlist}
+            \qpart 空間曲線についても計算してみよう。曲線$\bm{r}=[0,\cos t,\sin t]$の捩率を求めよ。
+        \end{qparts}
+    \hrulefill 　以上　\hrulefill
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|c|c|c||c|}\hline
+            　　/30 & 　　/30 & 　　/40 & 　　/100\\\hline
+        \end{tabular}
+    \end{table}
+\end{document}
