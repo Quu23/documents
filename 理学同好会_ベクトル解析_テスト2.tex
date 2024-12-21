@@ -86,7 +86,7 @@
     \question{問3}
         以下ではベクトル場上で積分を行う.
         \begin{qparts}
-            \qpart まずは単なる線積分で練習してみよう.以下の経路について, 線積分を実行せよ.ただし, $\bm{F}=[y^2,x+y]$とする.
+            \qpart まずは簡単な線積分で練習してみよう.以下の経路について, 線積分を実行せよ.ただし, $\bm{F}=[y^2,x+y^2]$とする.
             \begin{figure}[h]
                 \centering
                 \begin{tikzpicture}
@@ -112,12 +112,13 @@
                 \caption{積分路}\label{積分路}
             \end{figure}
             \begin{qlist}
-                \qitem 経路$C_1:0\leq x\leq 4,y=0$と経路$C_2:x=4,0\leq y\leq 4$
+                \qitem 経路$C_1:0\leq x\leq 4,y=0$
+                \qitem 経路$C_2:x=4,0\leq y\leq 4$
                 \qitem 経路$C_1+C_2$
                 \qitem 経路$C_3:\displaystyle y=\frac{1}{4}x^2\quad (0\leq x\leq 4)$
                 \qitem 経路$C_4:\displaystyle y=2\sqrt{x} \quad (0\leq x\leq 4)$
             \end{qlist}
-            次に, $\bm{F}=[Ax+By,Cx+Dy]\quad(A,B,C,D\text{は定数})$として, 上記の経路で同様に積分せよ.
+            また, $\bm{F}=[ax+by,bx+cy]\quad(q,b,c\text{は定数})$として, 上記の経路で同様に積分せよ.
         \qpart $C$を閉曲線とする. このとき以下の等式が成り立つことを示せ.
             \begin{equation*}
                 \oint_C yzdx+zxdy+xydz = 0
@@ -126,7 +127,12 @@
             \begin{equation*}
                 \oint_\Gamma \frac{x^3-3xy^2}{(x^2+y^2)^2}dx
             \end{equation*}
-        \qpart 以下の面積分を計算せよ.
+        \qpart 以下の面積分を計算せよ.ただし, 各$\bm{n}$は閉曲面$S$の外向きの単位法線ベクトル.
+            \begin{qlist}
+                \qitem $\bm{F}=[x^2,y^2,z^2]$で, $S$を原点中心で一辺の長さが2の立方体の表面のときの$\displaystyle \iint_S \bm{F}\cdot\bm{n}dS$
+                \qitem $\bm{F}=\bm{r}$で, $S$は半径2, 高さ5の円柱面のときの$\displaystyle \iint_S\bm{F}\cdot\bm{n}dS$
+                \qitem $S$を半径1の球表面とするときの, $\displaystyle\iint_S (x+y+z)dS$
+            \end{qlist}
         \qpart 原点に置かれた質量$m$の質点から$r$離れた点にある単位質量の質点に働く力は
             \begin{equation}
                 \bm{F}=-\frac{Gm}{r^3}\bm{r} \label{eq:万有引力の場}        
@@ -156,4 +162,5 @@
             \end{qlist}
         \end{qparts}
     \hrulefill 　以上　\hrulefill
+
 \end{document}
