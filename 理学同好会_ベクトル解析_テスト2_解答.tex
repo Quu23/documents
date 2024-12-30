@@ -62,7 +62,7 @@
                 \qitem $\bm{r}(x,y)=[x,y,f(x,y)]$
                 \qitem $\bm{r}(u,v) = [a\cosh u\cos v,b\cosh u\sin v,c\sinh u]$
             \end{qlist}
-            \qpart 曲面は, $\bm{r}(\phi,u)=[u\cos\phi,u\sin\phi,\sqrt{a^2-u^2}]$と書ける. $u$が長さの変わる半径とイメージできれば, これは一般の回転体でも使えることわかる.
+            \qpart 曲面は, $\bm{r}(\phi,u)=[u\cos\phi,u\sin\phi,\sqrt{a^2-u^2}]$と書ける. $u$が長さの変わる半径とイメージできれば, これは一般の回転体でも使えることわかる. \footnote{一般に, 曲線$z=f(u)$をz軸回りに回転させてできる回転面は$\bm{r}(\phi,u)=[u\cos\phi,u\sin\phi,f(u)]$と書ける.}
             \begin{qlist}
                 \qitem $\bm{r}_\phi=[-u\sin\phi,u\cos\phi,0],\bm{r}_u=[\cos\phi,\sin\phi,\frac{-u}{\sqrt{a^2-u^2}}]$より\\
                 $E=\bm{r}_\phi^2=u^2,F=\bm{r}_\phi\cdot\bm{r}_u=0,G=\bm{r}_u^2=1+\frac{u^2}{a^2-u^2}=\frac{a^2}{a^2-u^2}$
@@ -155,7 +155,7 @@
             \begin{figure}[h]
                 \begin{minipage}[t]{.3\textwidth}
                     \centering
-                    \includegraphics[scale=0.25]{img/vector_field1.png}
+                    \includegraphics[scale=0.20]{img/vector_field1.png}
                     \subcaption{$\bm{v}=[x,y]$}
                 \end{minipage}
                 \begin{minipage}[t]{.3\textwidth}
@@ -172,6 +172,7 @@
             \end{figure}
             \qpart 
             \begin{qlist}
+                \setcounter{enumi}{3}
                 \qitem $\grad U = [0,mg]$
                 \qitem $\grad U = [2,1]$
                 \qitem $\grad U = [0,mg,0]$
@@ -191,13 +192,20 @@
                     \end{vmatrix}=\left[0,0,-\frac{2xy}{(x^2+y^2)^{\frac{3}{2}}}\right]
                 $
             \end{qlist}
-            \qpart 略
+            \qpart ノートに書いてあることと重複するが, 一応述べる.
+            \begin{qlist}
+                \qitem $\div \grad f = \div\partial_i f=\partial_i \partial_i f=\nabla^2 f$
+                \qitem $(\rot \grad f)_k = (\rot\partial_jf)_k=\varepsilon_{kij}\partial_i\partial_j f$で, $f_x,f_y,f_z$の連続性を認めれば$\partial_i\partial_j f=\partial_j\partial_i f$だから$0$となる.
+                \qitem $\div \rot\bm{v}=\partial_k (\varepsilon_{kij}\partial_iv_j)=\varepsilon_{kij}\partial_k\partial_iv_j=\varepsilon_{jki}\partial_k\partial_iv_j$より前問同様$0$となる.
+                \qitem $(\rot \rot\bm{v})_k=\varepsilon_{kij}\partial_i(\rot\bm{v})_j=\varepsilon_{kij}\partial_i\varepsilon_{jlm}\partial_lv_m=\varepsilon_{kij}\varepsilon_{jlm}\partial_i\partial_lv_m=\varepsilon_{jki}\varepsilon_{jlm}\partial_i\partial_lv_m$\\
+                ここで$\varepsilon_{jki}\varepsilon_{jlm}=\delta_{kl}\delta_{im}-\delta_{km}\delta_{il}$だから$\varepsilon_{jki}\varepsilon_{jlm}\partial_i\partial_lv_m=(\delta_{kl}\delta_{im}-\delta_{km}\delta_{il})\partial_i\partial_lv_m=\partial_m\partial_kv_m-\partial_l\partial_lv_k$\\
+                一項目は微分の順序を入れ替えれば$\grad\div\bm{v}$であり, 二項目は$\nabla^2\bm{v}$だから, 証明が完了した. 
+            \end{qlist}
         \end{qparts}
     \clearpage
     \question{問3}
-        以下ではベクトル場上で積分を行う.
         \begin{qparts}
-            \qpart まずは簡単な線積分で練習してみよう.以下の経路について, 線積分を実行せよ.ただし, $\bm{F}=[y^2,x+y^2]$とする.
+            \qpart $\bm{F}=[y^2,x+y^2]$の場合は以下の通り.
             \begin{qlist}
                 \qitem $\int_{C_1}\bm{F}\cdot d\bm{r}=0$
                 \qitem $\int_{C_2}\bm{F}\cdot d\bm{r}=\int_{0}^{4}(4+y^2)dy=\frac{112}{3}$
@@ -217,8 +225,10 @@
                 \qitem $\displaystyle \iint_S \bm{F}\cdot\bm{n}dS=\iiint_V (2x+2y+2z)dxdydz=\int_{-1}^{1}dz\int_{-1}^{1}dy\int_{-1}^{1}(2x+2y+2z)dx=0$
                 \qitem $\displaystyle \iint_S\bm{F}\cdot\bm{n}dS=\iiint3dxdydz=3\cdot 2^2\pi\cdot 5 = 60\pi$
                 \qitem $\bm{F}=[x^3,y^3,z^3],\bm{n}=[x,y,z]$として, $\displaystyle \iint_S \bm{F}\cdot\bm{n}dS=3\iiint_{x^2+y^2+z^2\leq 1}(x^2+y^2+z^2)dxdydz$\\
-                $\displaystyle=3\int_{0}^{2\pi}d\phi\int_{0}^{\pi}d\theta\int_{0}^{1}r^2\cdot r^2\sin^2\theta dr=\frac{12}{5}\pi$
+                $\displaystyle=3\int_{0}^{2\pi}d\phi\int_{0}^{\pi}d\theta\int_{0}^{1}r^2\cdot r^2\sin^2\theta dr=\frac{12}{5}\pi$\label{q:Gauss直接できないやつ}
             \end{qlist}
+            特に, \qref{q:Gauss直接できないやつ}については自分でベクトル場と法線ベクトルを設定する必要があるから注意. 条件を満たすベクトル場は無限に選べるから, 適当なものを選ばないと
+            計算が煩雑になる.
         \qpart 
             \begin{qlist}
                 \qitem 質量$m$の質点と単位質量の質点を結ぶ直線状に働き, 吸引力だから方向は$-\frac{\bm{r}}{r}$で, 大きさは$|\bm{F}|=F$となっているから.
@@ -227,7 +237,7 @@
                         \iint_S \bm{F}\cdot d\bm{S} =\iint_S\bm{F}\cdot \frac{\bm{r}}{r}dS=-\frac{Gm}{r^2}\iint_S dS=-\frac{Gm}{r^2}\cdot 4\pi r^2 =-4\pi Gm
                     \end{equation*}
             \end{qlist}
-        \qpart $\arctan x$の導関数がわかれば解ける.
+        \qpart $\arctan x$の導関数がわかれば解ける問題.
             \begin{qlist}
                 \qitem $\partial_x \theta=-\frac{y}{x^2+y^2},\partial_y \theta=\frac{x}{x^2+y^2}$
                 \qitem $d\theta=-\frac{y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy$
@@ -237,6 +247,10 @@
             \end{qlist}
         \end{qparts}
     \color{black}
-    \hrulefill 　以上　\hrulefill
+    \hrulefill 　以上　\hrulefill\\
+    解く目安：1時間30分程度.\\
+    今回はGreenの定理, Stokesの定理に関する設問を一つも用意しなかった. Greenの定理は来年の複素解析(予定)でも必要となるのでしっかり理解しておこう. 最後に, 問題数を考えて入れなかったStokesの定理に関する問題をあげて終わる.\\
+    \fbox{$\bm{F}=[y,-x,2x^3y^2], S=\{x^2+y^2+3z^2=1,z\leq0\}$のとき, $\iint_S\rot\bm{F}\cdot\bm{n}dS$を求めよ.ただし, $S$は球面の外側を表とする.}
+    答えは$2\pi$である. ($z\leq 0$だから通常の円周と向きが反対になることに注意.)
 
 \end{document}
