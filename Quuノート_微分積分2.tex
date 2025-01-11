@@ -14,6 +14,8 @@
 \usepackage{bm}
 \usepackage{ulem}
 
+\usepackage{amsthm}
+
 \usepackage{titlesec}
 \usepackage{tocloft} % 目次の設定をカスタマイズするためのパッケージ
 
@@ -157,7 +159,7 @@
             \begin{equation*}
                 p\land q,\quad p \lor q,\quad p \Rightarrow q 
             \end{equation*}
-            $\land$は「かつ」, $\lor$は「または」, $\Rightarrow$は「ならば」を表す. 特に, $p\Rightarrow q \land p \Leftarrow q$であるとき, 
+            $\land$は「かつ」, $\lor$は「または」, $\Rightarrow$\footnote{$p\Rightarrow q$はこの命題が真であるとすでに分かっているときによく用いられる. まだこの命題が真であるかがわかっていない場合などは$p\rightarrow q$と書いて区別する.}は「ならば」を表す.\footnote{$\land$を論理積, $\lor$を論理和という.} 特に, $p\Rightarrow q \land p \Leftarrow q$であるとき, 
             $p$と$q$は\textbf{同値}であるといい, $p \Leftrightarrow q$とかく.
 
             次に, 命題の否定を考える. 命題$p$に対して, その\textbf{否定}は「$p$でない」となり, これを$\lnot p$とかく. 以上で紹介した記号$\land,\lor,\lnot,\Rightarrow,\Leftrightarrow$
@@ -238,21 +240,54 @@
             前者を全称記号, 後者を存在記号という. これらをまとめて限定記号という. これを用いて, 全ての実数に対しその平方が0または正であるという命題は$^\forall x\in \mathbb{R} [x^2\geq 0]$と書ける.
             また, 実数全体で定義された関数$f(x)$に対して, $f(x)=x$となる実数$x$が存在するという命題は$^\exists x\in \mathbb{R}[f(x)=x]$と書ける.
 
-            限定記号を用いれば, $\varepsilon-\delta$論法による極限の定義を簡単な論理式で書くことができる. 試しに, 数列$\{a_n\}$が$a_n\rightarrow \alpha$となることを限定記号を用いて書いてみると
+            限定記号を用いれば, $\varepsilon-N$論法による極限の定義を簡単な論理式で書くことができる. 試しに, 数列$\{a_n\}$が$a_n\rightarrow \alpha$となることを限定記号を用いて書いてみると
             \begin{equation*}
-                ^\forall \varepsilon>0, ^\exists N>0, ^\forall n\in \mathbb{N} \left[n>N \Rightarrow |a_n-\alpha|<\varepsilon\right]
+                {}^\forall \varepsilon>0, {}^\exists N>0, {}^\forall n\in \mathbb{N} \left[n>N \Rightarrow |a_n-\alpha|<\varepsilon\right]
             \end{equation*}
             となる. この書き方のほうがどの変数が何に依存しているかがすっきりしていて見やすいと思う.\\
 
             最後に, 全称記号および存在記号付きの命題を否定すると, それらが互いに入れ替わることを証明なしに述べて終わる.
             \begin{align}
-                \lnot\left(^\forall x\in X \left[p(x)\right]\right) \equiv {}^\exists x\in X \left[\lnot p(x)\right] \label{eq:集合論基礎:forallの否定}\\
-                \lnot\left(^\exists x\in X \left[p(x)\right]\right) \equiv {}^\forall x\in X \left[\lnot p(x)\right] \label{eq:集合論基礎:existの否定}
+                \lnot\left({}^\forall x\in X \left[p(x)\right]\right) \equiv {}^\exists x\in X \left[\lnot p(x)\right] \label{eq:集合論基礎:forallの否定}\\
+                \lnot\left({}^\exists x\in X \left[p(x)\right]\right) \equiv {}^\forall x\in X \left[\lnot p(x)\right] \label{eq:集合論基礎:existの否定}
             \end{align}
             しかし, これは直感的には理解しやすい. 例えば\eqref{eq:集合論基礎:forallの否定}であれば, 任意の$x$について成り立っていることを否定するのだから, (少なくとも一つは)
             成り立たないような$x$が存在しなければならない. そして, この式に両辺否定を取れば\eqref{eq:集合論基礎:existの否定}がすぐさま導かれる.
         \clearpage
         \subsection{集合の演算}
+            集合に話を戻す. 二つの集合$A,B$について, その和と積に対応するものを考えよう. それらは以下のように定められる.
+            \begin{align}
+                A\cup B = \{x\mid x\in A \lor x \in B\} \label{eq:集合論基礎:和集合の定義}\\
+                A\cap B = \{x\mid x\in A \land x \in B\} \label{eq:集合論基礎:共通部分の定義}
+            \end{align}
+            集合$A\cup B$を$A$と$B$の\textbf{和集合}といい, $A\cap B$を$A$と$B$の\textbf{共通部分}という. 定義から明らかに次式が成り立つ.
+            \begin{align}
+                A\subset A \cup B,\quad B\subset A \cup B \label{eq:集合論基礎:和集合の包含関係}\\
+                A \cap B \subset A,\quad A \cap B\subset B \label{eq:集合論基礎:共通部分の包含関係}
+            \end{align}
+            しかし, せっかく記号論理を学んだのだから, 上式を証明してみるのもよいだろう. 試しに, \eqref{eq:集合論基礎:和集合の包含関係}を示してみることにしよう.
+            対称性から, 示すべき命題は, $x\in A \rightarrow x\in A \cup B$で十分である. $x \in A \rightarrow x \in A \lor x\in B$であり, 右辺は和集合の定義そのもの
+            だから, 示された. やはり明らかであったが, 簡単な命題でも記号論理の威力が垣間見えるだろう.
+
+            二つの集合が共通の要素を一つも持たない場合, 共通部分に含まれる要素は存在しない. この場合, 要素数は0であるから空集合である. 集合$A,B$に対し, $A\cap B =\varnothing$であるとき,
+            $A$と$B$は\textbf{交わらない(互いに素である)}という. 逆に, $A\cap B\neq \varnothing$のとき, 二つの集合は交わるという.\\
+
+            集合演算の基本的な性質について述べよう. 以下に式を列挙する.
+            \begin{align}
+                &A\cup B = B \cup A, \quad A \cap B = B \cap A \label{eq:集合論基礎:和集合と共通部分の交換法則}\\
+                &(A\cup B)\cup C = A\cup (B \cup C) \label{eq:集合論基礎:和集合の結合法則}\\
+                &(A\cap B)\cap C = A\cap (B \cap C) \label{eq:集合論基礎:共通部分の結合法則}\\
+                &A\cup (B \cap C) = (A\cup B) \cap (A\cup C)\label{eq:集合論基礎:和を積に直す分配法則}\\
+                &A\cap (B \cup C) = (A\cap B) \cup (A\cap C)\label{eq:集合論基礎:積を和に直す分配法則}
+            \end{align}
+            \eqref{eq:集合論基礎:和集合と共通部分の交換法則}は\textbf{交換法則}, \eqref{eq:集合論基礎:和集合の結合法則}, \eqref{eq:集合論基礎:共通部分の結合法則}は\textbf{結合法則}, \eqref{eq:集合論基礎:和を積に直す分配法則}, \eqref{eq:集合論基礎:積を和に直す分配法則}
+            は\textbf{分配法則}である. これらはすべて定義から記号論理を駆使して簡単に証明できる. ここでは, \eqref{eq:集合論基礎:和を積に直す分配法則}のみ証明することにする.
+            \begin{proof}
+                示すのは, $x\in A\cup (B \cap C) \leftrightarrow x\in (A\cup B) \cap (A\cup C)$である.
+                $x\in A\cup (B \cap C) \leftrightarrow x\in A \lor x\in B\cap C \leftrightarrow x\in A \lor (x\in B \land x\in C)$であるから, 命題に関する分配法則が成立すればよい.
+                真理値表を書けばわかるように, $p\lor (q\land r)\equiv (p\lor q) \land (p\lor r)$だから, $x\in A\cup (B \cap C) \leftrightarrow (x\in A\lor x\in B)\land (x\in A\lor x\in C)\leftrightarrow x\in A\cup B\land x\in A\cup C\leftrightarrow x\in (A\cup B)\cap (A\cup C)$
+                となる. 以上より, \eqref{eq:集合論基礎:和を積に直す分配法則}が示された.
+            \end{proof}
     \clearpage
     \section{行列と行列式}
         ベクトルのイメージとその和・差について. 内積についても述べる. 外積はベクトル解析のときに述べる. 続いて, 行列についてその定義を述べ, 和・差・積について述べる.
