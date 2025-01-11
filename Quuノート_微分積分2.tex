@@ -204,8 +204,8 @@
 
             上記の方法とまったく同様にして, $\lnot (p\lor q)$と$(\lnot p)\land (\lnot q)$が示されるから, 以下の\textbf{De Morganの法則}が成り立つことがわかる.
             \begin{align}
-                \lnot (p\land q) \equiv (\lnot p) \lor (\lnot q) \label{eq:集合論基礎:ドモルガン1}\\
-                \lnot (p\lor q) \equiv (\lnot p) \land (\lnot q) \label{eq:集合論基礎:ドモルガン2}
+                \lnot (p\land q) \equiv (\lnot p) \lor (\lnot q) \label{eq:集合論基礎:論理ドモルガン1}\\
+                \lnot (p\lor q) \equiv (\lnot p) \land (\lnot q) \label{eq:集合論基礎:論理ドモルガン2}
             \end{align}
             De Morganの法則は最も基本的な論理演算の法則であるから, しっかり理解しておこう. この二つの式から双対性の概念が見えるがここでは触れない.
 
@@ -288,6 +288,70 @@
                 真理値表を書けばわかるように, $p\lor (q\land r)\equiv (p\lor q) \land (p\lor r)$だから, $x\in A\cup (B \cap C) \leftrightarrow (x\in A\lor x\in B)\land (x\in A\lor x\in C)\leftrightarrow x\in A\cup B\land x\in A\cup C\leftrightarrow x\in (A\cup B)\cap (A\cup C)$
                 となる. 以上より, \eqref{eq:集合論基礎:和を積に直す分配法則}が示された.
             \end{proof}
+
+            二つの集合$A,B$に対して, 差に対応するものを考える. これは以下のように定義する.
+            \begin{equation}
+                A-B = \{x\mid x\in A \land x\not\in B\} \label{eq:集合論基礎:差集合の定義}
+            \end{equation}
+            集合$A-B$を$A$と$B$の\textbf{差集合}という. 一般に, $A-B\neq B-A$である. 等号が成り立つのは$A=B$の場合のみである. これは実数の場合と同様であるから理解しやすい.\\
+
+            数学では, ある集合を基礎として, その要素について考察する場合が多い. 例えば, QuuノートIでは実数の集合$\mathbb{R}$において, その微分積分等を考察していた.
+            このような, 特定の集合$\Omega$の要素と部分集合について議論する場合, $\varOmega$を\textbf{全体集合}という. 全体集合にはよく$\varOmega,U$といった記号が用いられる.
+            全体集合$\varOmega$が与えられたとき, 考察の対象となる集合$A\subset \varOmega$に対して, $\varOmega - A$を考えることができる. 
+            この差集合$\varOmega - A$を$\varOmega$における$A$の\textbf{補集合}といい, $A^c$とかく.\footnote{cはcomplementの頭文字.}
+            任意の$x\in \varOmega$に対して, $x\in A^c \Leftrightarrow x\not\in A$が成立する.
+
+            以降, 特別断りがない場合$\varOmega$を全体集合とする. 任意の$A\subset \varOmega$に対して, 以下が成り立つ.
+            \begin{align}
+                &(A^c)^c = A\\
+                &A\cup A^c = \varOmega\\
+                &A\cap A^c = \varnothing\\
+                &\varOmega^c = \varnothing,\quad \varnothing^c = \Omega\\
+                &A\cup \varOmega=\varOmega\\
+                &A\cap\varOmega=A
+            \end{align}
+            これらは補集合の定義からすぐさま導かれるから, ここでは述べない. 各自で試されるとよいであろう.
+
+            補集合について重要なのは次のDe Morganの法則である.
+            \begin{align}
+                (A\cup B)^c = A^c \cap B^c \label{eq:集合論基礎:集合ドモルガン1}\\
+                (A\cap B)^c = A^c \cup B^c \label{eq:集合論基礎:集合ドモルガン2}
+            \end{align}
+            これは記号論理で述べたDe Morganの法則の法則\eqref{eq:集合論基礎:論理ドモルガン1},\eqref{eq:集合論基礎:論理ドモルガン2}からすぐさま導かれるから, これも証明は略する.
+            これに加えて, 補集合については, 以下の等式が重要である.
+            \begin{equation}
+                A-B = A\cap B^c \label{eq:集合論基礎:差集合を補集合で表す}
+            \end{equation}
+            \begin{proof}
+                前提として, $A,B\subset \varOmega$であることに注意しよう.
+                \begin{align*}
+                    x\in A-B 
+                    &\leftrightarrow x\in A \land x\not\in B\\
+                    &\leftrightarrow x\in A \land x\in B^c\\
+                    &\leftrightarrow x\in A\cap B^c
+                \end{align*}
+                以上より, 等式が示された.
+            \end{proof}
+            集合の勉強をする際に, そのイメージを持たせるために, よくVenn図が紹介されている. しかし上で見たように, Venn図を使おうが使わまいが, 集合の命題は
+            記号論理の演算を用いて機械的に解くことができる. むしろ, 今後扱う命題では図で書くと複雑な場合が多い.
+            そのためこのノートではVenn図については一切触れない. 興味がある人は適当な集合論の本を参考にしてみるとよいだろう.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw (0,0) circle[radius=1cm];
+                    \draw (1,0) circle[radius=1cm];
+                    \begin{scope}
+                        \clip (1,0) circle [radius=1]; % B の形でクリッピングする
+                        \fill[gray, opacity=0.3] (0,0) circle [radius=1]; % スコープの中で A を塗りつぶす
+                    \end{scope}
+                    \node at (0,0) [anchor=east] {$A$};
+                    \node at (1,0) [anchor=west] {$B$};
+                    \node at (0.5,0) [anchor=center] {$A\cap B$};
+                \end{tikzpicture}
+                \caption{共通部分$A\cap B$のVenn図}
+            \end{figure}
+        \clearpage
+        \subsection{直積集合}
     \clearpage
     \section{行列と行列式}
         ベクトルのイメージとその和・差について. 内積についても述べる. 外積はベクトル解析のときに述べる. 続いて, 行列についてその定義を述べ, 和・差・積について述べる.
