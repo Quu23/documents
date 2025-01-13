@@ -480,6 +480,170 @@
             こちらも, 興味がある人は集合論の本を参考にしてほしい.
         \clearpage
         \subsection{写像}
+            これまで扱ってきた関数は, 主に実数から実数に対応するものだった. 例えば, $f(x)=x^3$は, 全ての実数に対して定義され, 全ての実数に対応しているだろう.
+            ここで議論したいのは, もっと一般に, 二つの集合間の対応である.
+            
+            二つの集合$X,Y$が与えられ, $X$の\underline{どの要素}に対しても, それぞれ$Y$の要素がただ一つ対応しているとき, この対応関係そのものを$X$から$Y$への\textbf{写像}と定義する.
+            写像は, 関数や変換とも呼ばれたりするが, 全てまったくの同義語である. \footnote{関数は, 特に$X$が数の場合にいうようである.} $X$から$Y$の写像が$f$であることは, 次のように書かれる.
+            \begin{equation}
+                f:X\rightarrow Y \label{eq:集合論基礎:写像の書き方}
+            \end{equation}
+            このとき, $X$を$f$の\textbf{定義域}(始域) $Y$を\textbf{値域}(終域)という. また, 二つの写像$f:X\rightarrow Y, f':X'\rightarrow Y'$が\textbf{同じ写像である}とは, $X=X'\land Y=Y'$
+            であって, $^\forall x\in X [f(x)=f'(x)]$であることをいう. このとき, $f=f'$とかく.
+
+            $f:x\rightarrow y$によって, $x\in X$が$y\in Y$に対応することを$yf(x)$とかく. このとき, $y$を$f$による$x$の\textbf{像}という. また, $x$を$f$による$y$の原像という.\\
+
+            これまで扱ってきた関数の中には, $\sin(x^2)$のように, 関数の中に関数が入っているものがあった. これを合成関数といったわけだが, これを写像の場合にも考えてみる. すなわち, 集合$X,Y,Z$と, 
+            二つの写像$f:X\rightarrow Y, g:Y\rightarrow Z$を考え, この合成写像なるものを考えてみよう. 写像$h:X\rightarrow Z$を, $h(x)=g(f(x))$として定める. この写像の各像は, $X$の要素を$Y$に飛ばし, 
+            その像を$g$で$Z$の要素にとばしたものと一致する. これを\textbf{合成写像}といい, $g\circ f$とかく.
+            
+            合成写像に関しては, 交換法則は成り立たないが, 結合法則は成り立つ. すなわち
+            \begin{equation}
+                h\circ (g\circ f) = (h\circ g)\circ f \label{eq:集合論基礎:合成写像の結合法則}
+            \end{equation}
+            が成り立つ. ただし, $f,g,h$は, 集合$X,Y,Z,W$について, $f:X\rightarrow Y, g:Y\rightarrow Z, h:Z\rightarrow W$とする.
+            \begin{proof}
+                $x\in X$とする. このとき\[ [h\circ (g\circ f)](x)=h((g\circ f)(x))=h(g(f(x)))=(h\circ g)(f(x))=[(h\circ g)\circ f](x)\]
+                が成り立つ. したがって等号が成り立つ.
+            \end{proof}
+            $f:X\rightarrow Y$を写像とする. $A\subset X$に対して, $\{f(a)\mid a\in A\}$を$f$による$A$の\textbf{像}といい, $f(A)$とかく. また, $B\subset Y$に対して, 
+            $\{x\in X\mid f(x)\in B\}$を$f$による$B$の\textbf{逆像}または\textbf{原像}といい, $f^{-1}(B)$と表す. 明らかに, $f(A)\subset Y,f^{-1}(B)\subset X$である.
+
+            例えば, $f:\mathbb{R}\rightarrow \mathbb{R};x\mapsto x^2$\footnote{このように, 写像の像を具体的に$x\mapsto f(x)$と書くことがある.}として, $f([0,1])=[0,1]$である. 一方, $f^{-1}([0,1])=[-1,1]$である. 
+            すなわち, この場合像と逆像は等しくない. 像も逆像も等しい例として, $f:\mathbb{R}\rightarrow \mathbb{R};x\mapsto x^3$がある. 先ほどと同じ部分集合の像を考えると$f([0,1])=[0,1]$であるし, $f^{-1}([0,1])=[0,1]$である.
+            から, この場合確かに等しい.
+            \clearpage
+            像と逆像に関しては以下の公式が成り立つ. ただし, $f:X\rightarrow Y$とし, $A_1,A_2\subset X,B_1,B_2\subset Y$とする.
+            \begin{align}
+                f(A_1 \cup A_2)&=f(A_1)\cup f(A_2) \label{eq:集合論基礎:像の和}\\
+                f(A_1 \cap A_2)&\subset f(A_1)\cap f(A_2) \label{eq:集合論基礎:像の積}\\
+                f^{-1}(B_1 \cup B_2)&=f^{-1}(B_1)\cup f^{-1}(B_2) \label{eq:集合論基礎:逆像の和}\\    
+                f^{-1}(B_1 \cap B_2)&=f^{-1}(B_1)\cap f^{-1}(B_2) \label{eq:集合論基礎:逆像の積}\\    
+                A_1 &\subset f^{-1}(f(A_1)) \label{eq:集合論基礎:像の逆像}\\
+                f(f^{-1}(B_1)) &\subset B_1 \label{eq:集合論基礎:逆像の像}\\
+                f(A_1)-f(A_2) &\subset f(A_1-A_2) \label{eq:集合論基礎:像の差}\\
+                f^{-1}(B_1)-f^{-1}(B_2) &= f^{-1}(B_1-B_2) \label{eq:集合論基礎:逆像の差}
+            \end{align}
+            これも像と逆像の定義から導出できるから, 各自で証明してほしい. ここでは, \eqref{eq:集合論基礎:像の和}と\eqref{eq:集合論基礎:像の逆像}のみ証明しよう.
+            \begin{proof}[\eqref{eq:集合論基礎:像の和}の証明.]
+                \begin{equation*}
+                    f(A_1\cup A_2)=\{f(a)\mid a\in A_1\cup A_2\}=\{f(a)\mid a\in A_1\lor a\in A_2\}
+                \end{equation*}
+                であるから, $y\in f(A_1\cup A_2)$のとき, $y=f(a)$となる$a\in A_1$または$a\in A_2$が存在する. このときそれぞれ$y\in f(A_1),y\in f(A_2)$となるので
+                $y\in f(A_1\cup A_2)\rightarrow y\in f(A_1)\cup f(A_2)$となる. 一方, $y\in f(A_1)\cup f(A_2)$のとき, $y\in f(A_1)$または$y\in f(A_2)$だから
+                それぞれ$y=f(a)$となる$a\in A_1$もしくは$a\in A_2$が存在する. よって, $y\in f(A_1\cup A_2)$となるので, $y\in f(A_1)\cup f(A_2)\rightarrow y\in f(A_1\cup A_2)$である.
+                従って, $f(A_1\cup A_2)=f(A_1)\cup f(A_2)$が示された.
+            \end{proof}
+            \begin{proof}[\eqref{eq:集合論基礎:像の逆像}の証明.]
+                $a\in A_1$とする. このとき, 像の定義より$f(a)\in f(A_1)$が成り立つ. 一方逆像の定義から
+                \begin{equation*}
+                    f^{-1}(f(A_1))=\{x\in X\mid f(x)\in f(A_1)\}
+                \end{equation*}
+                であるから, (集合の$\mid$より右の条件を満たすことより)$a\in f^{-1}(f(A_1))$である. よって, $A_1\subset f^{-1}(f(A_1))$
+            \end{proof}
+            \eqref{eq:集合論基礎:像の逆像}の証明において重要なのは, $a\in X$としたときに$f(a)\in f(A_1)$であっても, $a\in A_1$とは\underline{限らない}という点である. 例を挙げると, $f(x)=x^2$のとき
+            $f([0,1])=[0,1]$であったが, $x=-1\in [-1,0]$であっても, $f(x)=(-1)^2=1\in [0,1]$が成り立っている. すなわち, $f(x)\in f([0,1])$となる$x$は$[-1,0]$内にも存在している.\\
+
+            一般の写像に関する性質は以上でほとんどであるが, これだと\eqref{eq:集合論基礎:像の逆像}のような包含関係しか得られない. できる限り$=$であってほしいのが心情だろう.
+            そこで, 写像の中でもとくに``都合の良い''ものを考えよう.
+
+            写像$f:X\rightarrow Y$について, 次のように定める.
+            \begin{enumerate}
+                \item $f(X)=Y$であるとき, $f$は\textbf{全射}または\textbf{上への写像}であるという.
+                \item $x_1,x_2\in X$について, $x_1\neq x_2$ならば$f(x_1)\neq f(x_2)$であるとき, $f$は\textbf{単射}または\textbf{1対1写像}であるという.
+                \item $f$が全射かつ単射であるとき, $f$は\textbf{全単射}であるという.
+            \end{enumerate}
+            写像$f$が全単射であれば, \eqref{eq:集合論基礎:像の和}から\eqref{eq:集合論基礎:逆像の差}のうち$\subset$であるものは等号が成り立つようになる. 
+            全単射である写像の例として, 一次関数$f(x)=ax+b\quad (a\neq 0)$がある. これが全単射であることは容易に確かめられるから, これも各自で確かめてみるとよいだろう.
+            \clearpage
+            任意の集合$X_1\subset X_2$に対し, $X_1$の各要素$x$に対して, $i(x)=x$となる写像$i:X_1\rightarrow X_2$を\textbf{包含写像}という. 特に, $X_1=X_2=X$であるとき, 
+            \textbf{恒等写像}という. 恒等写像はよく$\mathrm{id}_X$と書かれる. 恒等写像は全単射である. これも明らかである.\\
+
+            写像$f:X\rightarrow Y$が全単射のとき, どの$y\in Y$に対しても$y=f(x)$となる$x\in X$が一意に定まるはずである. そこで, $y\in Y$に対して, $y=f(x)$を満たす$x\in X$
+            を対応させることで, $Y$から$X$への写像が定まる. この写像を$f^{-1}:Y\rightarrow X$とかき, $f$の\textbf{逆写像}という. 先ほど定義した逆像と言葉が似ているが, 異なる概念であるから気を付けてほしい.
+
+            逆写像に関する基本的な定理には, 以下のものがある.
+            \begin{screen}
+                $f:X\rightarrow Y,\quad g:Y\rightarrow X$を写像とする. このとき$g\circ f = \mathrm{id}_X$であれば, $f$は単射で$g$は全射である.
+                特に, $f\circ g = \mathrm{id}_Y$であれば, $f,g$はともに全単射で$g$は$f$の逆写像である.
+            \end{screen}
+            \begin{proof}
+                $g\circ f=\mathrm{id}_X$であるとする. このとき, $x_1,x_2\in X$について$f(x_1)=f(x_2)$であるとする. このとき写像の定義から$g(f(x_1))=g(f(x_2))$である. 
+                ところで, $g(f(x))=(g\circ f)(x)=\mathrm{id}_X(x)=x$であるから, $x_1=x_2$である. すなわち, $f(x_1)=f(x_2)\rightarrow x_1=x_2$だから, 対偶を取れば
+                $x_1\neq x_2\rightarrow f(x_1)\neq f(x_2)$となって, $f$の単射性が示された. 次に, $g$が全射であることを示す. $x\in X$とする. このとき, $y=f(x)$と置くと, 
+                $g(y)=g(f(x))=x$である. すなわち, $X$の任意の要素に対して, 対応元$y\in Y$が存在するから, $g$は全射である. まったく同様にして, $f\circ g= \mathrm{id}_Y$
+                であれば, $f$は全射で$g$は単射である. 従って, $f,g$は全単射である. $g$が$f^{-1}$なのは逆写像の定義から明らかであろう.
+            \end{proof}
+            実は, 上の定理において$g\circ f$が単射であれば$f$は単射であり, $g\circ f$が全射であれば, $g$も全射である.\footnote{このとき, $f:X\rightarrow Y,g:Y\rightarrow Z$であっても成り立つ.} これは上の証明をすこし変えるだけだから, 読者への演習問題としよう.\\
+
+            集合の列$A_1,A_2,\cdots,A_n$を考えよう. これらは, 各添え字$1,2,\cdots,n$に対して, 集合$A_1,A_2,\cdots,A_n$が対応している状態であるから, 添え字の集合$\{1,2,\cdots,n\}$からある集合族への一つの写像$A$が
+            与えられていると考えられる. このように, ある空でない添え字の集合$\Lambda$からある集合族への写像$A$のことを, $\Lambda$上の\textbf{集合系}といい, 
+            \begin{equation}
+                (A_\lambda\mid\lambda \in \Lambda),\quad (A_\lambda)_{\lambda\in\Lambda} \label{eq:集合論基礎:集合系の定義1}
+            \end{equation}
+            とかく. 実用上は, 集合系も集合族も拘泥せず同じ集合の集合と考えてもよい. そのため, \eqref{eq:集合論基礎:集合系の定義}は以下のようにも書かれる.
+            \begin{equation}
+                \{A_\lambda\mid \lambda\in\Lambda\} \label{eq:集合論基礎:集合系の定義2}
+            \end{equation}
+            集合系に対して, 和集合と共通部分を以下のように定める.
+            \begin{align}
+                \bigcup_{\lambda\in \Lambda} A_\lambda = \{x\mid {}^\exists \lambda \in \Lambda,x\in A_\lambda\} \label{eq:集合論基礎:集合系の和集合}\\
+                \bigcap_{\lambda\in \Lambda} A_\lambda = \{x\mid {}^\forall \lambda \in \Lambda,x\in A_\lambda\} \label{eq:集合論基礎:集合系の共通部分}
+            \end{align}
+            \eqref{eq:集合論基礎:集合系の和集合}および\eqref{eq:集合論基礎:集合系の共通部分}はそれぞれ$\bigcup \{A_\lambda\mid\lambda\in\Lambda\},\bigcap \{A_\lambda\mid\lambda\in\Lambda\}$と書かれることもある. また, $\Lambda=\{1,2,\cdots,n\}$のときは, $\displaystyle\bigcup_{k=1}^{n},\bigcap_{k=1}^{n}$
+            の記号を用いることもある. とくに, $\Lambda = \mathbb{N}$であれば, 
+            \begin{equation*}
+                \bigcup_{n=1}^{\infty}A_n,\quad \bigcap_{n=1}^{\infty}A_n
+            \end{equation*}
+            とかいてもよい. 
+
+            集合系の各集合$A_\lambda$が集合$X$の部分集合であるとき, この集合系を$X$の\textbf{部分集合系}という. $\{A_\lambda\mid \lambda\in\Lambda\}$を$X$の部分集合系とする.
+            このとき, 次の\textbf{De Morganの法則}が成り立つ.
+            \begin{align}
+                \left(\bigcup_{\lambda\in\Lambda}A_\lambda\right)^c=\bigcap_{\lambda\in\Lambda}(A_\lambda)^c \label{eq:集合論基礎:一般のドモルガン1}\\
+                \left(\bigcap_{\lambda\in\Lambda}A_\lambda\right)^c=\bigcup_{\lambda\in\Lambda}(A_\lambda)^c \label{eq:集合論基礎:一般のドモルガン2}
+            \end{align}
+            \eqref{eq:集合論基礎:一般のドモルガン2}は\eqref{eq:集合論基礎:一般のドモルガン1}からすぐでるから, \eqref{eq:集合論基礎:一般のドモルガン1}のみ示す.
+            \begin{proof}
+                \begin{equation*}
+                    x\in \left(\bigcup_{\lambda\in\Lambda}A_\lambda\right)^c \leftrightarrow \lnot [{}^\exists\lambda\in\Lambda,x\in A_\lambda]\leftrightarrow{}^\forall\lambda\in\Lambda,x\not\in A_\lambda\leftrightarrow{}^\forall\lambda\in\Lambda,x\in (A_\lambda)^c\leftrightarrow \bigcap_{\lambda\in\Lambda}(A_\lambda)^c
+                \end{equation*}
+                より等号が成り立つ.
+            \end{proof}
+            最後に, 集合系の極限にあたるものを定義しよう. $\mathbb{N}$を添え字の集合系とする集合系$\{A_n\mid n\in\mathbb{N}\}$に対して, 
+            \begin{equation}
+                \limsup_{n\to\infty}A_n=\bigcap_{k=1}^{\infty}\bigcup_{n=k}^\infty A_n \label{eq:集合論基礎:集合のlimsup}
+            \end{equation}
+            を\textbf{上極限集合}という. 上極限集合は, 無限個の$A_n$に属す要素全てを集めた集合である. また, 
+            \begin{equation}
+                \liminf_{n\to\infty}A_n=\bigcup_{k=1}^{\infty}\bigcap_{n=k}^\infty A_n \label{eq:集合論基礎:集合のliminf}
+            \end{equation}
+            を\textbf{下極限集合}という. 下極限集合は, 有限個の$A_k$だけ除いて, それ以外を全て集めた集合である. 
+
+            まず基本的なのは, 次の包含関係である.
+            \begin{equation}
+                \liminf_{n\to\infty}A_n\subset\limsup_{n\to\infty}A_n \label{eq:集合論基礎:limsupとliminfの包含関係}
+            \end{equation}
+            本によってはこの関係を明らかと書くようである. しかし, 私個人がこれを単に`明らか'とするのは納得がいかないから, 証明を与える.
+            \begin{proof}
+                すぐにわかることとして, $\displaystyle \bigcap_{n=k-1}^\infty A_n\subset\bigcap_{n=k}^\infty A_n$がある. したがって, 各$i\in\mathbb{N}$について, 
+                \begin{equation*}
+                    \liminf_{n\to\infty} A_n=\bigcup_{k=1}^{\infty}\bigcap_{n=k}^\infty A_n=\bigcup_{k=i}^{\infty}\bigcap_{n=k}^\infty A_n
+                \end{equation*}
+                が成り立つ. 実際, $i$が大きくなることで生じる和集合の`漏れ'は, すべて$k\geq i$以降の$\bigcap_{k} A_n$に含まれている.
+                また, $\displaystyle \bigcap_{n=k}^\infty A_n\subset A_k$であることもすぐわかる. したがって, 
+                \begin{equation*}
+                    \bigcup_{k=i}^{\infty}\bigcap_{n=k}^\infty A_n\subset \bigcup_{k=i}^{\infty}A_k\Rightarrow \bigcap_{i=1}^\infty\bigcup_{k=i}^{\infty}\bigcap_{n=k}^\infty A_n\subset \bigcap_{i=1}^\infty\bigcup_{k=i}^{\infty}A_k=\limsup_{n\to\infty}A_n
+                \end{equation*}
+                であり, 左辺は$\displaystyle \bigcap_{i=1}^\infty\bigcup_{k=i}^{\infty}\bigcap_{n=k}^\infty A_n=\bigcup_{k=1}^{\infty}\bigcap_{n=k}^\infty A_n=\liminf_{n\to\infty}A_n$だから, $\displaystyle\liminf_{n\to\infty}A_n\subset\limsup_{n\to\infty}A_n$.
+            \end{proof}
+            \eqref{eq:集合論基礎:limsupとliminfの包含関係}において, 特に等式が成り立つ場合, これを\textbf{極限集合}といって, 
+            \begin{equation}
+                \lim_{n\to\infty}A_n=\limsup_{n\to\infty}A_n=\liminf_{n\to\infty}A_n \label{eq:集合論基礎:極限集合の定義}
+            \end{equation}
+            とかく. これらの概念はLebesgue積分論において重要である.
+            \clearpage
+
 
         \clearpage
         \subsection{濃度}
