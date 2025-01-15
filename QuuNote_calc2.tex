@@ -651,6 +651,174 @@
 
         \clearpage
         \subsection{濃度}
+                集合の個数と写像の関係について考えてみたい. 例えば, $\{1,2,3\}$と$\{p,i,e\}$という集合は, 個数が等しい. このとき, 二つの集合間に全単射が存在している. 例えば, $1\mapsto p,2\mapsto i,3\mapsto e$
+                とすれば, これは明らかに全単射である. このように有限集合で個数が等しいときは全単射が存在している. 逆に, 二つの有限集合間に全単射が存在すれば, それらの要素数は等しいともいえるだろう.
+                問題は無限集合である. 無限集合と有限集合の要素数が違うのはすぐわかるが, 無限集合同士ではどうだろうか. そもそも要素数が無限である場合, 要素数の比較などできるのだろうか.
+                このような疑問を解消するために, 集合の濃度というものを考えてみよう. 二つの集合$A,B$の\textbf{濃度が等しい}\index{のうどがひとしい@濃度が等しい}とは, $A$から$B$への
+                全単射が存在することである. このとき, $A\sim B$とかく. これは有限集合で考えていた集合の要素数の比較を拡張したものと考えてもよいだろう. 実際先ほどみたように, 有限集合で
+                要素数が等しいときは, 全単射が存在するから, 濃度も等しいし, その逆も成り立っている. この濃度を用いて, 自然数の集合$\mathbb{N}$と偶数全体の集合$E$を比較してみよう.
+                これは簡単で, 写像$f:\mathbb{N}\rightarrow E,n\mapsto 2n$を考えると, この写像は全単射であるから, $\mathbb{N}\sim E$が成り立つ. しかし, この結果は直感に反しているように感じているだろう.
+                厳密性を欠いた表現をすれば, この結果は「自然数と偶数の`個数'が等しい」ということを意味しているのだから. 面白い例はほかにもある. 例えば, $\mathbb{N}\sim\mathbb{Z}$が成立する.
+                これも直感に反しているようだが, 全単射は構成できてしまう. この全単射については, 演習問題で考えてもらうことにしよう.
+
+                集合$A,B,C$について, 以下が成り立つ.
+                \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $A\sim A$
+                    \item $A\sim B$ならば$B\sim A$
+                    \item $A\sim B$かつ$B\sim C$ならば$A\sim C$
+                \end{enumerate}
+                \begin{proof}以下それぞれ証明を述べる. どれも示すことは, 全単射の存在である.
+                    \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                        \item 恒等写像$\mathrm{id}_A$を考えればよい.
+                        \item 仮定より$A\rightarrow B$の全単射が存在して, 全単射の逆写像を考えればこれは$B\rightarrow A$の全単射である.
+                        \item $A\rightarrow B$の全単射と$B\rightarrow C$の全単射の合成写像を考えれば, これは全単射である.
+                    \end{enumerate}
+                \end{proof}
+                二つの全単射の合成写像が全単射であることは直感的に明らかであるが, 厳密に証明をしておこう. より強い主張である以下の補題を示そう.
+                \begin{screen}
+                    写像$f:X\rightarrow Y,g:Y\rightarrow Z$について, 以下が成立する.
+                    \begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}
+                        \item $f,g$ともに単射であれば$g\circ f$も単射.
+                        \item $f,g$ともに全射であれば$g\circ f$も全射.
+                    \end{enumerate}
+                \end{screen}
+                \begin{proof}以下に証明を述べる.
+                    \begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}
+                        \item $x_1,x_2\in X,x_1\neq x_2$とする. $y_1=f(x_1),y_2=f(x_2)$と置くと, $f$の単射性から$y_1\neq y_2$である. また, $g$の単射性から$g(y_1)\neq g(y_2)$である. 
+                        従って, $(g\circ f)(x_1)=g(f(x_1))=g(y_1)\neq g(y_2)=g(f(x_2))=(g\circ f)(x_2)$だから, $g\circ f$は単射.
+                        \item 示すことは, $(g\circ f)(X)=Z$である. $f,g$は全射であるから$f(X)=Y,g(Y)=Z$が成立する. すなわち, 任意の$z\in Z$に対し, $z=g(y)$となる$y\in Y$および$y=f(x)$となる$x\in X$が存在する.
+                        よって, $z=g(y)=g(f(x))=(g\circ f)(x)\in (g\circ f)(X)$が成り立つ. これより$Z\subset (g\circ f)(X)$であり, 写像の定義より$Z\supset (g\circ f)(X)$だから$Z=(g\circ f)(X)$, よって$g\circ f$は全射.
+                    \end{enumerate}
+                \end{proof}
+                全射の証明は, 以前述べた全射を示す証明とすこしやり方が違うように見えるだろう. 実際にはどちらのスタイルで証明してもらっても構わない. 個人的には, 今回の証明のほうがわかりやすい気がする.
+                なおこの補題より, 全単射同士の合成写像が全単射であることは明らかであろう.\\
+
+                全ての集合の濃度は互いに等しいとは限らない. この事実は重要である. 例えば以下が成り立つ.
+                \begin{screen}
+                    \[\mathbb{N}\nsim \mathbb{R}\]
+                \end{screen}
+                これはCantorによって示された. 彼の有名な\textbf{対角線論法}\index{たいかくせんろんぽう@対角線論法}と呼ばれるアイデアを見てみよう.
+                \begin{proof}
+                    背理法\footnote{証明すべき命題を否定した命題をもとに論理を導き, 矛盾を見つけることで元の命題を示す方法.}で示す. $\mathbb{N}\sim\mathbb{R}$であれば, 全単射$f:\mathbb{N}\rightarrow \mathbb{R}$が存在する.
+                    このとき(すべての)実数$f(n)$について, 10進法による無限小数展開を行うと, $f(n)=a_{n0}.a_{n1}a_{n2}\cdots a_{nn}\cdots$となる. ただし, 各$a_{nm}\quad(m=1,2,...)$が0から9までの整数,$a_{0n}\in \mathbb{Z}$で, 整数や有限小数は小数部分に0を続けるとする.
+                    例を挙げる. 例えば,$3.1415...$なら$a_{n0}=3,a_{n1}=1,a_{n2}=4,...$となる. $2.4$なら$a_{n0}=2,a_{n1}=4,a_{n2}=a_{n3}=\cdots=0$である. $n=1$から書き並べると以下のようになる.
+                    \begin{align*}
+                        f(1)&=a_{10}.\bm{a_{11}}a_{12}a_{13}\cdots\\
+                        f(2)&=a_{20}.a_{21}\bm{a_{22}}a_{23}\cdots\\
+                        f(3)&=a_{30}.a_{31}a_{32}\bm{a_{33}}\cdots\\
+                        \vdots
+                    \end{align*}
+                    小数部分の太字を見てほしい. この対角の数字を用いて, 新たな無限小数を作る. 具体的には, 各$a_{nn}$について
+                    \begin{equation*}
+                        b_n=\left\{\begin{array}{lc}
+                            1 & (a_{nn}は偶数)\\
+                            2 & (a_{nn}は奇数)
+                        \end{array}\right.
+                    \end{equation*}
+                    である$b_n$を用いて, 無限小数$b=0.b_{11}b_{22}b_{33}\cdots$をつくる. 重要なのは, 必ず$b_{n}\neq a_{nn}$となることである. この$b$は明らかに$b\in{\mathbb{R}}$であるが, 
+                    すべての$n\in \mathbb{N}$に対して, $f(n)\neq b$である. なぜなら, どの$n$についても小数第$n$位の数字が$b$と異なるからである.
+                    これは, $f$が全単射(全射)であることに矛盾する.
+                \end{proof}
+                自然数全体の集合$\mathbb{N}$と濃度が等しい集合を\textbf{可算集合}\index{かさんしゅうごう@可算集合}という. また, 有限集合と可算集合を合わせて\textbf{高々可算集合}\index{たかだがかさんしゅうごう@高々可算集合}
+                という.\\
+
+                集合の濃度を表す記号等を導入しておこう. 集合$A$に対して, $A$の\textbf{濃度}\index{のうど@濃度}を$|A|$または$\mathrm{card}A$を書く.
+                集合の濃度とは, 濃度が等しい集合を集めた組のことである. 要素数$n$の有限集合の濃度は$n$とかく. また, 可算集合の濃度は$\aleph_0$(アレフ・ゼロ)とかき,  
+                $\mathbb{R}$の濃度は$2^{\aleph_0}$とかく. 例えば, $|\varnothing|=0,|\mathbb{Z}|=\aleph_0$である.
+                \clearpage
+
+                我々が次に望むのは, 濃度を大小で比較できるようになることだろう. 集合$A,B$について, $A$から$B$への単射が存在するが, $B$から$A$への
+                単射が存在しないとき, $A$は$B$より\textbf{濃度が小さい}\index{のうどがちいさい@濃度が小さい}, または, $B$は$A$より\textbf{濃度が大きい}\index{のうどがおおきい@濃度が大きい}という.
+                $B$から$A$への単射が存在したときは何も言えないのか, と疑問に思うかもしれない. 実は, \textbf{Bernsteinの定理}\index{Bernsteinのていり@Bernsteinの定理}によって, $A$から$B$への単射と$B$から$A$への単射が存在するとき, 濃度が等しいことが濃度が等しいことが保障される.
+                証明はここでは述べないから, 興味がある人は調べてみるとよい.\\
+
+                最も重要なのは, 有理数の集合$\mathbb{Q}$が可算集合であることである. そのためにはまず, 二つの補題を示さなければならない.
+                \begin{screen}
+                    集合$A,B$が$A\subset B$であれば, $A$から$B$への単射が存在する.
+                \end{screen}
+                \begin{proof}
+                    包含写像$i:A\rightarrow B$を考えると, これは明らかに単射であるから, 示された.
+                \end{proof}
+
+                \begin{screen}
+                    $\mathbb{Z}^2$は可算集合である.
+                \end{screen}
+                \begin{proof}
+                    $\mathbb{Z}=\{(m,n)\mid m,n\in\mathbb{Z}\}$は, 平面$\mathbb{R}^2$上の格子点の集合であるから, 下図のように対応をつけることで, $\mathbb{Z}^2=\{a_1,a_2,\cdots,a_n\cdots\}$
+                    とできる. したがって, $\mathbb{Z}^2$は可算集合である.
+                    \begin{figure}[h]
+                        \centering
+                        \begin{tikzpicture}[scale=0.8]
+                            % 格子点を描画
+                            \foreach \x in {-3,...,3} {
+                                \foreach \y in {-3,...,3} {
+                                    \fill (\x,\y) circle (2pt);
+                                }
+                            }
+
+                            % 軸を描画
+                            \draw[->] (-3.5,0) -- (3.5,0) node[right] {$x$};
+                            \draw[->] (0,-3.5) -- (0,3.5) node[above] {$y$};
+
+                            % 編番号の経路を矢印で描画
+                            \draw[thick,->,red] (0,0) -- (1,0);
+                            \draw[thick,->,red] (1,0) -- (1,1);
+                            \draw[thick,->,red] (1,1) -- (0,1);
+                            \draw[thick,->,red] (0,1) -- (-1,1);
+                            \draw[thick,->,red] (-1,1) -- (-1,0);
+                            \draw[thick,->,red] (-1,0) -- (-1,-1);
+                            \draw[thick,->,red] (-1,-1) -- (0,-1);
+                            \draw[thick,->,red] (0,-1) -- (1,-1);
+                            \draw[thick,->,red] (1,-1) -- (2,-1);
+                            \draw[thick,->,red] (2,-1) -- (2,0);
+                            \draw[thick,->,red] (2,0) -- (2,1);
+                            \draw[thick,->,red] (2,1) -- (2,2);
+                            \draw[thick,->,red] (2,2) -- (1,2);
+                            \draw[thick,->,red] (1,2) -- (0,2);
+                            \draw[thick,->,red] (0,2) -- (-1,2);
+                            \draw[thick,->,red] (-1,2) -- (-2,2);
+
+                            % 編番号を数列形式で表示
+                            \node[below right] at (0,0) {$a_1$};
+                            \node[below right] at (1,0) {$a_2$};
+                            \node[below right] at (1,1) {$a_3$};
+                            \node[below right] at (0,1) {$a_4$};
+                            \node[below left] at (-1,1) {$a_5$};
+                            \node[below left] at (-1,0) {$a_6$};
+                            \node[below left] at (-1,-1) {$a_7$};
+                            \node[below right] at (0,-1) {$a_8$};
+                        \end{tikzpicture}
+                        \caption{$a_1=(0,0)$として, 反時計回りに対応付けていく.}
+                    \end{figure}
+                \end{proof}
+
+                準備が整ったので, $\mathbb{Q}$が可算集合であることを示そう.
+                \begin{proof}
+                    まず, $\mathbb{N}\subset \mathbb{Q}$より, $\mathbb{N}$から$\mathbb{Q}$への単射が存在する. 次に, $r\in \mathbb{Q}$は, 既約分数として$r=p/q\hspace{1mm}(p\in\mathbb{Z},b\in\mathbb{N})$
+                    の形にかける(整数$n$については, $q=1$として, $x=x/1$とかく). このとき, 
+                    \begin{equation*}
+                        f:\mathbb{Q}\rightarrow\mathbb{Z}^2,\frac{p}{q}\mapsto (p,q)
+                    \end{equation*}
+                    は単射であるから, $\mathbb{Z}^2$が可算であるので$\mathbb{Z}^2$から$\mathbb{N}$への全単射が存在する. 以上より, $\mathbb{Q}$から$\mathbb{N}$への単射が存在するから, Bernsteinの定理より
+                    $\mathbb{Q}\sim \mathbb{N}$である.
+                \end{proof}
+                \clearpage
+                最後に, 可算集合の部分集合は高々可算集合であることを示そう.
+                \begin{proof}
+                    可算集合を$A$とする. $B\subset A$は有限集合か無限集合である. 有限集合であれば, それは高々可算集合であるから, $B$は無限集合であるとする.
+                    仮定より, 全単射$f:A\rightarrow \mathbb{N}$が存在する. よって, $f(B)=N\subset \mathbb{N}$と置くと, $B\sim N$である.
+                    $B$が無限集合であるから, $N$も無限集合である. したがって, 自然数の無限部分集合$N$が可算であることを示せばよい.
+                    写像$g:N\rightarrow\mathbb{N}$を考える. $g(n)$は集合$\{m\in N\mid m\leq n\}$の要素数とする. このとき, $g$は全単射である.
+                    \begin{enumerate}
+                        \item 単射の証明.\\
+                        $n_1,n_2\in N,n_1\neq n_2$とする. 対称性から$n_1<n_2$と仮定してもよい. このとき, $m\leq n_1$をみたす$m\in N$は$m\leq n_2$も満たし, 
+                        後者の場合は$m=n_2$も条件を満たすから, $g(n_1)<g(n_2)$. したがって, $g(n_1)\neq g(n_2)$だから$g$は単射.
+                        \item 全射の証明.\\
+                        $n\in \mathbb{N}$とする. $N$は無限部分集合であるから, $n=g(k)$となる$k\in N$は存在する. ($N$の要素にはいくらでも大きい値がある.)
+                        すなわち, $n\in g(N)$であるから, $\mathbb{N}\subset f(N)$. よって, $g$は全射.
+                    \end{enumerate}
+                    これより, $N$から$\mathbb{N}$への全単射が存在するから, $N\sim\mathbb{N}$. ゆえに, $B\sim \mathbb{N}$
+                \end{proof}
 
         \clearpage
         \subsection{実数の連続性}
