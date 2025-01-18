@@ -389,7 +389,7 @@
                 &(A^c)^c = A\\
                 &A\cup A^c = \varOmega\\
                 &A\cap A^c = \varnothing\\
-                &\varOmega^c = \varnothing,\quad \varnothing^c = \Omega\\
+                &\varOmega^c = \varnothing,\quad \varnothing^c = \varOmega\\
                 &A\cup \varOmega=\varOmega\\
                 &A\cap\varOmega=A
             \end{align}
@@ -1055,11 +1055,44 @@
 
             なお, 以上の実数の性質は, このノートを含め, 断りなく使われることがあることに注意しておこう.
     \clearpage
+        \basicquestion 以下の問いに答えよ。
+
+            \subsubsection*{問1} 次にうち, 正しい主張には〇, 間違っているものには×をつけよ.
+                \begin{enumerate}
+                    \item $A\in 2^A$が成り立つ.
+                    \item $\{\varnothing\}=\varnothing$である.
+                    \item 関数$f(x)=\sin x$は, $\mathbb{R}$の範囲で全単射である.
+                    \item 命題$^\forall x\in X,{}^\exists y\in Y\left[P(x,y)\right]$と命題$^\exists y\in Y,{}^\forall x\in X\left[P(x,y)\right]$は互いに同値である.
+                \end{enumerate}
+
+            \subsubsection*{問2} $p\leftrightarrow q$を$\rightarrow,\leftarrow,\land$を用いずに表せ.
+
+            \subsubsection*{問3}要素数が$n$である有限集合$A$の巾集合の要素数を求めよ.
+            
+            \subsubsection*{問4}数列$\{a_n\}$が有界である, を論理記号を用いて表せ.
+
+            \subsubsection*{問5}公式\eqref{eq:集合論基礎:像の積}と\eqref{eq:集合論基礎:逆像の差}を示せ.
+
+            \subsubsection*{問6}$\mathbb{N}\sim\mathbb{Z}$を示せ.
+
+            \subsubsection*{問7}Archimedesの公理は次のように書けることを証明せよ.
+            \begin{center}
+                二つの実数$a,b>0$に対して, $na<b$となる自然数$n$が存在する.
+            \end{center}
+
+            \subsubsection*{問8}無理数の稠密性, すなわち, どんな二つの実数の間にも無理数が存在することを示せ.
+
+            \subsubsection*{問9} 数列の上極限, 下極限を次のように定義する.
+                \begin{equation}
+                    \limsup_{n\to\infty} a_n = \lim_{n\to\infty}\left(\sup_{k\geq n}a_k\right) \quad \liminf_{n\to\infty} a_n=\lim_{n\to\infty}\left(\inf_{k\geq n}a_n\right) \label{eq:集合論基礎:数列のlimsup,liminf}
+                \end{equation}
+                このとき, $\displaystyle\limsup a_n = \inf_{k\in\mathbb{N}}\left(\sup_{n\geq k}a_n\right),\quad \liminf a_n = \sup_{k\in\mathbb{N}}\left(\inf_{n\geq k}a_n\right)$となることを示せ.\\
+                ただし, $\displaystyle \sup_{P(n)} a_n,\inf_{P(n)} a_n$とは, それぞれ$\{a_n\mid P(n)\}$の上限, 下限を表す.
 
     \clearpage
     \section{行列と行列式}
         ベクトルのイメージとその和・差について. 内積についても述べる. 外積はベクトル解析のときに述べる. 続いて, 行列についてその定義を述べ, 和・差・積について述べる.
-        転置行列と逆行列についても述べる. 行列式は, 一般の定義を述べ, その後2x2と3x3について計算方法を述べる. 余因子展開についてその計算方法を述べる.
+        転置行列と逆行列についても述べる. 行列式は, 一般の定義を述べ, その後$2\times 2$と$3\times 3$について計算方法を述べる. 余因子展開についてその計算方法を述べる.
     \clearpage
     \section{偏微分}
         多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
