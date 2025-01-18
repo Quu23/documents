@@ -884,13 +884,178 @@
                 \item $^\forall x\in A \left[x\geq a\right]$
                 \item $^\forall \varepsilon>0,{}^\exists x\in A \left[x < a+\varepsilon\right]$
             \end{enumerate}
-            となる.\footnote{それぞれ$r=a-\varepsilon,r=a+\varepsilon$と置けばよい.}\\
+            となる.\footnote{それぞれ$r=a-\varepsilon,r=a+\varepsilon$と置けばよい.}
 
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[-latex] (0,0) -- (3,0);
+                    \node at (-0.5,0) {$A$};
+                    \draw[red,thick] (0,0) -- (2,0);
+                    \draw[fill=black] (2,0) circle [radius=1pt]; 
+                    \draw[->] (2,0.5) -- (2,0.1);
+                    \node[above] at(2,0.5) {$\max A(=\sup A)$};
+
+                    \draw[-latex] (5,0) -- (8,0);
+                    \node at (4.5,0) {$A$};
+                    \draw[red,thick] (5,0) -- (7,0);
+                    \draw[fill=white] (7,0) circle [radius=1pt];
+                    \draw[->] (7,0.5) -- (7,0.1);
+                    \node[above] at(7,0.5) {$\sup A$};
+                \end{tikzpicture}
+                \caption{最大と上限の違い\\{\scriptsize 左の例では, 最大が存在しており, それは上限でもある. 一方右では最大は存在しない. しかし, 上限は存在する.}}
+            \end{figure}
+            \clearpage
             上限と下限で重要なのは, 次の定理である. 
             \begin{itembox}{Weierstrassの定理\index{Weierstrassのていり@Weierstrassの定理}}
                 実数の部分集合$A$が上方(または下方に)有界ならば$A$の上限(または下限)が存在する.
             \end{itembox}
-            これが先ほどのべた「上界の最小値...は存在する」の根拠, むしろそのものである.
+            これが先ほどのべた「上界の最小値...は存在する」の根拠, むしろそのものである. 
+            \begin{proof}
+                ここでは上限の存在のみ証明する.\footnote{下限の存在の証明は, 例えば解析概論 p.5を参照してほしい. ただ, その証明自体は上限の場合とほとんど同じである.}
+                $A$が上に有界であるとき, その上界全てを$Y$, それ以外を$X$とすると, 切断$(X,Y)$を作ることができる.
+                なぜなら, $X$に属する数はそのどの数も$A$の上界になりえない数であり, 必ず上界より小さいからである. Dedekindの定理によれば, この切断$(X,Y)$
+                によって一つの実数$s$が確定する. $s$は$X$または$Y$のどちらかに必ず属している. ここで$s\in X$であるとしよう. このとき, $s$は
+                $A$の上界になりえないから, $y>s$となる$y\in A$が存在するはずである. このとき, $y>t>s$となる$t$を考えると, $s$が$X$
+                の最大値であることから, $t\in Y$である. しかし, $y>t$であるから, $t$は$A$の上界になりえず矛盾が生じる.
+                したがって, $s\in Y$であり, このとき$s$は$Y$の最小値であるから, $A$の上限は存在し, それは$s$である.
+            \end{proof}
+
+            なお, 一般の順序集合にも上限および下限が定義できるが, そのとき必ずそれらが存在するとは限らないことも付記しておく.\\
+
+            Weierstrassの定理を用いれば, QuuノートIで述べた単調で有界な数列が必ず収束する\footnote{以後, この定理を用いる際に限り, 単に上に(下に)有界であり単調増加(単調減少)な数列であっても``単調で有界な数列''ということがあるから注意してほしい.}
+            ことに, 厳密な証明を与えることができる. 
+            \begin{screen}
+                (広義の)単調で有界な数列は必ず収束する.
+            \end{screen}
+            \begin{proof}
+                数列$\{a_n\}$が単調増加で, 上に有界であるとする. このとき, 任意の$n$について$a_n<M$となる$M$が存在する.
+                このとき集合$\{a_1,a_2,\cdots,a_n\cdots\}$は上に有界であるから, Weierstrassの定理よりこの上限は存在する.
+                この上限を$\alpha$と置くと, 任意の$\varepsilon>0$に対して, ある$a_{N}$が存在して, $\alpha - \varepsilon < a_{N}$である.
+                式を変形すると, $\alpha -a_{N}< \varepsilon$となる. ここで, $n>N$となる$n$について, $a_n>a_N$であるから, 
+                $\alpha - a_{N} < \alpha - a_{n}$である. 以上より, 任意の$\varepsilon>0$に対して, ある$N>0$が存在して, $\alpha-a_{n}=|\alpha - a_{n}|<\varepsilon$
+                となるから, この数列は収束して, その極限値は上限$\alpha$である. 数列が広義単調増加であっても, 全て等号が成り立つ場合を除けば同様に証明できる. 
+                すべて等号が成り立つ場合は, その値を$\alpha$とすれば, 極限の定義よりそれは極限値である. 
+                よって結局, 広義の単調増加で有界な数列は収束する. 単調減少についてもまったく同様に示せる.
+            \end{proof}
+
+            この定理を用いることで, 様々な命題を示すことができる. 
+            
+            \begin{itembox}{Archimedesの公理\index{Archimedesのこうり@Archimedesの公理}}
+                任意の$x\in\mathbb{R}$に対して, $x<n$を満たす$n\in \mathbb{N}$が存在する.
+            \end{itembox}
+            \begin{proof}
+                背理法で示そう. 仮にある$x\in\mathbb{R}$について, $x<n$となる自然数$n$が存在しないとしよう. 自然数$\mathbb{N}$を
+                数列$\{n\}$と考えれば, これは単調増加な数列である. また, 背理法の仮定より, $x\geq n$である. したがってこの数列は
+                単調で有界な数列であるから, 収束して, その値は上限$x$である. よって, $x-n<\varepsilon$が任意の$\varepsilon>0$で
+                成立する. ここで$\varepsilon=1$とすると, $x<n+1$となるが, $n+1\in\mathbb{N}$であるから, 始めの仮定に矛盾する.
+            \end{proof}
+
+            Archimedesの公理から我々がよく知る, $1/n\rightarrow 0\quad (n\rightarrow\infty)$が導かれる. 普段我々はなんの断りもなしに
+            この命題を認めていたのだった.
+
+            \begin{screen}
+                任意の$x\in\mathbb{R}$に対して, $m-1\leq x<m$を満たす$m\in\mathbb{Z}$が唯一存在する.
+            \end{screen}
+            \begin{proof}
+                まず$x\geq 0$の場合を示す. Archimedesの公理より$x<n$を満たす$n\in\mathbb{N}$が存在する. このとき集合$M$を次のようにおく.
+                \begin{equation*}
+                    M=\{l\in\mathbb{N}\mid x<l\leq m\}
+                \end{equation*}
+                $m\in M$であるから, $M$は空でない. また, $M$は無限集合ではない. よって, $M$の最小要素$m$をとれば, $m-1\leq x<m$とできる.
+                $x<0$のときは, $-x>0$だから, $m-1\leq-x<m$となる$m$が存在する. よって, $-m+1\geq x>-m$であるから, 等号が成り立たない場合は
+                $m\rightarrow -m+1$, 等号が成り立つ場合は$-m\rightarrow -m+1$を命題の表式に代入すれば成り立つことがわかる. 
+
+                なお, これが唯一であることは$m_1<m<m_2$であるような整数$m_1,m_2$については成り立たないことを示せばよい. 
+                $m_1\leq m-1\leq x<m\leq m_2+1$であるから, どちらも元の命題の式を満たさない.
+            \end{proof}
+            この命題の式を変形すれば, $m\leq x<m+1$が成り立つことがわかる. このときの$n$は$n=[x]$と書かれる. この記号$[]$をガウス記号という. 
+
+            Archimedesの公理と上の定理より, 次の非常に重要な命題が導かれる.
+            \begin{itembox}{有理数の稠密性\index{ゆうりすうのちゅうみつせい@有理数の稠密性}}
+                任意の$x,y\in\mathbb{R}\hspace{1mm}(x<y)$に対して, $x<r<y$を満たす有理数$r$が存在する.
+            \end{itembox}
+            \begin{proof}
+                $y-x>0$であるから, Archimedesの公理より, $\frac{1}{y-x}<n$を満たす自然数$n$が存在する. よって$y-x>1/n$である. 
+                また, 上記定理より, $m-1\leq nx < m$を満たす$m\in\mathbb{Z}$も存在する. したがって
+                \begin{equation*}
+                    x<\frac{m}{n}=\frac{m-1}{n}+\frac{1}{n}<x+(y-x)=y
+                \end{equation*}
+                ところで, $m/n\in\mathbb{Q}$であるから, $r=m/n$が求める有理数である.
+            \end{proof}
+            有理数の稠密性
+            \footnote{ちゅうみつと読む. 稠密とは簡単に言えば, 実数$x,y$の間にいくらでもその数が存在することをいう. 一般の稠密は, 次のように定義される(位相空間に関する多少の知識が必要). 
+            $(X,\mathcal{O})$を位相空間とし, $A\subset X$とするとき, $A$が$X$で稠密であるとは, $A$の閉包$A^a$が$A^a=X$を満たすことをいう. 
+            つまり, 有理数$\mathbb{Q}$の閉包は実数$\mathbb{R}$を包むのである.}
+            を用いれば, 無理数の稠密性もすぐに示すことができる. これは簡単であるから演習問題に回すことにする.
+            \clearpage
+            
+            今度は, 単調で有界な数列が収束することから, 切断とは別に実数を確定させる方法を考える.
+            \begin{itembox}{区間縮小法\index{くかんしゅくしょうほう@区間縮小法}}
+                閉区間$I_n=[a_n,b_n]\hspace{1mm}(n=1,2,\cdots)$において
+                \begin{enumerate}
+                    \item 各区間$I_n$がその前の区間$I_{n-1}$に含まれる.
+                    \item $n$を十分大きくすれば, 各区間の幅$b_n-a_n$は十分小さくできる.
+                \end{enumerate}
+                とすれば, これら各区間に共通なただ一つの点が存在し, それは$\lim a_n=\lim b_n$である.
+            \end{itembox}
+            \begin{proof}
+                始めの仮定1は, $a_n$が広義単調増加であり, $b_n$が広義単調減少な数列であることを意味する. さらに, $a_n\leq b_n$ということでもある.
+                したがって, $a_n\leq b_1,a_1\leq b_n$であるから, $\{a_n\},\{b_n\}$は単調で有界な数列である. よって, 極限$\lim a_n =\alpha , \lim b_n=\beta$は
+                存在する. したがって, $\alpha\leq \beta$が成り立つ. なぜなら, $\alpha>\beta$であるとすれば$\alpha -a_n<\varepsilon/2,b_n-\beta<\varepsilon/2$とできるから, 
+                $0<\alpha-\beta<a_n-b_n+\varepsilon$となる. $\varepsilon=\alpha-\beta$と置けば,$0<a_n-b_n$すなわち$a_n>b_n$となり矛盾する.
+                
+                さて, 仮定2から, 任意の$\varepsilon>0$に対して, $b_n-a_n<\varepsilon$とできるような$n$が存在する. 
+                \begin{equation*}
+                    a_n\leq \alpha\leq \beta\leq b_n
+                \end{equation*}
+                だから, $\varepsilon>b_n-a_n\geq b_n-\alpha\geq \beta - \alpha\geq0$となる. $\varepsilon$は任意であるから, $\beta=\alpha$である.
+                任意の$n$について, $a_n\leq \alpha \leq b_n$であるから, $\alpha$は各$I_n$に含まれる. 
+                
+                仮に, $\alpha\neq \alpha'$である$\alpha'$が各区間で共通であるとしよう. このとき, $a_n\leq \alpha'\leq b_n$が任意の$n$に成り立つ.
+                したがって, $0\leq \alpha'-a_n \leq b_n - a_n$であるから, $0\leq \alpha'-a_n<\varepsilon$である. これは$\lim a_n=\alpha'$を意味するが, 
+                仮定$\alpha\neq\alpha'$に矛盾する. したがって, 各区間に共通する点は唯一で, それは$\alpha$である.
+            \end{proof}
+
+            最後に, 区間縮小法のみを仮定してDedekindの定理を導いてみよう.
+            \begin{proof}
+                切断$(A,B)$を考える. $A$に属する数$a$と$B$に属する数$b$を考える. このとき, 区間$I_0=[a,b]$の中間$\frac{a+b}{2}$は$A$か$B$のどちらかに属する.
+                仮に, $A$に属するならば, $a_1=\frac{a+b}{2},b_1=b$と置き, $B$に属するなら$a_1=a,b_1=\frac{a+b}{2}$と置く. こうして新たな区間$I_1=[a_1,b_1]$ができる.
+                $I_1$は$I$の右半分か左半分であり, その幅は$\frac{b-a}{2}$である. 次に, $I_1$の中間$\frac{a_1+b_1}{2}$についても同様に考え, $\frac{a_1+b_1}{2}$が
+                $A$に属するならば, $a_2=\frac{a_1+b_1}{2},b_2=b_1$と置き, $B$に属するなら$a_2=a_1,b_2=\frac{a_1+b_1}{2}$と置く. このようにしてできる区間$I_2=[a_2,b_2]$も, 
+                $I_1$の右半分か左半分であり, 幅は$\frac{b-a}{4}$である. この操作を繰り返せば, 区間の列$I_n$ができ, 各区間はその前の区間に含まれ, 区間の幅$\frac{b-a}{2^n}$は
+                $n$が十分大きいときに十分小さくできるから, これは区間縮小法の条件を満たしている. よって, これら区間に共通なただ一つの点が存在する. 
+                
+                共通な点を$s$と置くことにする. $s\in A$であれば, それは$A$の最大である. なぜなら, 最大でないとき$s'\in A$が存在して$s<s'$であり, $b_n\rightarrow s$であるから, $b_n<s+\varepsilon$で, $\varepsilon=s'-s$と取れば, 
+                $s<b_n<s'$とできる. しかし, $b_n\in B$であるから, $s'\in B$でなければならず, 矛盾である. このとき, $B$には最小が存在しない.
+                仮に最小値$m$が存在していれば, $s<m$であるが, 先ほどと同様$\varepsilon=m-s$と取れば, $s<b_n<m$とできてしまう. $b_n\in B$であるから, これは$m$が$B$の最小であることに矛盾する.
+                以上より, $s$が$A$も属していれば, $A$には最大が存在し, $B$に最小は存在しない. まったく同様にして, $s$が$B$に属するときも, $A$には最大が存在せず, $B$に最小は存在することが示される.
+                すなわち, 切断$(A,B)$が与えられれば, 一つの数$s$が確定できたことになり, Dedekindの定理が示された. 
+            \end{proof}
+            \clearpage
+            以上の結果をまとめよう. 我々は, Dedekindの定理を公理として, 実数の連続性に関する基本的な定理を導出してきた. そして最後には, 逆に区間縮小法からDedekindの定理を導くことも行った.
+            ここからわかるのは, 以上で述べた四つの定理は互いに同等であるということである. すなわち, これらの定理のうちどれか一つを公理として認めれば, それ以外の定理は導くことができる.
+
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \node at (0,0) {Dedekindの定理};
+                    \node at (3,1.5) {Weierstrassの定理};
+                    \node at (0,3) {有界な単調数列の収束};
+                    \node at (-3,1.5) {区間縮小法};
+                    \draw [->] (0.5,0.5) -- (2.5,1);
+                    \draw [->] (2.5,2) -- (0.5,2.5);
+                    \draw [->] (-0.5,2.5) -- (-2.5,2);
+                    \draw [->] (-2.5,1) -- (-0.5,0.5);
+                \end{tikzpicture}
+                \caption{基本的な定理の関係}
+            \end{figure}
+
+            本によっては, 有界な単調数列の収束を公理としているものや, Weierstrassの定理を公理としているものがある. この理由は公理として選ばれなかったものは, 公理として選んだものから導かれるからである.
+
+            なお, 以上の実数の性質は, このノートを含め, 断りなく使われることがあることに注意しておこう.
+    \clearpage
+
     \clearpage
     \section{行列と行列式}
         ベクトルのイメージとその和・差について. 内積についても述べる. 外積はベクトル解析のときに述べる. 続いて, 行列についてその定義を述べ, 和・差・積について述べる.
