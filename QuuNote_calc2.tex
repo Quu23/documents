@@ -11,6 +11,7 @@
 \usepackage{pxjahyper}
 \usepackage{okumacro}
 \usepackage{tikz}
+\usetikzlibrary{angles,quotes}
 \usepackage{bm}
 \usepackage{ulem}
 
@@ -1093,6 +1094,188 @@
     \section{行列と行列式}
         ベクトルのイメージとその和・差について. 内積についても述べる. 外積はベクトル解析のときに述べる. 続いて, 行列についてその定義を述べ, 和・差・積について述べる.
         転置行列と逆行列についても述べる. 行列式は, 一般の定義を述べ, その後$2\times 2$と$3\times 3$について計算方法を述べる. 余因子展開についてその計算方法を述べる.
+        \subsection{ベクトル}
+            まずは, ベクトルについて簡単な説明をしよう. 基本的に平面の場合のみ説明するが, 空間の場合でも本質的な部分は同じである.
+
+            \textbf{ベクトル}\index{べくとる@ベクトル}とは, `向き'と`大きさ'を持った量である. その最も身近な例は, 力学における速度, 力などだろう.
+            これらはこれまで扱ってきた単なる数値(\textbf{スカラー}\index{すからー@スカラー})とは違う量である. このベクトルを図に示すと, 以下のようになる.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[-latex] (0,0) -- (1,1);
+                    \node[left] at (0,0) {$A$};
+                    \node[above] at (1,1) {$B$};
+                \end{tikzpicture}
+                \caption{ベクトルのイメージ}
+            \end{figure}
+
+            このベクトルは$\overrightarrow{AB}$と書かれる. 始点$A$から終点$B$までを結ぶ矢印というわけである. 正確に言うと, これはベクトルではないのだが, ひとまずのイメージはこの程度でよい. 
+            以後ベクトルは上記のような表記ではなく, 太字表記$\bm{a},\bm{b},\dots$を主に用いる.
+
+            ベクトルのうち, 大きさが0のベクトルを特別に\textbf{零ベクトル}\index{ぜろべくとる@零ベクトル}と呼び, $\bm{0}$と表記する. このベクトルは向きを持たないがこれもベクトルとみなす.
+
+            次に考えたいのは, ベクトルの演算であろう. 具体的には, 四則演算について考えてみたい. ただ残念なことに, ベクトル同士の和・差・積については定義されているが, 商については定義されていないので, 
+            ここでは和・差・積のみ考える.
+
+            ベクトル同士の和は, 恐らく中学の理科で習ったであろう平行四辺形の法則をそのまま使う. すなわち以下の図のようになる.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[-latex] (0,0) -- (2,0.5);
+                    \draw[-latex] (2,0.5) -- (2.5,2);
+                    \draw[-latex,thick] (0,0) -- (2.5,2);
+                    \node[below] at (1,0.25) {$\bm{a}$};
+                    \node[right] at (2.25,1) {$\bm{b}$};
+                    \node[above left] at (1.3,1) {$\bm{a}+\bm{b}$};
+                    \draw[dashed] (0,0) -- (0.5,1.5);
+                    \draw[dashed] (0.5,1.5) -- (2.5,2);
+                \end{tikzpicture}
+                \caption{ベクトルの和}
+            \end{figure}
+            このとき, 通常の数の演算のように交換法則と結合法則が成り立つ. これは図を描いてみればすぐわかるだろうから, ここでは詳しく述べない. また, 明らかに$\bm{a}+\bm{0}=\bm{a}$である.
+
+            ベクトル$\bm{a}=\overrightarrow{AB}$に対し, その\textbf{逆ベクトル}\index{ぎゃくべくとる@逆ベクトル}を$-\bm{a}=\overrightarrow{BA}$と定義する. つまり, $\bm{a}$と向きが反対のベクトルが$-\bm{a}$である. 
+
+            これより, ベクトルの差が定義できる. すなわち, $\bm{a}-\bm{b}$を$\bm{a}+(-\bm{b})$と定義することにする. $\bm{a}-\bm{a}=\bm{0}$であるので, $\bm{a}-\bm{b}$に$\bm{b}$を加えると$\bm{a}$となる.
+            つまり, $\bm{a}-\bm{b}$は$\bm{b}$の終点を始点として, $\bm{a}$の終点を終点とするベクトルということになる.
+
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[-latex] (0,0) -- (2,0.5);
+                    \draw[-latex] (2,0.5) -- (2.5,2);
+                    \draw[-latex,thick] (0,0) -- (2.5,2);
+                    \node[below] at (1,0.25) {$\bm{b}$};
+                    \node[right] at (2.25,1) {$\bm{a-b}$};
+                    \node[above left] at (1.3,1) {$\bm{a}$};
+                \end{tikzpicture}
+                \caption{ベクトルの差}
+            \end{figure}
+
+            ベクトルの積については, 先にベクトルとスカラーの積について考えてみる. まず, $c>0$である実数$c$に対して, $c\bm{a}$を$\bm{a}$の大きさが$c$倍で, 向きが同じベクトルと定義する.
+            $c<0$の場合は, 大きさは$c$倍であるが, 向きが$\bm{a}$と反対である. $c=0$の場合は$c\bm{a}=\bm{0}$である. また, $\bm{a}=\bm{0}$であれば, $c$の値にかかわらず$\bm{0}$となる.
+
+            このとき, 次が成り立つ.
+            \begin{align}
+                &c(\bm{a}+\bm{b})=c\bm{a}+c\bm{b}\\
+                &(c+d)\bm{a}=c\bm{a}+d\bm{a}\\
+                &(cd)\bm{a}=c(d\bm{a})
+            \end{align}
+            単なる拡大または縮小であるから, 当然といえば当然である.
+
+            ベクトル$\bm{a}$の大きさを$|\bm{a}|$と書くことにする. さて, ベクトル$\bm{a}$と$\bm{b}$の\textbf{内積}\index{ないせき@内積}(または\textbf{スカラー積}\index{すからーせき@スカラー積})は次のように定義される.
+            \begin{equation}
+                \bm{a}\cdot \bm{b}=|\bm{a}||\bm{b}|\cos\theta \label{eq:線形代数:内積の定義}
+            \end{equation}
+            $\theta$は二つのベクトルのなす角度である. これは, 二つのベクトルからスカラーを作る操作であり, ベクトルの積に相当する. ベクトルの積には内積とは別に外積というものもあるが, これはベクトル解析の部に任せることにして, ここでは内積の性質を見ていこう.
+
+            まず, 次が成り立つ.
+            \begin{align}
+                &\bm{a}\cdot\bm{b}=\bm{b}\cdot\bm{a} \label{eq:線形代数:内積の交換法則}\\
+                &\bm{a}\cdot(\bm{b}+\bm{c})=\bm{a}\cdot\bm{b}+\bm{a}\cdot\bm{c} \label{eq:線形代数:内積の分配法則}\\
+                &\bm{a}\cdot\bm{a}=|\bm{a}|^2 \label{eq:線形代数:内積と大きさ}
+            \end{align}
+            このうち, \eqref{eq:線形代数:内積の交換法則}と\eqref{eq:線形代数:内積と大きさ}は定義からすぐわかる. 問題は\eqref{eq:線形代数:内積の分配法則}である. これを証明するには\textbf{ベクトルの成分表示}\index{べくとるのせいぶんひょうじ@ベクトルの成分表示}
+            を使うのが簡単である.
+
+            ベクトル$\bm{a}=\overrightarrow{AB}$をxy平面上で考える. このとき, $A(x_A,y_A),B(x_B,y_B)$と置くとき, $x_B-x_A,y_B-y_A$を$\bm{a}$の\textbf{成分}\index{せいぶん@成分}といい, 
+            \begin{equation}
+                \bm{a}=(x_B-x_A,y_B-y_A) \label{eq:線形代数:ベクトルの成分表示}
+            \end{equation}
+            とかく. また, この\eqref{eq:線形代数:ベクトルの成分表示}を\textbf{ベクトルの成分表示}\index{べくとるのせいぶんひょうじ@ベクトルの成分表示}という. これよりベクトルの大きさは$\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$とかける. これは三平方の定理からすぐわかる.
+            また, ベクトルの和, 差はそれぞれ対応する成分同士で行い, スカラー倍は各成分をそれぞれスカラー倍すればよい.
+
+            これを用いて, \eqref{eq:線形代数:内積の定義}をベクトルの各成分で表してみよう. $\bm{a}=(a_x,a_y),\bm{b}=(b_x,b_y)$とする.
+            このとき$|\bm{a}|=\sqrt{a_x^2+a_y^2},\quad|\bm{b}|=\sqrt{b_x^2+b_y^2},\quad |\bm{a}-\bm{b}|=\sqrt{(a_x-b_x)^2+(a_y-b_y)^2}$である.
+            \clearpage
+            また, $\cos\theta$については, 下図\ref{fig:線形代数:内積の証明用}より余弦定理を用いて, 
+            \begin{equation*}
+                \cos\theta = \frac{|\bm{a}|^2+|\bm{b}|^2-|\bm{a}-\bm{b}|^2}{2|\bm{a}||\bm{b}|}
+            \end{equation*}
+            と書けるから, \eqref{eq:線形代数:内積の定義}は
+            \begin{equation*}
+                \bm{a}\cdot\bm{b}=\frac{1}{2}\left(|\bm{a}|^2+|\bm{b}|^2-|\bm{a}-\bm{b}|^2\right)=\frac{1}{2}\left\{a_x^2+a_y^2+b_x^2+b_y^2-(a_x-b_x)^2+(a_y-b_y)^2\right\}
+            \end{equation*}
+            となり, これを計算すると
+            \begin{equation}
+                \bm{a}\cdot\bm{b}=a_xb_x+a_yb_y \label{eq:内積の成分表示}
+            \end{equation}
+            この表式は内積の計算をしばしば簡単にする. これを用いれば, \eqref{eq:線形代数:内積の分配法則}は, $\bm{c}=(c_x,c_y)$として, 
+            \begin{equation*}
+                (左辺)=\bm{a}\cdot (b_x+c_x,b_y+c_y)=a_x(b_x+c_x)+a_y(b_y+c_y)=(a_xb_x+a_yb_y)+(a_xc_x+a_xc_y)=(右辺)
+            \end{equation*}
+            と簡単に証明にできる.
+
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[-latex] (0,0) -- (2,-0.5);
+                    \draw[-latex] (2,-0.5) -- (2.5,2);
+                    \draw[-latex] (0,0) -- (2.5,2);
+                    \node[below] at (1,-0.25) {$\bm{b}$};
+                    \node[right] at (2.25,0.75) {$\bm{a-b}$};
+                    \node[above left] at (1.3,1) {$\bm{a}$};
+
+                    \draw (0,0) coordinate (A) -- (2,-0.5) coordinate (B) -- (2.5,2) coordinate (C);
+                    \draw pic["$\theta$", draw, <->, font=\footnotesize, angle eccentricity=1.5, angle
+                    radius=0.5cm] {angle=B--A--C};
+                \end{tikzpicture}
+                \caption{ベクトルと三角形} \label{fig:線形代数:内積の証明用}
+            \end{figure}
+
+            先ほどのベクトルの成分表示からわかるように, ベクトル$\bm{a}=\overrightarrow{AB}$は, $A,B$の絶対位置にはよらず, 相対位置(二つの点の位置関係)にのみ依存している.
+            また, 本来のベクトルの定義では, ベクトルは`向き'と`大きさ'を持つ量として定義されている. すなわち, 同じ向きと大きさを持つベクトルであれば, \underline{その二つのベクトルがどの位置にあろうとも
+            同一視しなければならない.}
+
+            一方, 特定の点に作用するベクトルを\textbf{束縛ベクトル}\index{そくばくべくとる@束縛ベクトル}\footnote{逆に, 今までの始点が固定されていないベクトルは\textbf{自由ベクトル}\index{じゆうべくとる@自由ベクトル}という.}という. 束縛ベクトルには, 例えばモーメントや, 次に説明する位置ベクトルなどがある.
+
+            xy平面上の点$P(x,y)$について, $P$の\textbf{位置ベクトル}\index{いちべくとる@位置ベクトル}を$\bm{r}=(x,y)$と定義する. xy平面上の全ての点に対して, 対応する位置ベクトルは存在し, 逆に全てのベクトルは
+            xy平面上のある点の位置ベクトルになっている. この位置ベクトルは, 力学でも用いるし, このあとのベクトル解析でもひんぱんに用いる.
+
+            次は, ベクトルについて平行と垂直を考えてみよう. 二つのベクトルが\textbf{平行}\index{へいこう@平行}であるとは, それらのベクトルの向きが同じが反対であることをいう. すなわち,
+            \begin{equation}
+                \bm{a}/\!/\bm{b}\Leftrightarrow {}^\exists k\in\mathbb{R}\left[\bm{b}=k\bm{a}\right] \label{eq:線形代数:ベクトルの平行}
+            \end{equation}
+            である. また, 二つのベクトルが\textbf{垂直}\index{すいちょく@垂直}であるとは, 二つのベクトルのなす角度が$\frac{\pi}{2}$であることをいう. つまり, $\cos\theta=0$であるから, 
+            \begin{equation}
+                \bm{a}\perp\bm{b}\Leftrightarrow \bm{a}\cdot\bm{b}=0 \label{eq:線形代数:ベクトルの垂直}
+            \end{equation}
+            となる. つまり, 二つのベクトルが垂直であるかどうかを調べるためには, 内積が0であるかどうかをみればよいのである.
+            \clearpage
+            ベクトルで重要なのは次の二つの不等式である.
+            \begin{align}
+                &|\bm{a}\cdot\bm{b}|\leq |\bm{a}||\bm{b}| &\quad(\text{schwarzの不等式}) \label{eq:線形代数:シュワルツの不等式}\\
+                &|\bm{a}+\bm{b}| \leq |\bm{a}|+|\bm{b}| &\quad(\text{三角不等式}) \label{eq:線形代数:三角不等式}
+            \end{align}
+            \eqref{eq:線形代数:シュワルツの不等式}は, $\cos\theta$の値域から明らかである. よって, \eqref{eq:線形代数:三角不等式}について示す.
+
+            \begin{proof}
+                左辺を二乗すると, \eqref{eq:線形代数:内積と大きさ}より
+                \begin{equation*}
+                    |\bm{a}+\bm{b}|^2 = (\bm{a}+\bm{b})\cdot (\bm{a}+\bm{b})=\bm{a}\cdot\bm{a} + 2\bm{a}\cdot\bm{b}+\bm{b}\cdot\bm{b}\leq|\bm{a}|^2+|\bm{b}|^2+2|\bm{a}||\bm{b}|=(|\bm{a}|+|\bm{b}|)^2
+                \end{equation*}
+                となるから, 両辺$\sqrt{\hspace{1mm}}$を取ればよい.\footnote{両辺のルートの中身が正であるから, このようにしてもよい.} なお, 途中の不等式は, やはり$\cos\theta$の値域から変形した.
+            \end{proof}
+
+            最後に, 基本ベクトルについて述べよう. まず, 大きさが1であるベクトルのことを\textbf{単位ベクトル}\index{たんいべくとる@単位ベクトル}という. ベクトル$\bm{a}\neq\bm{0}$に対して, $\bm{e}=\bm{a}/|\bm{a}|$
+            は単位ベクトルとなる. このように, ベクトルの大きさを1にすることを\textbf{正規化する}\index{せいきかする@正規化する}という. 単位ベクトルは, ベクトルの`向き'のみ抽出したものといえるだろう.
+            
+            単位ベクトルのうち, 次のベクトルを考える.
+            \begin{equation}
+                \bm{i}=(1,0),\quad \bm{j}=(0,1) \label{eq:線形代数:平面の基本ベクトル}
+            \end{equation}
+            このベクトルをそれぞれ, $x$方向, $y$方向の\textbf{基本ベクトル}\index{きほんべくとる@基本ベクトル}という. 基本ベクトルは明らかに単位ベクトルである.
+            基本ベクトルを用いれば, 任意のベクトルはこれらの\textbf{線形結合}\index{せんけいけつごう@線形結合}で表せる. すなわち, 任意のベクトル$\bm{a}=(a_x,a_y)$は次のように書ける.
+            \begin{equation}
+                \bm{a}=a_x\bm{i}+a_y\bm{j} \label{eq:線形代数:基本ベクトルの線形結合}
+            \end{equation}
+            これは, 基本ベクトルが\textbf{線形独立}\index{せんけいどくりつ@線形独立}であることともかかわってくるのだが, ここでは述べない.\\
+
+            以上が, 平面のベクトルに関する基本的な内容である. 通常の線形代数では, 直線の(ベクトル)方程式なども範囲に含まれるのだが, ここではあくまで微分積分がメインなので, あまり深く立ち入らないことにする. 
+            なお, 以上の議論は空間ベクトルの場合もほとんどそのまま適用される. ただし, 成分表示などは2つから3つ増えることに注意. また, 基本ベクトルは$\bm{i}=(1,0,0),\bm{j}=(0,1,0),\bm{k}=(0,0,1)$の3つとなる.
+
+            補足として, ここでは行ベクトル(横ベクトル)として扱ったが, 線形代数の教科書では基本的に列ベクトル(縦ベクトル)で書く場合が多いようである. これはおそらく次にやる行列の積が念頭にあるのだろう. 
+            私はあまり線形代数に詳しくないので厳密なことはよくわからないが, とりあえず今は列ベクトルで書こうが行ベクトルで書こうが気にしなくてよいのではないだろうか.
     \clearpage
     \section{偏微分}
         多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
