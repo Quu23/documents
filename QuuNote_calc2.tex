@@ -1198,7 +1198,7 @@
             \end{equation*}
             となり, これを計算すると
             \begin{equation}
-                \bm{a}\cdot\bm{b}=a_xb_x+a_yb_y \label{eq:内積の成分表示}
+                \bm{a}\cdot\bm{b}=a_xb_x+a_yb_y \label{eq:線形代数:内積の成分表示}
             \end{equation}
             この表式は内積の計算をしばしば簡単にする. これを用いれば, \eqref{eq:線形代数:内積の分配法則}は, $\bm{c}=(c_x,c_y)$として, 
             \begin{equation*}
@@ -1278,13 +1278,379 @@
             私はあまり線形代数に詳しくないので厳密なことはよくわからないが, とりあえず今は列ベクトルで書こうが行ベクトルで書こうが気にしなくてよいのではないだろうか.
         \clearpage
         \subsection{行列}
+            ここでは行列について述べる. 行列は, 複数のベクトルを縦または横に並べて作ることができる, 複数の数の集まりである. ただ, ベクトルが物理量を表すのに対し, 行列は単なる数の集まりである. この違いを意識するには相対論の部を読んでみるとよいから, ここでは
+            そこまで深く考えず行列の定義と演算法について扱う.
+
+            
+            まず, $mn$個の数$a_{ij}(i=1,2,\dots,m,j=1,2,\dots,n)$を次のように並べ, かっこで囲んだものを考える.
+            \begin{equation}
+                A=\begin{pmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n}\\
+                    a_{21} & a_{22} & \cdots & a_{2n}\\
+                    \hdotsfor{4}\\
+                    a_{m1} & a_{m2} & \cdots & a_{mn}
+                \end{pmatrix} \label{eq:線形代数:行列の定義}
+            \end{equation}
+            これを, \textbf{$m$行$n$列の行列}\index{ぎょうれつ@行列}, または単に行列という. 行列の横の並びを行, 縦の並びを列という.
+            また, 第$i$行と第$j$列が交わる要素$a_{ij}$を, この行列$A$の\textbf{$(i,j)$成分}\index{i,jせいぶん@$(i,j)$成分}という.
+
+            特に, $1\times n$行列は, $n$次元行ベクトルであり, $m\times 1$行列は, $m$次元列ベクトルである. これまで扱ってきた平面のベクトルは$1\times 2$行列だったというわけである.
+
+            行列は, 基本的に大文字で表される. ただし, やはりベクトルは特別に太字の記号のままとする. 全ての成分が0である行列は, \textbf{零行列}\index{ぜろぎょうれつ@零行列}といい, $O$とかく.
+
+            二つの行列について, 行の数と列の数がともに等しいときは, それらは同じ型という. 二つの行列が同じ型であれば, それらが等しい行列であるかどうかを考えることができる. 二つの行列が等しいとは, それぞれの$(i,j)$成分
+            がすべて等しいことをいう.
+
+            行列の中で, $m=n$, つまり行の数と列数が一致しているものを$m$次の\textbf{正方行列}\index{せいほうぎょうれつ@正方行列}という. 正方行列$A=(a_{ij})$\footnote{\eqref{eq:線形代数:行列の定義}の書き方は場所を取るから, このように表記している.}
+            について, $a_{kk}$の成分を\textbf{対角成分}\index{たいかくせいぶん@対角成分}という. 対角成分以外がすべて0である行列を\textbf{対角行列}\index{たいかくぎょうれつ@対角行列}という.
+            特に, 対角行列の対角成分が全て1である行列を\textbf{単位行列}\index{たんいぎょうれつ@単位行列}といい, $E$と表す.\\
+
+            ベクトルと同様, 行列にも和・差・積が定義できる. ただし和・差は同じ型の行列間においてのみ定義され, $(a_{ij})\pm(b_{ij})=(a_{ij}\pm b_{ij})$となる.
+            つまり, 各成分同士を足す(引く)だけである. 当然このときも交換法則と結合法則が成り立つ.
+
+            行列の差の特別な場合として, $O-A$を$-A$と書くことにする. この行列は, $A$の各成分が$-1$倍されたものである. ベクトルと同様に, スカラーと行列の積は$k(a_{ij})=(ka_{ij})$と定義される. 
+            よって, $(-1)A=-A$ということになる. ベクトルと同じく, 次の関係が成り立つ.
+
+            \begin{align}
+                &c(A + B)=cA + cB\\
+                &(c+d)A=cA + dA\\
+                &(cd)A=c(dA) 
+            \end{align}
+
+            これも, 簡単な計算からすぐわかるだろうから証明は省略する.
+            \clearpage
+            行列の積を考える前に, ベクトルの内積を行列を用いて表すことを考えてみる. 簡単な場合として, 二次元の場合で考えよう.
+            行ベクトル$\begin{pmatrix}
+                a_1 & a_2 
+            \end{pmatrix}$と, 列ベクトル$\begin{pmatrix}
+                b_1\\b_2
+            \end{pmatrix}$について, これらの積を次のように定める.
+            \begin{equation*}
+                \begin{pmatrix}
+                a_1 & a_2 
+            \end{pmatrix}\begin{pmatrix}
+                b_1\\b_2
+            \end{pmatrix}=a_1b_1+a_2b_2
+            \end{equation*}
+            これはまさに内積である. 以前, 行列は複数のベクトルを並べて作れると述べた. これに則って, $m\times l$の行列と$l\times n$の行列の積を次のように定める.
+            \begin{equation}
+                \begin{pmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1l}\\
+                    a_{21} & a_{22} & \cdots & a_{2l}\\
+                    \hdotsfor{4}\\
+                    a_{m1} & a_{m2} & \cdots & a_{ml}
+                \end{pmatrix}
+                \begin{pmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n}\\
+                    a_{21} & a_{22} & \cdots & a_{2n}\\
+                    \hdotsfor{4}\\
+                    a_{l1} & a_{l2} & \cdots & a_{ln}
+                \end{pmatrix}                    
+                =\begin{pmatrix}
+                    \sum a_{1k}b_{k1} & \sum a_{1k}b_{k2} & \cdots & \sum a_{1k}b_{kn}\\
+                    \sum a_{2k}b_{k1} & \sum a_{2k}b_{k2} & \cdots & \sum a_{2k}b_{kn}\\
+                    \hdotsfor{4}\\
+                    \sum a_{mk}b_{k1} & \sum a_{mk}b_{k2} & \cdots & \sum a_{mk}b_{kn}
+                \end{pmatrix} \label{eq:線形代数:行列の積}
+            \end{equation}
+            ただし, 和の記号$\sum$は$k=1$から$k=l$までの和を取ることを意味する.
+
+            計算例をいくつか挙げよう.
+            \begin{align*}
+                &\begin{pmatrix}
+                    2  & 5 \\
+                    -3 & 1
+                \end{pmatrix}
+                \begin{pmatrix}
+                    0 &  3 \\
+                    1 & -1
+                \end{pmatrix}=\begin{pmatrix}
+                    2\times 0 +5\times 1 & 2\times 3 + 5\times -1\\
+                    -3\times 0 + 1\times 1 & -3\times 3+1\times -1
+                \end{pmatrix}
+                =\begin{pmatrix}
+                    5 & 1\\
+                    1 & -10
+                \end{pmatrix}\\
+                &\begin{pmatrix}
+                    1 & 1 \\
+                    5 & 0 \\
+                    1 & 4
+                \end{pmatrix}
+                \begin{pmatrix}
+                    2 & 1 & 3 \\
+                    0 & 5 & 0
+                \end{pmatrix}=\begin{pmatrix}
+                    1\times 2 +1\times 0 & 1\times 1 + 1\times 5 & 1\times 3 + 1\times 0\\
+                    5\times 2 + 0\times 0 & 5\times 1+0\times 5 & 5\times 3 + 0\times 0\\
+                    1\times 2 + 4\times 0 & 1\times 1+4\times 5 & 1\times 3 + 4\times 0
+                \end{pmatrix}
+                =\begin{pmatrix}
+                    2 & 6 & 3\\
+                    10 & 5 & 15\\
+                    2 & 21 & 3
+                \end{pmatrix}\\
+                &\begin{pmatrix}
+                    3 \\ -2 \\ 1
+                \end{pmatrix}
+                \begin{pmatrix}
+                    4 & 0 & 5
+                \end{pmatrix}
+                =\begin{pmatrix}
+                    3 \times 4 & 3\times 0 & 3\times 5\\
+                    -2\times 4 & -2 \times 0 & -2 \times 5\\
+                    1 \times 4 & 1 \times 0 & 1 \times 5
+                \end{pmatrix}
+                =\begin{pmatrix}
+                    12 & 0 & 15 \\
+                    -8 & 0 & -10\\
+                    4  & 0 & 5  \\ 
+                \end{pmatrix}
+            \end{align*}
+
+            行列の積は, まず覚えずらい上に, 計算ミスが多発しやすい. 何回か練習することをお勧めする. また, 積の計算の際には, 次のように`補助線'を引くと計算しやすい.
+            \begin{equation*}
+                \left(
+                \begin{array}{ccc} 
+                    2 & 1 & 3 \\ \hline
+                    0 & 5 & 0 
+                \end{array} 
+                \right)
+                \left(
+                \begin{array}{c|c} 
+                1 & 1\\
+                5 & 0\\
+                1 & 4 
+                \end{array} 
+                \right)
+                =\begin{pmatrix}
+                    10 & 14\\
+                    25 & 0
+                \end{pmatrix}
+            \end{equation*}
+
+            上記の計算を見ればわかるように, 行列の積$AB$は, $A$の列の数と$B$の行の数が一致するときのみ定義される. また, 行列の積は可換ではない. 
+            すなわち, 一般には$AB= BA$は成立しない. しかし, それでも分配法則と結合法則は成り立つ. ただし, どれも和と積が計算できる場合である.
+            \begin{align}
+                &(A+B)C = AC + BC \\
+                &C(A+B) = CA + CB\\
+                &(AB)C = A(BC)
+            \end{align}
+            最初の式だけ証明をしておこう. それ以外も同様にできる.
+            \begin{proof}
+                $A=(a_{ij}),B=(b_{ij}),C=(c_{ij})$と置く. このとき,
+                \begin{equation*}
+                    (A+B)C=(a_{ij}+b_{ij})C = \left(\sum_{k=1}^{l} (a_{ik}+b_{ik})c_{kj}\right)=\left(\sum a_{ik}c_{kj}+\sum b_{ik}c_{kj}\right)=\left(\sum a_{ik}c_{kj}\right)+\left(\sum b_{ik}c_{kj}\right)=AB+BC
+                \end{equation*}
+                が成り立つ.
+            \end{proof}
+            \clearpage
+            任意の行列について, 対応する単位行列との積は必ず元の行列となる.
+            \begin{equation}
+                AE = A,\quad EA = A
+            \end{equation}
+            ここでいう`対応する'とは, $A$と列の数もしくは行の数が等しいという意味である.
+
+            \begin{proof}
+                $A=(a_{ij})$と置く. ここで次の記号を導入する. 
+                \begin{equation}
+                    \delta_{ij} = \left\{\begin{array}{cc}
+                        1 & (i=j)\\ 0 & (i\neq j)
+                    \end{array}\right. \label{eq:線形代数:クロネッカーのデルタ}
+                \end{equation}
+                これを\textbf{Kroneckerのデルタ}\index{Kronockerのでるた@Krnoneckerのデルタ}という. これを用いれば, $E=(\delta_{ij})$と書ける. これより
+                \begin{align*}
+                    &AE=\left(\sum_{k=1}^{l}a_{ik}\delta_{kj}\right)=(a_{ij}\delta_{jj})=(a_{ij})=A\\
+                    &EA=\left(\sum_{k=1}^{l}\delta_{ik}a_{kj}\right)=(\delta_{ii}a_{ij})=(a_{ij})=A
+                \end{align*}
+                となる.
+            \end{proof}
+
+            任意の行列に対し, $AO=O,OB=O$が成り立つ. これは明らかである. しかし, $A\neq O,B\neq O$であっても$AB=O$が成立することがある.
+            例えば
+            \begin{equation*}
+                \begin{pmatrix}
+                    1 & 1 \\ 2 & 2
+                \end{pmatrix}
+                \begin{pmatrix}
+                    -3 & 3 \\ 3 & -3
+                \end{pmatrix}
+                =\begin{pmatrix}
+                    0 & 0 \\ 0 & 0
+                \end{pmatrix}
+            \end{equation*}
+            である. このような$A,B$を\textbf{零因子}\index{ぜろいんし@零因子}という.\\
+
+            行列の行と列を入れ替えることで, 新たな行列を作ることができる. この操作を\textbf{転置する}\index{てんちする@転置する}といい,
+            $A$を転置した行列を$^t\!A$とかき, $A$の\textbf{転置行列}\index{てんちぎょうれつ@転置行列}という.
+
+            例えば
+            \begin{equation*}
+                ^t\!\begin{pmatrix}
+                    1 & 2 & 3\\
+                    4 & 5 & 6
+                \end{pmatrix}
+                =\begin{pmatrix}
+                    1 & 4\\
+                    2 & 5\\
+                    3 & 6
+                \end{pmatrix}
+                ,\quad
+                ^t\!\begin{pmatrix}
+                    5 & -3 & 8
+                \end{pmatrix}
+                =\begin{pmatrix}
+                    5 \\ -3 \\ 8
+                \end{pmatrix}
+                ,\quad
+                ^t\!E = E
+            \end{equation*}
+            転置については, 次の性質が成り立つ.
+
+            \begin{align}
+                ^t\!(^t\!A)=A \label{eq:線形代数:転置の転置} \\
+                ^t\!(AB) = {}^t\!B \hspace{1mm}{}^t\!A \label{eq:線形代数:積の転置}
+            \end{align}
+            \eqref{eq:線形代数:転置の転置}は明らかであるから, \eqref{eq:線形代数:積の転置}の証明を述べよう.
+            \begin{proof}
+                $A=(a_{ij}),B=(b_{ij})$と置く.
+                \begin{equation*}
+                    ^t\!(AB)=^t\!\left(\sum a_{ik}b_{kj}\right)=\left(\sum a_{jk}b_{ki}\right)
+                \end{equation*}
+                であり, $^t\!A=(a_{ji}),^t\!B=(b_{ji})$であるから
+                \begin{equation*}
+                    ^t\!B\hspace{1mm} ^t\! A = \left(\sum a_{jk}b_{ki}\right) = ^t\!(AB)
+                \end{equation*}
+                よって等式が示された.
+            \end{proof}
+            \clearpage
+            行列に対して, その逆数にあたるものを定義しよう. $n$次の正方行列$A$に対して
+            \begin{equation}
+                AX=XA=E \label{eq:線形代数:逆行列の定義}
+            \end{equation}
+            となる行列$X$が存在するとき, $A$を\textbf{正則行列}\index{せいそくぎょうれつ@正則行列}といい, $X$を
+            $A$の\textbf{逆行列}\index{ぎゃくぎょうれつ@逆行列}という. ある正方行列に対して, その逆行列が必ず存在するわけではないが, 
+            存在するとすればそれは唯一である. 実際$X,X'$ともに$A$の逆行列であれば
+            \begin{equation*}
+                X=XE=X(AY)=(XA)Y=EY=Y
+            \end{equation*} 
+            となる. そこで, $A$の逆行列を$A^{-1}$と表すことにする. 実は, $AX=E(\text{もしくは}XA=E)$であれば$A$は正則で, $X=A^{-1}$である. これに今回重点を置いていないから, この証明は
+            省略する. 適当な線形代数の本をあたってほしい.
+
+            重要なのは, 次の性質である.
+            \begin{align}
+                (A^{-1})^{-1}=A \label{eq:線形代数:逆行列の逆行列}\\
+                (AB)^{-1}=B^{-1}A^{-1} \label{eq:線形代数:積の逆行列}
+            \end{align}
+            ただし, $A,B$は正則行列である.
+            \begin{proof} 仮定より, $A,B$は正則行列であって, 同じ型である.
+                \begin{enumerate}
+                    \item \eqref{eq:線形代数:逆行列の逆行列}の証明.\\
+                    $A$が正則であるから, $AA^{-1}=A^{-1}A=E$となる$A^{-1}$が存在する. したがって, $A^{-1}$は正則である. また, $A^{-1}$の逆行列は$A$である.
+                    よって$(A^{-1})^{-1}=A$である.
+                    \item \eqref{eq:線形代数:逆行列の逆行列}の証明.\\
+                    $(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AEA^{-1}=AA^{-1}=E$であり, 同様に$(B^{-1}A^{-1})(AB)=E$が成り立つ.
+                    したがって,$B^{-1}A^{-1}$は$AB$の逆行列である.
+                \end{enumerate}
+            \end{proof}
+
+            一般の正方行列の逆行列を求める方法についてはまた後で述べるとして, ここでは2次の正方行列の逆行列の公式を提示する.
+            \begin{screen}
+            2次の正方行列$\displaystyle A=\begin{pmatrix}a & b \\ c & d\end{pmatrix}$が正則である必要十分条件は, $ad-bc\neq 0$であり, このとき
+            \begin{equation}
+                A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d & -b \\ -c & a\end{pmatrix} \label{eq:線形代数:2次の正方行列の逆行列}
+            \end{equation}
+            が成り立つ.
+            \end{screen}
+            \eqref{eq:線形代数:2次の正方行列の逆行列}が本当に逆行列になっているかは実際に行列の積を求めてみればわかる.
+
+            行列は, 連立一次方程式の解を求める際に用いることができる. しかし, それは微分積分の範囲ではないのでここでは述べない. これも適当な本をあたってほしい.
+            \clearpage
+            最後に, 線形変換について少しだけ述べておこう. ここではベクトルの成分表示として列ベクトルを用いることにする.
+
+            ベクトル$\bm{x}=\begin{pmatrix}x\\y\end{pmatrix}$と$\bm{x}'=\begin{pmatrix}x'\\y'\end{pmatrix}$との間に, 次の関係が成り立っていたとしよう.
+            \begin{equation}
+                \bm{x}'=A\bm{x}=\begin{pmatrix}a & b \\ c& d\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix} \label{eq:線形代数:線形変換の定義}
+            \end{equation}
+            これをベクトル$\bm{x}$から$\bm{x}'$への写像と捉えて, \textbf{線形変換}\index{せんけいへんかん@線形変換}という. このときの行列$A$を\textbf{線形変換行列}\index{せんけいへんかんぎょうれつ@線形変換行列}という.
+
+            線形変換と線形変換行列は異なるものであり, 線形変換を行列で表現したものが線形変換行列である. 実は一般の線形変換の定義は少し違う. 線形変換は次の二つの性質\footnote{この性質を\textbf{線形性}という.}を持つ
+            ベクトルからベクトルへの写像と定義される.
+            \begin{align}
+                f(\bm{x}+\bm{y})=f(\bm{x})+f(\bm{y}) \\
+                f(c\bm{x})=cf(\bm{x})
+            \end{align}
+            しかし, \eqref{eq:線形代数:線形変換の定義}の変換は上記の二つの性質を満たすから, これを線形変換といっても何の問題もないのである. さらに, 全ての線形変換は\eqref{eq:線形代数:線形変換の定義}の
+            表式で表されることも証明される. すなわち, 全ての線形変換には対応する線形変換行列が存在して, その変換を行列で表すことが可能なのである. この証明は演習問題としよう.\\
+
+            線形変換には様々なものが考えられるが, 中でも重要なのが次の回転を表す行列である.
+            \begin{equation}
+                \begin{pmatrix}
+                    \cos\theta & -\sin\theta \\
+                    \sin\theta & \cos\theta
+                \end{pmatrix}\label{eq:線形代数:回転行列}
+            \end{equation}
+            xy平面上のすべての点について, 位置ベクトルが存在することは以前述べた. この線形変換によって, 位置ベクトルを$\theta$だけ原点回りに反時計回りに回転させることができる.
+            すなわち, xy平面上の点を回転させることが可能になるのである. 
+
+            \begin{proof}
+                まず, $\bm{x}=^t\!(x,y)=^t\!(r\cos\theta_0,r\sin\theta_0)$と表しておく. このとき, $\bm{x}'=^t\!(r\cos(\theta+\theta_0),r\sin(\theta+\theta_0))$である.
+                $\bm{x}'$の各成分を加法定理を用いて変形すると
+                \begin{align*}
+                    x'=r\cos\theta\cos\theta_0-r\sin\theta\sin\theta_0=x\cos\theta-y\sin\theta\\
+                    y'=r\sin\theta\cos\theta_0+r\cos\theta\sin\theta_0=x\sin\theta+y\cos\theta
+                \end{align*}
+                よって
+                \begin{equation*}
+                    \bm{x}'=\begin{pmatrix}
+                        x\cos\theta-y\sin\theta\\
+                        x\sin\theta+y\cos\theta
+                    \end{pmatrix}
+                    =\begin{pmatrix}
+                        \cos\theta & -\sin\theta \\
+                        \sin\theta & \cos\theta
+                    \end{pmatrix}
+                    \begin{pmatrix}
+                        x\\y
+                    \end{pmatrix}
+                \end{equation*}
+                したがって\eqref{eq:線形代数:回転行列}が求める行列である.
+                \begin{figure*}[h]
+                    \centering
+                    \begin{tikzpicture}
+                        \draw[->] (-0.5,0) -- (1.5,0);
+                        \draw[->] (0,-0.5) -- (0,1.5);
+                        \draw (0,0) coordinate (O); 
+                        \draw (1,0.2) coordinate (X);
+                        \draw (0.2,1) coordinate (Y);
+                        \draw (1.02,0) coordinate (P);
+                        \draw[-latex] (0,0) -- (X);
+                        \draw[-latex] (0,0) -- (Y);
+                        \draw pic["$\theta$", draw, ->, font=\footnotesize, angle eccentricity=1.7, angle
+                        radius=0.2cm] {angle=X--O--Y};
+                        \draw pic["", draw, ->, font=\footnotesize, angle eccentricity=2, angle
+                        radius=1.02cm] {angle=X--O--Y};
+                        \node[right] at (X) {$P$};
+                        \fill (X) circle (0.05);
+                        \node[above] at (Y) {$P'$};
+                        \fill (Y) circle (0.05);
+                        \node[right] at (1.5,0) {$x$};
+                        \node[left] at (0,1.5) {$y$};
+                        \node[below left] at (0,0) {$O$};
+                    \end{tikzpicture}
+                \end{figure*}
+            \end{proof}
+        \clearpage
+        \subsection{行列式}
+
     \clearpage
     \section{偏微分}
         多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
     \clearpage
     \section{多重積分}
-        多重積分についてまず二重積分についてその定義を話す. かんたんな計算ののちに三重積分も述べる. その後, 変数返還について, 一次変換の場合について厳密な証明を行い, 
+        多重積分についてまず二重積分についてその定義を話す. かんたんな計算ののちに三重積分も述べる. その後, 変数変換について, 一次変換の場合について厳密な証明を行い, 
         それ以外は感覚的なものにとどめる.
+
     \clearpage
     
     \part{ベクトル解析}
