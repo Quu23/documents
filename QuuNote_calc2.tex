@@ -1866,8 +1866,38 @@
                 \end{equation*} 
                 以上より$|AB|=|A||B|$が示された.
             \end{proof}
+            \clearpage
+            行列式を用いて, 二つの平面ベクトルが作る面の面積を求めることができる.\footnote{これはベクトル解析で述べる外積を用いればより一般に求められる.} 二つのベクトル$\bm{a},\bm{b}$のなす角度をなす角度を$\theta$とすると, 
+            作られる面は平行四辺形であるから, $S=\left||\bm{a}||\bm{b}|\sin\theta\right|$となる. 絶対値記号は都合が悪いから, 両辺を二乗すると,
+            $S^2=|\bm{a}|^2|\bm{b}|^2\sin^2\theta=|\bm{a}^2||\bm{b}^2|(1-\cos^2\theta)$となる.
+            ここで, $\bm{a}=(a_x,a_y),\bm{b}=(b_x,b_y)$と置くと
+            \begin{align*}
+                S^2&=(a_x^2+a_y^2)(b_x^2+b_y^2)\left(1-\frac{(a_xb_x+a_yb_y)^2}{(a_x^2+a_y^2)(b_x^2+b_y^2)}\right)=(a_x^2+a_y^2)(b_x^2+b_y^2)-(a_xb_x+a_yb_y)^2\\
+                &=a_x^2b_y^2+a_y^2b_x^2-2a_xa_yb_xb_y=(a_xb_y-a_yb_x)^2
+            \end{align*}
+            となるから, 求める面積は
+            \begin{equation}
+                S=|a_xb_y-a_yb_x|=\left|\det\begin{pmatrix}
+                    a_x & a_y \\ b_x & b_y
+                \end{pmatrix}\right| \label{eq:線形代数:二つのベクトルがなす面の面積}
+            \end{equation}
+            となる. つまり, $\bm{a},\bm{b}$の二つのベクトルがなす面の面積は, 二つのベクトルの成分を横に並べてできる行列の行列式の絶対値に等しい.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \fill[gray!20] (0,0) coordinate (O) -- (2,0.5) coordinate(A) -- (2.5,2.5) -- (0.5,2) coordinate (B) -- (0,0);
+                    \draw[-latex] (0,0) -- (2,0.5);
+                    \draw[-latex] (0,0) -- (0.5,2);
+                    \node[below] at (1,0.25) {$\bm{a}$};
+                    \node[left] at (0.25,1) {$\bm{b}$};
+                    \draw pic["$\theta$", draw, <->, font=\footnotesize, angle eccentricity=1.2, angle
+                    radius=1cm] {angle=A--O--B};
+                \end{tikzpicture}
+                \caption{二つのベクトルがなす面}
+            \end{figure}
         \clearpage
         \subsection{余因子展開}
+            最後に, 余因子展開について述べよう.
     \clearpage
     \section{偏微分}
         多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
