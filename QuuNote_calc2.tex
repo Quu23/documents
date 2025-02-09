@@ -1577,8 +1577,8 @@
             線形変換と線形変換行列は異なるものであり, 線形変換を行列で表現したものが線形変換行列である. 実は一般の線形変換の定義は少し違う. 線形変換は次の二つの性質\footnote{この性質を\textbf{線形性}という.}を持つ
             ベクトルからベクトルへの写像と定義される.
             \begin{align}
-                f(\bm{x}+\bm{y})=f(\bm{x})+f(\bm{y}) \\
-                f(c\bm{x})=cf(\bm{x})
+                f(\bm{x}+\bm{y})=f(\bm{x})+f(\bm{y}) \label{eq:線形代数:線形変換の条件1}\\
+                f(c\bm{x})=cf(\bm{x}) \label{eq:線形代数:線形変換の条件2}
             \end{align}
             しかし, \eqref{eq:線形代数:線形変換の定義}の変換は上記の二つの性質を満たすから, これを線形変換といっても何の問題もないのである. さらに, 全ての線形変換は\eqref{eq:線形代数:線形変換の定義}の
             表式で表されることも証明される. すなわち, 全ての線形変換には対応する線形変換行列が存在して, その変換を行列で表すことが可能なのである. この証明は演習問題としよう.\\
@@ -2032,6 +2032,45 @@
                 \end{pmatrix}
             \end{equation*}
             と求まる.
+    \clearpage
+    \basicquestion 以下の問いに答えよ。
+
+        \subsubsection*{問1} ベクトルの計算問題を解いてみよう. $\bm{a}=(1,2),\bm{b}=(3,5),\bm{c}=(-3,-5)$とする.\\
+            $(1)\bm{a}+\bm{b}$\hspace{1mm}
+            $(2)\bm{a}-\bm{c}$\hspace{1mm}
+            $(3)\bm{a}\cdot\bm{b}$\hspace{1mm}
+            $(4)(\bm{a}+\bm{c})^2$\hspace{1mm}
+            $(5)(\bm{a}\cdot\bm{c})\bm{b}-(\bm{a}\cdot\bm{b})\bm{c}$\hspace{1mm}
+            $(6)$ベクトル$\bm{p}=(8,15)$を正規化せよ.
+
+        \subsubsection*{問2} 次の二つのベクトルのなす角度を求めよ.\\
+            $(1)\bm{a}=(2,1),\bm{b}=(-1,-2)$\hspace{1mm}
+            $(2)\bm{a}=(\sqrt{3},-2),\bm{b}=(\sqrt{3},5)$
+
+        \subsubsection*{問3}$A=\begin{pmatrix}4 & 6\\2 & 3\end{pmatrix},B=\begin{pmatrix}3 & -6\\-4 & 8\end{pmatrix}$であるとき, $A+B,2A-3B,AB,BA$を求めよ.
+        
+        \subsubsection*{問4}$f$が線形変換である, つまり\eqref{eq:線形代数:線形変換の定義}であることと, $f$が\eqref{eq:線形代数:線形変換の条件1},\eqref{eq:線形代数:線形変換の条件2}を満たすことは同値であることを, 2次元の場合で証明せよ.
+
+        \subsubsection*{問5}次の行列式を計算せよ.\\
+            $(1)\begin{vmatrix}3 & 2 \\ 4 & 1\end{vmatrix}$\hspace{1mm}
+            $(2)\begin{vmatrix}2 & -1\\ 3 & 1\end{vmatrix}$\hspace{1mm}
+            $(3)\begin{vmatrix}2 & -1 & 6 \\ 5 & 0 & 1 \\ 3 & 2 & 4\end{vmatrix}$\hspace{1mm}
+            $(4)\begin{vmatrix}1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9\end{vmatrix}$\hspace{1mm}
+            $(5)\begin{vmatrix}0 & 2 & 0 & 0 \\ 3 & 5 & 0 & 0 \\ 0 & 0 & \pi &4 \\ 0 & 0 & 2\pi & 3\end{vmatrix}$\hspace{1mm}
+            $(6)\begin{vmatrix}3 & -2 & 5 & 1 \\ 1 & 3 & 2 & 5 \\ 2 & -5 & -1 & 4 \\ -3 & 2 & 3 & 2\end{vmatrix}$
+        \subsubsection*{問6}$|A|=3$であるとき$|5A|$を求めよ.
+
+        \subsubsection*{問7}行列式の交代性を証明せよ.
+
+        \subsubsection*{問8}$A=\begin{pmatrix}
+            3 & 1 & 2\\
+            3 & 2 & 1\\
+            4 & 2 & 3
+        \end{pmatrix}$が正則かどうかを調べ, 正則であれば逆行列を求めよ.
+        \vspace{-0.5cm}
+
+        \subsubsection*{問9} 2次の正方行列$A=\begin{pmatrix}1 & 2\\-1 & 4\end{pmatrix}$について, $A\bm{x}=\lambda\bm{x}$を満たす実数$\lambda$および列ベクトル$\bm{x}$を求めよ. このときの$\lambda$を$A$の
+        \textbf{固有値}\index{こゆうち@固有値}, $\bm{x}$を固有値$\lambda$に対する\textbf{固有ベクトル}\index{こゆうべくとる@固有ベクトル}という. 
     \clearpage
     \section{偏微分}
         多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
