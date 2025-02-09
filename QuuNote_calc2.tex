@@ -1897,7 +1897,141 @@
             \end{figure}
         \clearpage
         \subsection{余因子展開}
-            最後に, 余因子展開について述べよう.
+            最後に, 余因子展開について述べよう. $n$次正方行列$A$の第$i$行, 第$j$列を除いてできる$n-1$次の行列式を, $a_{ij}$に対する\textbf{小行列式}\index{しょうぎょうれつしき@小行列式}といい, 
+            これに符号$(-1)^{i+j}$をかけたものを$A$の$a_{ij}$に対する\textbf{余因子}\index{よいんし@余因子}という. 以降余因子は$\tilde{A}_{ij}$と書くことにする.\\
+
+            余因子を用いて行列式を展開することができる. $A$を$n$次の正方行列とすれば
+            \begin{align}
+                |A|&=a_{1j}\tilde{A}_{1j}+a_{2j}\tilde{A}_{2j}+\cdots+a_{nj}\tilde{A}_{nj}\quad &(j=1,2,\dots,n) \label{eq:線形代数:列に関する余因子展開}\\
+                |A|&=a_{i1}\tilde{A}_{i1}+a_{i2}\tilde{A}_{i2}+\cdots+a_{in}\tilde{A}_{in}\quad &(i=1,2,\dots,n) \label{eq:線形代数:行に関する余因子展開}
+            \end{align}
+            が成り立つ. これらはそれぞれ第$j$列, 第$i$行に関する\textbf{余因子展開}\index{よいんしてんかい@余因子展開}という.
+            \begin{proof}
+                \eqref{eq:線形代数:列に関する余因子展開}を証明すれば, 転置行列を取って\eqref{eq:線形代数:行に関する余因子展開}も示される. よって, \eqref{eq:線形代数:列に関する余因子展開}のみ示す.
+                $j=1$の場合をまず示そう. 行列の多重線形性\eqref{eq:線形代数:行列式の和}より
+                \begin{equation*}
+                    |A|=
+                    \begin{vmatrix}
+                        a_{11} & a_{12} & \cdots & a_{1n}\\
+                        0 & a_{22} & \cdots & a_{2n}\\
+                        \hdotsfor{4}\\
+                        0 & a_{n2} & \cdots & a_{nn}
+                    \end{vmatrix}
+                    +\begin{vmatrix}
+                        0 & a_{12} & \cdots & a_{1n}\\
+                        a_{21} & a_{22} & \cdots & a_{2n}\\
+                        \hdotsfor{4}\\
+                        0 & a_{n2} & \cdots & a_{nn}
+                    \end{vmatrix}
+                    +\cdots
+                    +\begin{vmatrix}
+                        0 & a_{12} & \cdots & a_{1n}\\
+                        0 & a_{22} & \cdots & a_{2n}\\
+                        \hdotsfor{4}\\
+                        a_{n1} & a_{n2} & \cdots & a_{nn}
+                    \end{vmatrix}
+                \end{equation*}
+                ここで, 各行列式の$1$列目のうち, $0$でない要素$a_{m1}$を$(1,1)$成分に移動させると, $(-1)^{m-1}$の符号をかければよいから
+                \begin{equation*}
+                    \begin{vmatrix}
+                        a_{11} & a_{12} & \cdots & a_{1n}\\
+                        0 & a_{22} & \cdots & a_{2n}\\
+                        \hdotsfor{4}\\
+                        0 & a_{n2} & \cdots & a_{nn}
+                    \end{vmatrix}
+                    -\begin{vmatrix}
+                        a_{21} & a_{22} & \cdots & a_{2n}\\
+                        0 & a_{12} & \cdots & a_{1n}\\
+                        \hdotsfor{4}\\
+                        0 & a_{n2} & \cdots & a_{nn}
+                    \end{vmatrix}
+                    +\cdots
+                    +(-1)^{n-1}\begin{vmatrix}
+                        a_{n1} & a_{n2} & \cdots & a_{nn}\\
+                        0 & a_{12} & \cdots & a_{1n}\\
+                        \hdotsfor{4}\\
+                        0 & a_{(n-1)2} & \cdots & a_{(n-1)n}\\
+                    \end{vmatrix}
+                \end{equation*}
+                ここで, \eqref{eq:線形代数:行列式の簡単化}を用いれば
+                \begin{equation*}
+                    a_{11}\begin{vmatrix}
+                        a_{22} & \cdots & a_{2n}\\
+                        \hdotsfor{3}\\
+                        a_{n2} & \cdots & a_{nn}
+                    \end{vmatrix}
+                    -a_{21}\begin{vmatrix}
+                        a_{12} & \cdots & a_{1n}\\
+                        \hdotsfor{3}\\
+                        a_{n2} & \cdots & a_{nn}
+                    \end{vmatrix}
+                    +\cdots
+                    +(-1)^{n-1}a_{n1}\begin{vmatrix}
+                        a_{12} & \cdots & a_{1n}\\
+                        \hdotsfor{3}\\
+                        a_{(n-1)2} & \cdots & a_{(n-1)n}\\
+                    \end{vmatrix}
+                \end{equation*}
+                よって, 次が得られる.
+                \begin{equation*}
+                    |A|=a_{11}\tilde{A}_{11}+a_{21}\tilde{A}_{21} +\cdots+ a_{n1}\tilde{A}_{n1}
+                \end{equation*}
+                一般の$j$列については, $j$列の要素を一番左に持っていき, 先ほどと同様行列の多重線形性から変形を行えばよい.
+            \end{proof}
+            余因子は, それ自身行列の計算において大切であるが, 逆行列を求める際にも用いることができる. そのための準備をしよう. 余因子$\tilde{A}_{\bm{j}\bm{i}}$(添え字に注意)を
+            $(i,j)$成分に持つ行列$\tilde{A}$を考える. これを$A$の\textbf{余因子行列}\index{よいんしぎょうれつ@余因子行列}という.
+            \begin{equation}
+                \tilde{A}
+                =\begin{pmatrix}
+                    \tilde{A}_{11} & \tilde{A}_{21} & \cdots & \tilde{A}_{n1} \\
+                    \tilde{A}_{12} & \tilde{A}_{22} & \cdots & \tilde{A}_{n2} \\
+                    \hdotsfor{4}\\
+                    \tilde{A}_{1n} & \tilde{A}_{2n} & \cdots & \tilde{A}_{nn}    
+                \end{pmatrix} \label{eq:線形代数:余因子行列の定義}
+            \end{equation}
+            ここで, 行列$A$と余因子行列$\tilde{A}$の積$A\tilde{A}$を考えてみる. すぐわかるように, 対角成分は$|A|$である. 
+            それ以外の成分は, `逆'余因子展開をして$n$次の行列式に直せば, どこかの行がまったく同一になる.\footnote{$(l,m)$成分は$a_{l1}\tilde{A}_{m1}+\cdots+a_{ln}\tilde{A}_{mn}$であり, これを`逆'余因子展開した時の$m$行目は$a_{l1},a_{l2},\dots,a_{ln}$であるが,
+            $m\neq l$のときは, この行列式の$l$行目も$a_{l1},a_{l2},\dots,a_{ln}$であり, 同一な行が現れる.}
+             \eqref{eq:線形代数:行列式の和}および\eqref{eq:線形代数:行列式の簡単化}
+            を用いれば, 2つの行が等しい行列式の値が0であることがわかり, これは$\tilde{A}A$でも同様のことが言えるから, 結局, 次のようになる.
+            \begin{equation}
+                A\tilde{A}=\tilde{A}A
+                =\begin{pmatrix}
+                |A| & 0 & \cdots & 0\\
+                0 & |A| & \cdots & 0\\
+                \hdotsfor{4}\\
+                0 & 0 & \cdots & |A|    
+                \end{pmatrix}
+                =|A|E \label{eq:線形代数:余因子行列との積}
+            \end{equation}
+            ここから, $|A|\neq 0$であれば, $A$の逆行列は$\frac{1}{|A|}\tilde{A}$であることがわかる. また, $A$が正則であれば, $1=|E|=|AA^{-1}|=|A||A^{-1}|$であるから, $|A|\neq 0$である. 
+            以上をまとめると, 次の結果が得られた.
+            \begin{screen}
+                正方行列$A$について, $A$が正則である必要十分条件は$|A|\neq 0$であり, このとき逆行列は
+                \begin{equation}
+                    A^{-1}=\frac{1}{|A|}\tilde{A} \label{eq:線形代数:逆行列の公式}
+                \end{equation}
+                で与えられる.
+            \end{screen}
+
+            例えば, 2次正方行列の逆行列は\eqref{eq:線形代数:2次の正方行列の逆行列}で与えていたが, これも\eqref{eq:線形代数:逆行列の公式}から導出できる. $A=\begin{pmatrix}a & b \\ c & d\end{pmatrix}$
+            であるとき, 各余因子は
+            \begin{align*}
+                \tilde{A}_{11} &= d \quad &&\tilde{A}_{12} = -c\\
+                \tilde{A}_{21} &= -b\quad &&\tilde{A}_{22} =a 
+            \end{align*}
+            であり, $|A|=ad-bc$であるから, 逆行列は$ad-bc\neq 0$
+            \begin{equation*}
+                A^{-1}
+                =\frac{1}{|A|}\begin{pmatrix}
+                    \tilde{A}_{11} & \tilde{A}_{21}\\
+                    \tilde{A}_{12} & \tilde{A}_{22}
+                \end{pmatrix}
+                =\frac{1}{ad-bc}\begin{pmatrix}
+                    d & -b \\ -c & a
+                \end{pmatrix}
+            \end{equation*}
+            と求まる.
     \clearpage
     \section{偏微分}
         多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
