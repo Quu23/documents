@@ -1642,7 +1642,230 @@
             \end{proof}
         \clearpage
         \subsection{行列式}
+            ここでは行列式を扱う. 行列式は, 歴史的には連立一次方程式を求める際に使われたのが初出とされる. それは17世紀のことであった. そこから行列式は幾何学的な応用や, ヤコビ行列式の表式など
+            様々なものに応用されている. 
 
+            さっそくであるが, 行列式の定義を述べようと思う. まず, $n$個の要素からなる$P=\{1,2,\cdots,n\}$という集合を考える. この要素に対して, 全単射の写像$\sigma:P\rightarrow P$を考える.
+            これは, $P$の要素$1,2,\cdots,n$\footnote{この$1,2,\cdots,n$は順序対$(1,2,\cdots,n)$と考えるとわかりやすい.}を並べ替える操作と考えることができ, この写像を\textbf{置換}\index{ちかん@置換}という.
+            特に, $2$個の文字だけを入れ替え, $n-2$個の文字は動かさないものを\textbf{互換}\index{ごかん@互換}という. 任意の置換は, いくつかの互換を繰り返すことで行うことができる. しかも, 任意の置換の互換の回数が
+            奇数回であるか偶数回であるかは, 与えられた置換によって決まり, 互換の順序によらない.\footnote{証明は斎藤正彦の線型代数入門pp.76-77が詳しい.}
+            よって, 置換$\sigma$が偶数回の互換で表せるとき, \textbf{偶置換}\index{ぐうちかん@偶置換}といい, 奇数回の互換で表せるとき, \textbf{奇置換}\index{きちかん@奇置換}という.
+
+            偶置換であるか奇置換であるかを区別するために, 次のように置換$\sigma$に符号をつけることにする.
+            \begin{equation}
+                \sign \sigma = \left\{\begin{array}{cc}
+                    +1 & (\sigma は偶置換) \\ -1 & (\sigma は奇置換)
+                \end{array}\right. \label{eq:線形代数:置換の定義}
+            \end{equation}
+            例えば, 置換$\sigma$が恒等写像であるときは, 0回の互換で行うことができるから, これは偶置換である. また, $n=4$として, 
+            \begin{equation*}
+                \sigma(k) = \left\{\begin{array}{cc}
+                    3 & (k=1) \\ 1 & (k=2) \\ 4 & (k=3) \\ 2 & (k=4)
+                \end{array}\right.
+            \end{equation*}
+            という置換を考えれば, $(3,1,4,2)\rightarrow(1,3,4,2)\rightarrow(1,2,4,3)\rightarrow(1,2,3,4)$のように置換されるから, これは奇置換である. 
+            \footnote{これは, 置換された状態から逆にもとの$(1,2,3,4)$に戻す互換を考えている. このように, $(1,2,3,4)$から置換するまでの互換の回数で考えても,置換されたものから元に戻すための互換の回数で考えてもよい.}\\
+            
+            これより, $n$次の正方行列$A$の\textbf{行列式}\index{ぎょうれつしき@行列式}は以下のように定められる.
+            \begin{equation}
+                |A|=\det A = \sum_{\sigma}\sign\sigma \cdot a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)} \label{eq:線形代数:行列式の定義}
+            \end{equation}
+            ただし, $\sum\limits_{\sigma}$は考えられる置換$\sigma$全てに対して和を取る記号である. また行列式は次のようにも書かれる.
+            \begin{equation}
+                \det A = \begin{vmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n} \\
+                    a_{21} & a_{22} & \cdots & a_{2n} \\
+                    \hdotsfor{4}\\
+                    a_{n1} & a_{n2} & \cdots & a_{nn}
+                \end{vmatrix} \label{eq:線形代数:行列式の表記}
+            \end{equation}
+
+            ためしに, $n=2$の場合を\eqref{eq:線形代数:行列式の定義}を用いて計算してみよう. 考えられる置換は$\sigma:(1,2),\sigma':(2,1)$であるから
+            \begin{equation*}
+                \begin{vmatrix}
+                    a_{11} & a_{12} \\ a_{21} & a_{22}
+                \end{vmatrix} = \sign\sigma \cdot a_{1\sigma(1)}a_{2\sigma(2)}+\sign\sigma'\cdot a_{1\sigma'(1)}a_{2\sigma'(2)}=+a_{11}a_{22}+(-1)a_{12}a_{21}=a_{11}a_{22}-a_{12}a_{21}
+            \end{equation*}
+            と計算される.
+            \clearpage
+            同様に3次の場合でも次のようになる.
+            \begin{equation*}
+                \begin{vmatrix}
+                    a_{11} & a_{12} & a_{13} \\ 
+                    a_{21} & a_{22} & a_{23} \\ 
+                    a_{31} & a_{32} & a_{33}
+                \end{vmatrix}
+                =
+                a_{11} a_{22} a_{33} + a_{12} a_{23} a_{31} + a_{13} a_{21} a_{32} 
+                - a_{13} a_{22} a_{31} - a_{12} a_{21} a_{33} - a_{11} a_{23} a_{32}                
+            \end{equation*}
+            これは, \textbf{サラスの方法}\index{さらすのほうほう@サラスの方法}という方法を用いることで計算することができる.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    % グリッドの作成
+                    \draw (0,0) rectangle (3,3);
+                    \draw (1,0) -- (1,3);
+                    \draw (2,0) -- (2,3);
+                    \draw (0,1) -- (3,1);
+                    \draw (0,2) -- (3,2);
+            
+                    % 右側に追加の列
+                    \draw[dashed] (3,0) rectangle (5,3);
+                    \draw[dashed] (4,0) -- (4,3);
+            
+                    % 行列の要素
+                    \node at (0.5,2.5) {$a_{11}$};
+                    \node at (1.5,2.5) {$a_{12}$};
+                    \node at (2.5,2.5) {$a_{13}$};
+                    \node at (0.5,1.5) {$a_{21}$};
+                    \node at (1.5,1.5) {$a_{22}$};
+                    \node at (2.5,1.5) {$a_{23}$};
+                    \node at (0.5,0.5) {$a_{31}$};
+                    \node at (1.5,0.5) {$a_{32}$};
+                    \node at (2.5,0.5) {$a_{33}$};
+            
+                    % 右側の複製部分
+                    \node at (3.5,2.5) {$a_{11}$};
+                    \node at (4.5,2.5) {$a_{12}$};
+                    \node at (3.5,1.5) {$a_{21}$};
+                    \node at (4.5,1.5) {$a_{22}$};
+                    \node at (3.5,0.5) {$a_{31}$};
+                    \node at (4.5,0.5) {$a_{32}$};
+            
+                    % 正の対角線（赤色）
+                    \draw[red, thick, ->] (0.3,2.8) -- (1.3,1.8);
+                    \draw[red, thick, ->] (1.3,1.8) -- (2.3,0.8);
+            
+                    \draw[red, thick, ->] (1.3,2.8) -- (2.3,1.8);
+                    \draw[red, thick, ->] (2.3,1.8) -- (3.3,0.8);
+            
+                    \draw[red, thick, ->] (2.3,2.8) -- (3.3,1.8);
+                    \draw[red, thick, ->] (3.3,1.8) -- (4.3,0.8);
+            
+                    % 負の対角線（青色）
+                    \draw[blue, thick, ->] (2.3,2.2) -- (1.3,1.2);
+                    \draw[blue, thick, ->] (1.3,1.2) -- (0.3,0.2);
+            
+                    \draw[blue, thick, ->] (3.3,2.2) -- (2.3,1.2);
+                    \draw[blue, thick, ->] (2.3,1.2) -- (1.3,0.2);
+            
+                    \draw[blue, thick, ->] (4.3,2.2) -- (3.3,1.2);
+                    \draw[blue, thick, ->] (3.3,1.2) -- (2.3,0.2);
+                \end{tikzpicture}
+                \caption{サラスの方法}
+            \end{figure}
+            この図において, 赤線を通る文字の積は$+$, 青線を通る文字の積は$-$の符号をつけてすべて足し合わせればよい. 
+            これは2次の場合でも同様にできるが, 4次以上の場合はできない.
+
+            通常, 4次以上の行列式は式変形を繰り返すことで次数の小さい行列式で表し, 計算していくことで求める. 
+            まずは, 行列式の基本的な性質についてみていこう. 基本的なのは, 次の二つである.
+            \begin{align}
+                \begin{vmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n} \\
+                    \hdotsfor{4}\\
+                    a_{k1}+a_{k1}' & a_{k2}+a_{k2}' & \cdots & a_{kn}+a_{kn}' \\
+                    \hdotsfor{4}\\
+                    a_{n1} & a_{n2} & \cdots & a_{nn}
+                \end{vmatrix}
+                &=\begin{vmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n} \\
+                    \hdotsfor{4}\\
+                    a_{k1} & a_{k2} & \cdots & a_{kn} \\
+                    \hdotsfor{4}\\
+                    a_{n1} & a_{n2} & \cdots & a_{nn}
+                \end{vmatrix}
+                +\begin{vmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n} \\
+                    \hdotsfor{4}\\
+                    a_{k1}' & a_{k2}' & \cdots & a_{kn}' \\
+                    \hdotsfor{4}\\
+                    a_{n1} & a_{n2} & \cdots & a_{nn}
+                \end{vmatrix}
+                \label{eq:線形代数:行列式の和}\\
+                \begin{vmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n} \\
+                    \hdotsfor{4}\\
+                    ca_{k1} & ca_{k2} & \cdots & ca_{kn} \\
+                    \hdotsfor{4}\\
+                    a_{n1} & a_{n2} & \cdots & a_{nn}
+                \end{vmatrix}
+                &=c\begin{vmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n} \\
+                    \hdotsfor{4}\\
+                    a_{k1} & a_{k2} & \cdots & a_{kn} \\
+                    \hdotsfor{4}\\
+                    a_{n1} & a_{n2} & \cdots & a_{nn}
+                \end{vmatrix}
+                \label{eq:線形代数:行列式のスカラー倍}
+            \end{align}
+            これらは, 行列式の列に関する\textbf{多重線形性}\index{たじゅうせんけいせい@多重線形性}という. 証明は定義\eqref{eq:線形代数:行列式の定義}から明らかであろう.
+            また, これらの性質は行に関しても言える. それを保証するのが, 次の転置行列に関する定理である.
+            \begin{screen}
+                正方行列$A$について$|A|=|{}^t\!A|$
+            \end{screen}
+            \begin{proof}
+                $A=(a_{ij}),{}^t\!A=(b_{ij})$とおく. このとき, $b_{ij}=a_{ji}$に注意する.
+                \begin{equation*}
+                    |{}^t\!A|=\sum_{\sigma} \sign\sigma\cdot b_{1\sigma(1)}b_{2\sigma(2)}\cdots b_{n\sigma(n)}=\sum_{\sigma} \sign\sigma\cdot a_{\sigma(1)1}a_{\sigma(2)2}\cdots a_{\sigma(n)n}
+                \end{equation*}
+                であり, $\sigma(1),\sigma(2),\cdots,\sigma(n)$の順番を$1,2,\cdots,n$となるように掛ける順番を変える.  
+                このとき, $\sigma$は全単射だから, 逆写像$\sigma^{-1}$が存在して, しかも全ての$\sigma$について和を取る場合と全ての$\sigma^{-1}$について和を取る場合とで取りうる置換は変わらず, $\sign\sigma=\sign\sigma^{-1}$であるから.
+                次のようになる.
+                \begin{equation*}
+                    \sum_{\sigma^{-1}} \sign\sigma^{-1}\cdot a_{1\sigma^{-1}(1)}a_{2\sigma^{-1}(2)}\cdots a_{n\sigma^{-1}(n)}=\sum_{\sigma} \sign\sigma\cdot a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}=|A|
+                \end{equation*}
+                以上より$|A|=|{}^t\!A|$が示された.
+            \end{proof}
+            \clearpage
+            次の公式は, 証明は簡単であるが, 行列式の計算で重宝する.
+            \begin{equation}
+                \begin{vmatrix}
+                    a_{11} & a_{12} & \cdots & a_{1n}\\
+                    0 & a_{22} & \cdots & a_{2n}\\
+                    \vdots & \hdotsfor{3}\\
+                    0 & a_{n2} & \cdots & a_{nn}
+                \end{vmatrix}
+                =a_{11}\begin{vmatrix}
+                    a_{22} & \cdots & a_{2n}\\
+                    \hdotsfor{3}\\
+                    a_{n2} & \cdots & a_{nn}
+                \end{vmatrix} \label{eq:線形代数:行列式の簡単化}
+            \end{equation}
+            \begin{proof}
+                左辺において, $\sigma(1)=1$以外の場合の置換の和は全て0である. $\sigma(1)=1$の場合, $\sigma(i)\quad(i=2,3,\dots,n)$の選び方は自由であるから
+                \begin{equation*}
+                    (左辺)=\sum\sign\sigma\cdot a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}=a_{11}\sum_{\sigma\mid\sigma(1)=1}\sign\sigma\cdot a_{2\sigma(2)}\cdots a_{n\sigma(n)}=(右辺)
+                \end{equation*}
+                したがって等式が成り立つ.
+            \end{proof}
+            当然\eqref{eq:線形代数:行列式の簡単化}は行についても成り立つ. 
+
+            行列式には多重線形性とは別に, もうひとつ重要な性質がある. 行列式の2つの行または2つの列を交換すると, 符号が変わる. これを行(または列の)\textbf{交代性}\index{こうたいせい@交代性}という.
+            この証明は簡単だから演習問題とする.\\
+
+            行列式について述べるからには, 次の定理について触れなければならないだろう.
+            \begin{screen}
+                二つの$n$次正方行列$A,B$について$|AB|=|A||B|$
+            \end{screen}
+            \begin{proof}
+                $A=(a_{ij}),B=(b_{ij})$とおく. このとき$AB=(\sum a_{ik}b_{kj})$である.
+                \begin{align*}
+                    |AB|&=\sum_{\sigma}\sign\sigma\cdot \left(\sum_{k_1}a_{1k_1}b_{k_1\sigma(1)}\right)\left(\sum_{k_2}a_{2k_2}b_{k_2\sigma(2)}\right)\cdots\left(\sum_{k_n}a_{nk_n}b_{k_n\sigma(n)}\right)\\
+                    &=\sum_{\sigma}\sign\sigma\cdot \sum_{k_1,k_2,\dots,k_n}a_{1k_1}b_{k_1\sigma(1)}a_{2k_2}b_{k_2\sigma(2)}\cdots a_{nk_n}b_{k_n\sigma(n)}
+                \end{align*}
+                ところで, 数字$k_1\sigma(1),k_2\sigma(2),\dots,k_n\sigma(n)$を並べ替えたものは, 和を取った時に打ち消しあう. したがって, $\sum$内の$k_1,k_2,\dots,k_n$は全て異なる値を取っていなければならない.
+                \footnote{$\sigma$の各値はそれぞれ互いに違う. 仮に$k_i=k_j(i\neq j)$であるとき, $\sigma(i)$と$\sigma(j)$だけ値を入れ替えた置換も存在するから, このときちょうど打ち消しあってしまう.}
+                すなわち, $\sum\limits_{k_1,k_2,\dots,k_n}$はある置換$k$の取りうる全ての和$\sum\limits_{k}$と考えてよい.  よって
+                \begin{equation*}
+                    \sum_{\sigma}\sum_{k}\sign\sigma\cdot a_{1k_1}b_{k_1\sigma(1)}a_{2k_2}b_{k_2\sigma(2)}\cdots a_{nk_n}b_{k_n\sigma(n)}=\sum_{k}a_{1k_1}a_{2k_2}\cdots a_{nk_n}\left(\sum_{\sigma}b_{k_1\sigma(1)}b_{k_2\sigma(2)}\cdots b_{k_n\sigma(n)}\right)
+                \end{equation*}
+                右辺の$(\hspace{1mm})$内は, $|B|$の行を並び変えたものである. このとき, 置換$k$が偶置換であるか奇置換であるかによって, $(\hspace{1mm})$の符号が変わる(行の交代性). これより
+                \begin{equation*}
+                    \sum_{k}a_{1k_1}a_{2k_2}\cdots a_{nk_n}\sign k|B|=|B|\sum_{k}\sign k\cdot a_{1k_1}a_{2k_2}\cdots a_{nk_n}=|A||B|
+                \end{equation*} 
+                以上より$|AB|=|A||B|$が示された.
+            \end{proof}
     \clearpage
     \section{偏微分}
         多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
