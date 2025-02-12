@@ -12,6 +12,8 @@
 \usepackage{okumacro}
 \usepackage{tikz}
 \usetikzlibrary{angles,quotes}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
 \usepackage{bm}
 \usepackage{ulem}
 
@@ -52,6 +54,8 @@
 
 \newcounter{basic_answer}\setcounter{basic_answer}{1}
 \newcommand{\basicanswer}{\noindent{\large 基本問題\hspace{1mm}\huge\fbox{\textbf{\arabic{basic_answer}}}\addtocounter{basic_answer}{1}}\thispagestyle{fancy}\lhead{基本問題解答}\rhead{\thepage}\cfoot{}\quad}
+
+\pgfplotsset{compat=newest} % 最新のpgfplots設定を使用
 
 \title{Quuノート　-微分積分\ajRoman{2}-}
 \date{最終更新 2025/01/10}
@@ -2074,6 +2078,149 @@
     \clearpage
     \section{偏微分}
         多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
+        \subsection{多変数関数}
+            これまで, 関数といえば一変数関数のことを指していた. しかし実際には一つのパラメータのみで表せる現象などは少ない. たいていの場合は, 複数のパラメータを持っているものである.
+            例えば, 物体の平面運動を考えるときは$x,y$の二つの編すが必要である. 理想気体の状態方程式に至っては, $PV=nRT$であるから, 例えば温度$T$に着目すれば$P,V,n$の三つの変数が
+            必要である.\footnote{$R$は気体定数であるから, これは変数ではない.}
+
+            このような複数の独立変数に対して, 一つの従属変数が決まるとき, この関数を多変数関数という. 独立変数を$x_1,x_2,\dots,x_n$, 従属変数を$y$, 多変数関数を$f$とするとき, $y=f(x_1,x_2,\dots,x_n)$
+            とかく.\footnote{お気づきの方も多いように, 本来であれば, $y=f((x_1,x_2,\dots,x_n))$と書くべきであるが, やはりこれも慣習なのだろう.}
+            以後, 主に二変数を扱っていくから, 独立変数に$x,y$, 従属変数に$z$を用いることにする.
+
+            多変数関数の例を見てみよう. もっとも簡単な例は, $z=x+y$である. これは平面を表す. 一般に, $a,b,c$を定数として, $z=ax+by+c$は平面を表す.
+            半径1の球の方程式は, $x^2+y^2+z^2=1$である. これを変形して$z=\sqrt{1-x^2-y^2}$は, 球の上半分を表す.
+            二変数関数のグラフは三次元空間上に描かれるから, これを描くのは困難である. 適当なグラフ描画ソフトで描画してみることをお勧めする. もちろん, 三変数以上の場合は絵を描くことすら困難である.
+
+            \begin{figure}[h]
+                \centering
+                \begin{minipage}[t]{0.45\textwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            view={45}{-30}, % 視点の設定
+                            axis lines=center, % 軸を中央に配置
+                            xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+                            domain=-1:1, y domain=-1:1, % 定義域の設定
+                            samples=20, % グリッドの細かさ
+                            enlargelimits=false, % 領域の拡大を防ぐ
+                            colormap/viridis % 色設定
+                        ]
+
+                            \addplot3[surf, opacity=0.6] 
+                                {x+y};
+                        \end{axis}
+                    \end{tikzpicture}
+                    \subcaption{平面$z=x+y$}
+                \end{minipage}
+                \begin{minipage}[t]{0.45\textwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \begin{axis}[
+                            view={-30}{-30}, % 視点の設定
+                            axis lines=center, % 軸を中央に配置
+                            xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+                            domain=-1:1, y domain=-1:1, % 定義域の設定
+                            samples=30, % グリッドの細かさ
+                            enlargelimits=false, % 領域の拡大を防ぐ
+                            colormap/viridis % 色設定
+                        ]
+                    
+                            \addplot3[surf, opacity=0.4] 
+                                {sqrt(max(0,1 - x^2 - y^2))};
+                        \end{axis}
+                    \end{tikzpicture}
+                    \subcaption{球面$z=\sqrt{1-x^2-y^2}$}
+                \end{minipage}
+                \caption{多変数関数のグラフの例}
+            \end{figure}
+        \clearpage
+        \subsection{偏微分}
+            さっそく, この節の題にもなっている偏微分について述べようと思う. 二変数関数$z=f(x,y)$に対して, 次の極限を考える.
+            \begin{equation}
+                \frac{\partial z}{\partial x} =\lim_{\Delta x\to 0}\frac{f(x+\Delta x,y)-f(x,y)}{\Delta x} \label{eq:偏微分:xについて偏微分} 
+            \end{equation}
+            これは, 複数の変数を持つ関数において, ただ一つの変数のみを変化させて, その変数に関して微分している. この場合は, $x$について変化させて微分しているから, 
+            この極限が存在するとき, $x$について\textbf{偏微分可能}\index{へんびぶんかのう@偏微分可能}であるといい, このときの微分を\textbf{偏微分}\index{へんびぶん@偏微分}という.
+            同様に, $y$について偏微分するとは
+            \begin{equation}
+                \frac{\partial z}{\partial y} =\lim_{\Delta y\to 0}\frac{f(x,y+\Delta y)-f(x,y)}{\Delta y} \label{eq:偏微分:yについて偏微分} 
+            \end{equation}
+            ということになる. これらは\textbf{偏導関数}\index{へんどうかんすう@偏導関数}とよばれる.
+
+            偏導関数の記法は様々なものがある.
+            \begin{equation}
+                \frac{\partial z}{\partial x},\quad \frac{\partial f}{\partial x},\quad f_x,\quad z_x,\quad D_x f,\quad \partial_x f,\quad\cdots
+            \end{equation}
+            これらはそれぞれ長所短所があるが, このノート中では特に拘泥せず使っていくことにする. ちなみに, $\partial$は$d$の変形であり, パーシャルやデル, または単にディーと読む.
+
+            例を挙げよう. $z=x+y$において, 偏導関数は$z_x=1,z_y=1$である. また, $z=\sqrt{1-x^2-y^2}$の偏導関数は$z_x=-x/\sqrt{1-x^2-y^2},z_y=-y/\sqrt{1-x^2-y^2}$となる.
+            偏微分する変数以外は定数とみなすことがポイントである.
+            
+            次に, 高階微分について考えてみよう. $f_x,f_y$はともに$x,y$の関数であるから, これらも偏微分することができるはずである. こうして得られる偏導関数を二階偏導関数という.
+            偏導関数には次の4種がある.
+            \begin{equation*}
+                f_{xx},\quad f_{xy},\quad f_{yx},\quad f_{yy} 
+            \end{equation*}
+            またこれらは次のようにも書かれる.
+            \begin{equation*}
+                \frac{\partial^2 f}{\partial x^2},\quad \frac{\partial^2 f}{\partial x\partial y},\quad \frac{\partial^2 f}{\partial y\partial x},\quad \frac{\partial^2 f}{\partial y^2}
+            \end{equation*}
+            先ほど例で挙げた関数について, 二階偏導関数を計算してみる. $z=x+y$の場合, $z_{xx}=0,z_{xy}=0,z_{yx}=0,z_{yy}=0$である. また, $z=\sqrt{1-x^2-y^2}$の場合, $z_{xx}=(y^2-1)/(1-x^2-y^2)^{3/2},z_{xy}=-xy/(1-x^2-y^2)^{3/2},z_{yx}=-xy/(1-x^2-y^2)^{3/2},z_{yy}=(x^2-1)/(1-x^2-y^2)^{3/2}$となる.
+            この例では$z_{xy}=z_{yx}$が成り立つことがわかる. これは偶然ではない. 実は, 次が成り立つ.
+            \begin{screen}
+                多変数関数$f$に対して, $f_{xy},f_{yx}$が連続ならば
+                \begin{equation}
+                    f_{xy}=f_{yx} \label{eq:偏微分:偏微分の交換}
+                \end{equation}
+                が成り立つ.
+            \end{screen}
+            しかも, これはより高階な場合でも同様に成り立つ. つまり, それぞれの偏導関数が連続ならば, それらの偏微分の順序は交換できるのだ.
+
+            しかしながら, 我々はまだ多変数関数の連続の定義に触れていなかった. そこで, 多変数の場合の極限と連続について述べておこう.
+            まずは, 極限についてである. 二変数関数$f(x,y)$の定義域内において, 点$P(x,y)$がこの領域内を移動し, 限りなくある点$A(a,b)$\footnote{この点は定義域内になくてもよい. 正確には, 定義域の閉包(領域と境界の和集合)上の点であればよい.}に近づくとき, 
+            それに伴い$f(P)=f(x,y)$が限りなく一定の値$\alpha$に近づくならば, $f(x,y)$には\textbf{極限}が存在し, その極限値は$\alpha$であるといい,
+            \begin{equation}
+                \lim_{(x,y)\rightarrow(a,b)}f(x,y)=\alpha \label{eq:偏微分:二変数関数の極限}
+            \end{equation}
+            とかく. $\varepsilon-\delta$風に書けば, $f$の定義域を$D$として
+            \begin{equation}
+                {}^\forall \varepsilon>0,{}^\exists \delta>0,{}^\forall(x,y)\in D \left[0<|x-a|<\delta,0<|y-b|<\delta\Rightarrow |f(x,y)-\alpha|<\varepsilon\right] \label{eq:偏微分:二変数関数の極限の定義}
+            \end{equation}
+            であろうか. 注意しなければならないのは, $P\rightarrow A$の近づき方が\underline{どんな近づき方であっても}, 同一の極限値に近づくという点である.
+            例えば, 
+            \begin{equation*}
+                f(x,y)=\frac{x}{x+y}
+            \end{equation*}
+            の原点への近づき方を考えている. 例えば, x軸に沿って近づける場合
+            \begin{equation*}
+                \lim_{(x,0)\rightarrow (0,0)}f(x,y)=\lim_{x\rightarrow 0}f(x,0)=\lim_{x\rightarrow 0}\frac{x}{x}=1
+            \end{equation*}
+            であるが, y軸に沿って近づける場合は
+            \begin{equation*}
+                \lim_{(0,y)\rightarrow (0,0)}f(x,y)=\lim_{y\rightarrow 0}f(0,y)=\lim_{y\rightarrow 0}0=0
+            \end{equation*}
+            となるから, 近づき方によって極限が異なる. この場合は極限値は存在しないということになる.
+
+            さて, 次は連続について述べよう. これも一変数の場合と同様である. 極限のときの記号をそのまま用いることにする. このとき, $f(x,y)$が定義域内の点$A(a,b)$で\textbf{連続}であるとは, 次の三つの条件を満たすことである.
+            \begin{enumerate}
+                \item $f(a,b)$が定義されている.
+                \item $\lim\limits_{(x,y)\to(a,b)}f(x,y)$が存在する.
+                \item $f(a,b)=\lim\limits_{(x,y)\to(a,b)}f(x,y)$である.
+            \end{enumerate}
+            先ほど例で上がった関数$f(x,y)$は明らかに原点で連続でない. 一方, 次のような関数ではどうだろう.
+            \begin{equation*}
+                f(x,y)=\left\{\begin{array}{cc}
+                    \displaystyle\frac{x^3+y^3}{x^2+y^2} & ((x,y)\neq (0,0))\\
+                    1 & ((x,y)=(0,0))
+                \end{array}\right.
+            \end{equation*}
+            実は, この場合でも原点で連続でない. $x=r\cos\theta,y=r\sin\theta$と置くと, 極限は$r\to 0$となる. よって
+            \begin{equation*}
+                \lim_{(x,y)\to(0,0)}f(x,y)=\lim_{r\to\infty}\frac{r^3(\cos^3\theta+\sin^2\theta)}{r^2}=\lim_{r\to 0}r(\cos^3\theta+\sin^3\theta)=0
+            \end{equation*}
+            となるから, 極限は存在して$0$である\footnote{厳密には, $\varepsilon-\delta$で確かめる必要がある.}が, $f(0,0)=1$であるからこれは連続でない. しかし, $f(0,0)=0$と定義しなおせば連続になる.
+        \clearpage
+        \subsection{全微分}
     \clearpage
     \section{多重積分}
         多重積分についてまず二重積分についてその定義を話す. かんたんな計算ののちに三重積分も述べる. その後, 変数変換について, 一次変換の場合について厳密な証明を行い, 
