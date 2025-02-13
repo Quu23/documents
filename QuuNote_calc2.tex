@@ -2077,7 +2077,7 @@
         \textbf{固有値}\index{こゆうち@固有値}, $\bm{x}$を固有値$\lambda$に対する\textbf{固有ベクトル}\index{こゆうべくとる@固有ベクトル}という. 
     \clearpage
     \section{偏微分}
-        多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数テイラー展開及び積分記号下の微分まで述べる.
+        多変数関数をまず具体例で挙げ, その後偏微分について解説する.二変数関数のTaylor展開及び積分記号下の微分まで述べる.
         \subsection{多変数関数}
             これまで, 関数といえば一変数関数のことを指していた. しかし実際には一つのパラメータのみで表せる現象などは少ない. たいていの場合は, 複数のパラメータを持っているものである.
             例えば, 物体の平面運動を考えるときは$x,y$の二つの編すが必要である. 理想気体の状態方程式に至っては, $PV=nRT$であるから, 例えば温度$T$に着目すれば$P,V,n$の三つの変数が
@@ -2291,6 +2291,70 @@
             結局, $\Delta z$を\eqref{eq:偏微分:Δzの式}で書くことができる. 
         \clearpage
         \subsection{合成関数の微分}
+            次は合成関数の微分について述べよう. 以下の議論ではすべて全微分\eqref{eq:偏微分:全微分}を用いる.\footnote{したがって, この議論では$f(x,y)$の全微分可能性は暗に仮定されているわけである.} もちろん従来通り増分と極限から導出することもできるが, 直感的に理解していきたい.
+
+            まずは, $z=f(x,y)$で, $x,y$がともに変数$t$の関数$x=x(t),y=y(t)$であるとしよう. このとき, $x(t),y(t)$がともに$t$で微分可能であれば, 次が成り立つ.
+            \begin{equation*}
+                dx=\frac{dx}{dt}dt,\quad dy=\frac{dy}{dt}dt
+            \end{equation*}
+            よって, $dz$は
+            \begin{equation*}
+                dz = \frac{\partial z}{\partial z}dx+\frac{\partial z}{\partial y}dy=\left(\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y}\frac{dy}{dt}\right)dt
+            \end{equation*}
+            一方, $z$は$t$の関数とみなせるから
+            \begin{equation*}
+                dz=\frac{dz}{dt}dt
+            \end{equation*}
+            上記二つの式を比較して
+            \begin{equation}
+                \frac{dz}{dt}=\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y}\frac{dy}{dt} \label{eq:偏微分:合成関数の微分t}
+            \end{equation}
+            が得られる. \\
+
+            今度は, $x=x(u,v),y=y(u,v)$であるとき, $x(u,v),y(u,v)$がともに\underline{全微分可能}\footnote{これは過剰な要請である. 実際は$x(u,v),y(u,v)$は$u,v$で偏微分可能であればよい.}であれば
+            \begin{equation*}
+                dx=\frac{\partial x}{\partial u}du+\frac{\partial x}{\partial v}dv,\quad dy=\frac{\partial y}{\partial u}du+\frac{\partial y}{\partial v}dv
+            \end{equation*}
+            よって, $dz$は
+            \begin{equation*}
+                dz=\left(\frac{\partial z}{\partial x}\frac{\partial x}{\partial u}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial u}\right)du+\left(\frac{\partial z}{\partial y}\frac{\partial y}{\partial v}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial v}\right)dv
+            \end{equation*}
+            一方, $z$は$u,v$の関数とみなせるから
+            \begin{equation*}
+                dx=\frac{\partial z}{\partial u}du+\frac{\partial z}{\partial v}dv
+            \end{equation*}
+            これより次の公式が得られる.
+            \begin{align}
+                \frac{\partial z}{\partial u}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial u}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial u} \label{eq:偏微分:合成関数の微分u}\\
+                \frac{\partial z}{\partial v}=\frac{\partial z}{\partial y}\frac{\partial y}{\partial v}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial v} \label{eq:偏微分:合成関数の微分v}
+            \end{align}
+            これらの公式も, もちろん多変数に拡張できる. 
+            \clearpage
+            ここで, 合成関数の微分の理解度を深めるために, 一つ例題を解いてみる. $z=f(x,y)$が$y/x$の関数である必要十分条件は
+            \begin{equation*}
+                x\frac{\partial z}{\partial x}+y\frac{\partial z}{\partial y}=0
+            \end{equation*}
+            であることを示そう. ただし, $f(x,y)$は全微分可能であるとする.\\
+
+            まずは, 十分条件から示そう. このとき, $z=g(t),t=y/x$と表せる. 一変数の合成関数の微分法より
+            \begin{equation*}
+                \frac{\partial z}{\partial x}=\frac{dg}{dt}\frac{\partial t}{\partial x}=-\frac{y}{x^2}\frac{dg}{dt},\quad \frac{\partial z}{\partial y}=\frac{dg}{dt}\frac{\partial t}{\partial y}=\frac{1}{x}\frac{dg}{dt}
+            \end{equation*}
+            であるから
+            \begin{equation*}
+                x\frac{\partial z}{\partial x}+y\frac{\partial z}{\partial y}=0
+            \end{equation*}
+            となる.
+
+            次に, 必要条件を示す. $z=h(u,v),u=x,v=y/x$とおく. このとき\eqref{eq:偏微分:合成関数の微分u},\eqref{eq:偏微分:合成関数の微分v}より, 次が成り立つ.
+            \begin{align*}
+                x\frac{\partial z}{\partial x}+y\frac{\partial z}{\partial y}&=x\frac{\partial h}{\partial u}\left(x,\frac{y}{x}\right)+x\frac{\partial h}{\partial v}\left(x,\frac{y}{x}\right)\cdot \left(-\frac{y}{x^2}\right)+xv\frac{\partial h}{\partial v}\left(x,\frac{y}{x}\right)\cdot \frac{1}{x}=x\frac{\partial h}{\partial u}\left(x,\frac{y}{x}\right)-\frac{y}{x}\frac{\partial h}{\partial v}\left(x,\frac{y}{x}\right)+v\frac{\partial h}{\partial v}\left(x,\frac{y}{x}\right)\\
+                &=x\frac{\partial h}{\partial u}\left(x,\frac{y}{x}\right)=0
+            \end{align*}
+            よって, $h_u=0$であるから, $h(u,v)$は$u$に無関係. すなわち, $z=f(x,y)$は$y/x$のみの関数である.
+            以上で証明完了.
+        \clearpage
+        \subsection{二変数関数のTaylor展開}
     \clearpage
     \section{多重積分}
         多重積分についてまず二重積分についてその定義を話す. かんたんな計算ののちに三重積分も述べる. その後, 変数変換について, 一次変換の場合について厳密な証明を行い, 
