@@ -2223,7 +2223,74 @@
             ここでは二変数の場合についてのみのべたが, 三変数以上でも同様であることを付記しておく.
         \clearpage
         \subsection{全微分}
-            ここでは, 全微分について述べる. 
+            ここでは, 全微分について述べる. 関数$z=f(z,y)$について, 点$P(x,y)$の近傍で考えてみよう. この点$P$より, $\Delta x,\Delta y$だけ動かしたとき, $z$の値はどれくらい変わるだろうか.
+            この変化の量を$\Delta z$と置けば, これはそれぞれの差を取ればよいから, $\Delta z=f(x+\Delta x,y+\Delta y)-f(x,y)$となる. ところで, $\Delta z$は, もちろん$x,y$によって変わってくるわけであるが, $\Delta x,\Delta y$
+            によっても変化するだろう. そこで, $\Delta z$が次のように書けたとする.
+            \begin{equation}
+                \Delta z = A(x,y)\Delta x+B(x,y)\Delta y+o(\rho) \label{eq:偏微分:Δzの式}
+            \end{equation}
+            ここで, $\rho = \sqrt{(\Delta x)^2+(\Delta y)^2}$であって, これは$P$と$(x+\Delta x,y+\Delta y)$との距離を表す.
+            なお, $o(\rho)$は$\rho\to 0$で$o(\rho)\to 0$を表す.\footnote{これは所謂\textbf{Landauの記号}\index{Landauのきごう@Landauの記号}であって, 正確には$f(x),g(x)$について, $x\to 0$のとき$f(x)/g(x)\to 0$であることを$f(x)=o(g(x))$であると書くのである.}
+            このとき, $z=f(x,y)$は点$P(x,y)$で\textbf{全微分可能}\index{ぜんびぶんかのう@全微分可能}, または単に微分可能であるという.
+
+            全微分可能であるならば, 偏微分可能である. 実際, $\Delta y=0$とすれば, $\rho=|\Delta x|\to 0$のとき
+            \begin{equation*}
+                \frac{\Delta z}{\Delta x}=A(x,y)+\varepsilon|\Delta x|\to A(x,y)
+            \end{equation*}
+            となる. またこのとき, $A(x,y)=z_x$である. $\Delta x=0$の場合も同様で, このとき, $B(x,y)=z_y$となる. もちろん, $z=f(x,y)$が$x,y$について
+            偏微分可能であっても, 全微分可能であるとは限らない. しかし, 次が成り立つ.
+            \begin{screen}
+                ある領域内で$z_{x}$と$z_{y}$が存在して(どちらか一方が)連続ならば, $z$はその領域内で全微分可能である.
+            \end{screen}
+            \begin{proof}
+                $z_{x}$が連続であるとしよう. まず, $\Delta z$を次のように変形する.
+                \begin{equation*}
+                    \Delta z = \left\{f(x+\Delta x,y+\Delta y)-f(x,y+\Delta y)\right\}+\left\{f(x,y+\Delta y)-f(x,y)\right\}
+                \end{equation*}
+                一項目は平均値の定理より
+                \begin{equation*}
+                    f(x+\Delta x,y+\Delta y)-f(x,y+\Delta y)=\Delta xf_{x}(x+\theta\Delta x,y+\Delta y) \quad (0<\theta<1)
+                \end{equation*}
+                しかも, $z_{x}=f_x$は連続である. 連続であれば, $f_x(x+\theta\Delta x,y+\Delta y)=f_{x}(x,y)+\varepsilon$と書ける. ただし, $\Delta x\to 0,\Delta y\to 0$で$\varepsilon\to 0$である.
+                \footnote{実際, $f_{x}$は連続であるから, $|f_{x}(x+\theta\Delta x,y+\Delta y)-f_{x}(x,y)|<\varepsilon$となるような$\delta>|\Delta x|,|\Delta y|$が存在する.}
+
+                一方で, $z_y$が存在するから, 二項目は
+                \begin{equation*}
+                    f(x,y+\Delta y)-f(x,y)=\Delta yf_y(x,y)+\Delta y\varepsilon'
+                \end{equation*}
+                とかいてよい. ただし, $\Delta y\to 0$で$\varepsilon'\to 0$である. 以上より, $\Delta z$は次のようになる.
+                \begin{equation*}
+                    \Delta z= f_{x}(x,y)\Delta x +f_{y}(x,y)\Delta y + \Delta x \varepsilon+\Delta y\varepsilon'
+                \end{equation*}
+                ここで, $|\Delta x|\leq\rho,|\Delta y|\leq\rho$が成り立つ. つまり, $|\Delta x\varepsilon+\Delta y\varepsilon'|\leq |\Delta x\varepsilon|+|\Delta y\varepsilon'|\leq(|\varepsilon|+|\varepsilon'|)\rho$が成立する. 
+                したがって, $\rho\to 0$で$\Delta x\varepsilon+\Delta y\varepsilon'\to 0$であるから, $z$は全微分可能である.
+            \end{proof}
+            \clearpage
+            さて, $z$が微分可能であるとき, $P(x,y)$に十分近ければ, $\Delta z\sim f_x\Delta x+f_y\Delta y$である. そこで, 次のように\textbf{全微分}\index{ぜんびぶん@全微分}を定義しよう.
+            \begin{equation}
+                dz = \frac{\partial z}{\partial x}\Delta x + \frac{\partial z}{\partial y}\Delta y \label{eq:偏微分:全微分の定義}
+            \end{equation}
+            すぐにわかるように, $z=x$と置けば, $dx=\Delta x$, $z=y$と置けば, $dy=\Delta y$であるから, \eqref{eq:偏微分:全微分の定義}は次のようになる.
+            \begin{equation}
+                dz = \frac{\partial z}{\partial x}dx + \frac{\partial z}{\partial y}dy \label{eq:偏微分:全微分}
+            \end{equation}
+            これはあくまで$\Delta z$の一次近似であるが, 少し頭を柔らかくして, これを$z$の``微小変化''と捉えることにする. そうすることで, 今後の議論が簡単になるし, 直感的にわかりやすくなる.\\
+
+            次に, $z=f(x,y)$の$(a,b)$における\textbf{接平面}\index{せつへいめん@接平面}を定義しよう. それは次のように定義される.
+            \begin{equation}
+                z-f(a,b)=f_{x}(a,b) (x-a) + f_{y}(a,b) (y-b) \label{eq:偏微分:接平面の定義}
+            \end{equation}
+            これは, $z=ax+by+c$の形であるから, 確かに平面を表す. また, $(a,b,f(a,b))$を通る平面でもある. 接平面は直感的には, 点$(a,b)$で$z=f(x,y)$と接する平面であるととらえることができる.
+            つまり, 一変数関数における接線に相当するものが, 接平面となる. 
+
+            $z=f(x,y)$が全微分可能であるとき, 接平面は存在する. また, $z=f(x,y)$に対して接平面が存在するとき, その点において全微分可能である. なぜなら, 接平面を$z=p(x,y)$と置けば
+            \begin{equation*}
+                \lim_{\rho \to 0}\{\Delta z - p(x,y)\} = 0
+            \end{equation*}
+            であるから, $\Delta z = p(x,y)+\varepsilon\rho\quad (\rho\to 0で\varepsilon\rho\to 0)$と表すことができ, $p(x,y)=f_{x}(a,b)(x-a)+f_{y}(a,b)(y-b)=f_{x}(a,b)\Delta x+f_{y}(a,b)\Delta y$であるから, 
+            結局, $\Delta z$を\eqref{eq:偏微分:Δzの式}で書くことができる. 
+        \clearpage
+        \subsection{合成関数の微分}
     \clearpage
     \section{多重積分}
         多重積分についてまず二重積分についてその定義を話す. かんたんな計算ののちに三重積分も述べる. その後, 変数変換について, 一次変換の場合について厳密な証明を行い, 
