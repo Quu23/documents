@@ -2373,7 +2373,7 @@
             \end{equation*}
             以上より, 次の\textbf{二変数関数の平均値の定理}\index{にへんすうかんすうのへいきんちのていり@二変数関数の平均値の定理}が得られる.
             \begin{equation}
-                f(a+h,b+k)=f(a,b)+hf_x(a+h\theta,b+k\theta)\quad (0<\theta<1)+kf_y(a+h\theta,b+k\theta) \label{eq:偏微分:二変数関数の平均値の定理}
+                f(a+h,b+k)=f(a,b)+hf_x(a+h\theta,b+k\theta)+kf_y(a+h\theta,b+k\theta) \quad (0<\theta<1) \label{eq:偏微分:二変数関数の平均値の定理}
             \end{equation}
 
             次に, Taylorの定理も考えよう. $f$は$n+1$回全微分可能であるとする. まず, 一変数の場合のTaylorの定理を先程の$F(t)$に適用する.
@@ -2554,7 +2554,45 @@
             が得られる.
         \clearpage
         \subsection{積分記号下の微分}
+            これが偏微分法の最後の小節である. 最後には積分も関連する応用を述べようと思う. ここで証明する定理は, 一部の複雑な積分を簡単に解くことができるようになる優れものである.
 
+            次のように, パラメータ$\alpha (\alpha_1\leq \alpha\leq \alpha_2)$を含む定積分
+            \begin{equation}
+                I(\alpha)=\int_a^b f(x,\alpha)dx
+            \end{equation}
+            を考える. このとき$a,b$は$x,\alpha$に依存しない定数とする. $f(x,\alpha)$と偏導関数$f_\alpha(x,\alpha)$が, 閉領域$a\leq x\leq b,\alpha_1\leq \alpha\leq \alpha_2$で連続ならば, 
+            平均値の定理\eqref{eq:偏微分:二変数関数の平均値の定理}を用いて
+            \begin{equation*}
+                f(x,\alpha+\Delta\alpha)-f(x,\alpha)=\Delta\alpha\frac{\partial f(x,\alpha+\theta\Delta\alpha)}{\partial\alpha} \quad (0<\theta<1)
+            \end{equation*}
+            が成り立つ. よって, $I(\alpha)$の増分$\Delta I$を考えれば
+            \begin{equation*}
+                \Delta I=I(\alpha+\Delta\alpha)-I(\alpha)=\int_{a}^{b}\{f(x,\alpha+\Delta\alpha)-f(x,\alpha)\}dx=\Delta\alpha\int_{a}^{b}\frac{\partial f(x,\alpha+\theta\Delta\alpha)}{\partial\alpha}dx
+            \end{equation*}
+            となる. $\Delta\alpha\to 0$の極限を取れば
+            \begin{equation}
+                \frac{dI}{d\alpha}=\int_{a}^{b} f_{\alpha}(x,\alpha)dx \label{eq:偏微分:積分記号下の微分}
+            \end{equation}
+            が得られた.\\
+
+            試しに, $\displaystyle\int_{0}^{\pi}\frac{dx}{\alpha-\cos x}=\frac{\pi}{\sqrt{\alpha^2-1}}\quad(\alpha>1)$から$\displaystyle\int_{0}^{\pi}\frac{dx}{(3-\cos x)^2}$を求めてみよう.
+            まず, 前の積分を$I(\alpha)$と置き, 両辺を微分して
+            \begin{equation*}
+                I'(\alpha) = \int_{0}^{\pi}\frac{\partial}{\partial\alpha}\left(\frac{1}{\alpha-\cos x}\right)dx = -\int_0^\pi\frac{dx}{(\alpha-\cos x)^2}
+            \end{equation*}
+            一方,
+            \begin{equation*}
+                \frac{d}{d\alpha}\left(\frac{\pi}{\sqrt{\alpha^2-1}}\right)=-\frac{\pi\alpha}{(\alpha^2-1)^{\frac{3}{2}}}
+            \end{equation*}
+            \eqref{eq:偏微分:積分記号下の微分}より
+            \begin{equation*}
+                \int_0^\pi\frac{dx}{(\alpha-\cos x)^2}=\frac{\pi\alpha}{(\alpha^2-1)^{\frac{3}{2}}}
+            \end{equation*}
+            $\alpha=3$とおくと
+            \begin{equation*}
+                \int_0^\pi\frac{dx}{(3-\cos x)^2}=\frac{3\pi}{(3^2-1)^{\frac{3}{2}}}=\frac{3\pi}{16\sqrt{2}} 
+            \end{equation*}
+        \clearpage
             
     \clearpage
     \section{多重積分}
