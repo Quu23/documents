@@ -2444,20 +2444,75 @@
                 f(x,y)-f(a,b)=\frac{1}{2}\left\{AX^2+2BXY+CY^2\right\}
             \end{equation*}
             我々が知りたいのは右辺の符号であるから, 二次式$AX^2+2BXY+CY^2$を考察すればよい. どのように調べてもよいが, せっかく行列の知識があるのだからここでは行列を用いて考える.
-            まず, 列ベクトル$\bm{x}={}^t\!(X,Y)$と行列$P=\begin{pmatrix}A & B \\ B & C\end{pmatrix}$を用いれば, 元の二次式は${}^t\!\bm{x}P\bm{x}$と書ける. 
+            まず, 列ベクトル$\bm{x}={}^t\!(X,Y)$と行列$H=\begin{pmatrix}A & B \\ B & C\end{pmatrix}$を用いれば, 元の二次式は${}^t\!\bm{x}H\bm{x}$と書ける. 
             以下$A\neq C$または$B\neq0$の場合を考えておく. このとき, $A$の固有値は
             \begin{equation*}
-                |P-\lambda E|=0 \leftrightarrow \lambda^2- (A+C)\lambda + (AC-B^2)=0
+                |H-\lambda E|=0 \leftrightarrow \lambda^2- (A+C)\lambda + (AC-B^2)=0
             \end{equation*}
-            を満たす. 最初の仮定より, この二次方程式の解は重複せず二つ存在し, それら$\lambda_1,\lambda_2$の固有ベクトルを$\bm{x}_1,\bm{x}_2$と置き, それらを並べた行列$(\bm{x}_1,\bm{x}_2)$を考えると, 以下が成り立つ.\footnote{まず固有値ベクトルの定義より$P(\bm{x}_1,\bm{x}_2)=(\lambda_1\bm{x}_1,\lambda_2\bm{x}_2)$であるから, あとは\eqref{eq:線形代数:2次の正方行列の逆行列}を用いてすぐに確かめられる.}
+            を満たす. 最初の仮定より, この二次方程式の解は重複せず二つ存在し, それら$\lambda_1,\lambda_2$の固有ベクトルを$\bm{x}_1,\bm{x}_2$と置き, それらを並べた行列$(\bm{x}_1,\bm{x}_2)$を考えると, 以下が成り立つ.\footnote{まず固有値ベクトルの定義より$H(\bm{x}_1,\bm{x}_2)=(\lambda_1\bm{x}_1,\lambda_2\bm{x}_2)$であるから, あとは\eqref{eq:線形代数:2次の正方行列の逆行列}を用いてすぐに確かめられる.}
             \begin{equation*}
-                \begin{pmatrix}\lambda_1 & 0 \\0 & \lambda_2\end{pmatrix}=(\bm{x}_1,\bm{x}_2)^{-1}P(\bm{x}_1,\bm{x}_2)
+                \begin{pmatrix}\lambda_1 & 0 \\0 & \lambda_2\end{pmatrix}=(\bm{x}_1,\bm{x}_2)^{-1}H(\bm{x}_1,\bm{x}_2)
             \end{equation*}
             ところで, 上式において$(\bm{x}_1,\bm{x}_2)$の代わりに$\bm{x}_1,\bm{x}_2$を正規化した$\bm{e}_1,\bm{e}_2$を用いても結果は変わらない.
             そこで, $T=(\bm{e}_1,\bm{e}_2)$を用いて, 元の二次式${}^t\!\bm{x}P\bm{x}$に代入すれば
             \begin{equation*}
-                {}^t\!\bm{x}\left\{T\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2\end{pmatrix}T^{-1}\right\}\bm{x}
+                {}^t\!\bm{x}\left\{T\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2\end{pmatrix}T^{-1}\right\}\bm{x}={}^t\!({}^t\!T\bm{x})\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2\end{pmatrix}(T^{-1}\bm{x})
             \end{equation*}
+            が得られる.  さらに
+            \begin{equation*}
+                \lambda_2 \bm{x}_1\cdot\bm{x}_2={}^t\!\bm{x}_1(\lambda\bm{x}_2)={}^t\!\bm{x}_1P\bm{x}_2={}^t\!({}^t\!P\bm{x}_1)\bm{x_2}={}^t\!(P\bm{x}_1)\bm{x_2}={}^t\!(\lambda_1\bm{x}_1)\bm{x_2}=\lambda_1\bm{x}_1\cdot\bm{x}_2
+            \end{equation*}
+            より, $(\lambda_1-\lambda_2)\bm{x}_1\cdot\bm{x}_2$であり, $\lambda_1\neq \lambda_2$より$\bm{x}_1$と$\bm{x}_2$は直交する. したがって, $\bm{e}_1\cdot\bm{e}_2=0$.
+            これより
+            \begin{equation*}
+                {}^t\!TT=\begin{pmatrix}\bm{e}_1\cdot\bm{e}_1 & \bm{e}_1\cdot\bm{e}_2 \\ \bm{e}_1\cdot\bm{e}_2 & \bm{e}_2\cdot\bm{e}_2\end{pmatrix}=\begin{pmatrix}1 & 0 \\ 0 & 1\end{pmatrix}=E
+            \end{equation*}
+            だから, $T^{-1}={}^t\!T$である. これより元の式は
+            \begin{equation*}
+                {}^t\!({}^t\!T\bm{x})\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2\end{pmatrix}({}^t\!T\bm{x})
+            \end{equation*}
+            となる. さて, ここで$\bm{x}$の一次変換として, $\bm{x}'={}^t\!(X',Y')={}^t\!T\bm{x}$と置く. これより, 元の二次式は
+            \begin{equation*}
+                \lambda_1(X')^2+\lambda_2(Y')^2
+            \end{equation*}
+            となる. すなわち, この二次式の符号を見ればよい. 二次方程式の解の公式を用いれば
+            \begin{equation*}
+                \lambda_1,\lambda_2=\frac{A+C\pm\sqrt{(A+C)^2-4(AC-B^2)}}{2}
+            \end{equation*}
+            であるから, $AC-B^2<0$のとき, $\lambda_1,\lambda_2$の符号は異なる. よって, $X',Y'$によって符号が変化するから点$(a,b)$は極値ではない.
+            一方, $AC-B^2>0$であれば, $\lambda_1,\lambda_2$は同一の符号を持っている. しかも, 点$(a,b)$でのみ$X,Y=0$より$X'=0,Y'=0$であるから極値を取りうる.
+            このとき$AC>0$であるから, $A,C$は同一の符号であって, $A>0$(もしくは$C>0$)であれば極小値, $A<0$(もしくは$C<0$)であれば極大値を取る.
+            $AC-B^2=0$であるときは, $\lambda_1,\lambda_2$のどちらか一方が必ず0であるから, 符号は$X',Y'$のどちらかに依存しない. よって例えば$\lambda_2=0$の場合では
+            二次式は$\lambda_1(X')^2$となるから, $X'=0$であるとき符号はない. $X'=0$となる$(X,Y)$は$(a,b)$以外にも存在する\footnote{一次変換であるから, $c_1,c_2$を定数として$X'=c_1X+c_2Y$の関係があるはずである. そのため, 定数$c$を用いて$X=-c_2c,Y=c_1c$であれば$X'=0$となってしまう.}
+            から, この場合は個別に極値を取るか調べなくてはならない.
+
+            次に, $A=C$かつ$B=0$の場合を考えよう. この場合はわざわざ上記のような回りくどいことをしなくても, 二次式は$AX^2+AY^2=A(X^2+Y^2)$となる.
+            この場合, $A\neq 0$であれば符号は確定して, 点$(a,b)$のときのみこの二次式は0となるから, 点$(a,b)$で極値を取る. 特に, $A>0$で極小値, $A<0$で極大値を取る.
+            \clearpage
+            ごちゃごちゃしてしまったので整理しよう. 上記の結果をまとめると, 次が得られる.
+            \begin{screen}
+                関数$z=f(x,y)$が点$(a,b)$で極値を取る必要条件\eqref{eq:偏微分:極値を取る必要条件}を満たすとき, $H=\begin{pmatrix}f_{xx}&f_{xy}\\f_{xy}&f_{yy}\end{pmatrix}$と置くと
+                \begin{enumerate}\renewcommand{\theenumi}{\roman{enumi}}\renewcommand{\labelenumi}{(\theenumi)}
+                    \item $\det H > 0$のとき
+                    \begin{enumerate}
+                        \item $f_{xx}<0$ならば, $(a,b)$で極大.
+                        \item $f_{xx}>0$ならば, $(a,b)$で極小.
+                    \end{enumerate}
+                    \item $\det H < 0$ならば, $(a,b)$で極値を取らない.
+                    \item $\det H = 0$のときは, 個別に調べなければならない.
+                \end{enumerate}
+            \end{screen}
+            この関数行列$H$は\textbf{Hesse行列}\index{Hesseぎょうれつ@Hesse行列}とよばれる. また, この行列式を取ったもの$\det H$はHessianという.\\
+
+            試しに, $f(x,y)=x^2+y^2$の極値を求めてみよう. $f_x=2x,f_y=2y$であるから, 極値を取り得る点は$(0,0)$である. $f_{xx}=2,f_{xy}=0,f_{yy}=4$であるから
+            $f_{xx}f_{yy}-(f_{xy})^2=4>0$であり, $f_{xx}>2$であるから, この関数は原点で極値を取り, これは極小値である.\\
+            同様に$f(x,y)=x^2+y^3$の極値も求めてみよう. $f_{x}=2x,f_{y}=3y^2$であるから, 極値を取り得る点は$(0,0)$である. $f_{xx}=2,f_{xy}=0,f_{yy}=6y$であるから, 
+            $f_{xx}f_{yy}-(f_{xy})^{2}=12y=0$となる. この場合は個別に調べなければならない. $x=0$として, $y$を動かすと, $y>0$で$f>0$, $y<0$で$f<0$となるから, 点$(0,0)$
+            では極値を取らない.\\
+
+            最後に, 関数の最大最小について触れておこう. 一般に, 与えられた領域上で関数が最大値もしくは最小値を取るとは限らない. しかし, 幸いにも, 一変数の場合と同様に関数が連続であれば, 閉区域内に
+            関数は最大値と最小値を必ず持つことが証明されている. この証明は位相空間論\footnote{``コンパクト''が重要らしいが, まだそこまでの理解は足りない.}の話だからここではこれを認めておく.
+            これより, 二変数関数の場合でも, 領域内で極値を求め, それを領域の境界上の点と比較すれば, その領域での最大最小が求められる.
 
             
     \clearpage
