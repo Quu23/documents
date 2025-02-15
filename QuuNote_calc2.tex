@@ -2542,6 +2542,16 @@
                 \frac{\partial z}{\partial x} = -\frac{F_{x}(x,y,z)}{F_z(x,y,z)},\quad \frac{\partial z}{\partial y}=-\frac{F_{y}(x,y,z)}{F_{z}(x,y,z)} \label{eq:偏微分:陰関数の微分F(x,y,z)}
             \end{equation}
             が成立する. この証明は先ほどの証明と同様にできるから, 演習問題とする.
+
+            $F(x,y,z)=0$は曲面を表すから, \eqref{eq:偏微分:陰関数の微分F(x,y,z)}を用いれば, この曲面上の点$(a,b,c)$の接平面を求めることができる. \eqref{eq:偏微分:接平面の定義} に\eqref{eq:偏微分:陰関数の微分F(x,y,z)}を代入して
+            \begin{equation*}
+                z-c=-\frac{F_x(a,b,c)}{F_z(a,b,c)}(x-a)-\frac{F_y(a,b,c)}{F_z(a,b,c)}(y-b)
+            \end{equation*}
+            両辺に$F_z(a,b,c)$をかけて整理すると
+            \begin{equation}
+                F_x(a,b,c)(x-a)+F_y(a,b,c)(y-b)+F_z(a,b,c)(z-c)=0 \label{eq:偏微分:陰関数の接平面}
+            \end{equation}
+            が得られる.
         \clearpage
         \subsection{積分記号下の微分}
 
