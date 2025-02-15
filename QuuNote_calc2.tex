@@ -519,7 +519,7 @@
             $\{x\in X\mid f(x)\in B\}$を$f$による$B$の\textbf{逆像}\index{ぎゃくぞう@逆像}または\textbf{原像}\index{げんぞう@原像}といい, $f^{-1}(B)$と表す. 明らかに, $f(A)\subset Y,f^{-1}(B)\subset X$である.
 
             例えば, $f:\mathbb{R}\rightarrow \mathbb{R};x\mapsto x^2$\footnote{このように, 写像の像を具体的に$x\mapsto f(x)$と書くことがある.}として, $f([0,1])=[0,1]$である. 一方, $f^{-1}([0,1])=[-1,1]$である. 
-            すなわち, この場合像と逆像は等しくない. 像も逆像も等しい例として, $f:\mathbb{R}\rightarrow \mathbb{R};x\mapsto x^3$がある. 先ほどと同じ部分集合の像を考えると$f([0,1])=[0,1]$であるし, $f^{-1}([0,1])=[0,1]$である.
+            すなわち, この場合像と逆像は等しくない. 像も逆像も等しい例として, $f:\mathbb{R}\rightarrow \mathbb{R};x\mapsto x^3$がある. 先ほどと同じ部分集合の像を考えると$f([0,1])=[0,1]$であるし, $f^{-1}([0,1])=[0,1]$である
             から, この場合確かに等しい.
             \clearpage
             像と逆像に関しては以下の公式が成り立つ. ただし, $f:X\rightarrow Y$とし, $A_1,A_2\subset X,B_1,B_2\subset Y$とする.
@@ -2354,7 +2354,64 @@
             よって, $h_u=0$であるから, $h(u,v)$は$u$に無関係. すなわち, $z=f(x,y)$は$y/x$のみの関数である.
             以上で証明完了.
         \clearpage
-        \subsection{二変数関数のTaylor展開}
+        \subsection{二変数関数のTaylorの定理}
+            一変数関数のときには, 平均値の定理やTaylorの定理など, 微分法に関する様々な定理を述べた. これらの定理は微分法で重要な位置を占めている. 当然, 二変数の場合も考えたくなるのが人間の性というものであろう. 
+            ここでは, 二変数関数の場合の平均値の定理と, Taylorの定理について述べていきたい.
+
+            まずは, 平均値の定理である. これは一変数の場合の平均値の定理から導出することができる. 全微分可能である関数$z=f(x,y)$と定数$a,b,h,k$を用いて, 一変数関数$F(t)$を次のように定める.
+            \footnote{このとき, $f$が$(a,b)$を含むある領域内で全微分可能であり, $(a+h,b+k)$とを結んだ直線もその領域内に含まれるという仮定が入っている. この仮定によってはじめて$F(t)$が$0\leq t\leq 1$において平均値の定理を適用できることが保障される.}
+            \begin{equation*}
+                F(t)=f(a+ht,b+kt)
+            \end{equation*}
+            ここで, 一変数の場合の平均値の定理を用いる.
+            \begin{equation*}
+                F(1)-F(0)=F'(\theta)\quad(0<\theta<1)
+            \end{equation*}
+            右辺の$F'$は, 合成関数の微分\eqref{eq:偏微分:合成関数の微分t}を用いれば
+            \begin{equation*}
+                F'(\theta)=f_x(a+h\theta,b+k\theta)\cdot h+f_y(a+h\theta,b+k\theta)\cdot k
+            \end{equation*}
+            以上より, 次の\textbf{二変数関数の平均値の定理}\index{にへんすうかんすうのへいきんちのていり@二変数関数の平均値の定理}が得られる.
+            \begin{equation}
+                f(a+h,b+k)=f(a,b)+hf_x(a+h\theta,b+k\theta)\quad (0<\theta<1)+kf_y(a+h\theta,b+k\theta) \label{eq:偏微分:二変数関数の平均値の定理}
+            \end{equation}
+
+            次に, Taylorの定理も考えよう. $f$は$n+1$回全微分可能であるとする. まず, 一変数の場合のTaylorの定理を先程の$F(t)$に適用する.
+            \begin{equation*}
+                F(t)=F(0)+F'(0)t+\frac{1}{2!}F''(0)t^2+\cdots+\frac{1}{n!}F^{(n)}(0)t^n+\frac{1}{(n+1)!}F^{(n+1)}(\theta t)t^{n+1}\quad (0<\theta<1)
+            \end{equation*}
+            $t=1$とすれば
+            \begin{equation*}
+                F(1)=F(0)+F'(0)+\frac{1}{2!}F''(0)+\cdots+\frac{1}{n!}F^{(n)}(0)+\frac{1}{(n+1)!}F^{(n+1)}(\theta)\quad (0<\theta<1)
+            \end{equation*}
+            ところで
+            \begin{equation*}
+                F'(t)=hf_x(a+ht,b+kt)+kf_y(a+ht,b+kt)=\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)f(a+ht,b+kt)
+            \end{equation*}
+            と書ける. 最後の記法は$\frac{\partial }{\partial x},\frac{\partial}{\partial y}$を形式的に取り扱ったものと捉えてもらえればよい. 時には便利な記法を導入することで簡潔に表すことができる, 
+            その一例を示そう. $F''$についても, 合成関数の微分を用いれば
+            \begin{equation*}
+                F''(t)=h^2f_{xx}(a+ht,b+kt)+2hkf_{xy}(a+ht,b+kt)+k^2f_{yy}(a+ht,b+kt)=\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)^2f(a+ht,b+kt)
+            \end{equation*} 
+            と書ける. 一般の$n$についても
+            \begin{equation*}
+                F^{(n)}(t)=\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)^nf(a+ht,b+kt)
+            \end{equation*}
+            と書けてしまう. 以上より, $F(1)$は
+            \begin{equation*}
+                F(1)=F(0)+\left(h\frac{\partial}{\partial x}+k+\frac{\partial }{\partial y}\right)f(a,b)+\cdots+\frac{1}{(n+1)!}\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)^{n+1}f(a+h\theta,b+k\theta)
+            \end{equation*}
+            したがって, \textbf{二変数関数のTaylorの定理}\index{にへんすうかんすうのTaylorのていり@二変数関数のTaylorの定理}が得られた.
+            \begin{equation}
+                f(a+h,b+k)=f(a,b)+\left(h\frac{\partial}{\partial x}+k+\frac{\partial }{\partial y}\right)f(a,b)+\cdots+\frac{1}{n!}\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)^{n}f(a,b)+R_{n+1}\label{eq:偏微分:二変数関数のテイラーの定理}
+            \end{equation}
+            ここで$R_{n+1}$は剰余項で, 次で与えられる.
+            \begin{equation}
+                R_{n+1}=\frac{1}{(n+1)!}\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)^{n+1}f(a+h\theta,b+k\theta) \quad (0<\theta<1)
+            \end{equation}
+        \clearpage
+        \subsection{極大極小}
+            
     \clearpage
     \section{多重積分}
         多重積分についてまず二重積分についてその定義を話す. かんたんな計算ののちに三重積分も述べる. その後, 変数変換について, 一次変換の場合について厳密な証明を行い, 
