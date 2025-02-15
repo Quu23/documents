@@ -2593,7 +2593,61 @@
                 \int_0^\pi\frac{dx}{(3-\cos x)^2}=\frac{3\pi}{(3^2-1)^{\frac{3}{2}}}=\frac{3\pi}{16\sqrt{2}} 
             \end{equation*}
         \clearpage
-            
+        \basicquestion 以下の問いに答えよ。
+
+        \subsubsection*{問1} 次の関数の$(\hspace{1mm})$での連続性を調べよ.\\
+            $(1)f(x,y)=\left\{\begin{array}{cc}\displaystyle\frac{xy}{x^2+y^2} & ((x,y)\neq(0,0))\\ 0 & ((x,y)=(0,0))\end{array}\right.$\hspace{1mm}
+            $(2)f(x,y)=\left\{\begin{array}{cc}\displaystyle\frac{x\sin(x^2+y^2)}{x^2+y^2} & ((x,y)\neq(0,0))\\ 0 & ((x,y)=(0,0))\end{array}\right.$\hspace{1mm}
+
+        \subsubsection*{問2} 次の関数の一階偏導関数, 二階偏導関数を計算せよ.\\
+            $(1)f(x,y)=x^2+xy+y^2$\hspace{1mm}
+            $(2)f(x,y)=e^{2x}\sin 3y$\hspace{1mm}
+            $(3)f(x,y)=\tan(x+y)$\hspace{1mm}
+            $(4)f(x,y)=x\log y$
+
+        \subsubsection*{問3}次の関数(もしくは関係式)において$z_x,z_y$を求めよ.\\
+            $(1)z=\sqrt{x^2+y^2}$\hspace{1mm}
+            $(2)z=x^{y}$\hspace{1mm}
+            $(3)x^3+y^3+z^3=a^3$\hspace{1mm}
+            $(4)\sin xy+\sin yz+ \sin xz = 1$
+        
+        \subsubsection*{問4}$n$変数関数$f(x_1,x_2,\dots,x_n)$に対して, 微分演算子$\Delta$を次のように定義する.
+            \begin{equation}
+                \Delta f = \frac{\partial^2f}{\partial x_1^2}+\frac{\partial^2f}{\partial x_2^2}+\cdots+\frac{\partial^2f}{\partial x_n^2} \label{eq:偏微分:ラプラシアンの定義}
+            \end{equation}
+            この$\Delta$を\textbf{Laplacian}\index{Laplacian}という. 特に, $\Delta f= 0$である関数$f$は\textbf{調和関数}\index{ちょうわかんすう@調和関数}という.
+            次の関数が調和関数であることを示せ.\\
+            $\displaystyle(1)f(x,y)=\arctan\frac{y}{x}$\hspace{10mm}
+            $(2)f(x,y,z)=\log(x^2+y^2+z^2-xy-yz-zx)$
+
+        \subsubsection*{問5}Laplacianの極座標表示, すなわち$x=r\sin\theta\cos\phi,y=r\sin\theta\sin\phi,z=r\cos\theta$と置くとき, \eqref{eq:偏微分:ラプラシアンの定義}は
+        \begin{equation}
+            \frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}+\frac{\partial^2 f}{\partial z^2}=\frac{\partial^2 f}{\partial r^2}+\frac{2}{r}\frac{\partial f}{\partial r}+
+            \frac{1}{r^2}\frac{\partial^2 f}{\partial\theta^2}+\frac{1}{r^2\tan\theta}\frac{\partial f}{\partial\theta}+\frac{1}{r^2\sin^2\theta}\frac{\partial^2 f}{\partial\phi^2} \label{eq:偏微分:ラプラシアンの極座標変換}
+        \end{equation}
+        であることを示せ. ({\small\color{red}注意:この問題は大変計算量が多い. ちゃんと時間を確保して覚悟をもって挑んでほしい.})
+
+        \subsubsection*{問6}次の関数の極値を全て求めよ.\\
+            $(1)f(x,y)=x^3-y^3-27x+3y$\hspace{1mm}
+            $(2)f(x,y)=e^{y}(x^2+2y)$\hspace{1mm}
+            $(3)f(x,y)=x^3-3y^2-6xy$\\
+            $(4)f(x,y)=x^4+y^4-(x+y)^2$
+
+        \subsubsection*{問7}\eqref{eq:偏微分:合成関数の微分t}を増分の考え方から導出せよ.
+
+        \subsubsection*{問8}\eqref{eq:偏微分:陰関数の微分F(x,y,z)}を証明せよ.
+        \clearpage
+        \thispagestyle{fancy}\lhead{$\Sigma$基本問題}\rhead{\thepage}\cfoot{}
+        \subsubsection*{問9}三つの変数$x,y,z$の間に$F(x,y,z)=0$が成り立つとき, 次を示せ.\\
+        $(1)\displaystyle \left.\frac{\partial y}{\partial x}=1\middle/ \frac{\partial x}{\partial y}\right.$\hspace{20mm}
+        $(2)\displaystyle \frac{\partial x}{\partial y}\frac{\partial y}{\partial z}\frac{\partial z}{\partial x} = -1$
+
+        \subsection*{問10}次の積分を求めよ. ただし, $p>-1$とする.
+        \begin{equation*}
+            \int_{0}^{1}x^p(\log x)^mdx=\frac{(-1)^mm!}{(p+1)!}\quad (m=1,2,\dots)
+        \end{equation*}
+        
+        \subsubsection*{問11} $\dfrac{1}{a^2b^3}$を定積分で表せ. ({\footnotesize ヒント:QuuノートI第III部演習問題問2[10]をみよ.})
     \clearpage
     \section{多重積分}
         多重積分についてまず二重積分についてその定義を話す. かんたんな計算ののちに三重積分も述べる. その後, 変数変換について, 一次変換の場合について厳密な証明を行い, 
