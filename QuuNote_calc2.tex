@@ -2062,7 +2062,7 @@
             $(4)\begin{vmatrix}1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9\end{vmatrix}$\hspace{1mm}
             $(5)\begin{vmatrix}0 & 2 & 0 & 0 \\ 3 & 5 & 0 & 0 \\ 0 & 0 & \pi &4 \\ 0 & 0 & 2\pi & 3\end{vmatrix}$\hspace{1mm}
             $(6)\begin{vmatrix}3 & -2 & 5 & 1 \\ 1 & 3 & 2 & 5 \\ 2 & -5 & -1 & 4 \\ -3 & 2 & 3 & 2\end{vmatrix}$
-        \subsubsection*{問6}$|A|=3$であるとき$|5A|$を求めよ.
+        \subsubsection*{問6}3次正方行列$A$について$|A|=3$であるとき$|5A|$を求めよ.
 
         \subsubsection*{問7}行列式の交代性を証明せよ.
 
@@ -2409,8 +2409,56 @@
             \begin{equation}
                 R_{n+1}=\frac{1}{(n+1)!}\left(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\right)^{n+1}f(a+h\theta,b+k\theta) \quad (0<\theta<1)
             \end{equation}
+            押さえておいてほしいのは, $R_{n+1}=o(\rho^{n})$である点である. ここで$\rho=\sqrt{h^2+k^2}$. これは次数に注目すればすぐわかる.
         \clearpage
         \subsection{極大極小}
+            ここでは二変数関数の極大極小について議論しよう. そのためには, 二変数関数の極値というものを定義しなければならない.
+
+            \begin{screen}
+                ある点$P(a,b)$の近傍を取った時に, その近傍内の任意の点$(x,y)$について
+                \begin{equation}
+                    f(x,y)<f(a,b) \label{eq:偏微分:極大の定義}
+                \end{equation}
+                が成り立つとき, $f(a,b)$を\textbf{極大値}といい,
+                \begin{equation}
+                    f(x,y)>f(a,b) \label{eq:偏微分:極小の定義}
+                \end{equation}                 
+                が成り立つとき, $f(a,b)$を\textbf{極小値}という. 極大値と極小値を纏めて極値という.
+            \end{screen}
+            これによれば, $f(a,b)$が極値であれば, $x=a$で$y$を動かす場合と$y=b$で$x$を動かす場合とで, それぞれ$y=b,x=a$が極値を取る.
+            よって, $(a,b)$で極値を取る必要条件が得られる.
+            \begin{screen}
+                $z=f(x,y)$が点$(a,b)$で極値を取る必要条件は
+                \begin{equation}
+                    f_{x}(a,b)=0,\quad f_{y}(a,b)=0 \label{eq:偏微分:極値を取る必要条件}
+                \end{equation}
+            \end{screen}
+            これで簡単な微分の計算で極値を取り得る点を調べることができる. しかし, 我々が真に欲しいのは極値を取る十分条件である. いまからそれを導こう.
+
+            まず, 点$(a,b)$において\eqref{eq:偏微分:極値を取る必要条件}が成り立つものとする. ここで, Taylorの定理\eqref{eq:偏微分:二変数関数のテイラーの定理}を$n=2$として適用する.
+            \begin{equation*}
+                f(x,y)=f(a,b)+\frac{1}{2}\left\{(x-a)^2f_{xx}(a,b)+2(x-a)(y-b)f_{xy}(a,b)+(y-b)^2f_{yy}(a,b)\right\}+o(\rho^2)
+            \end{equation*}
+            これを, $A=f_{xx}(a,b),B=f_{xy}(a,b),C=f_{yy}(a,b),X=x-a,Y=y-b$として書き換えると
+            \begin{equation*}
+                f(x,y)-f(a,b)=\frac{1}{2}\left\{AX^2+2BXY+CY^2\right\}
+            \end{equation*}
+            我々が知りたいのは右辺の符号であるから, 二次式$AX^2+2BXY+CY^2$を考察すればよい. どのように調べてもよいが, せっかく行列の知識があるのだからここでは行列を用いて考える.
+            まず, 列ベクトル$\bm{x}={}^t\!(X,Y)$と行列$P=\begin{pmatrix}A & B \\ B & C\end{pmatrix}$を用いれば, 元の二次式は${}^t\!\bm{x}P\bm{x}$と書ける. 
+            以下$A\neq C$または$B\neq0$の場合を考えておく. このとき, $A$の固有値は
+            \begin{equation*}
+                |P-\lambda E|=0 \leftrightarrow \lambda^2- (A+C)\lambda + (AC-B^2)=0
+            \end{equation*}
+            を満たす. 最初の仮定より, この二次方程式の解は重複せず二つ存在し, それら$\lambda_1,\lambda_2$の固有ベクトルを$\bm{x}_1,\bm{x}_2$と置き, それらを並べた行列$(\bm{x}_1,\bm{x}_2)$を考えると, 以下が成り立つ.\footnote{まず固有値ベクトルの定義より$P(\bm{x}_1,\bm{x}_2)=(\lambda_1\bm{x}_1,\lambda_2\bm{x}_2)$であるから, あとは\eqref{eq:線形代数:2次の正方行列の逆行列}を用いてすぐに確かめられる.}
+            \begin{equation*}
+                \begin{pmatrix}\lambda_1 & 0 \\0 & \lambda_2\end{pmatrix}=(\bm{x}_1,\bm{x}_2)^{-1}P(\bm{x}_1,\bm{x}_2)
+            \end{equation*}
+            ところで, 上式において$(\bm{x}_1,\bm{x}_2)$の代わりに$\bm{x}_1,\bm{x}_2$を正規化した$\bm{e}_1,\bm{e}_2$を用いても結果は変わらない.
+            そこで, $T=(\bm{e}_1,\bm{e}_2)$を用いて, 元の二次式${}^t\!\bm{x}P\bm{x}$に代入すれば
+            \begin{equation*}
+                {}^t\!\bm{x}\left\{T\begin{pmatrix}\lambda_1 & 0 \\ 0 & \lambda_2\end{pmatrix}T^{-1}\right\}\bm{x}
+            \end{equation*}
+
             
     \clearpage
     \section{多重積分}
