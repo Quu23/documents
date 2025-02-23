@@ -1345,10 +1345,10 @@
                     a_{m1} & a_{m2} & \cdots & a_{ml}
                 \end{pmatrix}
                 \begin{pmatrix}
-                    a_{11} & a_{12} & \cdots & a_{1n}\\
-                    a_{21} & a_{22} & \cdots & a_{2n}\\
+                    b_{11} & b_{12} & \cdots & b_{1n}\\
+                    b_{21} & b_{22} & \cdots & b_{2n}\\
                     \hdotsfor{4}\\
-                    a_{l1} & a_{l2} & \cdots & a_{ln}
+                    b_{l1} & b_{l2} & \cdots & b_{ln}
                 \end{pmatrix}                    
                 =\begin{pmatrix}
                     \sum a_{1k}b_{k1} & \sum a_{1k}b_{k2} & \cdots & \sum a_{1k}b_{kn}\\
@@ -1523,7 +1523,7 @@
                 \end{equation*}
                 であり, $^t\!A=(a_{ji}),^t\!B=(b_{ji})$であるから
                 \begin{equation*}
-                    ^t\!B\hspace{1mm} ^t\! A = \left(\sum a_{jk}b_{ki}\right) = ^t\!(AB)
+                    ^t\!B\hspace{1mm} ^t\! A = \left(\sum b_{ki}a_{jk}\right) = ^t\!(AB)
                 \end{equation*}
                 よって等式が示された.
             \end{proof}
@@ -2652,6 +2652,72 @@
     \section{多重積分}
         多重積分についてまず二重積分についてその定義を話す. かんたんな計算ののちに三重積分も述べる. その後, 変数変換について, 一次変換の場合について厳密な証明を行い, 
         それ以外は感覚的なものにとどめる.
+        \subsection{二重積分}
+            多変数関数の微分について述べたからには, 積分についても気になるところであろう. いきなり一般の多変数関数について述べるのは難しいから, やはりまずは二変数関数の場合を述べたいと思う.
+            一変数の場合は, 区間を適当な分割によって分けたわけだが, 二変数の場合は領域を適当な分割によって分けることを考える.
+
+            xy平面の領域$D$で定義された連続な関数を$f(x,y)$とする. 領域$D$を有限な互いに素である$n$個の小領域$D_1,D_2,\dots,D_n$に分割する.
+            各領域の面積を$\Delta A_n$とする. 各領域$D_k$内において任意点$(\xi_k,\eta_k)$を取り, 次の和を作る.
+            \begin{equation}
+                \sum_{k=1}^{n}f(\xi_k,\eta_k)\Delta A_k \label{eq:多重積分:リーマン和}
+            \end{equation}
+            これを\textbf{Riemann和}\index{Riemannわ@Riemann和}というのは一変数のときと同じである. この分割の数$n$を十分大きくし, 各小領域の
+            二点間の距離の最大値が0に近づくようしたとき, この極限値が存在すれば
+            \begin{equation}
+                \iint_D f(x,y)dA=\lim_{n\to\infty}\sum_{k=1}^{n}f(\xi_k,\eta_k)\Delta A_k \label{eq:多重積分:二重積分の定義}
+            \end{equation}
+            と書き, $f(x,y)$の領域$D$の\textbf{二重積分}\index{にじゅうせきぶん@二重積分}という. 当然だが, $f(x,y)=1$であれば, この二重積分は
+            $D$の面積を与える.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[-latex] (-1,0)--(6,0) node[right] {$x$};
+                    \draw[-latex] (0,-1)--(0,6) node[above] {$y$};
+                    \node[below left] at (0,0) {$O$};
+
+                    \begin{scope}
+                        \clip (2,2) .. controls (6,3) and (4,5) .. (3,5) 
+                              .. controls (1,5) and (1,2) .. (2,2);
+                        
+                        % 分割用の直線 (for ループ使用)
+                        \foreach \i in {0,1,2,3,4,5,6} {
+                            \draw (0.5+\i,1) .. controls (2+\i,-2) and (2+\i,2) .. (0.5+\i,5);
+                        }
+                        \foreach \i in {0,1,2,3,4,5} {
+                            \draw (1,0.5+\i) .. controls (-2,2+\i) and (2,2+\i) .. (5,0.5+\i);
+                        }
+                    \end{scope}
+                
+                    % 閉曲線
+                    \draw (2,2) .. controls (6,3) and (4,5) .. (3,5) 
+                          .. controls (1,5) and (1,2) .. (2,2);
+                    \node[below] at (2,2) {$D$};
+
+                    \draw[fill=black] (2.5,4) circle[radius=0.05];
+                    \node at (3,0.5) {$(\xi_k,\eta_k)$};
+                    \draw[->] (3,0.5)--(2.5,3.9);
+                    \node[above left] at (2.5,4) {$D_k$};
+                \end{tikzpicture}
+                \caption{二重積分の分割}
+            \end{figure}
+            二重積分は, 各領域における面積に, 曲面$z=f(x,y)$の点$(x,y)$での`高さ'をかけたものを足し合わせているから, \eqref{eq:多重積分:二重積分の定義}は
+            $z=f(x,y)$の領域$D$での体積を与えることがわかる. 例えば, $D={(x,y)\mid x^2+y^2\leq 1},f(x,y)=\sqrt{1-x^2-y^2}$とした場合は, 
+            半径1の半球の体積を与える.
+            \clearpage
+            二重積分と同様にして, 三重積分も定義される. この場合も三次元領域$V$において$f(x,y,z)$が連続であるとき, $V$を
+            $n$個の小領域$V_1,V_2,\dots,V_n$に分割し, それぞれの体積を$\Delta V_k$とする. 各領域$D_k$で任意点$(\xi_k,\eta_k,\zeta_k)$を取って, Riemann和
+            \begin{equation}
+                \sum_{k=1}^nf(\xi_k,\eta_k,\zeta_k)\Delta V_k
+            \end{equation} 
+            を作る. 各領域$V_k$の二点間の距離の最大値が0になるように, $n$を大きくするとき, その極限値が存在すれば
+            \begin{equation}
+                \iiint_Vf(x,y,z)dV=\lim_{n\to\infty}\sum_{k=1}^nf(\xi_k,\eta_k,\zeta_k)\Delta V_k
+            \end{equation}
+            と書き, これを$V$での$f(x,y,z)$の\textbf{三重積分}\index{さんじゅうせきぶん@三重積分}という. もちろん$f(x,y,z)=1$とすれば, 
+            これは$V$の体積を与える.
+
+            以上の議論を同様に, 一般の$n$次元の定積分が定義される. ただし, 一変数の場合と同様に, これら定積分もRiemann和の極限として計算するのは得策でない.
+            実際の計算方法を次ページから述べよう.
 
     \clearpage
     
