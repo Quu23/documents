@@ -3190,7 +3190,7 @@
                 \begin{equation*}
                     S_n+T_n=(a_1+|a_1|)+(a_2+|a_2|)+\cdots+(a_n+|a_n|)\leq 2(|a_1|+|a_2|+\cdots+|a_n|)
                 \end{equation*}
-                である。ここで$\sum a_n$が絶対収束するとすれば、$a_n+|a_n|\leq 0$であることを併せて、$S_n+T_n$は
+                である。ここで$\sum a_n$が絶対収束するとすれば、$a_n+|a_n|\geq 0$であることを併せて、$S_n+T_n$は
                 有界な広義の単調増加数列となる。すなわち、$\lim (S_n+T_n)$は収束する。よって、$\lim S_n$も収束する。
                 つまり、絶対収束級数は``絶対に''収束するのである。名前負けしてないのが面白い。
 
@@ -3393,7 +3393,7 @@
                 \begin{equation*}
                     \left|\sum_{k}^\infty a_kx^k - \sum_k^{\text{十分大きな}n}a_kx^k\right|<\frac{\varepsilon}{1-\left|\frac{x}{x_0}\right|}
                 \end{equation*}
-                $\varepsilon$は任意であるから、結局$n$を十分大きくすれば、（$x$の値に関係なく）$|\sum^{\infty}-\sum^{n}|$をいくらでも小さくできる。すなわち、べき級数$\sum a_nx^n$は$|x|<|x_0|$に含まれる任意の兵区域において一様に収束する。$\square$
+                $\varepsilon$は任意であるから、結局$n$を十分大きくすれば、（$x$の値に関係なく）$|\sum^{\infty}-\sum^{n}|$をいくらでも小さくできる。すなわち、べき級数$\sum a_nx^n$は$|x|<|x_0|$に含まれる任意の閉区域において一様に収束する。$\square$
 
 
                 もし、$x=x_0$で発散すれば、そのべき級数は$|x|>|x_0|$であるすべての$x$に対して発散する。なぜなら、仮にある$|x_1|>|x_0|$である点$x=x_1$で収束するとすれば、当然$x=x_0$も収束することになるため、仮定に反してしまう。
@@ -3566,8 +3566,8 @@
                 \end{equation*}
                 同様にして、ほかの係数についてもそれぞれ$\int_{-\pi}^{\pi}\frac{1}{\sqrt{\pi}}\cos nxdx,\int_{-\pi}^{\pi}\frac{1}{\sqrt{\pi}}\sin nxdx$を両辺にかければ
                 \begin{align*}
-                    A_n&=\frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi}f(x)\cos xdx \\
-                    B_n&=\frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi}f(x)\sin xdx
+                    A_n&=\frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi}f(x)\cos nxdx \\
+                    B_n&=\frac{1}{\sqrt{\pi}}\int_{-\pi}^{\pi}f(x)\sin nxdx
                 \end{align*}
                 が得られる。ここで、$a_0/2 = A_0/\sqrt{2\pi},A_n/\sqrt{\pi}=a_n,B_n/\sqrt{\pi}=b_n$と置けば、最初に述べた\eqref{eq:フーリエ級数}と一致するわけである。
 

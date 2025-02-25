@@ -1860,9 +1860,9 @@
                 \end{align*}
                 ところで, 数字$k_1\sigma(1),k_2\sigma(2),\dots,k_n\sigma(n)$を並べ替えたものは, 和を取った時に打ち消しあう. したがって, $\sum$内の$k_1,k_2,\dots,k_n$は全て異なる値を取っていなければならない.
                 \footnote{$\sigma$の各値はそれぞれ互いに違う. 仮に$k_i=k_j(i\neq j)$であるとき, $\sigma(i)$と$\sigma(j)$だけ値を入れ替えた置換も存在するから, このときちょうど打ち消しあってしまう.}
-                すなわち, $\sum\limits_{k_1,k_2,\dots,k_n}$はある置換$k$の取りうる全ての和$\sum\limits_{k}$と考えてよい.  よって
+                すなわち, $\sum\limits_{k_1,k_2,\dots,k_n}$はある置換$k$の取りうる全ての和$\sum\limits_{k}$と考えてよい.\footnote{以下の$k_i$は本来は$k(i)$と書くべきだが, 紙面の都合上$k_i$のまま書いている.}  よって
                 \begin{equation*}
-                    \sum_{\sigma}\sum_{k}\sign\sigma\cdot a_{1k_1}b_{k_1\sigma(1)}a_{2k_2}b_{k_2\sigma(2)}\cdots a_{nk_n}b_{k_n\sigma(n)}=\sum_{k}a_{1k_1}a_{2k_2}\cdots a_{nk_n}\left(\sum_{\sigma}b_{k_1\sigma(1)}b_{k_2\sigma(2)}\cdots b_{k_n\sigma(n)}\right)
+                    \sum_{\sigma}\sum_{k}\sign\sigma\cdot a_{1k_1}b_{k_1\sigma(1)}a_{2k_2}b_{k_2\sigma(2)}\cdots a_{nk_n}b_{k_n\sigma(n)}=\sum_{k}a_{1k_1}a_{2k_2}\cdots a_{nk_n}\left(\sum_{\sigma}\sign \sigma\cdot b_{k_1\sigma(1)}b_{k_2\sigma(2)}\cdots b_{k_n\sigma(n)}\right)
                 \end{equation*}
                 右辺の$(\hspace{1mm})$内は, $|B|$の行を並び変えたものである. このとき, 置換$k$が偶置換であるか奇置換であるかによって, $(\hspace{1mm})$の符号が変わる(行の交代性). これより
                 \begin{equation*}
