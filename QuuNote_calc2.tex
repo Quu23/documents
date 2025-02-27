@@ -2718,7 +2718,59 @@
 
             以上の議論を同様に, 一般の$n$次元の定積分が定義される. ただし, 一変数の場合と同様に, これら定積分もRiemann和の極限として計算するのは得策でない.
             実際の計算方法を次ページから述べよう.
+        \clearpage
+        \subsection{累次積分}
+            ここでは多重積分を簡単に計算する方法を述べる. そのために, まずは積分領域$D$の分割を扱いやすいものにしよう. 以下, $D$はxおよびy軸に平行な線と
+            3回以上交わらないものとする. 一般の領域もこの領域の和に分けることができる.\footnote{相当病的な領域を考えれば, もしかしたら分けられないことがあるかもしれない. しかし, 我々が扱う領域のその大抵は通常分割できるであろう.}
+            領域$D$の境界線を$y=f(x)$の形で書くことを考えたい. いま下図のように点を決めれば, 曲線ACBおよび曲線ADBはこの形で書ける. それを順に$y=g(x),y=h(x)$と書くことにしよう.
+            点Aのx座標を$a$, 点Bのx座標を$b$, 点Cのy座標を$c$, 点Dのy座標を$d$とする. 図中ではA,Bのy座標が等しいようになっているが, 当然必ずしもそうである必要はない.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[-latex] (-1,0)--(6,0) node[right] {$x$};
+                    \draw[-latex] (0,-1)--(0,6) node[above] {$y$};
+                    \node[below left] at (0,0) {$O$};
 
+                    \begin{scope}
+                        \clip (2,2) .. controls (6,3) and (4,5) .. (3,5) 
+                              .. controls (1,5) and (1,2) .. (2,2);
+                        
+                        % 分割用の直線 (for ループ使用)
+                        \foreach \i in {0,1,2,3,4,5,6,7} {
+                            \draw (0.5+\i*0.5,1) -- (0.5+\i*0.5,5);
+                        }
+                        \foreach \i in {0,1,2,3,4,5} {
+                            \draw (1,2+\i*0.5) -- (5,2+\i*0.5);
+                        }
+                    \end{scope}
+                
+                    % 閉曲線
+                    \draw (2,2) .. controls (6,3) and (4,5) .. (3,5) 
+                          .. controls (1,5) and (1,2) .. (2,2);
+                    \node[left] at (1.37,3.5) {A};
+                    \draw[fill=black] (1.37,3.5) circle[radius=0.05];
+                    \node[right] at (4.35,3.5) {B};
+                    \draw[fill=black] (4.35,3.5) circle[radius=0.05];
+                    \node[above] at (3,5) {D};
+                    \draw[fill=black] (3,5) circle[radius=0.05];
+                    \node[below] at (2,2) {C};
+                    \draw[fill=black] (2,2) circle[radius=0.05];
+
+                    \draw[fill=black] (2.8,3.75) circle[radius=0.05];
+                    \node at (3,0.5) {$(\xi_i,\eta_j)$};
+                    \draw[->] (3,0.5)--(2.8,3.6);
+                    \node[font=\scriptsize] at (2.25,3.75) {$D_{ij}$};
+                \end{tikzpicture}
+                \caption{領域の分割}
+            \end{figure}
+
+            さて, 区間$[a,b]$を長さ$\Delta x_i(1\leq i\leq m)$の$m$個の小区間に分割し, 区間$[c,d]$を長さ$\Delta y_j(1\leq j\leq n)$の$n$個の小区間に分割する. 
+            そうすると, それに対応して$mn$個の小領域$D_{ij}$ができる. その領域内で, 点$(\xi_i,\eta_j)$を取れば, Riemann和
+            \begin{equation}
+                \sum_{i=1}^{m}\sum_{j=1}^{n}f(\xi_i,\eta_j)\Delta x_i\Delta y_j
+            \end{equation}
+            がつくれる. これは\eqref{eq:多重積分:リーマン和}のうち特別な場合\footnote{領域の端では$\Delta x_i\Delta y_j$が小領域の面積になっていないが, それらによる誤差は分割数を大きくすれば0に近づくから無視してよい.}だ
+            から, 各区間の幅の最大値$\max(\Delta x_i,\Delta y_j)\to0$となるように$m,n$を大きくすれば, 二重積分の値に等しい.
     \clearpage
     
     \part{ベクトル解析}
