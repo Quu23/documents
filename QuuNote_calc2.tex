@@ -290,14 +290,14 @@
                 \caption{真理値表による命題の比較}
             \end{table}
 
-            上記の方法とまったく同様にして, $\lnot (p\lor q)$と$(\lnot p)\land (\lnot q)$が示されるから, 以下の\textbf{De Morganの法則}\index{De Morganのほうそく@De Morganの法則}が成り立つことがわかる.
+            上記の方法とまったく同様にして, $\lnot (p\lor q)$と$(\lnot p)\land (\lnot q)$が示されるから, 以下の\textbf{de Morganの法則}\index{de Morganのほうそく@de Morganの法則}が成り立つことがわかる.
             \begin{align}
                 \lnot (p\land q) \equiv (\lnot p) \lor (\lnot q) \label{eq:集合論基礎:論理ドモルガン1}\\
                 \lnot (p\lor q) \equiv (\lnot p) \land (\lnot q) \label{eq:集合論基礎:論理ドモルガン2}
             \end{align}
-            De Morganの法則は最も基本的な論理演算の法則であるから, しっかり理解しておこう. この二つの式から双対性の概念が見えるがここでは触れない.
+            de Morganの法則は最も基本的な論理演算の法則であるから, しっかり理解しておこう. この二つの式から双対性の概念が見えるがここでは触れない.
 
-            De Morganの法則を用いれば, $\land,\lor$の含まれる合成命題については否定できるが, $\Rightarrow$が含まれた命題を否定する際はどうすればよいだろうか.
+            de Morganの法則を用いれば, $\land,\lor$の含まれる合成命題については否定できるが, $\Rightarrow$が含まれた命題を否定する際はどうすればよいだろうか.
             一度ここでもっとも簡単な形である$p \Rightarrow q$について考察してみよう. すぐわかるのは pが真の場合, $q$が真ならば真, 偽ならば偽
             であるとなることである. 問題は$p$が偽の場合である. このとき$q$が成り立っていようがいまいが(仮定がそもそも偽であるから)真偽には関係のないような気がする.
             そこで\underline{$p$が偽のときには$p\Rightarrow q$は偽である}と定めることにしよう. このように定めるのは, 例えば
@@ -400,12 +400,12 @@
             \end{align}
             これらは補集合の定義からすぐさま導かれるから, ここでは述べない. 各自で試されるとよいであろう.
 
-            補集合について重要なのは次のDe Morganの法則である.
+            補集合について重要なのは次のde Morganの法則である.
             \begin{align}
                 (A\cup B)^c = A^c \cap B^c \label{eq:集合論基礎:集合ドモルガン1}\\
                 (A\cap B)^c = A^c \cup B^c \label{eq:集合論基礎:集合ドモルガン2}
             \end{align}
-            これは記号論理で述べたDe Morganの法則の法則\eqref{eq:集合論基礎:論理ドモルガン1},\eqref{eq:集合論基礎:論理ドモルガン2}からすぐさま導かれるから, これも証明は略する.
+            これは記号論理で述べたde Morganの法則の法則\eqref{eq:集合論基礎:論理ドモルガン1},\eqref{eq:集合論基礎:論理ドモルガン2}からすぐさま導かれるから, これも証明は略する.
             これに加えて, 補集合については, 以下の等式が重要である.
             \begin{equation}
                 A-B = A\cap B^c \label{eq:集合論基礎:差集合を補集合で表す}
@@ -607,7 +607,7 @@
             とかいてもよい. 
 
             集合系の各集合$A_\lambda$が集合$X$の部分集合であるとき, この集合系を$X$の\textbf{部分集合系}\index{ぶぶんしゅうごうけい@部分集合族}という. $\{A_\lambda\mid \lambda\in\Lambda\}$を$X$の部分集合系とする.
-            このとき, 次の\textbf{De Morganの法則}\index{De Morganのほうそく@De Morganの法則}が成り立つ.
+            このとき, 次の\textbf{de Morganの法則}\index{de Morganのほうそく@de Morganの法則}が成り立つ.
             \begin{align}
                 \left(\bigcup_{\lambda\in\Lambda}A_\lambda\right)^c=\bigcap_{\lambda\in\Lambda}(A_\lambda)^c \label{eq:集合論基礎:一般のドモルガン1}\\
                 \left(\bigcap_{\lambda\in\Lambda}A_\lambda\right)^c=\bigcup_{\lambda\in\Lambda}(A_\lambda)^c \label{eq:集合論基礎:一般のドモルガン2}
@@ -2977,7 +2977,7 @@
     \end{screen}
     \clearpage
     \section{複素数}
-        複素数についてその基礎知識を述べる. 複素平面上の領域も. De Moivreの定理まで述べる.
+        複素数についてその基礎知識を述べる. 複素平面上の領域も. de Moivreの定理まで述べる.
     \clearpage
     \section{複素関数とその微分}
         複素関数について定義し, その性質について簡単に述べる. Cauchy-Riemannの方程式も述べる. 初等関数についても述べる.
