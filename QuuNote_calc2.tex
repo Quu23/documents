@@ -2771,6 +2771,170 @@
             \end{equation}
             がつくれる. これは\eqref{eq:多重積分:リーマン和}のうち特別な場合\footnote{領域の端では$\Delta x_i\Delta y_j$が小領域の面積になっていないが, それらによる誤差は分割数を大きくすれば0に近づくから無視してよい.}だ
             から, 各区間の幅の最大値$\max(\Delta x_i,\Delta y_j)\to0$となるように$m,n$を大きくすれば, 二重積分の値に等しい.
+            
+            ここで, まずx方向の分割を固定して, 次の和を考える.
+            \begin{equation}
+                \left\{\sum_{j=1}^{n}f(\xi_i,\eta_j)\Delta y_j\right\}\Delta x_i
+            \end{equation}
+            この和に対し, y軸方向の幅が0になるよう極限$n\to\infty$を取ると, $\{\hspace{1mm}\}$内はy方向の積分となる. すなわち
+            \begin{equation}
+                \left\{\int_{g(\xi_i)}^{h(\xi_i)}f(x,y)dy\right\}\Delta x_i
+            \end{equation}
+            となる. これに, もういちど, 今度はx軸方向の和を取り, 各区間の幅が0となるよう極限$m\to\infty$をとると
+            \begin{equation}
+                \lim_{m\to\infty}\sum_{i=1}^{m}\left\{\int_{g(\xi_i)}^{h(\xi_i)}f(x,y)dy\right\}\Delta x_i=\int_{a}^{b}\left\{\int_{g(x)}^{h(x)}f(x,y)dy\right\}dx
+            \end{equation}
+            これは, 二重積分を通常の積分を二回行うことで計算できることを意味する. これを\textbf{累次積分}\index{るいじせきぶん@累次積分}という.
+            今回は, $y$について積分したのちに, $x$について積分しているが, これは逆も可能である. すなわち, 以下の式が成り立つ.
+            \begin{equation}
+                \iint_D f(x,y)dxdy = \int_{a}^{b}\left\{\int_{g(x)}^{h(x)}f(x,y)dy\right\}dx = \int_{c}^{d}\left\{\int_{g^*(y)}^{h^*(y)}f(x,y)dx\right\}dy \label{eq:多重積分:累次積分}
+            \end{equation}
+            ここで, $g^*,h^*$はそれぞれ, もとの図における曲線CAD, 曲線CBDを表す関数であるとする. 注意しなければならないのは, この累次積分の公式は, あくまで$f(x,y)$が$D$上で\underline{連続}であるときに成り立つ.
+            連続でない関数の場合は, この公式を適用してはいけない.\footnote{しかし, これも一変数のときと同様, 積分範囲を連続であるような領域の極限として表し, 連続領域上で積分してから極限を取る, といった計算(広義積分)を行うことが多い. }\\
+
+            計算例を示そう.
+            \begin{align*}
+                &(1)\iint_{[0,1]\times[0,1]}dxdy=\int_0^1\left\{\int_0^1dy\right\}dx=1.\\
+                &(2)\iint_{x\geq0,y\geq0,x+y\leq 1}xdxdy=\int_0^1\left\{\int_{0}^{1-x}xdy\right\}dx=\int_{0}^{1}x(1-x)dx=\frac{1}{6}.
+            \end{align*}
+            \begin{figure}[h]
+                \centering
+                \begin{minipage}{0.45\columnwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        % 軸
+                        \draw[->] (0,0) -- (1.2,0) node[right] {\(x\)};
+                        \draw[->] (0,0) -- (0,1.2) node[above] {\(y\)};
+                        
+                        % 領域の境界 (y=x の線)
+                        \draw[thick, blue] (1,0) -- (0,1) node[above right] {\(x+y=1\)};
+                        
+                        % 塗りつぶし領域
+                        \fill[blue!20, opacity=0.5] (0,0) -- (1,0) -- (0,1) -- cycle;
+                        
+                        \foreach \x in {0.2, 0.4, 0.6, 0.8} {
+                            \draw[->, red, thick] (\x,0) -- (\x,1-\x);
+                        }
+                    \end{tikzpicture}
+                    \subcaption{解答の分割(y方向の分割)}
+                \end{minipage}
+                \begin{minipage}{0.45\columnwidth}
+                    \centering
+                    \begin{tikzpicture}
+                        % 軸
+                        \draw[->] (0,0) -- (1.2,0) node[right] {\(x\)};
+                        \draw[->] (0,0) -- (0,1.2) node[above] {\(y\)};
+                        
+                        % 領域の境界 (y=x の線)
+                        \draw[thick, blue] (1,0) -- (0,1) node[above right] {\(x+y=1\)};
+                        
+                        % 塗りつぶし領域
+                        \fill[blue!20, opacity=0.5] (0,0) -- (1,0) -- (0,1) -- cycle;
+                        
+                        \foreach \y in {0.2, 0.4, 0.6, 0.8} {
+                            \draw[->, red, thick] (0,\y) -- (1-\y,\y);
+                        }
+                    \end{tikzpicture}
+                    \subcaption{x方向の分割}
+                \end{minipage}
+                \caption{(2)の領域と分割} \label{fig:多重積分:累次積分の分割の方向}
+            \end{figure}
+
+            累次積分を解く際には, 上図\ref{fig:多重積分:累次積分の分割の方向}のように, 図を書くとよい. なお, 次のように書いて解答してもよい.
+            \begin{equation*}
+                \iint_{x\geq0,y\geq0,x+y\leq 1}xdxdy=\int_0^1dx\int_{0}^{1-x}xdy=\int_{0}^{1}x(1-x)dx=\frac{1}{6}
+            \end{equation*}
+            こちらのほうが, 波かっこを書く分だけ手間が省けている.
+        \clearpage
+        \subsection{変数変換とJacobi行列式}
+            ここでは変数変換について述べる. 一変数のとき, $x$についての積分を変数変換$x=g(t)$によって$t$の積分に帰着させる公式(置換積分)は, 
+            \begin{equation}
+                \int_{a}^{b}f(x)dx=\int_{t_a}^{t_b}(f\circ g)(t)\frac{dx}{dt}dt
+            \end{equation}
+            であった. このとき生じる係数$dx/dt$は変数変換による微小な長さ$dx$から$dt$への変換倍率であることは容易にわかる. 同様にして, 多重積分についても
+            変数変換公式
+            \begin{equation*}
+                \iint_D f(x,y)dxdy=\iint_R f(x(u,v),y(u,v))Jdudv
+            \end{equation*}
+            および生じる係数$J$を求めたい, これがこの節の目標である.
+
+            いきなり一般の変換に関して変換公式を求めるのは難しいから, ここでは一次変換
+            \begin{equation}
+                \left\{\begin{array}{c}
+                    x=Au+Bv\\
+                    y=Cu+Dv
+                \end{array}\right. \label{eq:多重積分:一次変換}
+            \end{equation}
+            について考えてみる($A,B,C,D$は定数). 直感的に考えれば, 微小面積$dudv$はベクトル$(du,0),(0,dv)$のなすベクトルの面積であって, これらのベクトルを\eqref{eq:多重積分:一次変換}に
+            よって変換前のベクトルは$(Adu,Bdu),(Cdv,Ddv)$であって, \eqref{eq:線形代数:二つのベクトルがなす面の面積}より
+            \begin{equation*}
+                dxdy=\left|\begin{vmatrix}Adu & Cdv \\ Bdu & Ddv\end{vmatrix}\right|=\left|\begin{vmatrix}A & C \\ B & D\end{vmatrix}\right|dudv
+            \end{equation*}
+            なることがわかる. ここで, すこし作為的だが, 次の変形をしてみることにしよう.
+            \begin{equation*}
+                \begin{vmatrix}A & C \\ B & D\end{vmatrix}=\begin{vmatrix}x_u & y_u \\ x_v & y_v\end{vmatrix}
+            \end{equation*}
+            このような行列式を\textbf{Jacobi行列式}\index{Jacobiぎょうれつしき@Jacobi行列式}, \textbf{Jacobian}\index{Jacobian}という. Jacobianは次の表記が主に用いられる.
+            \begin{equation}
+                J(u,v),\quad \frac{\partial(x,y)}{\partial(u,v)},\quad \frac{D(x,y)}{D(u,v)}
+            \end{equation}
+
+            今の議論は$dx,dy$などの微小量を用いた直感的な議論だったが, もちろんこれは簡単に精密化することができる. これはxy平面上の単位ベクトルとuv平面上の単位ベクトルの対応を考えればすぐわかるから, 
+            演習問題にしよう.
+            
+            以上は一次変換の場合の変数変換だった. 問題は, 一般の変数変換$x=\phi(u,v),y=\psi(u,v)$である. 先に言ってしまうと, このときの変数変換の公式を厳密に求めるのはかなり難しい.
+            かといって, いきなり公式だけ提示して終わるのはさすがに納得しずらいだろうから, これも直感的な説明をしようと思う.\footnote{残念ながら, この場合の直感的な説明は一次変換と違い, 簡単に厳密化はできない. そのためには面積確定など, 恐らく様々な概念の困難が立ちはだかるだろう.}
+            
+            先に, 一般の変数変換でも生じる係数はJacobianなのかを簡単に確かめてみる. 我々は以前全微分を学んでいた. これをうまくつかう. まず, 変数変換$x=\phi(u,v),y=\psi(u,v)$において, 全微分は$dx=\phi_udu+\phi_vdv, dy=\psi_udu+\psi_vdv$であった.
+            これは一次変換の式\eqref{eq:多重積分:一次変換}と形式的に同じ形をしているから, $du,dv$が微小量であることより, 考えている微小面上で各係数は変化しないとすれば, 一次変換と同様の議論ができる. すなわち変数変換によって生じる係数は
+            Jacobianに`なりそう'である.
+            \clearpage
+            つづいて, もう少し厳密にこの事実を確かめてみる. $x=\phi(u,v),y=\psi(u,v)$はそれぞれの変数を固定すれば, $x,y$を一つのパラメータ
+            で表していることになり, これはxy平面上の曲線を意味する. それぞれの変数を固定して曲線を描き, それぞれさらに$v+\Delta v,u+\Delta u$だけずらしたものも描いた図は
+            例えば以下のようになる.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}[scale=0.8]
+                    % 軸の描画
+                    \draw[->] (0,0) -- (6.5,0) node[right] {\(x\)};
+                    \draw[->] (0,0) -- (0,6) node[above] {\(y\)};
+                    
+                    \draw (1,4) .. controls (1.3,3) and (3,1.2) .. (4,1);
+                    \draw (2,5) .. controls (2.3,4) and (4,2.2) .. (5,2);
+
+                    \draw (4,5.3) .. controls (3.3,4) and (3,3.3) .. (1.5,2.3);
+                    \draw (5,4.3) .. controls (4.3,3) and (4,2.3) .. (2.5,1.3);
+
+                    \node[above] at (1,4) {$v$固定};
+                    \node[above] at (2,5) {$v+\Delta v$固定};
+
+                    \node[above] at (4.5,5.3) {$u+\Delta u$固定};
+                    \node[above] at (5,4.3) {$u$固定};
+
+                    \node[below] at (2.9,1.5) (A) {$A$};
+                    \node[below] at (1.8,2.5) (B) {$B$};                    
+                    \node[below] at (2.9,3.5) (C) {$C$};
+                    \node[below] at (4,2.5)   (D) {$D$};
+                \end{tikzpicture}
+                \caption{$u,v$をすこしだけ変化させたときの曲線の変化}
+            \end{figure}
+
+            このとき, $\Delta u,\Delta v$を十分小さく取れば, 曲線の交点を結んでできる図形の面積は$\Delta x\Delta y$と等しい.
+            また, この図形の面積は, この図形がベクトル$\vec{AB},\vec{AD}$のなす面であるから, \eqref{eq:線形代数:二つのベクトルがなす面の面積}より
+            \begin{equation*}
+                \Delta x\Delta y\sim\left|\begin{vmatrix}\phi(u+\Delta u,v)-\phi(u,v) & \phi(u,v+\Delta v)-\phi(u,v) \\ \psi(u+\Delta u,v)-\psi(u,v) & \psi(u,v+\Delta v)-\psi(u,v)\end{vmatrix}\right|=\left|\begin{vmatrix}\phi_u\Delta u & \phi_v\Delta v \\ \psi_u\Delta u & \psi_v\Delta v\end{vmatrix}\right|=|J(u,v)|\Delta u\Delta v
+            \end{equation*}
+            ここで途中の計算では平均値の定理を用いた. \footnote{この時例えば, $\phi_u=\phi_u(u+\theta\Delta u,v)$であるが, $\Delta u\to 0$の過程で$\theta\Delta u\to 0$であるから気にしなくてよい.}
+            よって, $\Delta u,\Delta v \to 0$のとき, 等号が成り立つから, 面積比としては$|J|$が生じるのである.
+
+            以上がすこしだけ厳密な証明であった. 数学的に完全に厳密に示すには, 適当な解析の本を参照してほしいと思う. すくなくとも, 名著解析概論と杉浦解析には書いていた.
+            変数変換は, 公式の証明も大事であるが, どちらかといえば公式を使いこなすことに重点が置かれる. このノートでも次の頁以降で基本的な座標変換に対するJacobianとその計算法について述べる.
+
+            以下, 改めて変数変換の公式を書いておこう.
+            \begin{equation}
+                \iint_D f(x,y)dxdy = \iint_R f(x(u,v),y(u,v))|J(u,v)|dudv \label{eq:多重積分:変数変換の公式}
+            \end{equation}
+            なお, 以上の議論は三重積分にも, もっと一般に$N$重積分においても同様であって, 変換公式も同様になる. その場合, Jacobianは$N$次関数行列式になる.
     \clearpage
     
     \part{ベクトル解析}
