@@ -164,7 +164,7 @@
     \tableofcontents
     \clearpage
 
-    \part{基礎数学}
+    \part{基礎数学(100\%)}
     \vspace{\stretch{1}}
     \begin{screen}
         ここでは, 数学をするうえで必要となる最低限の基礎知識を学ぶ. 主に, 集合論基礎, 線形代数のうちベクトル, 行列, 行列式の基礎が含まれる.
@@ -481,7 +481,7 @@
             今は二つの集合について, それぞれの要素から順序対を作っていた. これを$n$個の集合の場合に拡張しよう. $n$個の集合$A_1,A_2,\cdots,A_n$に対して, 
             それらの\textbf{直積集合}を
             \begin{equation}
-                A_1\times A_2 \times \cdots \times A_n = \{(a_1,a_2,\cdot,a_n)\mid a_1\in A_1,a_2\in A_2,\cdots,a_n\in A_n\} \label{eq:集合論基礎:n個の直積の定義}
+                A_1\times A_2 \times \cdots \times A_n = \{(a_1,a_2,\cdots,a_n)\mid a_1\in A_1,a_2\in A_2,\cdots,a_n\in A_n\} \label{eq:集合論基礎:n個の直積の定義}
             \end{equation}
             によって定める. $(a_1,a_2,\cdots,a_n)$は順序対である. $n$個の場合でも二つの順序対が等しいのは, 並べられた各要素の値が等しい場合に限るとする.
             また, $A_1=A_2=\cdots=A_n=A$のとき, この直積集合を$A^n$とかく.\\
@@ -3161,9 +3161,55 @@
                 \end{equation}
                 と与えられる. 半径$R$, 質量$M$の球を重心を通るz軸の回りに回転させることを考えたとき, この時の慣性モーメントを求めよ.\footnote{慣性モーメントの物理的な意味は力学の本を参照.}
             \clearpage
+        \section{第I部演習問題}
+            \subsubsection*{問1} $\varepsilon-N$論法の否定命題を示せ.
+
+            \subsubsection*{問2} 区間$I=[0,1]$における狭義単調増加関数$f$は, その$f(I)$を値域とするとき全単射であることを示せ. 
+
+            \subsubsection*{問3} 単調増加な集合列$A_n$, すなわち$A_1\subset A_2\subset\cdots$が成り立つとき, 
+                \begin{equation}
+                    \lim_{n\to\infty} A_n = \bigcup_{n=1}^\infty A_n
+                \end{equation}
+                であり, 単調減少な集合列$B_n$, つまり$B_1\subset B_2 \subset \cdots$が成り立つとき
+                \begin{equation}
+                    \lim_{n\to\infty} B_n = \bigcap_{n=1}^\infty B_n
+                \end{equation}
+                であることを示せ.
+            
+            \subsubsection*{問3} 実数$\mathbb{R}$に$\infty,-\infty$も含めて拡張した$\overline{\mathbb{R}}$を考える. このとき, $\overline{\mathbb{R}}$上の任意の広義の単調列は収束することを示せ.
+
+            \subsubsection*{問4} 回転を表す行列\eqref{eq:線形代数:回転行列}を$R(\theta)$と書くとき, $R^n(\theta)=R(n\theta)\quad (n\in\mathbb{N})$を示せ.
+
+            \subsubsection*{問5} 行列$\displaystyle A=\begin{pmatrix}1&2&3\\-2&-3&-4\\2&2&4\end{pmatrix}$ は正則であるか? もし正則ならば逆行列を求めよ.
+
+            \subsubsection*{問6} $u=(x\cos\alpha-y\sin\alpha)/(x^2+y^2),\quad v=(x\sin\alpha+y\cos\alpha)/(x^2+y^2)$とするとき, $u_x+v_y$を求めよ.
+
+            \subsubsection*{問7} 座標の添え字を上に書き, $x=x^0,y=x^1,z=x^2$とする. (べき乗の意味ではない. 詳しくは第IV部参照.) 座標変換$(x^1,x^2,x^3)\to (x'^1,x'^2,x'^3)$を行うことで, 全微分は次のように変換されることを確かめよ.
+                \begin{equation*}
+                    dx'^i = \sum_{j=1}^{3}\frac{\partial x'^i}{\partial x^j}dx^j
+                \end{equation*}
+            
+            \subsubsection*{問8} $f(x,y)=x^3+y^3+(x+y)^2$の極値を全て求めよ.
+
+            \subsubsection*{問9} 以下の問いに答えよ.
+                \begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}
+                    \item $\displaystyle \int_{0}^{\infty}e^{-\alpha x}dx \quad (\alpha>0)$を計算せよ.
+                    \item $\frac{1}{\alpha^n}$を定積分で表せ. ただし$n$は自然数.
+                \end{enumerate}
+            
+            \subsubsection*{問10} $D$を三点$(0,0),(\pi,0),(0,\pi)$を頂点とする三角形とするとき, $\displaystyle \iint_D \frac{y\sin x}{x}dxdy$を求めよ.
+            
+            \subsubsection*{問11} $D:0\leq y\leq \sqrt{3}x,x^2+y^2\leq 4$とする. この時$\displaystyle \iint_D xdxdy$を求めよ.
+
+            \subsubsection*{問12} x軸上の微小線素$dx$に点が存在する確率を$\frac{1}{\sqrt{2\pi}\sigma}e^{-x^2/2\sigma^2}dx$とし, 同様の独立した分布が$y$軸上にも存在しているとする. 次の問いに答えよ.
+                \begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}
+                    \item xy平面上の微小面積$dxdy$に点が存在する確率$dP$を求めよ.
+                    \item このときの点の原点からの距離の期待値$E$は, $E=\displaystyle\int_{\mathbb{R}^2}\sqrt{x^2+y^2}dP$で与えられる. $E$を計算せよ.
+                \end{enumerate}
+                各軸上の分布は正規分布$N(0,\sigma^2)$である. なお, $\int_{\mathbb{R}^2}$はxy平面全体で積分の意.
     \clearpage
     
-    \part{ベクトル解析}
+    \part{ベクトル解析(0\%)}
     \vspace{\stretch{1}}
     \begin{screen}
         ベクトル解析は, 理工系の学生にとって馴染み深いものと聞く. たいていの物理科と電気科の学生は, 電磁気学にて顔を合わせることになるだろう.
@@ -3192,7 +3238,7 @@
         線積分と面積分について定義を述べる. Gaussの定理とStokesの定理について述べ, 電磁気学への応用をしてみる.
     \clearpage
 
-    \part{複素解析}
+    \part{複素解析(0\%)}
     \vspace{\stretch{1}}
     \begin{screen}
         複素解析は, 数学の中で最も美しい理論の一つと言われる. 複素関数(複素数から複素数へ対応させる関数)に対して, 正則という概念が定義できる.
@@ -3226,7 +3272,7 @@
         余裕があれば,多価関数とRiemann面についてすこしだけ述べる.
     \clearpage
 
-    \part{相対性理論}
+    \part{相対性理論(0\%)}
     \vspace{\stretch{1}}
     \begin{screen}
         相対性理論...それはかの天才物理学者Einsteinが作り上げた物理学の中で最も美しい理論である. 理科や宇宙が好きな
@@ -3260,7 +3306,7 @@
         Riemann幾何学の$ds^2$を紹介して, 等価原理について$\Gamma=0$であることを紹介する.
     \clearpage
 
-    \part{Lebesgue積分入門}
+    \part{Lebesgue積分入門(0\%)}
     \vspace{\stretch{1}}
     \begin{screen}
         積分好きなら一度は聞いたことがあるのが, このLebesgue積分である. Lebesgue積分は, 単なる数学の枠を飛び越えて, 
