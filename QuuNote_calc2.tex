@@ -14,6 +14,7 @@
 \usetikzlibrary{angles,quotes}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepackage{tikz-3dplot}
 \usepackage{bm}
 \usepackage{ulem}
 
@@ -2935,6 +2936,231 @@
                 \iint_D f(x,y)dxdy = \iint_R f(x(u,v),y(u,v))|J(u,v)|dudv \label{eq:多重積分:変数変換の公式}
             \end{equation}
             なお, 以上の議論は三重積分にも, もっと一般に$N$重積分においても同様であって, 変換公式も同様になる. その場合, Jacobianは$N$次関数行列式になる.
+            \clearpage
+            さて, 次に我々が扱いたいのは直交座標から特定の座標への変換である. もっともよく扱われるのは極座標系であろうから, まずは極座標変換について考えたい. まずは二次元平面上での変換を考える.
+            二次元平面上の直交座標から極座標への変換は, 以下の式で与えられる.
+            \begin{equation}
+                x=r\cos\theta, y=r\sin\theta \quad (r\geq 0,0\leq \theta<2\pi) \label{eq:多重積分:平面極座標変換}
+            \end{equation}
+            これは以下の図から容易にわかるだろう.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[->] (-1,0) -- (2.5,0);
+                    \draw[->] (0,-1) -- (0,2.5);
+
+                    \node[below left] at (0,0) {$O$};
+                    \node[right] at (2.5,0) {$x$};
+                    \node[above] at (0,2.5) {$y$};
+
+                    \draw (1.5,0) arc[radius=1.5, start angle=0, end angle=90];
+                    \draw (0,0) -- (1.06,1.06) node[above right] {$P(x,y)=P(r,\theta)$};
+                    \draw[fill=black] (1.06,1.06) circle[radius=0.05];
+                    \draw[->] (0.5,0) arc[radius=0.5, start angle=0, end angle=45];
+                    \draw[dashed] (0,1.06) -- (1.06,1.06);
+                    \draw[dashed] (1.06,0) -- (1.06,1.06);
+                    \node[below] at (1.06,0) {$x$};
+                    \node[left]  at (0,1.06) {$y$};
+                    \node[above] at (0.5,0.5) {$r$};
+                    \node at (0.6,0.3) {$\theta$};
+                \end{tikzpicture}
+                \caption{直交座標系と極座標系の関係}
+            \end{figure}
+
+            この動径$r$と角度$\theta$の組$(r,\theta)$で平面上の点を表現する座標を\textbf{極座標}\index{きょくざひょう@極座標}といい, 
+            \eqref{eq:多重積分:平面極座標変換}の変換を\textbf{極座標変換}\index{きょくざひょうへんかん@極座標変換}という. 直交座標で考えると難しい問題も,
+            極座標に変換しておくと簡単に解ける, といったことがある. 
+
+            さっそく, 極座標変換におけるJacobi行列式を求めてみよう.
+            \begin{equation*}
+                J(r,\theta)=\begin{vmatrix}\partial_r(r\cos\theta) & \partial_r (r\sin\theta) \\ \partial_\theta (r\cos\theta) & \partial_\theta (r\sin\theta) \end{vmatrix}
+                =\begin{vmatrix}\cos\theta & \sin\theta \\ -r\sin\theta & r\cos\theta\end{vmatrix}=r
+            \end{equation*}
+            したがって, 重積分の極座標変換は以下のようになる.
+            \begin{equation}
+                \iint_D f(x,y)dxdy = \iint_R f(r\cos\theta,r\sin\theta)rd\theta dr\label{eq:多重積分:重積分の極座標変換}
+            \end{equation}
+            実は, この二次元極座標変換における微小面積の変換$dxdy=rd\theta d\theta$は, Jacobianを用いない直感的な導出ができる.
+            下図において, 赤い枠で囲まれた図形の面積が微小面積$dxdy$である. 一方, この面積は, 横の長さ$rd\theta$, 縦の長さ$dr$の長方形と近似することができるから, 
+            $dxdy=rd\theta dr$となる.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \draw[->] (-1,0) -- (2.5,0);
+                    \draw[->] (0,-1) -- (0,2.5);
+
+                    \node[below left] at (0,0) {$O$};
+                    \node[right] at (2.5,0) {$x$};
+                    \node[above] at (0,2.5) {$y$};
+
+                    \draw (0,0) -- (30:2);
+                    \draw[color=red,->] (30:2) arc[radius=2,start angle=30,end angle=45];
+                    \draw (0,0) -- (45:2);
+
+                    \draw[color=red] (30:2) -- (30:2.3);
+                    \draw[color=red,->] (30:2.3) arc[radius=2.3,start angle=30,end angle=45];
+                    \draw[color=red] (45:2) -- (45:2.3);
+
+                    \node at (20:1.2) {$r$};
+                    \node[color=red] at (25:2.1) {$dr$};
+                    \node[color=red] at (35:2.6) {$d\theta$};
+                    \draw[->] (0.5,0) arc[radius=0.5,start angle=0,end angle=30];
+                    \node at(15:0.7) {$\theta$};
+                    
+                \end{tikzpicture}
+                \caption{微小面積変換の直感的な導出}
+            \end{figure}
+            \clearpage
+            試しに, 極座標変換を用いて重積分を計算してみよう.
+            \begin{equation*}
+                \iint_{x^2+y^2\leq 1}xdxdy=\iint_{0\leq r\leq 1,0\leq\theta<2\pi}r\cos\theta rd\theta dr = \int_{0}^{2\pi}\cos\theta d\theta\int_{0}^{1}r^2dr=0
+            \end{equation*}
+            実際グラフを考えれば, これは$x>0$と$x<0$の領域が対称的だから, 確かに0になることがわかる.\\
+
+            最後に, 三次元の座標変換, 特に\textbf{球面座標}\index{きゅうめんざひょう@球面座標}への変換を考えてみよう. 球面座標変換は, 以下の式で与えられる.
+            \begin{equation}
+                x=r\sin\theta\cos\phi, y=r\sin\theta\sin\phi, z=r\cos\theta \quad (r\geq 0,0\leq\phi<2\pi,0\leq\theta\leq \pi) \label{eq:多重積分:球面座標変換}
+            \end{equation}
+            この関係も, 図\footnote{実は当初この図ではなく, tikz-3dplotの\href{https://ctan.math.washington.edu/tex-archive/graphics/pgf/contrib/tikz-3dplot/tikz-3dplot_documentation.pdf}{リファレンス}のサンプルコードから書く予定だったのだが,
+            どうにもうまくいかず, いろいろ試行錯誤した末, 以前(ベクトル解析の問題作成用に)書いていたものを流用する形となった. 過去の自分に感謝した.}を見れば容易にわかる.
+            \begin{figure}[h]
+                \centering
+                \begin{tikzpicture}
+                    \coordinate (A) at (2,0,2);
+                    \coordinate (P) at (2,2,2);
+                    \coordinate (O) at (0,0,0);
+                    \coordinate (X) at (0,0,2);
+                    \coordinate (Y) at (0,2,0);
+                    \draw[->] (O) -- (P);
+                    \draw[->,thick] (O) -- (2,0,0); 
+                    \draw[->,thick] (O) -- (X); 
+                    \draw[->,thick] (O) -- (Y); 
+                    \draw[dashed] (P) -- (A);
+                    \draw[dashed] (O) -- (A);
+                    \node[left] at (P) {$r$};
+                    \draw pic["$\theta$", draw, font=\footnotesize, angle eccentricity=1.3, angle radius=0.5cm] {angle=P--O--Y};
+                    \draw pic["$\phi$", draw, font=\footnotesize, angle eccentricity=1.5, angle radius=0.3cm] {angle=X--O--A};
+                    \node[left] at (0,0,2) {$x$};
+                    \node[left] at (0,2,0) {$z$};
+                    \node[above] at (2,0,0) {$y$};
+                \end{tikzpicture}
+                \caption{直交座標系と球面座標の関系}
+            \end{figure}
+
+            これより, Jacobi行列式は
+            \begin{equation*}
+                \frac{\partial(x,y,z)}{\partial(r,\phi,\theta)}=
+                \begin{vmatrix}
+                    x_r & y_r & z_r \\
+                    x_\phi & y_\phi & z_\phi\\
+                    x_\theta & y_\theta & z_\theta
+                \end{vmatrix}
+                =
+                \begin{vmatrix}
+                    \sin\theta\cos\phi & \sin\theta\sin\phi & \cos\theta \\
+                    -r\sin\theta\sin\phi & r\sin\theta\cos\phi & 0\\
+                    r\cos\theta\cos\phi & r\cos\theta\sin\phi & -r\sin\theta
+                \end{vmatrix}
+                =r^2\sin\theta \label{eq:多重積分:球面座標のヤコビアン}
+            \end{equation*}
+            となる. さっそくこれを用いて, 球の体積を求めてみよう.
+            \begin{equation*}
+                \iiint_{x^2+y^2+z^2\leq R^2}dxdydz=\int_{0}^{2\pi}d\phi\int_{0}^{\pi}d\theta\int_{0}^{R}r^2\sin\theta dr=2\pi\cdot 2\cdot \frac{R^3}{3}=\frac{4\pi R^3}{3}
+            \end{equation*}
+            このように, 中学時代暗記に苦労した球の体積の公式も簡単に求まってしまう. 球面座標変換の威力である. なお, 球の体積自体は, 通常の一次元の積分および重積分からも求めることができることに注意しておく.
+        \clearpage
+        \subsection{Gauss積分}
+            最後に, 有名な積分公式を一つ紹介しておこう.
+            \begin{equation}
+                \int_{-\infty}^{\infty}e^{-x^2}dx = \sqrt{\pi}\label{eq:多重積分:ガウス積分}
+            \end{equation}
+            これがいわゆる\textbf{Gauss積分}\index{Gaussせきぶん@Gauss積分}であって, 理工学や統計で重要な地位を占める. 
+            統計を少しでもかじったことがある人は, 正規分布の確率密度関数がこの被積分関数を変数変換したものであり, 全体の確率が1
+            になるよう規格化されたものであると気づくだろう. もちろん, 数学においても到る所に顔を出す重要な積分で, 例えば複素解析で解くであろう
+            有名な積分の多くは, このGauss積分の結果を用いる. そうでなくても, 不定積分ができない関数でも定積分が計算されるという一つの実例になっていることは
+            数学的に大変興味深いことである. うすうす気づかれている読者もいるだろうが, この積分の定積分が計算できる, とはいっても一変数の積分だけで計算するのはなかなかに骨が折れる.
+            もちろん, この積分の結果が$\sqrt{\pi}$であることを知っているならば, 適当な不等式評価によってこの公式を証明することができるだろう.
+            しかしそれはあくまで答えを知っていたからできる芸当であって, 実際の導出としてはかなり不自然である. そこでここでは, 我々が学んだ重積分の知識を用いてこの積分を計算してみたいと思う.
+
+            まず, この広義積分が収束することを確認しておこう. 評価を簡単にするために, $[0,\infty)$で考える. まず, $x\to\infty$で$e^{-x^2}$よりも$e^{-x}$のほうが増加のスピードは早いことから,
+            適当な$x_0>0$を取れば$x\geq x_0$で$e^{-x}\geq e^{-x^2}$と出来る. したがって
+            \begin{equation*}
+                \int_{x_0}^{\infty}e^{-x^2}dx\leq \int_{x_0}^{\infty}e^{-x}dx = e^{x_0} < \infty
+            \end{equation*}
+            であるから, 元の積分も収束することがわかる. \footnote{被積分関数は常に正だから, この原始関数は常に単調増加であって, 上記で述べたことより有界であるから, これは有限値に収束するのである.}
+            よって, 次の変形を行う.
+            \begin{equation*}
+                \left(\int_{0}^{\infty}e^{-x^2}dx\right)^2 = \left(\int_{0}^{\infty}e^{-x^2}dx\right)\cdot \left(\int_{0}^{\infty}e^{-x^2}dx\right)=\left(\int_{0}^{\infty}e^{-x^2}dx\right)\cdot \left(\int_{0}^{\infty}e^{-y^2}dy\right)=\int_0^\infty dx\int_0^\infty e^{-x^2-y^2}dy
+            \end{equation*}
+            これは累次積分の形であるから, これを重積分に戻すことを考える. 積分範囲は, xy平面の第一象限全体であるから, これを次の積分範囲の極限とみなす.
+            \begin{equation*}
+                D_R = \{(x,y)\mid x^2+y^2\leq R^2,x\geq 0,y\geq 0\}
+            \end{equation*}
+            すなわち, 以下の重積分へと書き換えられる.
+            \begin{equation*}
+                \lim_{R\to\infty}\iint_{D_R} e^{-(x^2+y^2)}dxdy
+            \end{equation*}
+            さて, これによって, 一次元積分の問題が, 重積分の問題へと帰着されたわけであるが, これはどのように解けばよいだろうか. 
+            積分領域と被積分関数をすこし眺めれば, これが極座標変換の問題であると気づくだろう.(実際そのための領域を取っている.)
+            そこで, 極座標変換によって重積分を計算すれば, $0\leq\theta\leq\frac{\pi}{2}$に注意して
+            \begin{equation*}
+                \lim_{R\to\infty}\iint_{D_R} e^{-(x^2+y^2)}dxdy = \lim_{R\to\infty}\int_{0}^{\frac{\pi}{2}}d\theta\int_{0}^{R}re^{-r^2}dr=\lim_{R\to\infty}\frac{\pi}{4}\left[1-e^{-R^2}\right]=\frac{\pi}{4}
+            \end{equation*}
+            \clearpage
+            したがって, 次の式が得られたことになる.
+            \begin{equation*}
+                \left(\int_{0}^{\infty}e^{-x^2}dx\right)^2 = \frac{\pi}{4}
+            \end{equation*}
+            後はこれを変形して, 積分区間を元に戻せば\eqref{eq:多重積分:ガウス積分}が得られる.\\
+
+            この計算は厳密には多重積分の広義積分に属するもので, 広義積分を計算する場合はもう少し慎重に考える必要がある. しかし, ここではその厳密な方法を述べない. 大抵の場合は, 厳密なことに拘らなくても計算することが可能であるし, 
+            そのほうが計算に集中することができるからである. また必要な時に厳密な定理を学べばよい. なお, Gauss積分は極座標変換を用いなくとも, 単なる重積分だけで求めることもできるので, 時間と余力がある場合は考えてみるとよい. かなり技巧的である.\\\\
+
+            以上で多重積分について大まかに述べた. これでこの第I部は終了であるが, QuuNoteIと比べてかなりページ数が多いことに気が付くだろう.
+            本来これらそれぞれの節の内容がそれぞれ独立して部として書くことができるほど内容が多いのだが, ここでは後のことを考えて小節としたのである.
+            そのため, 普通の微分積分の教科書に書いてあるだろう定理や公式も省略していることが多い. もし知識の不足で不安ならば適当な微分積分の教科書を読んでみてほしい.
+            \clearpage
+            \basicquestion 以下の問いに答えよ。
+    
+            \subsubsection*{問1} 次の重積分を計算せよ.\\
+                $(1)\displaystyle \int_{0}^{1}dy\int_{0}^{1}(x+y)dx$\hspace{5mm}
+                $(2)\displaystyle \int_{0}^{1}dx\int_{0}^{\sqrt{1-x^2}}\sqrt{1-x^2}dy$
+    
+            \subsubsection*{問2} 次の三重積分を計算せよ.\\
+                $(1)\displaystyle \int_{0}^{1}dz\int_{0}^{2}dy\int_{1}^{3}dx$\hspace{5mm}
+                $(2)\displaystyle \int_{0}^{1}dx\int_{z}^{1}dy\int_{z+y}^{1}ydx$\hspace{5mm}
+                $(3)\displaystyle \int_{0}^{\pi}dz\int_{0}^{\sin z}dx\int_{x^2}^{1}\cos zdy$
+    
+            \subsubsection*{問3}次の領域における重積分を計算せよ.\\
+                $(1)\displaystyle \iint_D (x+y)^2dxdy\quad [D:x+y\leq 1,x\geq0,y\geq0]$\hspace{1mm}
+                $(2)\displaystyle \iint_D e^{y^2}dxdy\quad [D:0\leq x\leq 1,x\leq y\leq 1]$
+
+                \noindent
+                $(3)\displaystyle \iint_D(x+y)\sin\pi(x-y)dxdy\quad [D:0\leq x+y\leq 1,0\leq x-y\leq 1]$
+
+                \noindent
+                $(4)\displaystyle\iint_D \frac{dxdy}{x^2+y^2} \quad [D:1\leq x^2+y^2\leq 4]$
+            
+            \subsubsection*{問4} 次の領域における三重積分を計算せよ. ただし$V:x+y+z\leq 1,x\geq 0, y\geq 0,z\geq 0$とする.\\
+                $(1)\displaystyle \iiint_V \frac{dxdydz}{(x+y+z+1)^3}$\hspace{5mm}
+                $(2)\displaystyle \iiint_V (x^2+y^2+z^2)dxdydz$\hspace{5mm}
+                $(3)\displaystyle \iiint_{x^2+y^2+z^2\leq 1}x^2dxdydz$
+    
+            \subsubsection*{問5}重積分$\displaystyle\iint_{\frac{x^2}{a^2}+\frac{y^2}{b^2}\leq 1}xydxdy $を求めよ. (適当な変数変換を考えよ.)
+            \vspace{-0.5cm}
+
+            \subsubsection*{問6}一次変換\eqref{eq:多重積分:一次変換}におけるJacobianの導出(同頁参照)において, xy平面上の単位正方形の面積はuv平面の単位正方形の$|J|$倍であることを証明せよ.
+            \vspace{-0.5cm} 
+
+            \subsubsection*{問7}一変数の積分と違い, 変数変換公式\eqref{eq:多重積分:変数変換の公式}において生じる係数$|J|$にはなぜ絶対値がついているのだろうか.
+            \vspace{-1cm} 
+
+            \subsubsection*{問8}領域$V$上に密度$\rho(x,y,z)$で広がる物体が回転運動する際の慣性モーメントは, 回転軸の長さを$l(x,y,z)$として
+                \begin{equation}
+                    I=\iiint_{V}\rho(x,y,z)l(x,y,z)^2dxdydz
+                \end{equation}
+                と与えられる. 半径$R$, 質量$M$の球を重心を通るz軸の回りに回転させることを考えたとき, この時の慣性モーメントを求めよ.\footnote{慣性モーメントの物理的な意味は力学の本を参照.}
+            \clearpage
     \clearpage
     
     \part{ベクトル解析}
