@@ -1,0 +1,378 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage{amsthm}
+\usepackage[dvipdfmx]{hyperref}
+
+\newcommand{\F}{\mathfrak{F}}
+\newcommand{\B}{\mathfrak{B}}
+\newcommand{\I}{\mathfrak{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\M}{\mathfrak{M}}
+
+\newcommand{\Q}{\textbf{問}. }
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+
+\numberwithin{equation}{section}
+
+\title{2時間でわかる測度論}
+\begin{document}
+    \maketitle
+
+    \begin{abstract}
+        ここでは, 2時間で測度論の内容をざっくりさらうことを目標にする. まずは大まかな流れについて.
+
+        \begin{enumerate}\renewcommand{\labelenumi}{\roman{enumi})}
+            \item $\sigma$-加法族とその性質.
+            \item 測度とその性質.
+            \item 1次元Lebesgue測度空間.
+            \item 可測関数.
+            \item 積分と簡単な性質.
+            \item 収束定理.
+        \end{enumerate}
+
+        まずはi),ii)で抽象的な議論を行って測度空間について定義し, iii)で具体的な測度空間を構成する. その後はまた抽象的な空間上で積分を定義し, 
+        最後に具体的な計算を行う.
+
+        最終的な目標としては, 次の積分\eqref{eq:目標}を複素積分なしで解くことである.
+        \begin{equation}
+            \int_{-\infty}^{\infty}e^{i\lambda x-tx^2}dx=\sqrt{\frac{\pi}{t}}e^{-\frac{\lambda^2}{4t}}\quad (\forall t>0, \forall \lambda\in(-\infty,\infty)) \label{eq:目標}
+        \end{equation}
+
+        想定される知識としては, 集合論のうち, 集合算, 写像, 濃度とEuclid空間である.
+    \end{abstract}
+    
+    \clearpage
+    \tableofcontents
+    \clearpage
+
+    \part{可測空間}
+        \section{$\sigma$-加法族}
+            集合$A$の巾集合を$2^A$とかく. 全体集合を以下$\Omega$とする. 
+
+            \begin{definition}
+                全体集合$\Omega$の部分集合族$\F$が次の性質を満たすとき, $\F$は\textbf{有限加法族}という.
+                \begin{align}
+                    &\varnothing \in \F \label{eq:有限加法族性質1} \\
+                    &A \in \F \rightarrow A^c \in \F \label{eq:有限加法族性質2} \\
+                    &A,B \in \F \rightarrow A\cup B \in \F \label{eq:有限加法族性質3}
+                \end{align}
+            \end{definition}
+
+            \begin{theorem}
+                有限加法族$\F$は, $\Omega \in \F$であり, 積, 差, 対称差\footnote{対称差$A\Delta B = (A-B)\cup (B-A)$}に閉じている.
+            \end{theorem}
+
+            $\Omega$上の最小の有限加法族として$\{\varnothing,\Omega\}$がある. また, $A\subset \Omega$に対して, $\{\varnothing,A,A^c,\Omega\}$は有限加法族. 
+            有限加法族は比較的簡単に作れる.
+
+            注意しなければならないのは, \eqref{eq:有限加法族性質3}は, 無限の場合は成立しない, ということ. よって, 有限加法族を拡張して可算個の和について閉じているものを考えたい.
+            
+            \begin{definition}
+                $\Omega$上の部分集合族$\B$が次の性質を満たすとき, $\B$は\textbf{$\sigma$-加法族}という.
+                \begin{align}
+                    &\varnothing \in \B \label{eq:加法族性質1} \\
+                    &A \in \B \rightarrow A^c \in \B \label{eq:加法族性質2} \\
+                    &A_1,A_2,\dots \in \B \rightarrow \bigcup A_n \in \B \label{eq:加法族性質3}
+                \end{align}
+                そして, $(\Omega,\B)$を\textbf{可測空間}といい, $\B$に属する集合を\textbf{可測集合}という.
+            \end{definition}
+
+            \begin{theorem}
+                $\sigma$-加法族$\B$は, \underline{高々可算回}の積, 差, 対称差に閉じている.
+            \end{theorem}
+
+            明らかに, $\sigma$-加法族は有限加法族. 上の例で挙げた有限加法族は$\sigma$-加法族でもある. 族の属する集合の個数は有限個だから, 可算回の操作を行っても有限の操作に帰着される.
+
+            有限加法族から$\sigma$-加法族を作りたい. なぜなら, 有限加法族は作るのが簡単だから. 考えられるのは, 有限加法族を包むような$\sigma$-加法族であるが, 
+            興味があるのは, そのうち最小のもの. そこで, 以下の定理が重要.
+            \begin{theorem}
+                $\Omega$の任意の部分集合族$\mathfrak{U}$に対して, それを包む最小の$\sigma$-加法族$\mathfrak{U}_0$が存在する.
+            \end{theorem}
+
+            \begin{definition}
+                上の定理によって得られた$\sigma$-加法族を, $\mathfrak{U}$から生成された$\sigma$-加法族といい, $\B[\mathfrak{U}]$とかく.
+            \end{definition}
+
+            例を挙げる. $\Omega\sim\mathbb{N}$とする. $\B[\{\{\omega\}\mid \omega\in\Omega\}]=2^\Omega$. なぜなら, 任意の$\omega_n \in \Omega$に対し, $\{\omega_n\}$は生成されし$\sigma$-加法族
+            に含まれてなければならないから, その高々可算和は当然含まれる. $2^\Omega$の任意の集合はその可算和で書くことができるから, $\B[\{\{\omega\}\mid \omega\in\Omega\}]\supset 2^\Omega$.
+
+            \Q $\{a,b\}$上の有限加法族をすべて求めよ.
+        \clearpage
+        \section{測度}
+            先に, 無限大の演算を定める. 拡張実数を$\overline{\mathbb{R}}=\mathbb{R}\cup\{+\infty,-\infty\}$とかく. $\overline{\mathbb{R}}$上の演算について.
+            \begin{definition}
+                まず, 実数との大小関係は
+                \begin{equation}
+                    -\infty < a < + \infty \quad (\forall a\in \mathbb{R})
+                \end{equation}
+                である. 以下, 複合同順とする. $(\forall a\in \mathbb{R})$
+                \begin{align}
+                    &(\pm \infty) + a = a + (\infty) = \infty \\
+                    &(\pm \infty) - a = \pm\infty,\quad a-(\pm \infty) = \mp \infty\\
+                    &\pm\infty + \pm\infty = \pm\infty - (\mp\infty) = \pm\infty\\
+                    &a\times (\pm\infty)=(\pm\infty)\times a = (\rm{sign}\hspace{1mm}a)\times \pm\infty \quad (a\neq 0)\\
+                    &\infty \times \infty = \infty
+                \end{align}
+                なお, ここでは$\infty\times 0$等は定義しない.
+            \end{definition}
+
+            \begin{definition}
+                集合$A\subset \Omega$と$\Omega$の部分集合族$\mathfrak{A}$が与えられたとき, 次の二つの関数を考える.
+                \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item 集合$A$上の各点に対して定義された関数$f:A\to \overline{\mathbb{R}}$を$A$上の\textbf{点函数}という.
+                    \item 集合族$\mathfrak{A}$上の各集合に対して定義された関数$\Phi:\mathfrak{A}\to \overline{\mathbb{R}}$を$\Omega$上の\textbf{集合函数}という.
+                    特に, $\mathfrak{A}$上で定義された集合函数が, 互いに素な$A,B\in \mathfrak{A}$に対し, $\Phi(A+B)=\Phi(A)+\Phi(B)$をみたすなら, $\Phi$は有限加法的であるという.
+                    もっといえば, 有限加法族$\F$上の有限加法的な集合函数で, $m:\F\to[0,\infty]$かつ$m(\varnothing)=0$なるものを\textbf{有限加法的測度}という.
+                \end{enumerate}
+            \end{definition}
+
+            \begin{theorem} $m$を上で定義した有限加法的測度とする.
+                \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $A_1,\dots,A_n\in \F$が互いに素ならば$m\left(\sum\limits_{\nu=1}^{n} A_\nu\right)=\sum\limits_{\nu=1}^{n}m(A_\nu)$ (\textbf{有限加法性})
+                    \item $A,B\in\F,A\subset B$ならば$m(A)\leq m(B)$ (\textbf{単調性})
+                    \item $A_1,\dots,A_n\in\F$ならば$m\left(\bigcup\limits_{\nu=1}^n A_\nu\right)\leq \sum\limits_{\nu=1}^nA_\nu$ (\textbf{有限劣加法性})
+                \end{enumerate}
+            \end{theorem}
+
+            やはり, 有限加法的測度についても, 可算無限にまで対応できるようなものに拡張したい.
+
+            \begin{definition}
+                $\Omega$上の$\sigma$-加法族$\B$に対して, $\B$-集合函数$\mu:\B\to [0,\infty]$が$\mu(\varnothing)=0$であって, \textbf{$\sigma$}-加法的;すなわち, 
+                互いに素な$A_1,A_2,\dots$に対して$\mu(\sum A_n)=\sum\mu(A_n)$, を満たすとき, $\mu$を$(\Omega,\B)$上の\textbf{測度}という.
+            \end{definition}
+
+            測度は明らかに有限加法性を満たすから, 単調性が成り立ち, また, 劣加法性$\mu(\bigcup A_n)\leq \sum \mu(A_n)$も成り立つ. これは$\B$の集合列の可算和が閉じていることより, 
+            測度が考えられているのであって, 有限加法族であればこのような性質は一般に成立しない.
+
+            \begin{definition}
+                可測空間$(\Omega,\B)$と, その上で考えられた測度$\mu$を組み合わせた$(\Omega,\B,\mu)$を\textbf{測度空間}という.
+            \end{definition}
+            \clearpage
+
+            例えば, 測度の例として次のDirac測度($\delta$-測度)がある. これは$\Omega$に対し, $\B=2^\Omega$とし, ある$\omega\in\Omega$を固定して, 
+            $A\subset \Omega$が$\omega \in A$なら$\mu(A)=1$, それ以外は$\mu(A)=0$として定義される.
+
+            測度の一般的な性質について. 以下測度空間$(\Omega,\B,\mu)$で考える.
+
+            \begin{theorem}
+                $A_n\in \B\quad (n=1,2,\dots)$とする. 集合列$\{A_n\}$について
+                \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $\{A_n\}$が単調増加ならば, $\mu(\lim A_n)=\lim \mu (\lim A_n)$
+                    \item $\{B_n\}$が単調減少かつ$\mu(B_1)<\infty$ならば, $\mu(\lim B_n) = \lim \mu(B_n)$
+                    \item 一般には, 
+                    \begin{align}
+                        &\mu(\liminf A_n) \leq \liminf\mu(A_n) \\ 
+                        \mu\left(\bigcup A_n\right)<\infty \Rightarrow &\mu(\limsup A_n) \geq \limsup\mu(A_n)
+                    \end{align}
+                    だから, $\lim A_n$が存在すれば, 
+                    \begin{equation}
+                        \mu\left(\bigcup A_n\right)<\infty \Rightarrow \mu(\lim A_n) = \lim\mu(A_n)
+                    \end{equation}
+                \end{enumerate}
+            \end{theorem}
+
+            最後に, 次の言い回しを定義する.
+            \begin{definition}
+                $E\in\B$上の点$\omega$に関する命題$P(\omega)$があって, 
+                \begin{equation}
+                    \mu(\left\{\omega\in E\mid \not P(\omega)\right\})=0
+                \end{equation}
+                であるとき, 命題$P(\omega)$は$E$上の\textbf{ほとんど到る所\footnote{almost everywhere}で成り立つ}といい, $\mu-{\rm a.e}.\omega, P(\omega)$とかく.
+            \end{definition}
+        \clearpage
+        \section{Lebesgue測度空間}
+            ここでは具体的に測度空間を構成する. まずは簡単に測度を考えることができる集合, 身近な区間を定義する.
+
+            \begin{definition}
+                $\mathbb{R}^1$(以下$\mathbb{R}$とかく.)上の\textbf{区間}を以下のように定義する.
+                \begin{equation}
+                    I=(a,b]\quad (-\infty\leq a < b\leq \infty)
+                \end{equation}
+                ただし, $b=\infty$のときは, $(a,b)$とする.
+
+                つぎに, $\mathbb{R}$上の\textbf{区間塊}を以下のように定義する.
+                \begin{equation}
+                    E=I_1+I_2+\cdots+I_n
+                \end{equation}
+                すなわち区間塊は, 区間の有限の直和である.
+
+                $\mathbb{R}$上の区間の全体を$\I_1$とかき, 区間塊の全体を$\F_1$とかく.
+            \end{definition}
+
+            \begin{theorem}
+                $\F_1$は$\R$上の有限加法族.
+            \end{theorem}
+
+            \begin{definition}
+                $\F_1$上の集合函数$m$を考える. このとき, 有界な区間$I$に対して, 
+                \begin{equation}
+                    m(I)= b-a
+                \end{equation}
+                とし, それ以外の区間に対しては, 
+                \begin{equation}
+                    m(I)=\sup\{m(J)\mid \text{有界な区間}J\subset I\}
+                \end{equation}
+                と定める. 区間塊$E=I_1+\cdots+I_n$に対しては, 
+                \begin{equation}
+                    m(E)=m(I_1)+\cdots+m(I_n)
+                \end{equation}
+                とする.
+            \end{definition}
+
+            \begin{theorem}
+                $m$は有限加法的測度.
+            \end{theorem}
+
+            次に, 任意の$\Omega$の部分集合に対してその測度にあたるものを考えたい.
+            \begin{definition}
+                集合函数$\Gamma:2^\Omega\to [0,+\infty]$が次の性質を満たすとき, $\Gamma$を\textbf{Carath\'{e}odory外測度}という.
+                \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $\Gamma(\varnothing)=0$.
+                    \item $A\subset B$ならば$\Gamma(A)\leq\Gamma(B)$.
+                    \item $\Gamma(\bigcup A_n)\leq \sum \Gamma(A_n)$.
+                \end{enumerate}
+            \end{definition}
+
+            外測度に対して, 可測性を定義する.
+            \begin{definition}
+                $E\subset \Omega$が\textbf{$\Gamma$-可測}であるとは, 
+                \begin{equation}
+                    \Gamma(A)=\Gamma(A\cup E)+\Gamma(A\cup E^c) \quad (\forall A\subset \Omega)
+                \end{equation}
+                が成り立つことである. $\Gamma$-可測な集合全体を$\M_\Gamma$とかく.
+            \end{definition}
+            なお成り立つのは, $\Gamma(A)\geq\Gamma(A\cup E)+\Gamma(A\cup E^c)$だけでよいことに注意する.
+            \clearpage
+            次に, 外測度を有限加法的測度から構成することを考える. まずは一般的な場合で考える.
+            \begin{theorem}
+                有限加法族$\F$上の有限加法的測度$m$に対して, 次の集合函数を考える.
+                \begin{equation}
+                    \Gamma (A) = \inf_{A\subset \bigcup E_n,E_n\in \F}\sum m(E_n)
+                \end{equation}
+                このとき, $\Gamma$は外測度. 特に, $m$が$\F$上で$\sigma$-加法的, つまり互いに素な$E_n\in \F$で$\sum E_n\in\F$であるとき, $m(\sum E_n)=\sum m(E_n)$なら, $\Gamma (E)=m(E)$である.
+            \end{theorem}
+
+            \begin{theorem}
+                上記の方法で構成した$\Gamma$に対して, $\F\subset\M_\Gamma$が成立する.
+            \end{theorem}
+
+            一般の外測度の性質として, 以下がある.
+            \begin{theorem} 一般の外測度$\Gamma$の$\Gamma$-可測集合全体を$\M_\Gamma$とかく.
+                \begin{enumerate}\renewcommand{\labelenumi}{(\arabic{enumi})}
+                    \item $A\in\M_\Gamma$ならば$A^c\in\M_\Gamma$.
+                    \item $\Gamma(E)=0$ならば$E\in\M_\Gamma$.
+                \end{enumerate}
+            \end{theorem}
+
+            \begin{theorem}
+                互いに素な$E_k\in\M_\Gamma$に対して, $S=\sum E_k$ならば, $S\in\M_\Gamma$, $\Gamma(S)=\sum\Gamma(E_k)$が成立.
+            \end{theorem}
+
+            \begin{theorem}
+                $E,F\in\M_\Gamma$ならば$E\cup F,E-F\in\M_\Gamma$. したがって, $\M_F$は有限和に閉じているから有限加法族.
+            \end{theorem}
+
+            \begin{theorem}
+                $E_n\in\M_\Gamma$ならば, $\bigcup E_n\in\M_\Gamma$.
+            \end{theorem}
+
+            以上より, 次の定理が得られた. これこそが$\Gamma$-可測集合なるものを考えた要因である.
+            \begin{theorem}
+                $\M_\Gamma$は$\sigma$-加法族で, $\Gamma$は$\M_\Gamma$上の測度.
+            \end{theorem}
+
+            以上の定理を用いて, 実際に測度を構成する. まず, 先ほど考えた$\F_1$に対する有限加法的測度について, 外測度$\mu^*$を構成する.
+
+            \begin{definition}
+                $\mu^*$を\textbf{Lebesgue外測度}という.
+            \end{definition}
+            
+            \begin{theorem}
+                $\mu^*$は$\F_1$上で$\sigma$-加法的. したがって, 有界な区間$I=(a,b]$に対して, $\mu^* (I)=b-a$.
+            \end{theorem}
+
+            \begin{theorem}
+                $\M_{\mu^*}$で考えた$\mu^*$を$\mu$とかき, \textbf{Lebesgue測度}という. なお$\M_{\mu^*}=\M_\mu$と書く. また, $\M_\mu$に属する集合を\textbf{Lebesgue可測集合}という.
+            \end{theorem}
+
+            \begin{theorem}
+                区間や区間塊はLebesgue可測.
+            \end{theorem}
+
+            次は, 開集合について考える.
+            \begin{definition}
+                $\R$における開集合全体$\mathfrak{O}_1$から生成される$\sigma$-加法族を\textbf{Borel集合族}といって, $\B_1$とかく. $B_1$に属する集合をBorel集合という. 
+            \end{definition}
+
+            重要なのは以下の定理である.
+            \begin{theorem}
+                \begin{equation}
+                    \B_1=\B[\I_1]=\B[\F_1]
+                \end{equation}
+            \end{theorem}
+
+            これより, 次が得られた.
+            \begin{theorem}
+                Borel集合はLebesgue可測集合.
+            \end{theorem}
+        \clearpage
+        \section{積分}
+            まずは, 積分が定義できる可測函数を考える.
+            \begin{definition}
+                $f:\Omega\to \overline{\R}$と$E\subset \Omega$について
+                \begin{equation}
+                    E(\text{$f$の条件}) = \{\omega\in E\mid \text{$f$の条件}\}
+                \end{equation}
+                と書くことにする. このとき$E\in\B$に対して, 
+                \begin{equation}
+                    E(f>a)\in\B \quad (\forall a\in \R)
+                \end{equation}
+                であれば, $f$は$E$上で\textbf{$\B$-可測関数}であるという.
+            \end{definition}
+
+            \begin{theorem}
+                $f$が$E$上で可測であることと, 次の命題は同値である. ただし, $a$は任意の実数.
+                \begin{enumerate}\renewcommand{\labelenumi}{(\roman{enumi})}
+                    \item $E(f\leq a) \in \B$
+                    \item $E(f<a)\in \B$
+                    \item $E(f\geq a)\in \B$
+                \end{enumerate}
+
+                しかも, $a$を任意の有理数としても, やはり可測である.
+            \end{theorem}
+
+            \begin{definition}
+                集合$E=E_1+E_2+\cdots+E_n$に対して
+                \begin{equation}
+                    f=\sum_{i=1}^{n}a_i 1_{E_n} \label{eq:単関数}
+                \end{equation}
+                なる函数を単函数という.
+            \end{definition}
+
+            \begin{theorem}
+                \eqref{eq:単関数}なる形の単函数が$\B$-可測であるための必要十分条件は, $E_1,\dots,E_n$が$E$の有限$\B$-可測分割である.
+            \end{theorem}
+
+            \begin{definition}
+                $f^+=\max(f,0),f^-=\min(-f,0)$.
+            \end{definition}
+            このとき, $f^+,f^-\geq 0$であり, $f=f^+-f^-$. しかも, $f$が可測函数であることと$f^+,f^-$が可測函数であることは同等.
+            よって, 非負$\B$-可測函数について成り立つことを, 一般の可測函数についても言うことができる.
+
+            $f$が$E\in\B$上で可測函数なら, $E$の部分可測集合上でもやはり$\B$-可測.
+
+            \begin{theorem}
+                fが$E$上可測で, $f\geq0$ならば, $E$上可測で$f_n\geq0$なる単函数の単調増加列$\{f_n\}$が存在して, $\lim f_n = f$.
+            \end{theorem}
+
+            
+
+            
+\end{document}
