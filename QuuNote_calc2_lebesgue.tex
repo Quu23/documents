@@ -1,0 +1,98 @@
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\section{可測空間}
+    集合体, $\sigma$-集合体の定義を述べ, 可測空間を定義する. 部分集合族から生成される$\sigma$-集合体や可測分割等も述べる.
+
+    \subsection{集合体}
+        我々が面積を考える図形には, 通常以下の性質があることが承認されるだろう.
+        \begin{enumerate}
+            \item $A_1$が図形なら, $A_1^c$も図形.
+            \item $A_1,A_2$が図形なら, $A_1\cup A_2$も図形.
+            \item $|A|$で図形の面積を表すことにすれば, 互いに素な図形$A_1,A_2$に対し$|A_1\cup A_2|=|A_1| + |A_2|$.
+        \end{enumerate}
+
+        しかし, 我々が求める性質として, 上記の性質が可算無限でも成り立つ, すなわち\footnote{以下のように, 今後$\bigcup,\sum$の添え字を省略する. 省略されている場合は基本的に1からはじまって$\infty$までと考えてよい.}
+        \begin{equation*}
+            A_1,A_2,\dots \text{が図形なら} \bigcup A_n \text{も図形であり, さらに互いに素なら} \left|\bigcup A_n\right|=\sum |A_n| 
+        \end{equation*}
+        これこそがLebesgue測度論・積分論の本質であって, これによって積分論は随分と簡単になるのである. その重要性については後述するとして, 
+        ひとまず, 簡単な集合体について考えよう. 以後, 全体集合を$\Omega$とかく.
+        
+        \begin{definition}
+            全体集合$\Omega$の部分集合族$\F\subset 2^\Omega$が\textbf{集合体}\index{しゅうごうたい@集合体}であるとは, 以下の三つの条件を満たすことである.\footnote{今後この第V部では理論の展開を考えてこのように定義, 定理を列挙して説明していくことにする.}
+            \begin{enumerate}
+                \item $\varnothing \in \F$.
+                \item $A \in \F \Rightarrow A^c \in \F$.
+                \item $A,B \in \F \Rightarrow A\cup B \in F$.
+            \end{enumerate}
+        \end{definition}
+
+        例えば, 最も小さい集合体としては$\{\Omega,\varnothing\}$が考えられる. 実際, $\varnothing^c = \Omega$であるから, これは集合体である.
+        集合体は次の性質を満たす.
+
+        \begin{theorem}
+            集合体は, 交わり, 差, 対称差について閉じている.
+        \end{theorem}
+        \begin{proof}
+            いずれもde Morganの定理を使えば示せる. 交わりについては, $A,B\in\F$なら$A\cap B = (A^c \cup B^c)^c\in \F$であるから閉じている.
+            差は, $A-B=A\cap B^c$であるから交わりについて閉じていることよりわかる. 対称差は, 二つの差の和であるから, やはり閉じている.
+        \end{proof}
+
+        集合体は集合列の可算和については何も言っていないことについて注意しよう. 例えば, $(a,b],(\infty\leq a<b\leq \infty)$\footnote{ただし, $b=\infty$で$(a,b)$となる.}なる形の区間の直和\footnote{互いに素である集合列の和.}全体を$\F$と
+        すれば, $\varnothing$も区間とみなしておくとこれは集合体(演習問題で確認する)だが, 例えば$A_n=(0,2-\frac{1}{n}]$とすれば$\bigcup A_n = (0,2)$であって\footnote{任意の$n$について, $0<2\leq 2-\frac{1}{n}$とはならないから, $2$は入らない.}, これは$\F$にふくまれない.
+        \clearpage
+        
+        そこで, 可算和についても閉じているような部分集合族を考えたい.
+        \begin{definition}
+            $\B\subset 2^\Omega$が$\Omega$上の\textbf{$\sigma$-集合体}\index{sigmaしゅうごうたい@$\sigma$-集合体}であるとは, 以下の性質を満たすことである.
+            \begin{enumerate}
+                \item $\varnothing\in\B$.
+                \item $A\in\B\Rightarrow A^c\in\B$.
+                \item $A_1,A_2,\dots\in\B\Rightarrow \bigcup A_n\in\B$.
+            \end{enumerate}
+            また, $(\Omega,\B)$を\textbf{可測空間}\index{かそくくうかん@可測空間}といい, $\B$に属する集合を\textbf{可測集合}\index{かそくしゅうごう@可測集合}という.
+        \end{definition}
+
+        当然のことであるが, $\sigma$-集合体は集合体である. また, $(\Omega,\varnothing)$も$\sigma$-集合体である. 巾集合$2^\Omega$は勿論$\sigma$-集合体である.
+        $\sigma$-集合体の性質としては, 以下のものが重要である.
+        \begin{theorem}
+            $\sigma$-加法族は, \underline{高々可算回}の交わり, 差, 対称差に閉じている.
+        \end{theorem}
+        \begin{proof}
+            やはりこれもde Morganの定理からわかる. 例えば交わりなら$\bigcap A_n = \left(\bigcup A_n^c\right)^c \in \B$である.
+        \end{proof}
+
+        集合体は簡単に構成することができるが, $\sigma$-集合体を一から構成するのはなかなかに難しい. 通常は, 集合体をつくって, それを包むような最小の$\sigma$-集合体を考える.
+        \begin{theorem}
+            $\Omega$の部分集合族$\mathcal{A}$に対して, $\mathcal{A}$を包むような最小の$\sigma$-集合体$\B_0$が存在する.
+        \end{theorem}
+        \begin{proof}
+            まず, $\mathcal{A}$を包む$\sigma$-集合体全体を$\mathfrak{S}$とかく. $\B_0 = \bigcap\limits_{\B\in\mathfrak{S}}\B$と置くと, $\B_0$は$\sigma$-集合体である.
+            ($\mathfrak{S}$に含まれる全ての$\B$について共通部分を取っているのだから, 当然空集合, 補集合も含まれ, 無限和についても各集合が含まれるのだから含まれる.)
+            しかも, $\B_0$は$\mathcal{A}$を包み, $\mathfrak{S}$に含まれる全ての$\sigma$-集合体の部分集合となるから, $\B_0$が求めるものである.
+            ただし, この証明が意味を持つためには, まず, $\mathcal{A}$を包む$\sigma$-集合体が存在しなければならない. 幸運なことに, 明らかに$\mathcal{A}\subset 2^\Omega$であってしかも$2^\Omega$は
+            $\sigma$-集合体であるから, 上記の証明で問題なかった.
+        \end{proof}
+
+        \begin{definition}
+            $\Omega$の部分集合族$\mathcal{A}$に対し, $\mathcal{A}$を包むような最小の$\sigma$-集合体を$\mathcal{A}$\textbf{から生成された$\sigma$-集合体}\index{せいせいされたsigmaしゅうごうたい@生成された$\sigma$-集合体}といい, $\B[\mathcal{A}]$とかく.
+        \end{definition}
+
+        この概念は測度論において重要な役割を果たす. 具体的な利用法はいずれ学ぶだろう.
+        
+\clearpage
+\section{測度}
+    集合関数の定義および測度の定義を述べる. 様々な測度の例を述べる. 測度の基本的な性質についても示す. $\mu$-零集合
+    についても触れ, 完備測度空間を定義する. 完備測度への測度の拡張が存在し, しかもそれが一意であることを述べる.
+\clearpage
+\section{可測関数}
+    可測関数の定義, 基本的性質を述べる. 単関数を定義し, 任意の正なる可測関数に対して, 収束する単関数の単調増加列が存在することを示す.
+    ほとんど到る所(almost everywhere)についても触れる.
+\clearpage
+\section{積分}
+    積分を定義し, 諸性質を述べる. 関数が連続であれば, Riemann積分とLebesgue測度に対する積分(Lebesgue積分)が一致することも述べる.
+\clearpage
+\section{収束定理}
+    Lebesgueの有界収束定理を証明する. 適用例などをみてその威力を体感する.
+\clearpage
+\part{終わりに}
+\clearpage
