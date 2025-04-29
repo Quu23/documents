@@ -1,0 +1,171 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage{amsthm}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\M}{\mathbb{C}}
+
+\newcommand{\Q}{\textbf{問}. }
+
+\newcommand{\Ker}{{\rm{Ker}}\hspace{0.5mm}}
+\renewcommand{\Im}{{\rm{Im}}\hspace{0.5mm}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{定義}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}
+
+\theoremstyle{definition}
+\newtheorem{proposition}{命題}
+
+\begin{document}
+    \section*{代数}
+        教科書 pp.63-86. 定理番号などは本の番号と\textbf{一致しない}ことに注意.
+        \subsection*{基本事項の確認}
+            \begin{definition}[全称記号と存在記号]
+                $\forall x$は「任意の$x$」や「全ての$x$」の意. $\exists x$は「ある$x$が存在して」の意味.
+            \end{definition}
+            \begin{definition}[基本的な集合の表記]集合とはものの集まり. なお以下, 有理数については略.
+                \begin{align*}
+                    \mathbb{N}&=\text{自然数全体の集合}\\
+                    \mathbb{Z}&=\text{整数全体の集合}\\
+                    \mathbb{R}&=\text{実数全体の集合}\\
+                    \mathbb{C}&=\text{複素数全体の集合}
+                \end{align*}
+            \end{definition}
+
+            \begin{definition}[群の定義]
+                集合$G$が群というのは, $G$の任意の元に対して演算が定まり, 結合則が満たされ, 単位元と逆元が存在すること.
+            \end{definition}
+        \subsection*{右剰余類分解}
+            \begin{itembox}[l]{$Review$}
+                集合$A$の同値関係$\sim$とは, $a,b,c\in A$に対して
+                \begin{itemize}
+                    \item $a\sim a$
+                    \item $a\sim b \rightarrow b\sim a$
+                    \item $a\sim b \land b\sim c \rightarrow a\sim c$
+                \end{itemize}
+                を満たす二項関係のこと. これによって, $A$を直和分割できるのだった.
+            \end{itembox}
+            $G$を群, $H$を部分群とする. $a,b\in G$に対し, $a\sim' b\Leftrightarrow b\cdot a^{-1}\in H$と定めると, $\sim'$は同値関係だから, 
+            同値類が考えられる. この同値類を$H$に関する右剰余類という. したがって, $G$の$H$に関する右剰余類分解は
+            \begin{equation}
+                G=\coprod_{\lambda'\in\Lambda'} H_{a_{\lambda'}}
+            \end{equation}
+            となる.
+            \begin{itembox}[l]{$Review$}
+                $G$を群, $N$を$G$の部分群とする. このとき, $N$が正規部分群であるというのは, $\forall x\in G, xNx^{-1}=N$.\\
+                また, $N$が正規部分群であることと``同値''な命題は
+                \begin{itemize}
+                    \item $xN=Nx$
+                    \item $\forall x\in G, xNx^{-1}\subset N$
+                \end{itemize}
+                であった.
+            \end{itembox}
+            $N$が正規部分群であれば, その右剰余類と左剰余類は一致する. よって, $G$の分解も等しくなる.
+        \clearpage
+        \subsection*{剰余群}
+            \begin{proposition}
+                $G$を群, $N$を$G$の正規部分群とする. $A,B$が$N$に関する左剰余類なら, $AB$も$N$に関する左剰余類.
+            \end{proposition}
+
+            \begin{theorem}
+                $G$を群, $N$を$G$の正規部分群とする. このとき$G/N$は$\cdot:G/N\times G/N\rightarrow G/N;(A,B)\mapsto AB$を演算とする群の構造を持つ.
+            \end{theorem}
+
+            \begin{definition}
+                上のような群を剰余群(商群)という.
+            \end{definition}
+
+        \subsection*{群の準同型写像, 群の同型}
+            \begin{itembox}[l]{$Review$}
+                $f:A\to B$が$A$から$B$への写像というのは, $A$の任意の元に対して, $B$の元が``一意に''定まっている対応関係のことをいう.
+            \end{itembox}
+
+            \begin{definition}[準同型写像]
+                $G,G'$を群とする. $f:G\to G'$が群の準同型写像であるとは, 
+                \begin{equation}
+                    \forall x,y\in G,f(x\cdot y)=f(x)\cdot f(y)
+                \end{equation}
+                が成り立つときにいう.
+            \end{definition}
+
+            \begin{proposition}
+                $f:G\to G'$は群の準同型写像.
+                \begin{itemize}
+                    \item $f(e)=e'$
+                    \item $\forall x\in G,f(x^{-1})=(f(x))^{-1}$
+                \end{itemize}
+            \end{proposition}
+
+            \begin{itembox}[l]{$Review$}
+                写像$f:A\to B$が全単射であるとは, 次の二つの条件を満たすこと.
+                \begin{itemize}
+                    \item $x\neq y\rightarrow f(x)\neq f(y)$ (\textbf{単射})
+                    \item $f(A)=B$ (\textbf{全射})
+                \end{itemize}
+            \end{itembox}
+
+            \begin{definition}[同型写像, 同型]
+                $G,G'$を群とする.
+                \begin{enumerate}
+                    \item $f:G\to G'$が準同型写像で, 全単射であるとき, $f$を同型写像という.
+                    \item $G,G'$の間に同型写像が存在するとき, $G$と$G'$は同型といい, $G\simeq G'$とかく.
+                \end{enumerate}
+            \end{definition}
+            \clearpage
+
+            \begin{itembox}[l]{$Review$}
+                群$G$がAbel群であるとは, その演算が可換(交換可能)であること.\\
+                $G$の``元''$x$に対して, 位数とは$x^{k}=e$なる$k$のうち最小のもの.
+            \end{itembox}
+
+            \begin{proposition}
+                $G\simeq G'$とし, 同型写像を$f:G\to G'$とする.
+                \begin{itemize}
+                    \item $|G|=|G'|$
+                    \item $G$がAbel群$\Rightarrow$ $G'$もAbel群
+                    \item $x\in G$が位数$n$の元 $\Rightarrow$ $f(x)$は$G'$の位数$n$の元
+                \end{itemize}
+            \end{proposition}
+
+        \subsection*{群の準同型定理}
+            \begin{definition}[核と像]
+                $f:G\to G'$を準同型写像とする.
+                \begin{itemize}
+                    \item $f$の核(Kernel) $\Ker f:=\{x\in G\mid f(x)=e'\}$
+                    \item $f$の像(Image) $\Im f:=\{f(x)\mid x\in G\}$
+                \end{itemize}
+                と定める.\footnote{集合論の記号を借りれば, $\Ker f=f^{-1}(\{e'\}),\Im f=f(G)$に過ぎないとわかる.}
+            \end{definition}
+
+            \begin{proposition} $f:G\to G'$は準同型写像.
+                \begin{itemize}
+                    \item $\Ker f$は$G$の正規部分群
+                    \item $\Im f$は$G'$の部分群
+                    \item $f$が単射$\Leftrightarrow$ $\Ker f=\{e\}$
+                \end{itemize}
+            \end{proposition}
+
+            \begin{theorem}[\textbf{準同型定理}]
+                $f:G\to G'$を群の準同型写像とする. このとき, $\Ker f$の剰余類$x\Ker f \hspace{0.5mm}(x\in G)$に$G'$の元$f(x)$を
+                対応させることで, 群の``同型''写像
+                \begin{equation}
+                    \overline{f}:G/\Ker f \to \Im f
+                \end{equation}
+                が得られる.
+            \end{theorem}
+
+            \begin{itembox}[l]{$Review$}
+                $G$の位数とは$G$の要素数のこと.\\
+                $G$が巡回群とは, $\exists a\in G,G=\langle a \rangle(=\{a^{k};k\in\mathbb{Z}\})$.\\
+                $\mathbb{Z}/n\mathbb{Z}$は, 整数を$n$で割った余りで作った同値類全体.
+            \end{itembox}
+            
+            \begin{proposition}
+                $G$が位数$n$の巡回群とする. このとき, $G\simeq \mathbb{Z}/n\mathbb{Z}$.
+            \end{proposition}
+\end{document}
