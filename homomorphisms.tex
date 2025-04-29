@@ -4,6 +4,8 @@
 \usepackage{ascmac}
 \usepackage{amsthm}
 
+\usepackage[margin=15truemm,nohead]{geometry}
+
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\M}{\mathbb{C}}
 
@@ -21,12 +23,13 @@
 \theoremstyle{definition}
 \newtheorem{proposition}{命題}
 
+
 \begin{document}
     \section*{代数}
         教科書 pp.63-86. 定理番号などは本の番号と\textbf{一致しない}ことに注意.
         \subsection*{基本事項の確認}
             \begin{definition}[全称記号と存在記号]
-                $\forall x$は「任意の$x$」や「全ての$x$」の意. $\exists x$は「ある$x$が存在して」の意味.
+                $\forall x$は「任意の$x$」や「全ての$x$」の意. $\exists x$は「ある$x$が存在して」の意.
             \end{definition}
             \begin{definition}[基本的な集合の表記]集合とはものの集まり. なお以下, 有理数については略.
                 \begin{align*}
@@ -39,6 +42,10 @@
 
             \begin{definition}[群の定義]
                 集合$G$が群というのは, $G$の任意の元に対して演算が定まり, 結合則が満たされ, 単位元と逆元が存在すること.
+            \end{definition}
+
+            \begin{definition}[部分群の定義]
+                群$G$の部分集合$H\subset G$が$G$の部分群であるとは, $G$の演算で$H$も群となるということ. すなわち, $H$の元が演算に閉じていて, 逆元が$H$内に存在していればよい. 
             \end{definition}
         \subsection*{右剰余類分解}
             \begin{itembox}[l]{$Review$}
@@ -116,7 +123,6 @@
                     \item $G,G'$の間に同型写像が存在するとき, $G$と$G'$は同型といい, $G\simeq G'$とかく.
                 \end{enumerate}
             \end{definition}
-            \clearpage
 
             \begin{itembox}[l]{$Review$}
                 群$G$がAbel群であるとは, その演算が可換(交換可能)であること.\\
@@ -131,6 +137,7 @@
                     \item $x\in G$が位数$n$の元 $\Rightarrow$ $f(x)$は$G'$の位数$n$の元
                 \end{itemize}
             \end{proposition}
+        \clearpage
 
         \subsection*{群の準同型定理}
             \begin{definition}[核と像]
