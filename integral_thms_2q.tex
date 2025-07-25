@@ -1,0 +1,46 @@
+\documentclass[a4j,dvipdfmx]{jsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{ascmac}
+\usepackage{bm}
+\usepackage{url}
+\usepackage[dvipdfmx]{graphicx}
+
+\begin{document}
+    解答するときは, 数式と下線部の内容程度のことがかけてればよい. そのため, \textbf{定理の細かい条件などは書く必要はない.}
+    あくまで自分の言葉でどんな定理かを答える(何が便利かに重点を置いている).
+    \begin{itembox}{グリーンの定理}
+        \color{red}
+        単純閉曲線$C$によって囲まれた範囲を$D$とする. このとき, 関数$F(x,y),G(x,y)$が$C$と$D$
+        を含む領域で連続な偏導関数を持つならば
+        \begin{equation}
+            \int_C (Fdx+Gdy)=\iint_D \left(\frac{\partial G}{\partial x}-\frac{\partial F}{\partial y}\right)dxdy
+        \end{equation}
+        \underline{線積分を重積分に直せる. これは, 例えば被積分関数を微分することで簡単になる場合に有効.}
+    \end{itembox}
+    \begin{itembox}{発散定理}
+        \color{red}
+        閉曲面$S$で囲まれた立体$V$があり, $S$の単位法線ベクトル$\bm{n}$は$S$の外側を向くとする. $V$を
+        含むある範囲でベクトル場$\bm{a}$とその偏導関数が連続であるとき, 次の等式が成り立つ.
+        \begin{equation}
+            \int_S \bm{a}\cdot\bm{n}dS=\int_V \nabla\cdot\bm{a}dV
+        \end{equation}
+        \underline{面積分を発散の体積分に直せる.}
+    \end{itembox}
+    \begin{itembox}{ストークスの定理}
+        \color{red}
+        曲面$S$, 単純閉曲線$C$,  $S$の単位法線ベクトル$\bm{n}$の向きを次のように定める. 
+        $C$を曲面$S$の境界とし, $S$の単位法線ベクトル$\bm{n}$の向きは, $S$上で$n$が連続的に変わるようにとる.
+        $\bm{n}$の向く側を$S$の正の側ということにし, $C$の向きは, $S$の正の側に立ち$C$に沿って進むとき$S$が
+        常に左側にあるようにする.
+        このとき, $S$を含むある範囲でベクトル場$\bm{a}$とその偏導関数が連続であるとき, 次の等式が成り立つ.
+        \begin{equation}
+            \int_C \bm{a}\cdot d\bm{r}=\int_S (\nabla\times\bm{a})\cdot \bm{n}dS
+        \end{equation}
+        {\footnotesize 図の参考: \url{https://hooktail.sub.jp/vectoranalysis/StokesTheorem/}}\\
+        \underline{回転の面積分を体積分に直せる.}
+    \end{itembox}
+    補足. 定理内で, 連続な偏導関数をもつという条件は, 積分がうまく定義できるために必要. (不連続な
+    (偏導)関数を積分するなんて難しい！) なお, 偏導関数が存在し, 連続であれば, 元の関数は全微分可能であるから
+    当然連続である.
+\end{document}
